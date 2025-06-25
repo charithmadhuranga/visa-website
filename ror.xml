@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for http://www.taprovisa.com/</title>
+  <link>http://www.taprovisa.com/</link>
+
+<item>
+     <link>https://www.taprovisa.com/</link>
+     <title>Tapro Visa</title>
+     <description>Tapro Visa</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.taprovisa.com/index.html</link>
+     <title>Tapro Visa</title>
+     <description>Tapro Visa</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.taprovisa.com/google-form.html</link>
+     <title>Tapro-Contact-Form</title>
+     <description>Tapro-Contact-Form</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>
+  

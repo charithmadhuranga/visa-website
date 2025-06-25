@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tapro-Contact-Form</title>
+  </head>
+  <body>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSculpb3J9nM2oycLsQBM-lhbGxy0gyhO5wU6KkTy0Sy61gn1w/viewform?embedded=true"
+      width="100%"
+      height="2000px"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      onload="loaded()"
+    >
+      >Loading…</iframe
+    >
+    <script type="application/javascript">
+      var loadCounter = 0;
+      var loaded = function () {
+        loadCounter += 1;
+        if (loadCounter === 2) {
+          $("iframe").attr("height", "500px");
+          $(window).scrollTo(315, 0);
+        }
+      };
+    </script>
+  </body>
+</html>
