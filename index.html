@@ -7,25 +7,30 @@
     <meta name="author" content="webthemez" />
     <title>Lanka Global Access</title>
 
-    <!-- Favicon -->
     <link rel="shortcut icon" href="images/ico/favicon.ico" />
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome CDN for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
-    <!-- Google Fonts - Inter (for a clean, modern look) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 
     <style>
-      /* Custom styles to override or enhance Tailwind */
+      /* Apply box-sizing globally for consistent layout calculations */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* html element to strictly prevent horizontal overflow */
+      html {
+        overflow-x: hidden;
+        max-width: 100vw; /* Explicitly constrain to viewport width */
+      }
+
       body {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth; /* For smooth scrolling */
@@ -37,34 +42,25 @@
       .service-box i {
         min-width: 60px; /* Ensure icon has enough space */
       }
-      .portfolio-filter a.active {
-        background-color: #2563eb; /* Tailwind blue-600 */
-        color: white;
+      
+      /* Ensure all images and iframes are responsive by default */
+      img, iframe {
+        max-width: 100%;
+        height: auto;
       }
-      .google-maps {
-        position: relative;
-        padding-bottom: 75%; /* 4:3 Aspect Ratio for responsive iframe */
-        height: 0;
-        overflow: hidden;
-        border-radius: 0.5rem; /* rounded-lg */
-      }
-      .google-maps iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
+
+      /* Basic styling for the fixed header */
+      #header.scrolled {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
       /* Mobile menu panel dropdown styling */
       #mobile-menu-panel {
         background-color: white !important; /* Force white background */
         z-index: 9999 !important; /* Ensure it's on top of everything */
-        /* Initial collapsed state for dropdown */
-        max-height: 0;
+        max-height: 0; /* Initial collapsed state for dropdown */
         overflow: hidden;
-        /* Positioned absolutely below the header */
-        position: absolute;
+        position: absolute; /* Positioned absolutely below the header */
         top: 100%; /* Positions it right below the header */
         left: 0;
         width: 100%;
@@ -127,11 +123,56 @@
       .whatsapp-float:hover .whatsapp-tooltip {
         opacity: 1;
       }
+
+      /* Hero Slider Specific Styles */
+      #hero-slider .slide {
+        will-change: opacity, transform; /* Hint browser for animations */
+      }
+
+      /* Portfolio Slider Specific Styles */
+      #portfolio-slider-container {
+        position: relative;
+        height: 550px; /* Adjusted height to accommodate content and prevent overflow */
+        overflow: hidden; /* Hide overflow from absolutely positioned slides */
+      }
+      #portfolio-slider-container .portfolio-item {
+        position: absolute;
+        inset: 0; /* Cover the entire container */
+        opacity: 0; /* Hidden by default */
+        z-index: 0; /* Default z-index for inactive slides */
+        display: flex;
+        flex-direction: column;
+        will-change: opacity, transform; /* Hint browser for animations */
+      }
+      #portfolio-slider-container .portfolio-item.current {
+        opacity: 1;
+        z-index: 1; /* Active slide on top */
+      }
+      #portfolio-slider-dots {
+        position: absolute;
+        bottom: 10px; /* Adjusted from 20px to 10px */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        gap: 8px; /* Space between dots */
+      }
+      #portfolio-slider-dots .dot {
+        width: 12px;
+        height: 12px;
+        background-color: rgba(100, 116, 139, 0.5); /* Tailwind slate-500 with opacity */
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      #portfolio-slider-dots .dot.current {
+        background-color: #2563eb; /* Tailwind blue-600 */
+        transform: scale(1.2);
+      }
     </style>
   </head>
 
   <body id="home" class="text-gray-800">
-    <!-- Header -->
     <header id="header" class="bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-shadow duration-300">
       <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <div class="flex-shrink-0">
@@ -140,15 +181,13 @@
           </a>
         </div>
 
-        <!-- Mobile Menu Button -->
         <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
           <span class="sr-only">Toggle navigation</span>
-          <div class="w-6 h-0.5 bg-blue-600 mb-1"></div> <!-- Changed to blue-600 -->
-          <div class="w-6 h-0.5 bg-blue-600 mb-1"></div> <!-- Changed to blue-600 -->
-          <div class="w-6 h-0.5 bg-blue-600"></div> <!-- Changed to blue-600 -->
+          <div class="w-6 h-0.5 bg-blue-600 mb-1"></div>
+          <div class="w-6 h-0.5 bg-blue-600 mb-1"></div>
+          <div class="w-6 h-0.5 bg-blue-600"></div>
         </button>
 
-        <!-- Desktop Navigation -->
         <div id="main-nav-menu" class="hidden md:flex items-center">
           <ul class="flex space-x-6">
             <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-semibold transition-colors duration-200">Home</a></li>
@@ -160,9 +199,7 @@
         </div>
       </nav>
 
-      <!-- Mobile Menu Overlay -->
       <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
-      <!-- Mobile Menu Panel -->
       <div id="mobile-menu-panel" class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out z-40 max-h-0">
         <div class="p-6">
           <ul class="space-y-4 pt-10">
@@ -176,11 +213,9 @@
       </div>
     </header>
 
-    <!-- Hero Slider Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
       <div id="hero-slider" class="absolute inset-0">
-        <!-- Slide 1 -->
-        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('./images/banner/1.jpg');">
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('./images/banner/1.jpg');">
           <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white p-4 text-center">
             <div class="max-w-3xl">
               <h2 class="text-4xl md:text-6xl font-bold mb-4">Lanka Global Access</h2>
@@ -191,8 +226,7 @@
             </div>
           </div>
         </div>
-        <!-- Slide 2 -->
-        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('./images/banner/2.jpg');">
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('./images/banner/2.jpg');">
           <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white p-4 text-center">
             <div class="max-w-3xl">
               <h2 class="text-4xl md:text-6xl font-bold mb-4">Visa Application Assistance</h2>
@@ -203,8 +237,7 @@
             </div>
           </div>
         </div>
-        <!-- Slide 3 -->
-        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('./images/banner/3.jpg');"> <!-- Fixed image URL -->
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('./images/banner/3.jpg');">
           <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white p-4 text-center">
             <div class="max-w-3xl">
               <h2 class="text-4xl md:text-6xl font-bold mb-4">Study Abroad Support</h2>
@@ -216,16 +249,9 @@
           </div>
         </div>
       </div>
-      <!-- Slider Navigation Dots -->
-      <nav id="slider-dots" class="absolute bottom-8 flex space-x-3 z-10">
-        <span class="dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer transition-all duration-300 hover:bg-opacity-80 current"></span>
-        <span class="dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer transition-all duration-300 hover:bg-opacity-80"></span>
-        <span class="dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer transition-all duration-300 hover:bg-opacity-80"></span>
-      </nav>
+      <nav id="hero-slider-dots" class="absolute bottom-8 flex space-x-3 z-10">
+        </nav>
     </section>
-    <!--/#main-slider-->
-
-    <!-- About Section -->
     <section id="about" class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12 section-header">
@@ -265,8 +291,6 @@
         </div>
       </div>
     </section>
-    <!--/#about-->
-
     <!-- Services Section -->
     <section id="services" class="py-16 bg-white">
       <div class="container mx-auto px-4">
@@ -392,8 +416,6 @@
       </div>
     </section>
     <!--/#services-->
-
-    <!-- Call to Action Section -->
     <section id="hero-action-section" class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center">
       <div class="container mx-auto px-4">
         <h3 class="text-2xl md:text-3xl font-light mb-4 animate-on-scroll">
@@ -408,7 +430,6 @@
       </div>
     </section>
 
-    <!-- Portfolio/Countries Section -->
     <section id="portfolio" class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12 section-header">
@@ -420,198 +441,146 @@
             some of the key countries we serve:
           </p>
         </div>
-
-        <div class="text-center mb-8 animate-on-scroll">
+                <div class="text-center mb-8 animate-on-scroll">
           <!-- Filter buttons now use flex-wrap to stack on small screens -->
           <ul id="portfolio-filter" class="flex flex-wrap justify-center gap-4">
-            <li><a href="#" data-filter=".USA" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200 active">USA</a></li>
-            <li><a href="#" data-filter=".CANADA" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Canada</a></li>
-            <li><a href="#" data-filter=".UK" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">UK</a></li>
-            <li><a href="#" data-filter=".AUS" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Australia</a></li>
-            <li><a href="#" data-filter=".NZ" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">New Zealand</a></li>
-            <li><a href="#" data-filter=".INDIA" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">India</a></li>
-            <li><a href="#" data-filter=".MALAY" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Malaysia</a></li>
-            <li><a href="#" data-filter=".UAE" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">UAE</a></li>
-            <li><a href="#" data-filter=".THAI" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Thailand</a></li>
-            <li><a href="#" data-filter=".SCH" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Schengen Countries</a></li>
-            <li><a href="#" data-filter=".RUS" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Russia</a></li>
-            <li><a href="#" data-filter=".CHINA" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">China</a></li>
-            <li><a href="#" data-filter=".BANG" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Bangladesh</a></li>
-            <li><a href="#" data-filter=".SK" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">South Korea</a></li>
-            <li><a href="#" data-filter=".SG" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Singapore</a></li>
-            <li><a href="#" data-filter=".QATAR" class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Qatar</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200 active">USA</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Canada</a></li>
+            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">UK</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Australia</a></li>
+            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">New Zealand</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">India</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Malaysia</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">UAE</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Thailand</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Schengen Countries</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Russia</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">China</a></li>
+            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Bangladesh</a></li>
+            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">South Korea</a></li>
+            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Singapore</a></li>
+            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Qatar</a></li>
           </ul>
         </div>
 
-        <!-- Portfolio Items (Countries) -->
-        <!-- Updated responsive width classes: w-full for all screen sizes -->
-        <div id="portfolio-items" class="flex flex-wrap -mx-4 items-stretch">
-          <!-- USA Card -->
-          <div class="w-full px-4 mb-8 portfolio-item USA">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/02.jpg" alt="Statue of Liberty, USA" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">United States of America</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">The United States is a vast country with diverse landscapes, from the bustling cities of New York and Los Angeles to the natural wonders of the Grand Canyon and Yellowstone National Park. It's a global leader in education, technology, and entertainment.</p>
-              </div>
+        <div id="portfolio-slider-container" class="relative mx-auto rounded-lg shadow-md overflow-hidden">
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/02.jpg" alt="Statue of Liberty, USA" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">United States of America</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The United States is a vast country with diverse landscapes, from the bustling cities of New York and Los Angeles to the natural wonders of the Grand Canyon and Yellowstone National Park. It's a global leader in education, technology, and entertainment.</p>
             </div>
           </div>
-          <!-- Canada Card -->
-          <div class="w-full px-4 mb-8 portfolio-item CANADA hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/03.jpg" alt="Banff National Park, Canada" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Canada</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Canada is known for its stunning natural beauty, including the Rocky Mountains, vast forests, and pristine lakes. It offers a high quality of life, diverse culture, and excellent educational opportunities.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/03.jpg" alt="Banff National Park, Canada" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Canada</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Canada is known for its stunning natural beauty, including the Rocky Mountains, vast forests, and pristine lakes. It offers a high quality of life, diverse culture, and excellent educational opportunities.</p>
             </div>
           </div>
-          <!-- UK Card -->
-          <div class="w-full px-4 mb-8 portfolio-item UK hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/04.jpg" alt="Big Ben, London, UK" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">United Kingdom</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">The United Kingdom, comprising England, Scotland, Wales, and Northern Ireland, is rich in history, culture, and iconic landmarks like Big Ben, Stonehenge, and Edinburgh Castle. It's a popular destination for tourism and higher education.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/04.jpg" alt="Big Ben, London, UK" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">United Kingdom</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The United Kingdom, comprising England, Scotland, Wales, and Northern Ireland, is rich in history, culture, and iconic landmarks like Big Ben, Stonehenge, and Edinburgh Castle. It's a popular destination for tourism and higher education.</p>
             </div>
           </div>
-          <!-- Australia Card -->
-          <div class="w-full px-4 mb-8 portfolio-item AUS hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/05.jpg" alt="Sydney Opera House, Australia" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Australia</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Australia is a vast country known for its unique wildlife, stunning coastlines, and vibrant cities like Sydney and Melbourne. It offers a relaxed lifestyle, strong economy, and world-class universities.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/05.jpg" alt="Sydney Opera House, Australia" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Australia</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Australia is a vast country known for its unique wildlife, stunning coastlines, and vibrant cities like Sydney and Melbourne. It offers a relaxed lifestyle, strong economy, and world-class universities.</p>
             </div>
           </div>
-          <!-- New Zealand Card -->
-          <div class="w-full px-4 mb-8 portfolio-item NZ hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/06.jpg" alt="Milford Sound, New Zealand" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">New Zealand</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">New Zealand boasts breathtaking landscapes, from majestic mountains and glaciers to pristine beaches and geothermal areas. It's a popular destination for adventure tourism and offers a friendly, welcoming environment.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/06.jpg" alt="Milford Sound, New Zealand" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">New Zealand</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">New Zealand boasts breathtaking landscapes, from majestic mountains and glaciers to pristine beaches and geothermal areas. It's a popular destination for adventure tourism and offers a friendly, welcoming environment.</p>
             </div>
           </div>
-          <!-- India Card -->
-          <div class="w-full px-4 mb-8 portfolio-item INDIA hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/07.jpg" alt="Taj Mahal, India" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">India</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">India is a land of incredible diversity, rich history, and vibrant cultures. From ancient temples to modern cities, it offers a unique travel experience and is a growing hub for business and technology.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/07.jpg" alt="Taj Mahal, India" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">India</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">India is a land of incredible diversity, rich history, and vibrant cultures. From ancient temples to modern cities, it offers a unique travel experience and is a growing hub for business and technology.</p>
             </div>
           </div>
-          <!-- Malaysia Card -->
-          <div class="w-full px-4 mb-8 portfolio-item MALAY hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/08.jpg" alt="Petronas Towers, Malaysia" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Malaysia</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Malaysia is a multicultural country known for its beautiful beaches, lush rainforests, and modern cityscapes, including the iconic Petronas Twin Towers. It's a popular destination for tourism and business in Southeast Asia.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/08.jpg" alt="Petronas Towers, Malaysia" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Malaysia</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Malaysia is a multicultural country known for its beautiful beaches, lush rainforests, and modern cityscapes, including the iconic Petronas Twin Towers. It's a popular destination for tourism and business in Southeast Asia.</p>
             </div>
           </div>
-          <!-- UAE Card -->
-          <div class="w-full px-4 mb-8 portfolio-item UAE hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/09.jpg" alt="Burj Khalifa, UAE" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">United Arab Emirates</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">The UAE is a federation of seven emirates, famous for its luxurious cities like Dubai and Abu Dhabi, stunning architecture, and desert landscapes. It's a global hub for business, tourism, and innovation.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/09.jpg" alt="Burj Khalifa, UAE" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">United Arab Emirates</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The UAE is a federation of seven emirates, famous for its luxurious cities like Dubai and Abu Dhabi, stunning architecture, and desert landscapes. It's a global hub for business, tourism, and innovation.</p>
             </div>
           </div>
-          <!-- Thailand Card -->
-          <div class="w-full px-4 mb-8 portfolio-item THAI hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/10.jpg" alt="Thai Temple, Thailand" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Thailand</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Thailand is a vibrant country known for its tropical beaches, opulent royal palaces, ancient ruins, and ornate temples displaying figures of Buddha. It's a major tourist destination in Southeast Asia.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/10.jpg" alt="Thai Temple, Thailand" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Thailand</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Thailand is a vibrant country known for its tropical beaches, opulent royal palaces, ancient ruins, and ornate temples displaying figures of Buddha. It's a major tourist destination in Southeast Asia.</p>
             </div>
           </div>
-          <!-- Schengen Countries Card -->
-          <div class="w-full px-4 mb-8 portfolio-item SCH hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/11.jpg" alt="Eiffel Tower, Paris" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Schengen Countries</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">The Schengen Area comprises 27 European countries that have abolished passport and all other types of border control at their mutual borders. It's a popular destination for tourism, study, and business in Europe.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/11.jpg" alt="Eiffel Tower, Paris" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Schengen Countries</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The Schengen Area comprises 27 European countries that have abolished passport and all other types of border control at their mutual borders. It's a popular destination for tourism, study, and business in Europe.</p>
             </div>
           </div>
-          <!-- Russia Card -->
-          <div class="w-full px-4 mb-8 portfolio-item RUS hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/12.jpg" alt="Red Square, Moscow, Russia" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Russia</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Russia is the largest country in the world, spanning Eastern Europe and Northern Asia. It boasts a rich history, iconic architecture like the Kremlin and St. Basil's Cathedral, and diverse natural landscapes.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/12.jpg" alt="Red Square, Moscow, Russia" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Russia</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Russia is the largest country in the world, spanning Eastern Europe and Northern Asia. It boasts a rich history, iconic architecture like the Kremlin and St. Basil's Cathedral, and diverse natural landscapes.</p>
             </div>
           </div>
-          <!-- China Card -->
-          <div class="w-full px-4 mb-8 portfolio-item CHINA hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/13.jpg" alt="Great Wall of China" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">China</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">China is a vast country in East Asia with a rich history, diverse landscapes, and a rapidly growing economy. It's home to ancient wonders like the Great Wall and Forbidden City, and modern megacities.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/13.jpg" alt="Great Wall of China" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">China</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">China is a vast country in East Asia with a rich history, diverse landscapes, and a rapidly growing economy. It's home to ancient wonders like the Great Wall and Forbidden City, and modern megacities.</p>
             </div>
           </div>
-          <!-- Bangladesh Card -->
-          <div class="w-full px-4 mb-8 portfolio-item BANG hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/14.jpg" alt="Sundarbans, Bangladesh" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Bangladesh</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Bangladesh, in South Asia, is known for its lush greenery and many waterways. Its southern coastline features the Sundarbans, a huge mangrove forest shared with Eastern India, home to the Royal Bengal tiger.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/14.jpg" alt="Sundarbans, Bangladesh" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Bangladesh</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Bangladesh, in South Asia, is known for its lush greenery and many waterways. Its southern coastline features the Sundarbans, a huge mangrove forest shared with Eastern India, home to the Royal Bengal tiger.</p>
             </div>
           </div>
-          <!-- South Korea Card -->
-          <div class="w-full px-4 mb-8 portfolio-item SK hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/15.jpg" alt="Seoul Skyline, South Korea" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">South Korea</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">South Korea is an East Asian nation on the southern half of the Korean Peninsula, sharing one of the world’s most heavily militarized borders with North Korea. It's known for its vibrant cities, pop culture, and advanced technology.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/15.jpg" alt="Seoul Skyline, South Korea" class="w-full h-80 object-cover">
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">South Korea</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">South Korea is an East Asian nation on the southern half of the Korean Peninsula, sharing one of the world’s most heavily militarized borders with North Korea. It's known for its vibrant cities, pop culture, and advanced technology.</p>
             </div>
           </div>
-          <!-- Singapore Card -->
-          <div class="w-full px-4 mb-8 portfolio-item SG hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/16.jpg" alt="Marina Bay Sands, Singapore" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Singapore</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Singapore is a global financial hub with a tropical climate and multicultural population. It's known for its modern architecture, lush gardens, and diverse culinary scene, making it a popular tourist destination.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/16.jpg" alt="Marina Bay Sands, Singapore" class="w-full h-80 object-cover" />
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Singapore</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Singapore is a global financial hub with a tropical climate and multicultural population. It's known for its modern architecture, lush gardens, and diverse culinary scene, making it a popular tourist destination.</p>
             </div>
           </div>
-          <!-- Qatar Card -->
-          <div class="w-full px-4 mb-8 portfolio-item QATAR hidden">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-              <img src="./images/portfolio/17.jpg" alt="Doha Skyline, Qatar" class="w-full h-80 object-cover">
-              <div class="p-6 flex-grow">
-                <h3 class="text-xl font-semibold mb-2">Qatar</h3>
-                <p class="text-gray-600 min-h-[6rem] leading-relaxed">Qatar is a peninsula Arab country whose terrain comprises arid desert and a long Persian (Arab) Gulf shoreline of beaches and dunes. Also on the coast is the capital, Doha, known for its futuristic skyscrapers and modern architecture.</p>
-              </div>
+          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+            <img src="./images/portfolio/17.jpg" alt="Doha Skyline, Qatar" class="w-full h-80 object-cover" />
+            <div class="p-6 flex-grow">
+              <h3 class="text-xl font-semibold mb-2">Qatar</h3>
+              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Qatar is a peninsula Arab country whose terrain comprises arid desert and a long Persian (Arab) Gulf shoreline of beaches and dunes. Also on the coast is the capital, Doha, known for its futuristic skyscrapers and modern architecture.</p>
             </div>
           </div>
+          <nav id="portfolio-slider-dots" class="flex space-x-3">
+              </nav>
         </div>
       </div>
     </section>
-    <!--/#portfolio-->
-
-    <!-- Contact Us Section -->
     <section id="contact-us" class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12 section-header">
@@ -645,11 +614,10 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer id="footer" class="bg-gray-800 text-white py-8">
       <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div class="mb-4 md:mb-0">
-          &copy; 2025 Lanka Global Access .
+          © 2025 Lanka Global Access .
         </div>
         <div>
           <ul class="flex space-x-6 text-xl">
@@ -664,7 +632,6 @@
       </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
     <a href="https://wa.me/94726338989?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa"
        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
       <div class="whatsapp-tooltip">Chat with us</div>
@@ -690,21 +657,9 @@
                 c-7.921,6.701-17.32,16.88-18.461,28.16c-2.015,19.887,6.515,44.954,38.762,75.055c37.257,34.778,67.094,39.369,86.523,34.664
                 c11.019-2.667,19.825-13.365,25.379-22.126C336.906,296.467,333.91,288.535,327.115,286.582L327.115,286.582z"/>
         </g>
-        <g>
-            <path style="fill:#D1D1D1;" d="M356.004,147.708l-22.223,22.778c1.131,1.045,2.257,2.096,3.351,3.191
-                c21.67,21.669,33.604,50.483,33.604,81.127c0,30.375-12.128,59.656-33.604,81.134c-21.669,21.669-50.483,33.604-81.13,33.604
-                c-17.944,0-35.125-4.027-51.066-11.966l-10.302-5.134l-45.37,10.747l0.938-4.553l-40.174,41.172
-                c0.886,2.663,3.705,4.475,6.734,3.758l73.995-17.53c19.011,9.471,40.364,14.939,62.962,15.284
-                c79.753,1.219,146.253-62.105,148.74-141.829C403.834,215.357,385.686,175.435,356.004,147.708z"/>
-            <path style="fill:#D1D1D1;" d="M327.115,286.582l-28.384-8.149c-3.729-1.069-7.749-0.01-10.468,2.76l-6.942,7.07
-                c-2.926,2.984-7.366,3.941-11.24,2.374c-7.756-3.139-20.451-12.845-31.185-22.904l-19.732,20.225
-                c0.677,0.648,1.352,1.295,2.05,1.948c37.257,34.778,67.094,39.369,86.523,34.664c11.019-2.667,19.825-13.365,25.379-22.126
-                C336.906,296.467,333.91,288.535,327.115,286.582z"/>
-        </g>
       </svg>
     </a>
 
-    <!-- JavaScript for interactivity and GSAP animations -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -716,31 +671,26 @@
         const navLinks = document.querySelectorAll('#main-nav-menu a, #mobile-menu-panel a');
 
         function toggleMobileMenu() {
-          mobileMenuPanel.classList.toggle('open'); // Toggle 'open' class for dropdown
+          mobileMenuPanel.classList.toggle('open');
           mobileMenuOverlay.classList.toggle('hidden');
-          // Toggle overflow-hidden for vertical scrolling if the menu is very long
-          document.body.classList.toggle('overflow-hidden');
+          // 'overflow-hidden' on body is now handled purely by CSS to avoid toggling issues
         }
 
         mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        mobileMenuOverlay.addEventListener('click', toggleMobileMenu); // Close when clicking outside menu
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
 
-        // Close mobile menu when a nav link is clicked
         navLinks.forEach(link => {
           link.addEventListener('click', function(e) {
-            // Check if the link is for the google-form.html page
             if (link.getAttribute('href') === './google-form.html') {
-                // Allow default navigation for the form link
                 return;
             }
-
-            e.preventDefault(); // Prevent default for internal section links
-            const targetId = link.getAttribute('href');
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-              if (mobileMenuPanel.classList.contains('open')) { // Check if 'open' class is present
-                toggleMobileMenu(); // Close mobile menu if open
+              if (mobileMenuPanel.classList.contains('open')) {
+                toggleMobileMenu();
               }
               gsap.to(window, { duration: 1, scrollTo: targetElement.offsetTop, ease: "power2.inOut" });
             }
@@ -750,56 +700,125 @@
         // --- Header Animation ---
         gsap.from("#header", { y: -100, opacity: 0, duration: 0.8, ease: "power2.out" });
 
-        // Add shadow to header on scroll
         ScrollTrigger.create({
           trigger: "body",
           start: "top top",
           onEnter: () => document.getElementById('header').classList.add('shadow-lg'),
           onLeaveBack: () => document.getElementById('header').classList.remove('shadow-lg'),
-          // This ensures the trigger is always active regardless of scroll direction
           toggleActions: "play none none reverse"
         });
 
         // --- Hero Slider (Carousel) ---
-        const slides = document.querySelectorAll('#hero-slider .slide');
-        const dots = document.querySelectorAll('#slider-dots .dot');
-        let currentSlide = 0;
-        let slideInterval;
+        const heroSlides = document.querySelectorAll('#hero-slider .slide');
+        const heroDotsContainer = document.getElementById('hero-slider-dots');
+        let currentHeroSlide = 0;
+        let heroSlideInterval;
+        const heroSlideDuration = 5000; // 5 seconds
 
-        function showSlide(index) {
-          // Hide all slides and remove 'current' from dots
-          slides.forEach(slide => gsap.to(slide, { opacity: 0, duration: 0.5, ease: "power1.out", onComplete: () => slide.style.zIndex = 0 }));
-          dots.forEach(dot => dot.classList.remove('current', 'bg-opacity-100'));
-
-          // Show the current slide and add 'current' to its dot
-          gsap.to(slides[index], { opacity: 1, duration: 0.5, ease: "power1.in", onStart: () => slides[index].style.zIndex = 1 });
-          dots[index].classList.add('current', 'bg-opacity-100');
-          currentSlide = index;
-        }
-
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-
-        function startSlider() {
-          showSlide(currentSlide); // Show initial slide
-          slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        }
-
-        function resetSliderInterval() {
-          clearInterval(slideInterval);
-          startSlider();
-        }
-
-        dots.forEach((dot, index) => {
+        // Dynamically create dots for Hero Slider
+        heroSlides.forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.classList.add('dot', 'w-3', 'h-3', 'bg-white', 'bg-opacity-50', 'rounded-full', 'cursor-pointer', 'transition-all', 'duration-300', 'hover:bg-opacity-80');
           dot.addEventListener('click', () => {
-            showSlide(index);
-            resetSliderInterval(); // Reset timer on manual navigation
+            showHeroSlide(index);
+            resetHeroSlideInterval();
           });
+          heroDotsContainer.appendChild(dot);
         });
 
-        startSlider(); // Initialize the slider
+        function showHeroSlide(index) {
+          // Ensure all slides are initially set for animation
+          heroSlides.forEach(slide => {
+            gsap.set(slide, { opacity: 0, zIndex: 0 });
+          });
+
+          // Animate the current slide to active state
+          gsap.to(heroSlides[index], { opacity: 1, duration: 1, ease: "power1.inOut", zIndex: 1 });
+
+          // Update dots
+          document.querySelectorAll('#hero-slider-dots .dot').forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.add('current', 'bg-opacity-100');
+              dot.classList.remove('bg-opacity-50');
+            } else {
+              dot.classList.remove('current', 'bg-opacity-100');
+              dot.classList.add('bg-opacity-50');
+            }
+          });
+          currentHeroSlide = index;
+        }
+
+        function nextHeroSlide() {
+          const next = (currentHeroSlide + 1) % heroSlides.length;
+          showHeroSlide(next);
+        }
+
+        function startHeroSlider() {
+          showHeroSlide(currentHeroSlide); // Show initial slide
+          heroSlideInterval = setInterval(nextHeroSlide, heroSlideDuration);
+        }
+
+        function resetHeroSlideInterval() {
+          clearInterval(heroSlideInterval);
+          startHeroSlider();
+        }
+
+        startHeroSlider(); // Initialize the hero slider
+
+        // --- Portfolio/Countries Slider ---
+        const portfolioSlides = document.querySelectorAll('#portfolio-slider-container .portfolio-item');
+        const portfolioDotsContainer = document.getElementById('portfolio-slider-dots');
+        let currentPortfolioSlide = 0;
+        let portfolioSlideInterval;
+        const portfolioSlideDuration = 5000; // 5 seconds
+
+        // Dynamically create dots for Portfolio Slider
+        portfolioSlides.forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.classList.add('dot'); // Uses custom CSS for .dot in style block
+          dot.addEventListener('click', () => {
+            showPortfolioSlide(index);
+            resetPortfolioSliderInterval();
+          });
+          portfolioDotsContainer.appendChild(dot);
+        });
+
+        function showPortfolioSlide(index) {
+          // Ensure all slides are initially set for animation
+          portfolioSlides.forEach(slide => {
+            gsap.set(slide, { opacity: 0, zIndex: 0 });
+          });
+
+          // Animate the current slide to active state
+          gsap.to(portfolioSlides[index], { opacity: 1, duration: 1, ease: "power1.inOut", zIndex: 1 });
+
+          // Update dots
+          document.querySelectorAll('#portfolio-slider-dots .dot').forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.add('current');
+            } else {
+              dot.classList.remove('current');
+            }
+          });
+          currentPortfolioSlide = index;
+        }
+
+        function nextPortfolioSlide() {
+          currentPortfolioSlide = (currentPortfolioSlide + 1) % portfolioSlides.length;
+          showPortfolioSlide(currentPortfolioSlide);
+        }
+
+        function startPortfolioSlider() {
+          showPortfolioSlide(currentPortfolioSlide); // Show initial slide
+          portfolioSlideInterval = setInterval(nextPortfolioSlide, portfolioSlideDuration);
+        }
+
+        function resetPortfolioSliderInterval() {
+          clearInterval(portfolioSlideInterval);
+          startPortfolioSlider();
+        }
+
+        startPortfolioSlider(); // Initialize the portfolio slider
 
         // --- GSAP Scroll Animations (replacing wow.js) ---
         // General fade-in-up for section headers and main content blocks
@@ -862,77 +881,6 @@
             }
           });
         });
-
-        // --- Portfolio Filtering Logic ---
-        const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        function filterPortfolio(filterValue) {
-            const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-            const currentActiveItem = document.querySelector('.portfolio-item:not(.hidden)');
-            const targetItem = document.querySelector(filterValue);
-
-            // 1. Animate out the currently active item if it's different from the target
-            if (currentActiveItem && currentActiveItem !== targetItem) {
-                tl.to(currentActiveItem, {
-                    opacity: 0,
-                    scale: 0.9,
-                    duration: 0.3,
-                    onComplete: () => currentActiveItem.classList.add('hidden')
-                }, 0); // Start at the beginning of the timeline
-            }
-
-            // 2. Hide all non-target items that are currently visible (important for initial state or if filter changes rapidly)
-            // This ensures only the current active item is animated out, and others are immediately hidden if they were visible
-            portfolioItems.forEach(item => {
-                if (item !== targetItem && !item.classList.contains('hidden')) {
-                    if (item !== currentActiveItem) { // Only hide immediately if not the one being animated out
-                        item.classList.add('hidden');
-                    }
-                }
-            });
-
-            // 3. Animate in the target item
-            if (targetItem) {
-                // Ensure target item is visible before animating
-                targetItem.classList.remove('hidden');
-
-                // If there was an outgoing animation, start the incoming one after it.
-                // Otherwise, start immediately.
-                if (currentActiveItem && currentActiveItem !== targetItem) {
-                    tl.fromTo(targetItem,
-                        { opacity: 0, scale: 0.9 },
-                        { opacity: 1, scale: 1, duration: 0.5 },
-                        ">" // Start this animation after the previous one in the timeline completes
-                    );
-                } else {
-                    // If no outgoing animation, animate immediately
-                    gsap.fromTo(targetItem,
-                        { opacity: 0, scale: 0.9 },
-                        { opacity: 1, scale: 1, duration: 0.5 }
-                    );
-                }
-            }
-        }
-
-        filterButtons.forEach(button => {
-          button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const filterValue = this.getAttribute('data-filter');
-
-            // Remove 'active' from all buttons and add to the clicked one
-            filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-            this.classList.add('active', 'bg-blue-600', 'text-white');
-            this.classList.remove('bg-gray-200', 'text-gray-700'); // Ensure non-active state is removed
-
-            filterPortfolio(filterValue);
-          });
-        });
-
-        // Initialize filter to show the "USA" card by default on page load
-        // This ensures the correct button is active and the USA card is handled by the filter logic.
-        document.querySelector('.portfolio-filter-btn[data-filter=".USA"]').click();
       });
     </script>
   </body>
