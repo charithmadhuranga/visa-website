@@ -1,909 +1,1349 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Lanka Global Access Consultancy - Your trusted partner in visa and immigration consulting." />
-    <meta name="author" content="webthemez" />
-    <title>Lanka Global Access</title>
+    <meta name="author" content="Lanka Global Access" />
+    <title>Lanka Global Access - Professional Visa & Immigration Services</title>
 
     <link rel="shortcut icon" href="images/ico/favicon.ico" />
-
+    
+    <!-- Modern CSS Framework -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Swiper JS for Sliders -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <style>
-      /* Apply box-sizing globally for consistent layout calculations */
-      * {
-        box-sizing: border-box;
-      }
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
 
-      /* html element to strictly prevent horizontal overflow */
-      html {
-        overflow-x: hidden;
-        max-width: 100vw; /* Explicitly constrain to viewport width */
-      }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      body {
-        font-family: 'Inter', sans-serif;
-        scroll-behavior: smooth; /* For smooth scrolling */
-        overflow-x: hidden; /* Prevent horizontal scrolling across the entire body */
-      }
-      /* New style to prevent body scrolling when menu is open */
-      body.no-scroll {
-        overflow: hidden;
-      }
-      .section-header p {
-        line-height: 1.6;
-      }
-      .service-box i {
-        min-width: 60px; /* Ensure icon has enough space */
-      }
-      
-      /* Ensure all images and iframes are responsive by default */
-      img, iframe {
-        max-width: 100%;
-        height: auto;
-      }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-      /* Basic styling for the fixed header */
-      #header.scrolled {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
 
-      /* Mobile menu panel dropdown styling */
-      #mobile-menu-panel {
-        background-color: white !important; /* Force white background */
-        z-index: 999 !important; /* Adjusted z-index: higher than overlay, lower than header */
-        max-height: 0; /* Initial collapsed state for dropdown */
-        overflow: hidden;
-        position: fixed; /* Changed to fixed to position relative to viewport */
-        top: 4.5rem; /* Position below the header (approx. 72px, based on header height) */
-        left: 0;
-        width: 100%;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
-        transition: max-height 0.3s ease-in-out; /* Smooth transition for dropdown */
-        /* padding-top is no longer needed here as top positions the panel below the header */
-      }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
 
-      #mobile-menu-panel.open {
-        max-height: 100vh; /* Changed to 100vh for better responsiveness on small screens */
-        overflow-y: auto; /* Allow scrolling if content exceeds max-height */
-      }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-      /* Adjust z-index for mobile overlay to be behind the menu but above content */
-      #mobile-menu-overlay {
-        z-index: 998 !important; /* Adjusted z-index: lower than menu panel */
-        position: fixed; /* Ensure it's fixed */
-        top: 4.5rem; /* Start below the header */
-        left: 0;
-        right: 0;
-        bottom: 0;
-      }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
 
-      /* WhatsApp Float Button Styling */
-      .whatsapp-float {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 9999;
-        background-color: #25D366;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
 
-      .whatsapp-float:hover {
-        transform: scale(1.1);
-      }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
 
-      .whatsapp-icon {
-        width: 32px;
-        height: 32px;
-      }
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
 
-      .whatsapp-tooltip {
-        position: absolute;
-        right: 70px;
-        background-color: #1f2937;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-size: 14px;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
 
-      .whatsapp-float:hover .whatsapp-tooltip {
-        opacity: 1;
-      }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-      /* Hero Slider Specific Styles */
-      #hero-slider .slide {
-        will-change: opacity, transform; /* Hint browser for animations */
-      }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
 
-      /* Portfolio Slider Specific Styles */
-      #portfolio-slider-container {
-        position: relative;
-        height: 550px; /* Adjusted height to accommodate content and prevent overflow */
-        overflow: hidden; /* Hide overflow from absolutely positioned slides */
-      }
-      #portfolio-slider-container .portfolio-item {
-        position: absolute;
-        inset: 0; /* Cover the entire container */
-        opacity: 0; /* Hidden by default */
-        z-index: 0; /* Default z-index for inactive slides */
-        display: flex;
-        flex-direction: column;
-        will-change: opacity, transform; /* Hint browser for animations */
-      }
-      #portfolio-slider-container .portfolio-item.current {
-        opacity: 1;
-        z-index: 1; /* Active slide on top */
-      }
-      #portfolio-slider-dots {
-        position: absolute;
-        bottom: 10px; /* Adjusted from 20px to 10px */
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        display: flex;
-        gap: 8px; /* Space between dots */
-      }
-      #portfolio-slider-dots .dot {
-        width: 12px;
-        height: 12px;
-        background-color: rgba(100, 116, 139, 0.5); /* Tailwind slate-500 with opacity */
-        border-radius: 50%;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-      }
-      #portfolio-slider-dots .dot.current {
-        background-color: #2563eb; /* Tailwind blue-600 */
-        transform: scale(1.2);
-      }
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-      /* Services Section new styles */
-      .service-card {
-        background-color: #ffffff;
-        border-radius: 0.75rem; /* Tailwind rounded-xl */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind shadow-xl */
-        transition: all 0.3s ease-in-out;
-        padding: 1.5rem; /* Tailwind p-6 */
-        height: 100%; /* Ensure cards in a row have equal height */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Align content to the start */
-      }
+        /* Hero Slideshow Styles */
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-      .service-card:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Stronger shadow on hover */
-      }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
 
-      .service-card-icon {
-        color: #3b82f6; /* Tailwind blue-500 */
-        font-size: 3.5rem; /* Larger icon size */
-        margin-bottom: 1rem; /* Space below icon */
-      }
+        .hero-slide.active {
+            opacity: 1;
+        }
 
-      .service-card h4 {
-        color: #1f2937; /* Tailwind gray-900 */
-        font-size: 1.5rem; /* Tailwind text-2xl */
-        font-weight: 700; /* Tailwind font-bold */
-        margin-bottom: 0.75rem; /* Space below heading */
-      }
+        /* Background image zoom effect on slide change */
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            background-size: cover;
+            background-position: center;
+            transition: transform 8s ease-in-out;
+            z-index: -1;
+        }
 
-      .service-card p {
-        color: #4b5563; /* Tailwind gray-700 */
-        line-height: 1.75; /* Tailwind leading-relaxed */
-      }
+        .hero-slide.active::before {
+            transform: scale(1.1);
+        }
+
+        /* Overlay for better text readability */
+        .hero-slide .bg-black {
+            z-index: 1;
+        }
+
+        /* Slide Navigation */
+        .slide-dot {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-dot.active {
+            background: white !important;
+            transform: scale(1.2);
+        }
+
+        .slide-nav {
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .slide-nav:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Floating Shapes for Slideshow */
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .shape-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        .shape-5 {
+            width: 40px;
+            height: 40px;
+            bottom: 40%;
+            right: 30%;
+            animation-delay: 3s;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* Country Cards */
+        .country-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .country-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .country-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.3), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .country-card:hover .country-image::before {
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), transparent);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6); }
+            100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            background: white !important;
+            backdrop-filter: none !important;
+            height: 100vh !important;
+            min-height: 100vh !important;
+            max-height: 100vh !important;
+            overflow-y: auto;
+        }
+
+        #mobile-menu .bg-white {
+            background: white !important;
+        }
+
+        #mobile-menu a {
+            color: #1f2937 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 12px 0;
+        }
+
+        #mobile-menu a:hover {
+            color: #3b82f6 !important;
+            transform: translateX(10px);
+        }
+
+        #mobile-menu .border-b {
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        /* Ensure mobile menu covers full screen on all devices */
+        @media (max-width: 1024px) {
+            #mobile-menu {
+                height: 100vh !important;
+                min-height: 100vh !important;
+                max-height: 100vh !important;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .country-image {
+                height: 200px;
+            }
+        }
     </style>
-  </head>
+</head>
 
-  <body id="home" class="text-gray-800">
-    <header id="header" class="bg-white shadow-md fixed top-0 left-0 w-full z-[9999] transition-shadow duration-300">
-      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex-shrink-0">
-          <a class="block" href="index.html">
-            <img src="images/logo.png" alt="Lanka Global Access Logo" class="h-10 md:h-12" />
-          </a>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header fixed top-0 left-0 w-full z-50" id="header">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="images/logo.png" alt="Lanka Global Access" class="h-12 md:h-14">
+                    <div class="ml-3">
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Lanka Global Access</h1>
+                        <p class="text-sm text-gray-600">Visa & Immigration Experts</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="#countries" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Countries</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="./contact.html" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-gray-700" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="lg:hidden fixed top-0 left-0 w-full h-screen bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50" id="mobile-menu" style="background: white !important; height: 100vh !important; min-height: 100vh !important;">
+            <div class="flex justify-between items-center p-6 border-b bg-white">
+                <img src="images/logo.png" alt="Lanka Global Access" class="h-10">
+                <button id="close-menu" class="text-gray-700 hover:text-blue-600 transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="p-6 bg-white flex-1 flex flex-col justify-center">
+                <div class="flex flex-col space-y-6">
+                    <a href="#home" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Home</a>
+                    <a href="#about" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">About</a>
+                    <a href="#services" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Services</a>
+                    <a href="#countries" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Countries</a>
+                    <a href="#contact" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Contact</a>
+                    <a href="./google-form.html" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105 mt-8">
+                        Get Started
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <span class="sr-only">Toggle navigation</span>
-          <div class="w-6 h-0.5 bg-blue-600 mb-1"></div>
-          <div class="w-6 h-0.5 bg-blue-600 mb-1"></div>
-          <div class="w-6 h-0.5 bg-blue-600"></div>
-        </button>
-
-        <div id="main-nav-menu" class="hidden md:flex items-center">
-          <ul class="flex space-x-6">
-            <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-semibold transition-colors duration-200">Home</a></li>
-            <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-semibold transition-colors duration-200">Who we are</a></li>
-            <li><a href="#services" class="text-gray-700 hover:text-blue-600 font-semibold transition-colors duration-200">Services</a></li>
-            <li><a href="#portfolio" class="text-gray-700 hover:text-blue-600 font-semibold transition-colors duration-200">Countries</a></li>
-            <li><a href="./google-form.html" class="text-gray-700 hover:text-blue-600 font-semibold transition-colors duration-200">Contact Us</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div id="mobile-menu-overlay" class="md:hidden fixed top-4.5rem left-0 right-0 bottom-0 bg-black bg-opacity-50 z-[998] hidden"></div>
-      <div id="mobile-menu-panel" class="md:hidden fixed top-4.5rem left-0 w-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out z-[999] max-h-0">
-        <div class="p-6">
-          <ul class="space-y-4 pt-10">
-            <li><a href="#home" class="block text-gray-800 text-lg hover:text-blue-600">Home</a></li>
-            <li><a href="#about" class="block text-gray-800 text-lg hover:text-blue-600">Who we are</a></li>
-            <li><a href="#services" class="block text-gray-800 text-lg hover:text-blue-600">Services</a></li>
-            <li><a href="#portfolio" class="block text-gray-800 text-lg hover:text-blue-600">Countries</a></li>
-            <li><a href="./google-form.html" class="block text-gray-800 text-lg hover:text-blue-600">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
     </header>
 
-    <section class="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
-      <div id="hero-slider" class="absolute inset-0">
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('./images/banner/1.jpg');">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white p-4 text-center">
-            <div class="max-w-3xl">
-              <h2 class="text-4xl md:text-6xl font-bold mb-4">Lanka Global Access</h2>
-              <blockquote class="text-xl md:text-2xl italic font-light mb-8">
-                <p>Beyond Boarders , Beyond Dreams</p>
-              </blockquote>
-              <a href="./google-form.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Inquiry</a>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen overflow-hidden">
+        <!-- Hero Slideshow -->
+        <div class="hero-slideshow relative w-full h-screen">
+            <!-- Slide 1 -->
+            <div class="hero-slide active absolute inset-0" style="background-image: url('./images/banner/1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.6) 0%, rgba(79, 70, 229, 0.6) 100%);"></div>
+                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
+                    <div class="text-center text-white">
+                        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6" data-aos="fade-up">
+                            Your Gateway to
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+                                Global Opportunities
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                            Expert visa consultancy services for worldwide travel, study abroad, and immigration solutions. 
+                            Your trusted partner for seamless international journeys.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="400">
+                            <a href="./contact.html" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                                Get Started Today
+                            </a>
+                            <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
+                                Our Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('./images/banner/2.jpg');">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white p-4 text-center">
-            <div class="max-w-3xl">
-              <h2 class="text-4xl md:text-6xl font-bold mb-4">Visa Application Assistance</h2>
-              <blockquote class="text-xl md:text-2xl italic font-light mb-8">
-                <p>Expert guidance through every step of your visa application process.</p>
-              </blockquote>
-              <a href="./google-form.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Inquiry</a>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide absolute inset-0" style="background-image: url('./images/banner/2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.6) 0%, rgba(219, 39, 119, 0.6) 100%);"></div>
+                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
+                    <div class="text-center text-white">
+                        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6">
+                            Study Abroad
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+                                Dreams Come True
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
+                            Transform your educational journey with our comprehensive study abroad support. 
+                            From university selection to visa processing, we guide you every step of the way.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#services" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                                Explore Programs
+                            </a>
+                            <a href="./contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('./images/banner/3.jpg');">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white p-4 text-center">
-            <div class="max-w-3xl">
-              <h2 class="text-4xl md:text-6xl font-bold mb-4">Study Abroad Support</h2>
-              <blockquote class="text-xl md:text-2xl italic font-light mb-8">
-                <p>Helping students achieve their dreams of studying abroad with comprehensive visa assistance.</p>
-              </blockquote>
-              <a href="./google-form.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105" role="button">Inquiry</a>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide absolute inset-0" style="background-image: url('./images/banner/3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(20, 83, 45, 0.6) 0%, rgba(15, 118, 110, 0.6) 100%);"></div>
+                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
+                    <div class="text-center text-white">
+                        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6">
+                            Worldwide
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
+                                Travel Solutions
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-green-100 max-w-3xl mx-auto">
+                            Discover the world with our comprehensive travel services. 
+                            From visa applications to travel arrangements, we make your global adventures seamless.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#countries" class="bg-gradient-to-r from-green-500 to-teal-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                                View Destinations
+                            </a>
+                            <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
+                                Plan Your Trip
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <nav id="hero-slider-dots" class="absolute bottom-8 flex space-x-3 z-10">
-        </nav>
-    </section>
-    <section id="about" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12 section-header">
-          <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-on-scroll">Who we are</h2>
-          <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed animate-on-scroll">
-            Lanka Global Access Consultancy is a premier firm specializing in providing
-            comprehensive visa and immigration services. Established with the
-            vision of simplifying the complex process of visa acquisition, we
-            cater to individuals, families, and businesses seeking expert
-            guidance and support. Our team of seasoned professionals brings
-            years of experience and in-depth knowledge of global immigration
-            laws and procedures.
-          </p>
+
+            <!-- Slide 4 -->
+            <div class="hero-slide absolute inset-0" style="background-image: url('./images/banner/4.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(127, 29, 29, 0.6) 0%, rgba(194, 65, 12, 0.6) 100%);"></div>
+                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
+                    <div class="text-center text-white">
+                        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6">
+                            Expert
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+                                Visa Solutions
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-red-100 max-w-3xl mx-auto">
+                            Professional visa consultation with 99% success rate. 
+                            Specialized in UK, Canada, Australia, and EU visa applications with rejection appeal services.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#services" class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                                Success Stories
+                            </a>
+                            <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
+                                Get Expert Help
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="flex flex-wrap items-center -mx-4">
-          <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0 animate-on-scroll">
-            <img class="w-full h-auto rounded-lg shadow-lg" src="images/about.png" alt="About Us" />
-          </div>
-          <div class="w-full md:w-1/2 px-4 animate-on-scroll">
-            <h3 class="text-3xl font-semibold text-gray-800 mb-4">Our Mission</h3>
-            <p class="text-gray-700 mb-4 leading-relaxed">
-              At Lanka Global Access Consultancy, our mission is to facilitate smooth and
-              efficient visa processing for our clients, ensuring compliance
-              with all relevant regulations. Whether you are looking to study
-              abroad, relocate for work, or expand your business
-              internationally, we offer personalized solutions tailored to meet
-              your specific needs.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-              Our commitment to excellence and customer satisfaction drives us
-              to deliver reliable and timely service, making us a trusted
-              partner in your journey towards achieving your visa and
-              immigration goals.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="services" class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12 section-header">
-          <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-on-scroll">Our Services</h2>
-          <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed animate-on-scroll">
-            We are a trusted partner in visa and immigration consulting in Sri
-            Lanka. Our comprehensive services are designed to simplify and
-            streamline the visa application process, ensuring a smooth and
-            successful experience. Explore our wide range of offerings below:
-          </p>
+        <!-- Slide Navigation Dots -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300 active" data-slide="0"></button>
+            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="1"></button>
+            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="2"></button>
+            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="3"></button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="service-item-animate">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="fa-solid fa-credit-card"></i>
-              </div>
-              <div class="flex-grow">
-                <h4 class="text-xl font-semibold text-gray-800 mb-2">Visa Consultations</h4>
-                <p class="text-gray-600 leading-relaxed">
-                  Personalized guidance on visa applications. <br />Expert
-                  advice on documentation and processes.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="service-item-animate">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="fa-solid fa-circle-check"></i>
-              </div>
-              <div class="flex-grow">
-                <h4 class="text-xl font-semibold text-gray-800 mb-2">Rejection Appeals</h4>
-                <p class="text-gray-600 leading-relaxed">
-                  Specialized services for appealing visa rejections for: UK,
-                  Canada , Australia , EU
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="service-item-animate">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="fa-solid fa-globe"></i>
-              </div>
-              <div class="flex-grow">
-                <h4 class="text-xl font-semibold text-gray-800 mb-2">Worldwide Visas</h4>
-                <p class="text-gray-600 leading-relaxed">
-                  <b>Tourist Visas:</b> Assistance with tourist visa
-                  applications for any country. <br /><b>Student Visas:</b>
-                  Support for students seeking education abroad.
-                  <br />
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="service-item-animate">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <div class="flex-grow">
-                <h4 class="text-xl font-semibold text-gray-800 mb-2">Education Services</h4>
-                <p class="text-gray-600 leading-relaxed">
-                  Education Counseling: Guidance on educational opportunities
-                  and pathways.<br />
-                  University Arrangements: Facilitating university admissions
-                  and placements for students.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="service-item-animate">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="fa-solid fa-circle-question"></i>
-              </div>
-              <div class="flex-grow">
-                <h4 class="text-xl font-semibold text-gray-800 mb-2">Visa Application Support</h4>
-                <p class="text-gray-600 leading-relaxed">
-                  <b>Visa Form Filling:</b> Assistance with completing visa
-                  application forms. <br /><b>Visa Submission Handling:</b>
-                  Management of the entire submission process.<br />
-                  <b>Appointment Scheduling:</b> Organizing visa application
-                  appointments. <br /><b>Biometric Scheduling:</b> Arranging
-                  biometric appointments for visa applications.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="service-item-animate">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="fa-solid fa-plane"></i>
-              </div>
-              <div class="flex-grow">
-                <h4 class="text-xl font-semibold text-gray-800 mb-2">Travel Arrangements</h4>
-                <p class="text-gray-600 leading-relaxed">
-                  <b>Worldwide Hotel Bookings:</b> Assistance with booking
-                  hotels around the globe. <br /><b
-                    >Worldwide Air Ticket Bookings:</b
-                  >
-                  Help with purchasing air tickets for international travel.
-                  <br /><b>Holiday Package Arrangements:</b> Custom holiday
-                  packages tailored to your preferences. <br /><b
-                    >Travel Insurance:</b
-                  >
-                  Provision of travel insurance for peace of mind during your
-                  travels.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="hero-action-section" class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center">
-      <div class="container mx-auto px-4">
-        <h3 class="text-2xl md:text-3xl font-light mb-4 animate-on-scroll">
-          Create Your Destiny with Lanka Global Access Consultancy
-        </h3>
-        <h4 class="text-3xl md:text-5xl font-bold mb-8 animate-on-scroll">
-          For more information please contact us!
-        </h4>
-        <p>
-          <a href="./google-form.html" class="inline-block bg-white text-blue-600 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">Inquiry</a>
-        </p>
-      </div>
-    </section>
+        <!-- Slide Navigation Arrows -->
+        <button class="slide-nav absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-yellow-400 transition-colors duration-300 z-20" id="prev-slide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slide-nav absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-yellow-400 transition-colors duration-300 z-20" id="next-slide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
 
-    <section id="portfolio" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12 section-header">
-          <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-on-scroll">Our Service Countries</h2>
-          <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed animate-on-scroll">
-            We cater to clients seeking visas for a wide range of countries. Our
-            extensive expertise covers the immigration systems of numerous
-            destinations, ensuring tailored support for each country. Below are
-            some of the key countries we serve:
-          </p>
-        </div>
-                <div class="text-center mb-8 animate-on-scroll">
-          <ul id="portfolio-filter" class="flex flex-wrap justify-center gap-4">
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200 active">USA</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Canada</a></li>
-            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">UK</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Australia</a></li>
-            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">New Zealand</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">India</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Malaysia</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">UAE</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Thailand</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Schengen Countries</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Russia</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">China</a></li>
-            <li><a   class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Bangladesh</a></li>
-            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">South Korea</a></li>
-            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Singapore</a></li>
-            <li><a  class="portfolio-filter-btn inline-block py-2 px-4 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors duration-200">Qatar</a></li>
-          </ul>
+        <!-- Floating Shapes -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="floating-shape shape-4"></div>
+            <div class="floating-shape shape-5"></div>
         </div>
 
-        <div id="portfolio-slider-container" class="relative mx-auto rounded-lg shadow-md overflow-hidden">
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/02.jpg" alt="Statue of Liberty, USA" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">United States of America</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The United States is a vast country with diverse landscapes, from the bustling cities of New York and Los Angeles to the natural wonders of the Grand Canyon and Yellowstone National Park. It's a global leader in education, technology, and entertainment.</p>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
             </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/03.jpg" alt="Banff National Park, Canada" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Canada</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Canada is known for its stunning natural beauty, including the Rocky Mountains, vast forests, and pristine lakes. It offers a high quality of life, diverse culture, and excellent educational opportunities.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/04.jpg" alt="Big Ben, London, UK" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">United Kingdom</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The United Kingdom, comprising England, Scotland, Wales, and Northern Ireland, is rich in history, culture, and iconic landmarks like Big Ben, Stonehenge, and Edinburgh Castle. It's a popular destination for tourism and higher education.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/05.jpg" alt="Sydney Opera House, Australia" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Australia</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Australia is a vast country known for its unique wildlife, stunning coastlines, and vibrant cities like Sydney and Melbourne. It offers a relaxed lifestyle, strong economy, and world-class universities.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/06.jpg" alt="Milford Sound, New Zealand" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">New Zealand</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">New Zealand boasts breathtaking landscapes, from majestic mountains and glaciers to pristine beaches and geothermal areas. It's a popular destination for adventure tourism and offers a friendly, welcoming environment.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/07.jpg" alt="Taj Mahal, India" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">India</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">India is a land of incredible diversity, rich history, and vibrant cultures. From ancient temples to modern cities, it offers a unique travel experience and is a growing hub for business and technology.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/08.jpg" alt="Petronas Towers, Malaysia" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Malaysia</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Malaysia is a multicultural country known for its beautiful beaches, lush rainforests, and modern cityscapes, including the iconic Petronas Twin Towers. It's a popular destination for tourism and business in Southeast Asia.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/09.jpg" alt="Burj Khalifa, UAE" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">United Arab Emirates</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The UAE is a federation of seven emirates, famous for its luxurious cities like Dubai and Abu Dhabi, stunning architecture, and desert landscapes. It's a global hub for business, tourism, and innovation.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/10.jpg" alt="Thai Temple, Thailand" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Thailand</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Thailand is a vibrant country known for its tropical beaches, opulent royal palaces, ancient ruins, and ornate temples displaying figures of Buddha. It's a major tourist destination in Southeast Asia.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/11.jpg" alt="Eiffel Tower, Paris" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Schengen Countries</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">The Schengen Area comprises 27 European countries that have abolished passport and all other types of border control at their mutual borders. It's a popular destination for tourism, study, and business in Europe.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/12.jpg" alt="Red Square, Moscow, Russia" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Russia</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Russia is the largest country in the world, spanning Eastern Europe and Northern Asia. It boasts a rich history, iconic architecture like the Kremlin and St. Basil's Cathedral, and diverse natural landscapes.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/13.jpg" alt="Great Wall of China" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">China</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">China is a vast country in East Asia with a rich history, diverse landscapes, and a rapidly growing economy. It's home to ancient wonders like the Great Wall and Forbidden City, and modern megacities.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/14.jpg" alt="Sundarbans, Bangladesh" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Bangladesh</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Bangladesh, in South Asia, is known for its lush greenery and many waterways. Its southern coastline features the Sundarbans, a huge mangrove forest shared with Eastern India, home to the Royal Bengal tiger.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/15.jpg" alt="Seoul Skyline, South Korea" class="w-full h-80 object-cover">
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">South Korea</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">South Korea is an East Asian nation on the southern half of the Korean Peninsula, sharing one of the world’s most heavily militarized borders with North Korea. It's known for its vibrant cities, pop culture, and advanced technology.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/16.jpg" alt="Marina Bay Sands, Singapore" class="w-full h-80 object-cover" />
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Singapore</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Singapore is a global financial hub with a tropical climate and multicultural population. It's known for its modern architecture, lush gardens, and diverse culinary scene, making it a popular tourist destination.</p>
-            </div>
-          </div>
-          <div class="portfolio-item w-full bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-            <img src="./images/portfolio/17.jpg" alt="Doha Skyline, Qatar" class="w-full h-80 object-cover" />
-            <div class="p-6 flex-grow">
-              <h3 class="text-xl font-semibold mb-2">Qatar</h3>
-              <p class="text-gray-600 min-h-[6rem] leading-relaxed">Qatar is a peninsula Arab country whose terrain comprises arid desert and a long Persian (Arab) Gulf shoreline of beaches and dunes. Also on the coast is the capital, Doha, known for its futuristic skyscrapers and modern architecture.</p>
-            </div>
-          </div>
-          
         </div>
-      </div>
-    </section>
-    <section id="contact-us" class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12 section-header">
-          <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-on-scroll">Visit Us</h2>
-          <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed animate-on-scroll">
-            We're here to assist you with all your visa and immigration needs.
-            Get in touch with us today:
-          </p>
-        </div>
-
-        <div class="flex flex-wrap -mx-4">
-          <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md h-full">
-              <h3 class="text-2xl font-semibold mb-4">Contact Info</h3>
-              <address class="not-italic text-gray-700">
-                <strong class="block text-lg mb-1">Lanka Global Access Pvt Ltd </strong>
-                19A Thalapathpitiya Road, Nugegoda,<br />
-                Sri Lanka<br />
-                <strong class="block mt-4">Phone No:</strong> +94 726338989<br/>
-                <strong class="block mt-2">Email :</strong > admin@lgavisa.com
-              </address>
-            </div>
-          </div>
-          <div class="w-full md:w-2/3 px-4">
-            <div class="google-maps shadow-md rounded-lg">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1854635392338!2d79.90689998507806!3d6.868366775417241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25a709a61cb25%3A0x8efa052af6c57881!2s19a%20Thalapathpitiya%20Rd%2C%20Nugegoda!5e0!3m2!1sen!2slk!4v1751980429720!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full border-0 rounded-lg"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <footer id="footer" class="bg-gray-800 text-white py-8">
-      <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-        <div class="mb-4 md:mb-0">
-          © 2025 Lanka Global Access .
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Who We Are
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Lanka Global Access Consultancy is your trusted partner in navigating the complex world of visa and immigration services.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="images/about.png" alt="About Us" class="rounded-2xl shadow-2xl">
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="font-display text-3xl font-bold text-gray-800 mb-6">Our Mission</h3>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        We are dedicated to simplifying the visa application process and making global opportunities accessible to everyone. Our team of experienced professionals provides personalized guidance and comprehensive support throughout your journey.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
+                            <div class="text-gray-600">Happy Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
+                            <div class="text-gray-600">Countries Served</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <ul class="flex space-x-6 text-xl">
-            <li><a href="#" class="hover:text-blue-400 transition-colors duration-200"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors duration-200"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors duration-200"><i class="fab fa-google-plus-g"></i></a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors duration-200"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors duration-200"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors duration-200"><i class="fab fa-github"></i></a></li>
-          </ul>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Our Services
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive visa and immigration solutions tailored to your needs
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style="display: grid !important;">
+                <!-- Service Card 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="service-icon">
+                        <i class="fas fa-passport text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Visa Consultations</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Expert guidance on visa applications with personalized advice on documentation and processes.
+                    </p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Study Abroad Support</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Complete assistance for students seeking education abroad, from university selection to visa processing.
+                    </p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="service-icon">
+                        <i class="fas fa-plane text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Travel Arrangements</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Worldwide hotel bookings, air tickets, and comprehensive travel insurance for your peace of mind.
+                    </p>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Rejection Appeals</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Specialized services for appealing visa rejections for UK, Canada, Australia, and EU countries.
+                    </p>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="service-icon">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Worldwide Visas</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Tourist and student visa assistance for any country with expert guidance throughout the process.
+                    </p>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Application Support</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Complete visa form filling, submission handling, and appointment scheduling services.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl font-bold text-white mb-2">1000+</div>
+                    <div class="text-white opacity-90">Successful Applications</div>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl font-bold text-white mb-2">50+</div>
+                    <div class="text-white opacity-90">Countries Served</div>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl font-bold text-white mb-2">98%</div>
+                    <div class="text-white opacity-90">Success Rate</div>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-4xl font-bold text-white mb-2">24/7</div>
+                    <div class="text-white opacity-90">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countries Section -->
+    <section id="countries" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Popular Destinations
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We specialize in visa services for countries around the world
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Country Cards -->
+                <div class="country-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="country-image" style="background-image: url('./images/portfolio/02.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">United States</h3>
+                        <p class="text-gray-600">Land of opportunities with diverse landscapes and world-class education.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="country-image" style="background-image: url('./images/portfolio/03.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Canada</h3>
+                        <p class="text-gray-600">High quality of life with stunning natural beauty and excellent opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="country-image" style="background-image: url('./images/portfolio/04.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">United Kingdom</h3>
+                        <p class="text-gray-600">Rich history, culture, and world-renowned educational institutions.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="country-image" style="background-image: url('./images/portfolio/05.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Australia</h3>
+                        <p class="text-gray-600">Relaxed lifestyle with strong economy and world-class universities.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="country-image" style="background-image: url('./images/portfolio/06.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">New Zealand</h3>
+                        <p class="text-gray-600">Breathtaking landscapes and friendly, welcoming environment.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="country-image" style="background-image: url('./images/portfolio/07.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">India</h3>
+                        <p class="text-gray-600">Incredible diversity, rich history, and growing business opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="country-image" style="background-image: url('./images/portfolio/08.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Malaysia</h3>
+                        <p class="text-gray-600">Multicultural country with beautiful beaches and modern cityscapes.</p>
+                    </div>
+                </div>
+
+                <div class="country-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="country-image" style="background-image: url('./images/portfolio/09.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">UAE</h3>
+                        <p class="text-gray-600">Luxurious cities, stunning architecture, and global business hub.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Get In Touch
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to start your journey? Contact us today for expert guidance
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <div class="contact-card">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Address</div>
+                                    <div class="text-gray-600">19A Thalapathpitiya Road, Nugegoda, Sri Lanka</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Phone</div>
+                                    <div class="text-gray-600">+94 726338989</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Email</div>
+                                    <div class="text-gray-600">admin@lgavisa.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <div class="contact-card">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Visit Our Office</h3>
+                        <div class="rounded-lg overflow-hidden shadow-lg">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1854635392338!2d79.90689998507806!3d6.868366775417241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25a709a61cb25%3A0x8efa052af6c57881!2s19a%20Thalapathpitiya%20Rd%2C%20Nugegoda!5e0!3m2!1sen!2slk!4v1751980429720!5m2!1sen!2slk" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="images/logo.png" alt="Lanka Global Access" class="h-10 mr-3">
+                        <div>
+                            <h3 class="text-xl font-bold">Lanka Global Access</h3>
+                            <p class="text-gray-400">Visa & Immigration Experts</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner in visa and immigration services. We make your global dreams a reality with professional guidance and comprehensive support.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#countries" class="text-gray-400 hover:text-white transition-colors">Countries</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Visa Consultations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Study Abroad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Travel Arrangements</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Rejection Appeals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Worldwide Visas</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 Lanka Global Access. All rights reserved.
+                </p>
+            </div>
+        </div>
     </footer>
 
-    <a href="https://wa.me/94726338989?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa"
-       class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
-      <div class="whatsapp-tooltip">Chat with us</div>
-      <svg height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 viewBox="0 0 512 512" xml:space="preserve">
-        <circle style="fill:#75B73B;" cx="256" cy="256" r="256"/>
-        <path style="fill:#52891D;" d="M360.241,151.826c-14.843-3.712-36.671-16.532-50.8-21.671
-            c-55.165-17.239-129.293-3.448-149.98,60.337c-1.724,1.724-5.172,1.724-6.896,1.724c-41.374,48.269-13.791,106.882-17.239,160.323
-            c-1.177,18.839-11.083,35.497-23.831,49.588l107.282,107.17C230.931,511.067,243.355,512,256,512
-            c126.436,0,231.452-91.665,252.247-212.161L360.241,151.826z"/>
-        <g>
-            <path style="fill:#FFFFFF;" d="M248.837,108.447c-78.029,3.712-139.604,68.696-139.369,146.811
-                c0.072,23.792,5.816,46.249,15.95,66.095l-15.557,75.514c-0.841,4.086,2.843,7.663,6.901,6.701l73.995-17.53
-                c19.011,9.471,40.364,14.939,62.962,15.284c79.753,1.219,146.251-62.105,148.74-141.829
-                C405.121,174.035,334.591,104.362,248.837,108.447L248.837,108.447z M337.13,335.936c-21.669,21.669-50.483,33.604-81.13,33.604
-                c-17.944,0-35.126-4.027-51.066-11.966l-10.302-5.134l-45.37,10.747l9.549-46.356l-5.075-9.943
-                c-8.276-16.206-12.472-33.728-12.472-52.084c0-30.648,11.935-59.459,33.604-81.13c21.476-21.478,50.759-33.604,81.134-33.604
-                c30.644,0,59.458,11.935,81.127,33.604c21.669,21.669,33.604,50.483,33.604,81.127C370.735,285.177,358.607,314.459,337.13,335.936
-                L337.13,335.936z"/>
-            <path style="fill:#FFFFFF;" d="M327.115,286.582l-28.384-8.149c-3.729-1.069-7.749-0.01-10.468,2.76l-6.942,7.07
-                c-2.926,2.984-7.366,3.941-11.24,2.374c-13.427-5.434-41.672-30.548-48.881-43.106c-2.084-3.624-1.739-8.152,0.817-11.462
-                l6.058-7.839c2.374-3.07,2.874-7.197,1.305-10.747l-11.941-27.008c-2.86-6.468-11.126-8.352-16.527-3.784
-                c-7.921,6.701-17.32,16.88-18.461,28.16c-2.015,19.887,6.515,44.954,38.762,75.055c37.257,34.778,67.094,39.369,86.523,34.664
-                c11.019-2.667,19.825-13.365,25.379-22.126C336.906,296.467,333.91,288.535,327.115,286.582L327.115,286.582z"/>
-        </g>
-      </svg>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/94726338989?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa" 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener" 
+       aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
     </a>
 
+    <!-- JavaScript -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-        // --- Mobile Navigation Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const navLinks = document.querySelectorAll('#main-nav-menu a, #mobile-menu-panel a');
-
-        function toggleMobileMenu() {
-          mobileMenuPanel.classList.toggle('open');
-          mobileMenuOverlay.classList.toggle('hidden');
-          // Toggle no-scroll class on body to prevent background scrolling
-          document.body.classList.toggle('no-scroll'); 
-        }
-
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-
-        navLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            if (link.getAttribute('href') === './google-form.html') {
-                return;
-            }
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-              if (mobileMenuPanel.classList.contains('open')) {
-                toggleMobileMenu();
-              }
-              gsap.to(window, { duration: 1, scrollTo: targetElement.offsetTop, ease: "power2.inOut" });
-            }
-          });
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
         });
 
-        // --- Header Animation ---
-        gsap.from("#header", { y: -100, opacity: 0, duration: 0.8, ease: "power2.out" });
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin);
 
-        ScrollTrigger.create({
-          trigger: "body",
-          start: "top top",
-          onEnter: () => document.getElementById('header').classList.add('shadow-lg'),
-          onLeaveBack: () => document.getElementById('header').classList.remove('shadow-lg'),
-          toggleActions: "play none none reverse"
+        // Loading Screen
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.classList.add('hidden');
         });
 
-        // --- Hero Slider (Carousel) ---
-        const heroSlides = document.querySelectorAll('#hero-slider .slide');
-        const heroDotsContainer = document.getElementById('hero-slider-dots');
-        let currentHeroSlide = 0;
-        let heroSlideInterval;
-        const heroSlideDuration = 5000; // 5 seconds
-
-        // Dynamically create dots for Hero Slider
-        heroSlides.forEach((_, index) => {
-          const dot = document.createElement('span');
-          dot.classList.add('dot', 'w-3', 'h-3', 'bg-white', 'bg-opacity-50', 'rounded-full', 'cursor-pointer', 'transition-all', 'duration-300', 'hover:bg-opacity-80');
-          dot.addEventListener('click', () => {
-            showHeroSlide(index);
-            resetHeroSlideInterval();
-          });
-          heroDotsContainer.appendChild(dot);
-        });
-
-        function showHeroSlide(index) {
-          // Ensure all slides are initially set for animation
-          heroSlides.forEach(slide => {
-            gsap.set(slide, { opacity: 0, zIndex: 0 });
-          });
-
-          // Animate the current slide to active state
-          gsap.to(heroSlides[index], { opacity: 1, duration: 1, ease: "power1.inOut", zIndex: 1 });
-
-          // Update dots
-          document.querySelectorAll('#hero-slider-dots .dot').forEach((dot, i) => {
-            if (i === index) {
-              dot.classList.add('current', 'bg-opacity-100');
-              dot.classList.remove('bg-opacity-50');
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
             } else {
-              dot.classList.remove('current', 'bg-opacity-100');
-              dot.classList.add('bg-opacity-50');
+                header.classList.remove('scrolled');
             }
-          });
-          currentHeroSlide = index;
-        }
+        });
 
-        function nextHeroSlide() {
-          const next = (currentHeroSlide + 1) % heroSlides.length;
-          showHeroSlide(next);
-        }
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
 
-        function startHeroSlider() {
-          showHeroSlide(currentHeroSlide); // Show initial slide
-          heroSlideInterval = setInterval(nextHeroSlide, heroSlideDuration);
-        }
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
 
-        function resetHeroSlideInterval() {
-          clearInterval(heroSlideInterval);
-          startHeroSlider();
-        }
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
 
-        startHeroSlider(); // Initialize the hero slider
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: target,
+                        ease: "power2.inOut"
+                    });
+                }
+            });
+        });
 
-        // --- Portfolio/Countries Slider ---
-        const portfolioSlides = document.querySelectorAll('#portfolio-slider-container .portfolio-item');
-        
-        let currentPortfolioSlide = 0;
-        let portfolioSlideInterval;
-        const portfolioSlideDuration = 5000; // 5 seconds
-
-        // Dynamically create dots for Portfolio Slider
-        // REMOVED CODE FOR PORTFOLIO DOTS CREATION
-        
-        function showPortfolioSlide(index) {
-          // Ensure all slides are initially set for animation
-          portfolioSlides.forEach(slide => {
-            gsap.set(slide, { opacity: 0, zIndex: 0 });
-          });
-
-          // Animate the current slide to active state
-          gsap.to(portfolioSlides[index], { opacity: 1, duration: 1, ease: "power1.inOut", zIndex: 1 });
-
-          // Update dots
-          // REMOVED CODE FOR PORTFOLIO DOTS UPDATE
-          currentPortfolioSlide = index;
-        }
-
-        function nextPortfolioSlide() {
-          currentPortfolioSlide = (currentPortfolioSlide + 1) % portfolioSlides.length;
-          showPortfolioSlide(currentPortfolioSlide);
-        }
-
-        function startPortfolioSlider() {
-          showPortfolioSlide(currentPortfolioSlide); // Show initial slide
-          portfolioSlideInterval = setInterval(nextPortfolioSlide, portfolioSlideDuration);
-        }
-
-        function resetPortfolioSliderInterval() {
-          clearInterval(portfolioSlideInterval);
-          startPortfolioSlider();
-        }
-
-        startPortfolioSlider(); // Initialize the portfolio slider
-
-        // --- GSAP Scroll Animations (replacing wow.js) ---
-        // General fade-in-up for section headers and main content blocks
-        document.querySelectorAll('.section-header h2, .section-header p, #hero-action-section h3, #hero-action-section h4, #hero-action-section a, #contact-us .section-header h2, #contact-us .section-header p').forEach(el => {
-          gsap.from(el, {
-            y: 50,
+        // Hero Section Animations
+        gsap.from('.hero-title', {
+            duration: 1.5,
+            y: 100,
             opacity: 0,
+            ease: "power2.out"
+        });
+
+        gsap.from('.floating-shapes .shape', {
+            duration: 2,
+            scale: 0,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+        });
+
+        // Service Cards Animation
+        gsap.from('.service-card', {
             duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%", // When element top is 85% from viewport top
-              toggleActions: "play none none none",
-              once: true // Animate only once
-            }
-          });
-        });
-
-        // About section image and text
-        gsap.from("#about .md\\:w-1\\/2:first-child img", {
-          x: -100,
-          opacity: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "#about .md\\:w-1\\/2:first-child img",
-            start: "top 80%",
-            toggleActions: "play none none none",
-            once: true
-          }
-        });
-
-        gsap.from("#about .md\\:w-1\\/2:last-child h3, #about .md\\:w-1\\/2:last-child p", {
-          x: 100,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "#about .md\\:w-1\\/2:last-child",
-            start: "top 80%",
-            toggleActions: "play none none none",
-            once: true
-          }
-        });
-
-        // Service items (staggered fade-in-up)
-        document.querySelectorAll('.service-item-animate').forEach((item, i) => {
-          gsap.from(item, {
             y: 50,
             opacity: 0,
-            duration: 0.8,
+            stagger: 0.1,
             ease: "power2.out",
-            delay: i * 0.1, // Stagger effect
             scrollTrigger: {
-              trigger: item,
-              start: "top 90%",
-              toggleActions: "play none none none",
-              once: true
+                trigger: '#services',
+                start: "top 80%"
             }
-          });
         });
-      });
+
+        // Stats Counter Animation
+        const counters = document.querySelectorAll('.stat-card .text-4xl');
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            const increment = target / 100;
+            
+            ScrollTrigger.create({
+                trigger: counter,
+                start: "top 80%",
+                onEnter: () => {
+                    let current = 0;
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = Math.ceil(current) + (counter.textContent.includes('+') ? '+' : '') + (counter.textContent.includes('%') ? '%' : '') + (counter.textContent.includes('/') ? '/7' : '');
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target + (counter.textContent.includes('+') ? '+' : '') + (counter.textContent.includes('%') ? '%' : '') + (counter.textContent.includes('/') ? '/7' : '');
+                        }
+                    };
+                    updateCounter();
+                }
+            });
+        });
+
+        // Parallax Effect for Hero Section
+        gsap.to('.floating-shapes', {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: '.hero-section',
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Hero Slideshow Functionality
+        class HeroSlideshow {
+            constructor() {
+                this.currentSlide = 0;
+                this.slides = document.querySelectorAll('.hero-slide');
+                this.dots = document.querySelectorAll('.slide-dot');
+                this.prevBtn = document.getElementById('prev-slide');
+                this.nextBtn = document.getElementById('next-slide');
+                this.totalSlides = this.slides.length;
+                this.autoPlayInterval = null;
+                this.autoPlayDelay = 5000; // 5 seconds
+
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.startAutoPlay();
+                this.updateSlide();
+            }
+
+            bindEvents() {
+                // Dot navigation
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        this.goToSlide(index);
+                    });
+                });
+
+                // Arrow navigation
+                this.prevBtn.addEventListener('click', () => {
+                    this.prevSlide();
+                });
+
+                this.nextBtn.addEventListener('click', () => {
+                    this.nextSlide();
+                });
+
+                // Pause autoplay on hover
+                const slideshow = document.querySelector('.hero-slideshow');
+                slideshow.addEventListener('mouseenter', () => {
+                    this.stopAutoPlay();
+                });
+
+                slideshow.addEventListener('mouseleave', () => {
+                    this.startAutoPlay();
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        this.prevSlide();
+                    } else if (e.key === 'ArrowRight') {
+                        this.nextSlide();
+                    }
+                });
+            }
+
+            goToSlide(index) {
+                // Remove active class from current slide and dot
+                this.slides[this.currentSlide].classList.remove('active');
+                this.dots[this.currentSlide].classList.remove('active');
+
+                // Update current slide
+                this.currentSlide = index;
+
+                // Add active class to new slide and dot
+                this.slides[this.currentSlide].classList.add('active');
+                this.dots[this.currentSlide].classList.add('active');
+
+                // Reset autoplay timer
+                this.resetAutoPlay();
+            }
+
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+                this.goToSlide(nextIndex);
+            }
+
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.goToSlide(prevIndex);
+            }
+
+            updateSlide() {
+                this.slides.forEach((slide, index) => {
+                    if (index === this.currentSlide) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                this.dots.forEach((dot, index) => {
+                    if (index === this.currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, this.autoPlayDelay);
+            }
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+
+            resetAutoPlay() {
+                this.stopAutoPlay();
+                this.startAutoPlay();
+            }
+        }
+
+        // Initialize slideshow when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new HeroSlideshow();
+        });
     </script>
-  </body>
+</body>
 </html>
