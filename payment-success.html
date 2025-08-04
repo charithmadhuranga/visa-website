@@ -212,10 +212,10 @@
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="dashboard.html" class="btn-primary">
-                        <i class="fas fa-tachometer-alt mr-2"></i>
-                        Go to Dashboard
-                    </a>
+                    <button onclick="printReceipt()" class="btn-primary">
+                        <i class="fas fa-print mr-2"></i>
+                        Print Receipt
+                    </button>
                     <a href="contact.html" class="btn-secondary">
                         <i class="fas fa-headset mr-2"></i>
                         Contact Support
@@ -370,6 +370,129 @@
                     }, 5000);
                 }, i * 100);
             }
+        }
+
+        // Print receipt function
+        function printReceipt() {
+            const paymentId = localStorage.getItem('paymentId');
+            const customerData = localStorage.getItem('customerData');
+            const selectedPackage = localStorage.getItem('selectedPackage');
+            const packagePrice = localStorage.getItem('packagePrice');
+            
+            let customerInfo = {};
+            try {
+                customerInfo = JSON.parse(customerData);
+            } catch (e) {
+                console.error('Error parsing customer data:', e);
+            }
+            
+            // Package configurations
+            const packages = {
+                basic: { name: 'Basic Consultation' },
+                standard: { name: 'Standard Package' },
+                premium: { name: 'Premium Service' }
+            };
+            
+            const packageData = packages[selectedPackage] || { name: 'Selected Package' };
+            
+            // Create receipt content
+            const receiptContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Payment Receipt - Lanka Global Access</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        .receipt { max-width: 600px; margin: 0 auto; }
+                        .header { text-align: center; border-bottom: 2px solid #1e40af; padding-bottom: 20px; margin-bottom: 30px; }
+                        .logo { font-size: 24px; font-weight: bold; color: #1e40af; }
+                        .receipt-title { font-size: 20px; margin: 10px 0; }
+                        .receipt-date { color: #666; }
+                        .section { margin: 20px 0; }
+                        .section-title { font-weight: bold; font-size: 16px; margin-bottom: 10px; color: #1e40af; }
+                        .row { display: flex; justify-content: space-between; margin: 5px 0; }
+                        .label { font-weight: bold; }
+                        .value { text-align: right; }
+                        .total { border-top: 2px solid #1e40af; padding-top: 10px; margin-top: 20px; font-size: 18px; font-weight: bold; }
+                        .footer { text-align: center; margin-top: 40px; color: #666; font-size: 12px; }
+                        @media print {
+                            body { margin: 0; }
+                            .no-print { display: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt">
+                        <div class="header">
+                            <div class="logo">Lanka Global Access</div>
+                            <div class="receipt-title">PAYMENT RECEIPT</div>
+                            <div class="receipt-date">Date: ${new Date().toLocaleDateString()}</div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-title">Order Information</div>
+                            <div class="row">
+                                <span class="label">Receipt Number:</span>
+                                <span class="value">${paymentId}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label">Service Package:</span>
+                                <span class="value">${packageData.name}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label">Payment Status:</span>
+                                <span class="value" style="color: #10b981;">PAID</span>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-title">Customer Information</div>
+                            <div class="row">
+                                <span class="label">Name:</span>
+                                <span class="value">${customerInfo.firstName || ''} ${customerInfo.lastName || ''}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label">Email:</span>
+                                <span class="value">${customerInfo.email || ''}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label">Phone:</span>
+                                <span class="value">${customerInfo.phone || ''}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-title">Payment Details</div>
+                            <div class="row">
+                                <span class="label">Service Amount:</span>
+                                <span class="value">$${packagePrice}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label">Tax:</span>
+                                <span class="value">$0.00</span>
+                            </div>
+                            <div class="row total">
+                                <span class="label">Total Amount:</span>
+                                <span class="value">$${packagePrice}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="footer">
+                            <p>Thank you for choosing Lanka Global Access!</p>
+                            <p>For support, contact us at admin@lgavisa.com</p>
+                            <p>This is a computer-generated receipt. No signature required.</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            // Open print window
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(receiptContent);
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
         }
 
         // Initialize page
