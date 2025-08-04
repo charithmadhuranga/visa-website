@@ -140,13 +140,24 @@ form.addEventListener('submit', async function(event) {
     
     try {
         // Process payment using client-side Stripe
-        const paymentIntent = await processPayment(paymentData);
+        const result = await processPayment(paymentData);
         
-        // Payment successful
+        // Check if we need to redirect to Stripe Checkout
+        if (result && result.redirect) {
+            // Store customer data for success page
+            localStorage.setItem('customerData', JSON.stringify(paymentData));
+            localStorage.setItem('paymentStatus', 'pending');
+            
+            // Redirect to Stripe Checkout
+            // The redirect will happen automatically from the createPaymentIntent function
+            return;
+        }
+        
+        // If we reach here, payment was successful without redirect
         showSuccessMessage();
         
         // Store payment confirmation
-        localStorage.setItem('paymentId', paymentIntent.id || 'pi_' + Math.random().toString(36).substr(2, 9));
+        localStorage.setItem('paymentId', result.id || 'pi_' + Math.random().toString(36).substr(2, 9));
         localStorage.setItem('paymentStatus', 'success');
         localStorage.setItem('customerData', JSON.stringify(paymentData));
         
@@ -169,45 +180,13 @@ form.addEventListener('submit', async function(event) {
 // Client-side Stripe payment processing for GitHub Pages
 async function processPayment(paymentData) {
     try {
-        // Check if we're in development/local environment
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        
-        if (isLocal) {
-            // For local testing, simulate successful payment
-            console.log('Local environment - simulating payment success');
-            return await simulateLocalPayment(paymentData);
-        }
-        
-        // Create payment method
-        const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
-            type: 'card',
-            card: cardElement,
-            billing_details: {
-                name: `${paymentData.firstName} ${paymentData.lastName}`,
-                email: paymentData.email,
-                phone: paymentData.phone,
-            },
-        });
-
-        if (paymentMethodError) {
-            throw new Error(paymentMethodError.message);
-        }
-
         // For GitHub Pages, we'll use Stripe's client-side payment processing
         // This creates a payment intent directly on the client side
-        const { error: paymentIntentError, paymentIntent } = await stripe.confirmPayment({
-            elements,
-            clientSecret: await createPaymentIntent(paymentData),
-            confirmParams: {
-                return_url: window.location.origin + '/payment-success.html',
-                payment_method: paymentMethod.id,
-            },
-        });
-
-        if (paymentIntentError) {
-            throw new Error(paymentIntentError.message);
-        }
-
+        const paymentIntent = await createPaymentIntent(paymentData);
+        
+        // If we reach here, payment was successful
+        console.log('Payment processed successfully:', paymentIntent);
+        
         return paymentIntent;
 
     } catch (error) {
@@ -215,58 +194,51 @@ async function processPayment(paymentData) {
     }
 }
 
-// Simulate local payment for testing
-async function simulateLocalPayment(paymentData) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const mockPaymentIntent = {
-                id: 'pi_' + Math.random().toString(36).substr(2, 9),
-                status: 'succeeded',
-                amount: paymentData.amount * 100,
-                metadata: {
-                    customer_name: `${paymentData.firstName} ${paymentData.lastName}`,
-                    customer_email: paymentData.email,
-                    package_type: paymentData.package
-                }
-            };
-            console.log('Local payment simulation successful:', mockPaymentIntent);
-            resolve(mockPaymentIntent);
-        }, 2000);
-    });
-}
+
 
 // Create payment intent using Stripe's client-side API
 async function createPaymentIntent(paymentData) {
-    // Check if we're in development/local environment
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    if (isLocal) {
-        // For local testing, simulate payment intent creation
-        console.log('Local environment detected - using demo payment intent');
-        return await createDemoPaymentIntent(paymentData);
-    }
-    
-    // Use Netlify serverless function for production
     try {
-        const response = await fetch('/.netlify/functions/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(paymentData),
+        // For GitHub Pages, we'll use Stripe's client-side checkout
+        // This is the most reliable way to process payments without a server
+        
+        const amount = paymentData.amount * 100; // Convert to cents
+        
+        // Create a checkout session using Stripe's client-side API
+        const { error, session } = await stripe.redirectToCheckout({
+            lineItems: [{
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: `${paymentData.package} Package - Visa Consultation`,
+                        description: `Professional visa consultation service - ${paymentData.package} package`,
+                    },
+                    unit_amount: amount,
+                },
+                quantity: 1,
+            }],
+            mode: 'payment',
+            success_url: window.location.origin + '/payment-success.html?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: window.location.origin + '/pricing.html',
+            customer_email: paymentData.email,
+            metadata: {
+                customer_name: `${paymentData.firstName} ${paymentData.lastName}`,
+                customer_phone: paymentData.phone,
+                package_type: paymentData.package,
+                service: 'Visa Consultation'
+            }
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to create payment intent');
+        if (error) {
+            throw new Error(error.message);
         }
 
-        const { clientSecret } = await response.json();
-        return clientSecret;
+        // If successful, redirect to Stripe Checkout
+        return { sessionId: session.id, redirect: true };
 
     } catch (error) {
         console.error('Payment intent creation failed:', error);
-        throw new Error('Payment service temporarily unavailable. Please try again.');
+        throw new Error(error.message || 'Payment service temporarily unavailable. Please try again.');
     }
 }
 
@@ -387,7 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         validateForm,
-        simulatePayment,
         packages
     };
 } 
