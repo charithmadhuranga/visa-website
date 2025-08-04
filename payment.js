@@ -242,17 +242,7 @@ async function createPaymentIntent(paymentData) {
     }
 }
 
-// Demo payment intent creation for local testing
-async function createDemoPaymentIntent(paymentData) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            // Generate a mock client secret for testing
-            const mockClientSecret = 'pi_' + Math.random().toString(36).substr(2, 9) + '_secret_' + Math.random().toString(36).substr(2, 9);
-            console.log('Demo payment intent created for:', paymentData);
-            resolve(mockClientSecret);
-        }, 1000);
-    });
-}
+
 
 
 

@@ -74,7 +74,7 @@ git commit -m "Update Stripe configuration"
 git push origin main
 ```
 
-Netlify will automatically deploy your site. The URL will be something like: `https://your-site-name.netlify.app`
+Your site will be available at: `https://your-username.github.io/your-repo-name`
 
 ## File Structure
 
@@ -84,12 +84,7 @@ visa-consultant-main/
 ├── pricing.html                  # Pricing page with packages
 ├── payment.html                  # Payment form with Stripe
 ├── payment-success.html          # Payment confirmation page
-├── payment.js                    # Frontend payment logic
-├── netlify.toml                  # Netlify configuration
-├── netlify/
-│   └── functions/
-│       ├── create-payment-intent.js  # Serverless payment function
-│       └── package.json              # Function dependencies
+├── payment.js                    # Frontend payment logic (client-side only)
 ├── README.md                     # This file
 └── images/                       # Website images and assets
 ```
@@ -107,11 +102,11 @@ visa-consultant-main/
    - Real-time form validation
    - Payment processing with loading states
 
-3. **Payment Processing** (`server.js`)
-   - Creates Stripe Payment Intent
-   - Validates payment data
-   - Handles webhook events
-   - Manages customer records
+3. **Payment Processing** (`payment.js`)
+   - Creates Stripe Checkout session
+   - Redirects to Stripe's secure checkout
+   - Handles payment confirmation
+   - Manages customer data locally
 
 4. **Success Page** (`payment-success.html`)
    - Payment confirmation
@@ -139,20 +134,23 @@ const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
 });
 ```
 
-### Backend (Netlify Functions)
+### Client-Side Processing
 
 ```javascript
-// Create payment intent
-const paymentIntent = await stripe.paymentIntents.create({
-    amount: amountInCents,
-    currency: 'usd',
-    metadata: { /* customer data */ }
+// Create checkout session
+const { error, session } = await stripe.redirectToCheckout({
+    lineItems: [{
+        price_data: {
+            currency: 'usd',
+            product_data: { name: 'Service Package' },
+            unit_amount: amountInCents,
+        },
+        quantity: 1,
+    }],
+    mode: 'payment',
+    success_url: window.location.origin + '/payment-success.html',
+    cancel_url: window.location.origin + '/pricing.html',
 });
-
-// Handle webhooks (optional - can be added later)
-exports.handler = async (event, context) => {
-    // Handle payment events
-};
 ```
 
 ## Security Features
