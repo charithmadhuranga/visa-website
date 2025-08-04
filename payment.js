@@ -218,9 +218,9 @@ async function createPaymentIntent(paymentData) {
                 quantity: 1,
             }],
             mode: 'payment',
-            success_url: window.location.origin + '/payment-success.html?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: window.location.origin + '/pricing.html',
-            customer_email: paymentData.email,
+            successUrl: window.location.origin + '/payment-success.html?session_id={CHECKOUT_SESSION_ID}',
+            cancelUrl: window.location.origin + '/pricing.html',
+            customerEmail: paymentData.email,
             metadata: {
                 customer_name: `${paymentData.firstName} ${paymentData.lastName}`,
                 customer_phone: paymentData.phone,
