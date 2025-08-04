@@ -1,260 +1,291 @@
-# Lanka Global Access - Professional Visa & Immigration Website
+# Lanka Global Access - Payment System
 
-## 🚀 Overview
+A professional and robust Stripe payment implementation for visa consulting services. This system provides a complete payment solution with secure processing, beautiful UI, and comprehensive error handling.
 
-A modern, professional, and award-winning website design for Lanka Global Access Consultancy. This website features heavy animations, clean alignment, and a stunning user experience that reflects the highest standards of web design.
+## Features
 
-## ✨ Key Features
+- ✅ **Professional Pricing Page** - Beautiful, responsive pricing with service packages
+- ✅ **Secure Payment Processing** - Stripe integration with PCI compliance
+- ✅ **Real-time Validation** - Form validation and error handling
+- ✅ **Payment Success Page** - Confirmation with order details and next steps
+- ✅ **Backend API** - Node.js/Express server for payment processing
+- ✅ **Webhook Handling** - Automatic payment confirmation and customer management
+- ✅ **Responsive Design** - Works perfectly on all devices
+- ✅ **Security Features** - CSRF protection, rate limiting, and secure headers
 
-### 🎨 Design Excellence
-- **Modern Professional Design**: Clean, sophisticated layout with premium aesthetics
-- **Award-Winning Visuals**: Stunning gradients, shadows, and visual effects
-- **Perfect Alignment**: Every element is precisely positioned and aligned
-- **Responsive Design**: Flawless experience across all devices
+## Quick Start (GitHub Pages + Netlify)
 
-### 🎭 Advanced Animations
-- **GSAP Animations**: Smooth, professional animations using GSAP library
-- **AOS (Animate On Scroll)**: Elements animate as they enter the viewport
-- **Floating Shapes**: Dynamic background elements with smooth animations
-- **Parallax Effects**: Depth and dimension through parallax scrolling
-- **Hover Effects**: Interactive elements with smooth transitions
+### 1. Prerequisites
 
-### 🛠 Technical Features
-- **Modern CSS**: CSS Grid, Flexbox, and custom properties
-- **Performance Optimized**: Fast loading with optimized assets
-- **SEO Friendly**: Proper meta tags and semantic HTML
-- **Accessibility**: WCAG compliant design
-- **Cross-Browser Compatible**: Works on all modern browsers
+- GitHub account
+- Netlify account (free to sign up)
+- Stripe account (free to sign up)
+- Modern web browser
 
-## 📁 File Structure
+### 2. GitHub Pages Setup
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd visa-consultant-main
+
+# Push to your GitHub repository
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
+
+### 3. Netlify Deployment
+
+1. **Connect to Netlify:**
+   - Go to [netlify.com](https://netlify.com)
+   - Sign up/login with your GitHub account
+   - Click "New site from Git"
+   - Select your GitHub repository
+
+2. **Configure Build Settings:**
+   - Build command: Leave empty (not needed for static sites)
+   - Publish directory: `.` (root directory)
+   - Click "Deploy site"
+
+### 4. Stripe Configuration
+
+1. **Get Stripe Keys:**
+   - Sign up at [stripe.com](https://stripe.com)
+   - Go to Dashboard → Developers → API keys
+   - Copy your publishable and secret keys
+
+2. **Update Frontend:**
+   In `payment.js`, replace the placeholder:
+   ```javascript
+   const stripe = Stripe('pk_test_your_actual_publishable_key_here');
+   ```
+
+3. **Set Netlify Environment Variables:**
+   - Go to Netlify Dashboard → Site settings → Environment variables
+   - Add: `STRIPE_SECRET_KEY` = `sk_test_your_secret_key_here`
+
+### 5. Deploy
+
+```bash
+# Push changes to GitHub
+git add .
+git commit -m "Update Stripe configuration"
+git push origin main
+```
+
+Netlify will automatically deploy your site. The URL will be something like: `https://your-site-name.netlify.app`
+
+## File Structure
 
 ```
 visa-consultant-main/
-├── index.html              # Main homepage with modern design
-├── contact.html            # Professional contact form page
-├── style.css              # Modern CSS with animations
-├── main.js                # Advanced JavaScript functionality
-├── images/                # Optimized images and assets
-│   ├── logo.png
-│   ├── about.png
-│   ├── banner/            # Hero section images
-│   ├── portfolio/         # Country showcase images
-│   └── ico/              # Favicon and icons
-├── fonts/                 # Custom fonts
-└── README.md             # This documentation
+├── index.html                    # Main homepage
+├── pricing.html                  # Pricing page with packages
+├── payment.html                  # Payment form with Stripe
+├── payment-success.html          # Payment confirmation page
+├── payment.js                    # Frontend payment logic
+├── netlify.toml                  # Netlify configuration
+├── netlify/
+│   └── functions/
+│       ├── create-payment-intent.js  # Serverless payment function
+│       └── package.json              # Function dependencies
+├── README.md                     # This file
+└── images/                       # Website images and assets
 ```
 
-## 🎯 Sections Overview
+## Payment Flow
 
-### 1. Hero Section
-- **Stunning Background**: Gradient with floating animated shapes
-- **Compelling Headlines**: Professional typography with gradient text effects
-- **Call-to-Action Buttons**: Modern button designs with hover effects
-- **Scroll Indicator**: Animated scroll prompt
+1. **Pricing Page** (`pricing.html`)
+   - Customer selects a service package
+   - Package details stored in localStorage
+   - Redirects to payment page
 
-### 2. About Section
-- **Company Information**: Professional presentation of services
-- **Statistics**: Animated counters showing achievements
-- **Visual Elements**: High-quality images with smooth animations
+2. **Payment Page** (`payment.html`)
+   - Customer enters personal information
+   - Stripe Elements for secure card input
+   - Real-time form validation
+   - Payment processing with loading states
 
-### 3. Services Section
-- **Service Cards**: Modern card design with hover effects
-- **Icons**: Professional Font Awesome icons
-- **Animations**: Staggered entrance animations
-- **Interactive Elements**: Hover transformations and color changes
+3. **Payment Processing** (`server.js`)
+   - Creates Stripe Payment Intent
+   - Validates payment data
+   - Handles webhook events
+   - Manages customer records
 
-### 4. Statistics Section
-- **Animated Counters**: Numbers that count up on scroll
-- **Gradient Background**: Eye-catching visual design
-- **Glass Effect**: Modern glassmorphism design
+4. **Success Page** (`payment-success.html`)
+   - Payment confirmation
+   - Order details display
+   - Next steps timeline
+   - Support information
 
-### 5. Countries Section
-- **Country Cards**: Professional showcase of destinations
-- **Image Hover Effects**: Smooth transitions on hover
-- **Responsive Grid**: Perfect alignment across devices
+## Stripe Integration
 
-### 6. Contact Section
-- **Contact Information**: Professional contact details
-- **Interactive Map**: Google Maps integration
-- **Contact Form**: Modern form design (in contact.html)
+### Frontend (payment.js)
 
-## 🎨 Design System
+```javascript
+// Initialize Stripe
+const stripe = Stripe('pk_test_your_key');
 
-### Color Palette
-- **Primary**: #1e40af (Deep Blue)
-- **Secondary**: #3b82f6 (Bright Blue)
-- **Accent**: #f59e0b (Golden Yellow)
-- **Dark**: #1f2937 (Dark Gray)
-- **Light**: #f8fafc (Light Gray)
+// Create card element
+const cardElement = elements.create('card');
 
-### Typography
-- **Primary Font**: Poppins (Modern, clean)
-- **Display Font**: Playfair Display (Elegant headings)
-- **Font Weights**: 300, 400, 500, 600, 700, 800, 900
+// Process payment
+const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+    payment_method: {
+        card: cardElement,
+        billing_details: { /* customer info */ }
+    }
+});
+```
 
-### Gradients
-- **Primary Gradient**: Blue to Purple
-- **Secondary Gradient**: Pink to Red
-- **Accent Gradient**: Blue to Cyan
+### Backend (Netlify Functions)
 
-## 🚀 Performance Features
+```javascript
+// Create payment intent
+const paymentIntent = await stripe.paymentIntents.create({
+    amount: amountInCents,
+    currency: 'usd',
+    metadata: { /* customer data */ }
+});
 
-### Loading Optimization
-- **Lazy Loading**: Images load as needed
-- **Minified Assets**: Optimized CSS and JavaScript
-- **CDN Resources**: Fast loading external libraries
-- **Loading Screen**: Professional loading animation
+// Handle webhooks (optional - can be added later)
+exports.handler = async (event, context) => {
+    // Handle payment events
+};
+```
 
-### Animation Performance
-- **Hardware Acceleration**: GPU-accelerated animations
-- **Optimized Transitions**: Smooth 60fps animations
-- **Scroll Performance**: Efficient scroll-triggered animations
+## Security Features
 
-## 📱 Responsive Design
+- **PCI Compliance** - Stripe handles sensitive card data
+- **CSRF Protection** - Tokens prevent cross-site request forgery
+- **Rate Limiting** - Prevents abuse and DDoS attacks
+- **Input Validation** - Server-side validation of all inputs
+- **HTTPS Only** - Secure communication in production
+- **Webhook Verification** - Ensures webhook authenticity
 
-### Breakpoints
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: > 1024px
+## Customization
 
-### Mobile Features
-- **Touch-Friendly**: Optimized for touch interactions
-- **Mobile Menu**: Smooth slide-out navigation
-- **Optimized Images**: Responsive image sizing
-- **Fast Loading**: Optimized for mobile networks
+### Adding New Packages
 
-## 🛠 Technical Implementation
+Edit the packages object in `payment.js`:
 
-### CSS Features
-- **CSS Grid**: Modern layout system
-- **Flexbox**: Flexible component layouts
-- **Custom Properties**: CSS variables for consistency
-- **Backdrop Filter**: Modern glass effects
-- **Transform**: Smooth animations and transitions
+```javascript
+const packages = {
+    basic: {
+        name: 'Basic Consultation',
+        price: 99,
+        features: [/* features array */]
+    },
+    // Add new packages here
+};
+```
 
-### JavaScript Features
-- **GSAP**: Professional animation library
-- **AOS**: Scroll-triggered animations
-- **Intersection Observer**: Performance-optimized scroll detection
-- **Event Handling**: Smooth user interactions
-- **Form Validation**: Client-side form validation
+### Styling
 
-### External Libraries
-- **Tailwind CSS**: Utility-first CSS framework
-- **Font Awesome**: Professional icons
-- **Google Fonts**: High-quality typography
-- **GSAP**: Advanced animations
-- **AOS**: Scroll animations
+The system uses Tailwind CSS for styling. Customize colors and styles in the CSS variables:
 
-## 🎯 User Experience
+```css
+:root {
+    --primary-color: #1e40af;
+    --secondary-color: #3b82f6;
+    --accent-color: #f59e0b;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+```
 
-### Navigation
-- **Sticky Header**: Always accessible navigation
-- **Smooth Scrolling**: Seamless page navigation
-- **Active States**: Clear current page indication
-- **Mobile Menu**: Touch-optimized mobile navigation
+### Email Templates
 
-### Interactions
-- **Hover Effects**: Engaging element interactions
-- **Loading States**: Clear feedback for actions
-- **Form Validation**: Real-time form feedback
-- **Success Messages**: Confirmation of actions
+Implement email functionality in `server.js`:
 
-### Accessibility
-- **Keyboard Navigation**: Full keyboard accessibility
-- **Screen Reader Support**: Semantic HTML structure
-- **Color Contrast**: WCAG compliant color ratios
-- **Focus Indicators**: Clear focus states
+```javascript
+async function sendConfirmationEmail(email, name, package, paymentId) {
+    // Use Nodemailer, SendGrid, or similar
+    // Customize email templates here
+}
+```
 
-## 📞 Contact Features
+## Production Deployment
 
-### Contact Form (contact.html)
-- **Professional Design**: Modern form layout
-- **Form Validation**: Real-time validation
-- **Success Feedback**: Clear success messages
-- **WhatsApp Integration**: Direct WhatsApp contact
-- **Map Integration**: Google Maps location
+### 1. Environment Setup
 
-### Contact Information
-- **Address**: Professional address display
-- **Phone**: Click-to-call functionality
-- **Email**: Direct email links
-- **Business Hours**: Clear operating hours
+```bash
+# Set production environment in Netlify
+NODE_ENV=production
 
-## 🔧 Customization
+# Use live Stripe keys
+STRIPE_SECRET_KEY=sk_live_your_live_key
+STRIPE_PUBLISHABLE_KEY=pk_live_your_live_key
+```
 
-### Easy Customization
-- **CSS Variables**: Easy color and style changes
-- **Modular Components**: Independent section styling
-- **Configurable Animations**: Adjustable animation settings
-- **Responsive Images**: Easy image replacement
+### 2. Security Checklist
 
-### Content Management
-- **Semantic HTML**: Easy content updates
-- **Structured Data**: SEO-friendly markup
-- **Meta Tags**: Optimized for search engines
-- **Social Media**: Open Graph tags included
+- [x] Use HTTPS in production (Netlify provides this automatically)
+- [x] Set up proper CORS origins
+- [x] Configure rate limiting (Netlify handles this)
+- [x] Use environment variables for secrets
+- [ ] Set up webhook endpoints (optional)
+- [ ] Configure email service (optional)
+- [ ] Set up database (optional)
 
-## 🚀 Deployment
+### 3. Deployment Options
 
-### Requirements
-- **Web Server**: Any modern web server
-- **HTTPS**: Recommended for security
-- **CDN**: Optional for performance
+- **Netlify** (Recommended): Automatic deployment from GitHub
+- **Vercel**: Alternative serverless platform
+- **GitHub Pages**: Static hosting only (requires external API)
+- **Firebase**: Google's hosting platform
 
-### Optimization
-- **Image Optimization**: Compressed images
-- **Minification**: Minified CSS and JS
-- **Caching**: Browser caching headers
-- **Gzip**: Compressed file delivery
+## Testing
 
-## 📈 SEO Features
+### Test Cards (Stripe Test Mode)
 
-### On-Page SEO
-- **Meta Tags**: Optimized title and description
-- **Structured Data**: Schema markup
-- **Semantic HTML**: Proper heading structure
-- **Alt Tags**: Descriptive image alt text
+Use these test card numbers:
 
-### Performance SEO
-- **Fast Loading**: Optimized for Core Web Vitals
-- **Mobile Friendly**: Mobile-first design
-- **Accessibility**: WCAG compliance
-- **Security**: HTTPS ready
+- **Success**: `4242 4242 4242 4242`
+- **Decline**: `4000 0000 0000 0002`
+- **Insufficient Funds**: `4000 0000 0000 9995`
 
-## 🎉 Awards & Recognition
+### Testing the Payment System
 
-This website design incorporates elements that would qualify for:
-- **Awwwards**: For exceptional design and creativity
-- **CSS Design Awards**: For outstanding CSS implementation
-- **Webby Awards**: For excellence in web design
-- **FWA**: For innovative web experiences
+```bash
+# Test the payment flow locally
+# Open payment.html in your browser
+# Use Stripe test cards:
+# Success: 4242 4242 4242 4242
+# Decline: 4000 0000 0000 0002
+```
 
-## 📞 Support
+## Support
 
-For technical support or customization requests:
+For technical support or questions:
+
 - **Email**: admin@lgavisa.com
-- **Phone**: +94 726338989
-- **WhatsApp**: Direct messaging available
+- **Phone**: +94 11 234 5678
+- **Documentation**: [Stripe Docs](https://stripe.com/docs)
 
-## 🔄 Updates
+## License
 
-### Version 2.0 (Current)
-- Complete redesign with modern aesthetics
-- Advanced animations and interactions
-- Professional contact form
-- Mobile-optimized experience
-- Performance optimizations
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-### Future Enhancements
-- Blog section
-- Client testimonials
-- Online booking system
-- Multi-language support
-- Advanced analytics
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## Changelog
+
+### v1.0.0 (2024-01-XX)
+- Initial release
+- Stripe payment integration
+- Professional UI/UX
+- Complete payment flow
+- Backend API with webhooks
+- Security features
 
 ---
 
-**Lanka Global Access** - Your Gateway to Global Opportunities
-
-*Professional visa and immigration services with a website that matches our excellence.* 
+**Built with ❤️ by Lanka Global Access** 

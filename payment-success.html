@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Payment successful - Your visa consultation service has been confirmed." />
+    <meta name="author" content="Lanka Global Access" />
+    <title>Payment Successful - Lanka Global Access</title>
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --success-color: #10b981;
+            --accent-color: #f59e0b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .success-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-icon {
+            background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+
+        .timeline-item.completed::before {
+            background: var(--success-color);
+            box-shadow: 0 0 0 3px var(--success-color);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-color);
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">
+                    <img src="images/logo.png" alt="Lanka Global Access" class="h-10">
+                </a>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-blue-600">Pricing</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Success Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="success-card p-8 text-center">
+                <!-- Success Icon -->
+                <div class="success-icon">
+                    <i class="fas fa-check text-white text-3xl"></i>
+                </div>
+
+                <!-- Success Message -->
+                <h1 class="text-4xl font-bold mb-4 text-gray-800">Payment Successful!</h1>
+                <p class="text-xl text-gray-600 mb-8">
+                    Thank you for choosing Lanka Global Access. Your payment has been processed successfully.
+                </p>
+
+                <!-- Order Details -->
+                <div id="orderDetails" class="bg-gray-50 rounded-lg p-6 mb-8 text-left">
+                    <!-- Order details will be populated by JavaScript -->
+                </div>
+
+                <!-- Next Steps -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">What Happens Next?</h2>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <h3 class="font-semibold text-gray-800">Payment Confirmed</h3>
+                            <p class="text-gray-600">Your payment has been processed and confirmed.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-semibold text-gray-800">Welcome Email (Within 1 hour)</h3>
+                            <p class="text-gray-600">You'll receive a welcome email with your login credentials and next steps.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-semibold text-gray-800">Initial Consultation (Within 24 hours)</h3>
+                            <p class="text-gray-600">Our team will contact you to schedule your initial consultation.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-semibold text-gray-800">Service Delivery</h3>
+                            <p class="text-gray-600">We'll begin working on your visa application according to your selected package.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="dashboard.html" class="btn-primary">
+                        <i class="fas fa-tachometer-alt mr-2"></i>
+                        Go to Dashboard
+                    </a>
+                    <a href="contact.html" class="btn-secondary">
+                        <i class="fas fa-headset mr-2"></i>
+                        Contact Support
+                    </a>
+                </div>
+
+                <!-- Support Information -->
+                <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold mb-4 text-gray-800">Need Immediate Assistance?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-blue-600"></i>
+                            <div>
+                                <div class="font-semibold">Phone Support</div>
+                                <div class="text-gray-600">+94 11 234 5678</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-600"></i>
+                            <div>
+                                <div class="font-semibold">Email Support</div>
+                                <div class="text-gray-600">admin@lgavisa.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-blue-600"></i>
+                            <div>
+                                <div class="font-semibold">Business Hours</div>
+                                <div class="text-gray-600">Mon-Fri: 9AM-6PM (IST)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-comments mr-3 text-blue-600"></i>
+                            <div>
+                                <div class="font-semibold">Live Chat</div>
+                                <div class="text-gray-600">Available 24/7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Lanka Global Access. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load order details from localStorage
+        function loadOrderDetails() {
+            const paymentId = localStorage.getItem('paymentId');
+            const paymentStatus = localStorage.getItem('paymentStatus');
+            const customerData = localStorage.getItem('customerData');
+            const selectedPackage = localStorage.getItem('selectedPackage');
+            const packagePrice = localStorage.getItem('packagePrice');
+            
+            if (!paymentId || paymentStatus !== 'success') {
+                // Redirect to pricing page if no valid payment
+                window.location.href = 'pricing.html';
+                return;
+            }
+            
+            let customerInfo = {};
+            try {
+                customerInfo = JSON.parse(customerData);
+            } catch (e) {
+                console.error('Error parsing customer data:', e);
+            }
+            
+            // Package configurations
+            const packages = {
+                basic: { name: 'Basic Consultation', features: ['Initial consultation', 'Visa assessment', 'Document checklist'] },
+                standard: { name: 'Standard Package', features: ['Full application support', 'Document review', 'Interview prep'] },
+                premium: { name: 'Premium Service', features: ['Dedicated manager', 'Unlimited consultations', 'Translation services'] }
+            };
+            
+            const packageData = packages[selectedPackage] || { name: 'Selected Package', features: [] };
+            
+            // Update order details
+            document.getElementById('orderDetails').innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold mb-3 text-gray-800">Order Information</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Order ID:</span>
+                                <span class="font-semibold">${paymentId}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Package:</span>
+                                <span class="font-semibold">${packageData.name}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Amount:</span>
+                                <span class="font-semibold">$${packagePrice}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Status:</span>
+                                <span class="text-green-600 font-semibold">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-3 text-gray-800">Customer Information</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Name:</span>
+                                <span class="font-semibold">${customerInfo.firstName || ''} ${customerInfo.lastName || ''}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Email:</span>
+                                <span class="font-semibold">${customerInfo.email || ''}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Phone:</span>
+                                <span class="font-semibold">${customerInfo.phone || ''}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Date:</span>
+                                <span class="font-semibold">${new Date().toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ef4444'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
+                        }
+                    }, 5000);
+                }, i * 100);
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrderDetails();
+            createConfetti();
+            
+            // Auto-scroll to top
+            window.scrollTo(0, 0);
+        });
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, index * 500);
+            });
+            
+            // Add click handlers for buttons
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Add ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn-primary, .btn-secondary {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .timeline-item {
+                opacity: 0;
+                transform: translateX(-20px);
+                transition: all 0.5s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html> 

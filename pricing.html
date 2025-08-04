@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Professional visa consulting services - Choose the perfect package for your immigration needs." />
+    <meta name="author" content="Lanka Global Access" />
+    <title>Pricing & Services - Lanka Global Access</title>
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"></noscript>
+    
+    <!-- Modern CSS Framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+    
+    <!-- AOS Animation Library -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .feature-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .pricing-card.featured .feature-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-card.featured .feature-list li i {
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card.featured .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .pricing-card.featured .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .faq-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-primary-600">
+                    <img src="images/logo.png" alt="Lanka Global Access" class="h-10">
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#services" class="nav-link">Services</a>
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="pricing.html" class="nav-link font-semibold text-primary-600">Pricing</a>
+                </div>
+                <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="section-title font-display" data-aos="fade-up">
+                Choose Your Perfect Visa Package
+            </h1>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Professional visa consulting services tailored to your needs. 
+                Start your journey to a new life today.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" data-aos="fade-up">
+                    Our Service Packages
+                </h2>
+                <p class="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="200">
+                    Select the package that best fits your immigration goals
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Basic Package -->
+                <div class="pricing-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Basic Consultation</h3>
+                        <div class="price mb-2">$99</div>
+                        <p class="text-gray-600">Perfect for initial guidance</p>
+                    </div>
+                    
+                    <ul class="feature-list mb-8">
+                        <li><i class="fas fa-check"></i> Initial consultation (1 hour)</li>
+                        <li><i class="fas fa-check"></i> Visa eligibility assessment</li>
+                        <li><i class="fas fa-check"></i> Document checklist</li>
+                        <li><i class="fas fa-check"></i> Email support (7 days)</li>
+                        <li><i class="fas fa-check"></i> Basic application guidance</li>
+                    </ul>
+                    
+                    <div class="text-center">
+                        <button class="btn-primary w-full" onclick="selectPackage('basic', 99)">
+                            Choose Basic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Standard Package -->
+                <div class="pricing-card featured rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-badge">Most Popular</div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Standard Package</h3>
+                        <div class="price mb-2">$299</div>
+                        <p class="opacity-90">Complete application support</p>
+                    </div>
+                    
+                    <ul class="feature-list mb-8">
+                        <li><i class="fas fa-check"></i> Everything in Basic</li>
+                        <li><i class="fas fa-check"></i> Full application preparation</li>
+                        <li><i class="fas fa-check"></i> Document review & optimization</li>
+                        <li><i class="fas fa-check"></i> Application submission support</li>
+                        <li><i class="fas fa-check"></i> Priority email support (30 days)</li>
+                        <li><i class="fas fa-check"></i> Follow-up assistance</li>
+                        <li><i class="fas fa-check"></i> Interview preparation guide</li>
+                    </ul>
+                    
+                    <div class="text-center">
+                        <button class="btn-primary w-full" onclick="selectPackage('standard', 299)">
+                            Choose Standard
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="pricing-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Premium Service</h3>
+                        <div class="price mb-2">$599</div>
+                        <p class="text-gray-600">Comprehensive end-to-end service</p>
+                    </div>
+                    
+                    <ul class="feature-list mb-8">
+                        <li><i class="fas fa-check"></i> Everything in Standard</li>
+                        <li><i class="fas fa-check"></i> Dedicated case manager</li>
+                        <li><i class="fas fa-check"></i> Unlimited consultations</li>
+                        <li><i class="fas fa-check"></i> Document translation services</li>
+                        <li><i class="fas fa-check"></i> Priority processing support</li>
+                        <li><i class="fas fa-check"></i> Mock interview sessions</li>
+                        <li><i class="fas fa-check"></i> Post-approval guidance</li>
+                        <li><i class="fas fa-check"></i> 90-day support period</li>
+                    </ul>
+                    
+                    <div class="text-center">
+                        <button class="btn-primary w-full" onclick="selectPackage('premium', 599)">
+                            Choose Premium
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" data-aos="fade-up">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="200">
+                    Everything you need to know about our services
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down mr-2"></i>
+                        What payment methods do you accept?
+                    </div>
+                    <div class="faq-answer">
+                        We accept all major credit cards (Visa, MasterCard, American Express), debit cards, and digital wallets through our secure Stripe payment system. All payments are processed securely and encrypted.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down mr-2"></i>
+                        How long does the consultation process take?
+                    </div>
+                    <div class="faq-answer">
+                        Initial consultations typically take 1 hour. For Standard and Premium packages, the complete process can take 2-4 weeks depending on the complexity of your case and the visa type you're applying for.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down mr-2"></i>
+                        Can I upgrade my package after purchase?
+                    </div>
+                    <div class="faq-answer">
+                        Yes, you can upgrade your package within 7 days of your initial purchase. Simply contact our support team and we'll help you upgrade with a prorated payment for the difference.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down mr-2"></i>
+                        What if my visa application is rejected?
+                    </div>
+                    <div class="faq-answer">
+                        We provide a money-back guarantee for Standard and Premium packages if your application is rejected due to our error. We'll also provide guidance on appeal options and next steps.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down mr-2"></i>
+                        Do you offer refunds?
+                    </div>
+                    <div class="faq-answer">
+                        We offer a 30-day money-back guarantee for all packages. If you're not satisfied with our service within 30 days, we'll provide a full refund. After 30 days, refunds are handled on a case-by-case basis.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Lanka Global Access</h3>
+                    <p class="text-gray-400">
+                        Your trusted partner in visa and immigration consulting services.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Visa Consultation</a></li>
+                        <li><a href="#" class="hover:text-white">Document Preparation</a></li>
+                        <li><a href="#" class="hover:text-white">Application Support</a></li>
+                        <li><a href="#" class="hover:text-white">Interview Preparation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>+94 11 234 5678</li>
+                        <li><i class="fas fa-envelope mr-2"></i>info@lankaglobalaccess.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Colombo, Sri Lanka</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Lanka Global Access. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                answer.classList.add('active');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+
+        // Package Selection
+        function selectPackage(packageType, price) {
+            // Store package selection in localStorage
+            localStorage.setItem('selectedPackage', packageType);
+            localStorage.setItem('packagePrice', price);
+            
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            // Implementation for mobile menu
+            console.log('Mobile menu toggle');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html> 
