@@ -1,289 +1,52 @@
-# Lanka Global Access - Payment System
+# Lanka Global Access - Visa & Immigration Website
 
-A professional and robust Stripe payment implementation for visa consulting services. This system provides a complete payment solution with secure processing, beautiful UI, and comprehensive error handling.
+A professional website for Lanka Global Access Consultancy, providing visa and immigration consulting services.
 
 ## Features
 
-- ✅ **Professional Pricing Page** - Beautiful, responsive pricing with service packages
-- ✅ **Secure Payment Processing** - Stripe integration with PCI compliance
-- ✅ **Real-time Validation** - Form validation and error handling
-- ✅ **Payment Success Page** - Confirmation with order details and next steps
-- ✅ **Backend API** - Node.js/Express server for payment processing
-- ✅ **Webhook Handling** - Automatic payment confirmation and customer management
-- ✅ **Responsive Design** - Works perfectly on all devices
-- ✅ **Security Features** - CSRF protection, rate limiting, and secure headers
-
-## Quick Start (GitHub Pages + Netlify)
-
-### 1. Prerequisites
-
-- GitHub account
-- Netlify account (free to sign up)
-- Stripe account (free to sign up)
-- Modern web browser
-
-### 2. GitHub Pages Setup
-
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd visa-consultant-main
-
-# Push to your GitHub repository
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-### 3. Netlify Deployment
-
-1. **Connect to Netlify:**
-   - Go to [netlify.com](https://netlify.com)
-   - Sign up/login with your GitHub account
-   - Click "New site from Git"
-   - Select your GitHub repository
-
-2. **Configure Build Settings:**
-   - Build command: Leave empty (not needed for static sites)
-   - Publish directory: `.` (root directory)
-   - Click "Deploy site"
-
-### 4. Stripe Configuration
-
-1. **Get Stripe Keys:**
-   - Sign up at [stripe.com](https://stripe.com)
-   - Go to Dashboard → Developers → API keys
-   - Copy your publishable and secret keys
-
-2. **Update Frontend:**
-   In `payment.js`, replace the placeholder:
-   ```javascript
-   const stripe = Stripe('pk_test_your_actual_publishable_key_here');
-   ```
-
-3. **Set Netlify Environment Variables:**
-   - Go to Netlify Dashboard → Site settings → Environment variables
-   - Add: `STRIPE_SECRET_KEY` = `sk_test_your_secret_key_here`
-
-### 5. Deploy
-
-```bash
-# Push changes to GitHub
-git add .
-git commit -m "Update Stripe configuration"
-git push origin main
-```
-
-Your site will be available at: `https://your-username.github.io/your-repo-name`
+- **Modern Landing Page** - Hero slideshow, services, destinations, and contact info
+- **Contact Form** - Formspree integration for client inquiries
+- **Responsive Design** - Works on all devices
+- **Animations** - GSAP and AOS scroll animations
+- **WhatsApp Integration** - Floating chat button
 
 ## File Structure
 
 ```
-visa-consultant-main/
-├── index.html                    # Main homepage
-├── pricing.html                  # Pricing page with packages
-├── payment.html                  # Payment form with Stripe
-├── payment-success.html          # Payment confirmation page
-├── payment.js                    # Frontend payment logic (client-side only)
-├── README.md                     # This file
-└── images/                       # Website images and assets
+visa-website/
+├── index.html              # Main homepage
+├── contact.html            # Contact form page
+├── style.css               # Global styles
+├── main.js                 # Main JavaScript
+├── README.md               # This file
+├── CNAME                   # Custom domain (www.lgavisa.com)
+├── robots.txt              # SEO robots file
+├── sitemap.xml             # XML sitemap
+├── sitemap.html            # HTML sitemap
+└── images/                 # Website images and assets
 ```
 
-## Payment Flow
+## Deployment
 
-1. **Pricing Page** (`pricing.html`)
-   - Customer selects a service package
-   - Package details stored in localStorage
-   - Redirects to payment page
-
-2. **Payment Page** (`payment.html`)
-   - Customer enters personal information
-   - Stripe Elements for secure card input
-   - Real-time form validation
-   - Payment processing with loading states
-
-3. **Payment Processing** (`payment.js`)
-   - Creates Stripe Checkout session
-   - Redirects to Stripe's secure checkout
-   - Handles payment confirmation
-   - Manages customer data locally
-
-4. **Success Page** (`payment-success.html`)
-   - Payment confirmation
-   - Order details display
-   - Next steps timeline
-   - Support information
-
-## Stripe Integration
-
-### Frontend (payment.js)
-
-```javascript
-// Initialize Stripe
-const stripe = Stripe('pk_test_your_key');
-
-// Create card element
-const cardElement = elements.create('card');
-
-// Process payment
-const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-    payment_method: {
-        card: cardElement,
-        billing_details: { /* customer info */ }
-    }
-});
-```
-
-### Client-Side Processing
-
-```javascript
-// Create checkout session
-const { error, session } = await stripe.redirectToCheckout({
-    lineItems: [{
-        price_data: {
-            currency: 'usd',
-            product_data: { name: 'Service Package' },
-            unit_amount: amountInCents,
-        },
-        quantity: 1,
-    }],
-    mode: 'payment',
-    success_url: window.location.origin + '/payment-success.html',
-    cancel_url: window.location.origin + '/pricing.html',
-});
-```
-
-## Security Features
-
-- **PCI Compliance** - Stripe handles sensitive card data
-- **CSRF Protection** - Tokens prevent cross-site request forgery
-- **Rate Limiting** - Prevents abuse and DDoS attacks
-- **Input Validation** - Server-side validation of all inputs
-- **HTTPS Only** - Secure communication in production
-- **Webhook Verification** - Ensures webhook authenticity
-
-## Customization
-
-### Adding New Packages
-
-Edit the packages object in `payment.js`:
-
-```javascript
-const packages = {
-    basic: {
-        name: 'Basic Consultation',
-        price: 99,
-        features: [/* features array */]
-    },
-    // Add new packages here
-};
-```
-
-### Styling
-
-The system uses Tailwind CSS for styling. Customize colors and styles in the CSS variables:
-
-```css
-:root {
-    --primary-color: #1e40af;
-    --secondary-color: #3b82f6;
-    --accent-color: #f59e0b;
-    --success-color: #10b981;
-    --error-color: #ef4444;
-}
-```
-
-### Email Templates
-
-Implement email functionality in `server.js`:
-
-```javascript
-async function sendConfirmationEmail(email, name, package, paymentId) {
-    // Use Nodemailer, SendGrid, or similar
-    // Customize email templates here
-}
-```
-
-## Production Deployment
-
-### 1. Environment Setup
+This site is deployed on **GitHub Pages** at [www.lgavisa.com](https://www.lgavisa.com).
 
 ```bash
-# Set production environment in Netlify
-NODE_ENV=production
-
-# Use live Stripe keys
-STRIPE_SECRET_KEY=sk_live_your_live_key
-STRIPE_PUBLISHABLE_KEY=pk_live_your_live_key
+# Push changes to deploy
+git add .
+git commit -m "Update site"
+git push origin main
 ```
 
-### 2. Security Checklist
+## Tech Stack
 
-- [x] Use HTTPS in production (Netlify provides this automatically)
-- [x] Set up proper CORS origins
-- [x] Configure rate limiting (Netlify handles this)
-- [x] Use environment variables for secrets
-- [ ] Set up webhook endpoints (optional)
-- [ ] Configure email service (optional)
-- [ ] Set up database (optional)
+- HTML5, CSS3, JavaScript
+- Tailwind CSS (CDN)
+- GSAP + ScrollTrigger (animations)
+- AOS (Animate On Scroll)
+- Font Awesome (icons)
+- Formspree (contact form)
 
-### 3. Deployment Options
-
-- **Netlify** (Recommended): Automatic deployment from GitHub
-- **Vercel**: Alternative serverless platform
-- **GitHub Pages**: Static hosting only (requires external API)
-- **Firebase**: Google's hosting platform
-
-## Testing
-
-### Test Cards (Stripe Test Mode)
-
-Use these test card numbers:
-
-- **Success**: `4242 4242 4242 4242`
-- **Decline**: `4000 0000 0000 0002`
-- **Insufficient Funds**: `4000 0000 0000 9995`
-
-### Testing the Payment System
-
-```bash
-# Test the payment flow locally
-# Open payment.html in your browser
-# Use Stripe test cards:
-# Success: 4242 4242 4242 4242
-# Decline: 4000 0000 0000 0002
-```
-
-## Support
-
-For technical support or questions:
+## Contact
 
 - **Email**: admin@lgavisa.com
-- **Phone**: +94 11 234 5678
-- **Documentation**: [Stripe Docs](https://stripe.com/docs)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## Changelog
-
-### v1.0.0 (2024-01-XX)
-- Initial release
-- Stripe payment integration
-- Professional UI/UX
-- Complete payment flow
-- Backend API with webhooks
-- Security features
-
----
-
-**Built with ❤️ by Lanka Global Access** 
+- **Phone**: +94 726338989
