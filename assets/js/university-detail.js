@@ -45,16 +45,20 @@
         const meta = document.querySelector('meta[name="description"]');
         if (meta) meta.setAttribute('content', `${uni.name} (${uni.city}) — courses, intakes and admission details for international students.`);
 
-        const countryMeta = LGA_COUNTRIES[uni.country] || { name: uni.country };
+        const countryMeta = LGA_COUNTRIES[uni.country] || { name: uni.country, icon: 'fa-globe' };
         const related = lgaUnisByCountry(uni.country).filter(u => u.id !== uni.id).slice(0, 4);
-        const heroIcon = countryMeta.icon ? `<i class="fas ${countryMeta.icon} text-5xl mb-4 opacity-80"></i>` : '';
 
         mount.innerHTML = `
         <!-- Detail Hero -->
         <section class="page-hero">
             <div class="container mx-auto px-6" data-aos="fade-up">
-                <div class="text-center mb-6">${heroIcon}</div>
-                <h1 class="font-display text-3xl md:text-5xl font-bold text-center mb-3">${uni.name}</h1>
+                <figure class="relative max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-8">
+                    <img src="../images/universities/${uni.id}.jpg" alt="${uni.name} campus" class="w-full h-64 md:h-96 object-cover" onerror="this.parentElement.style.display='none'">
+                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent p-5 md:p-8">
+                        <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full mb-2 border border-white/25"><i class="fas ${countryMeta.icon}"></i>${countryMeta.name}</span>
+                        <h1 class="font-display text-2xl md:text-4xl font-bold text-white leading-snug drop-shadow">${uni.name}</h1>
+                    </figcaption>
+                </figure>
                 <p class="text-center opacity-90 max-w-2xl mx-auto">${uni.ranking}</p>
                 <nav class="breadcrumb text-center mt-5">
                     <a href="../index.html">Home</a> <i class="fas fa-chevron-right text-xs mx-2"></i>
