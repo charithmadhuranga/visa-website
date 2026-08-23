@@ -119,6 +119,28 @@ body {
     color: var(--primary-color) !important;
 }
 
+@media (min-width: 1280px) and (max-width: 1350px) {
+    .desktop-navigation {
+        gap: 12px !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .brand-details {
+        display: none !important;
+    }
+
+    .desktop-navigation {
+        gap: 8px !important;
+        margin-left: 12px !important;
+        font-size: 0.75rem;
+    }
+
+    .brand-details p {
+        display: none;
+    }
+}
+
 /* Desktop dropdowns */
 .nav-item { position: relative; }
 

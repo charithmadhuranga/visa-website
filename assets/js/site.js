@@ -79,7 +79,7 @@
             closeBtn.addEventListener('click', close);
             menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
             window.addEventListener('resize', () => {
-                if (window.innerWidth >= 1280) close();
+                if (window.innerWidth >= 1024) close();
             });
         }
 
