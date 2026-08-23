@@ -191,10 +191,10 @@
                         <h4 class="text-lg font-semibold mb-4">Our Services</h4>
                         <ul class="space-y-2 text-gray-400">
                             <li><a href="${navHref('services/student-visa.html')}" class="hover:text-white transition-colors">Student Visa Services</a></li>
-                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-white transition-colors">IELTS / PTE Preparation</a></li>
+                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-white transition-colors">IELTS / PTE Test Prep</a></li>
                             <li><a href="${navHref('services/student-visa.html')}" class="hover:text-white transition-colors">Visa Consultations</a></li>
                             <li><a href="${navHref('services/student-visa.html')}" class="hover:text-white transition-colors">Application Support</a></li>
-                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-white transition-colors">English Test Training</a></li>
+                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-white transition-colors">English Test Prep via Partners</a></li>
                         </ul>
                     </div>
 
