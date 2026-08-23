@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Universities and colleges in Canada partnered with Lanka Global Access — browse institutions, rankings, fees and the courses they offer." />
+    <title>Universities in Canada | Lanka Global Access</title>
+    <link rel="shortcut icon" href="../images/ico/favicon.ico" />
+
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body class="pt-[88px] bg-gray-50">
+    <div class="loader" id="loader"><div class="spinner"></div></div>
+
+    <div id="site-header"></div>
+
+    <!-- Page Hero -->
+    <section class="page-hero text-center" style="background: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cpolygon fill='rgba(255,255,255,0.06)' points='0,1000 1000,0 1000,1000'/%3E%3C/svg%3E&quot;), linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);">
+        <div class="container mx-auto px-6" data-aos="fade-up">
+            <i class="fas fa-leaf text-5xl mb-4 opacity-80"></i>
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Universities in Canada</h1>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6"><span id="uni-count">…</span> trusted institutions — click any university to see its profile and courses.</p>
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a> <i class="fas fa-chevron-right text-xs mx-2"></i>
+                <a href="index.html">Universities</a> <i class="fas fa-chevron-right text-xs mx-2"></i> Canada
+            </nav>
+        </div>
+    </section>
+
+    <!-- University Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div id="university-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+            <div class="text-center mt-14" data-aos="fade-up">
+                <p class="text-gray-600 mb-5">Planning to apply to Canada? We handle everything from application to visa.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="../study-abroad/canada.html" class="btn-outline !border-blue-600 !text-blue-700 hover:!bg-blue-600 hover:!text-white">Study in Canada Guide</a>
+                    <a href="../contact.html" class="btn-primary">Free Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script>window.SITE_ROOT = '../';</script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/site.js"></script>
+    <script src="../assets/js/data/universities.js"></script>
+    <script src="../assets/js/university-list.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', () => renderUniversityCountryPage('canada'));</script>
+</body>
+</html>

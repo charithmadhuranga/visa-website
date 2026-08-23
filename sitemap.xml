@@ -4,24 +4,117 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- LGA Visa - Visa Consultant Sitemap -->
-
+<!-- Lanka Global Access Consultancy Sitemap -->
 
 <url>
   <loc>https://www.lgavisa.com/</loc>
-  <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+  <lastmod>2026-08-23</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.lgavisa.com/index.html</loc>
-  <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+  <loc>https://www.lgavisa.com/contact.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/about/</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/about/mission-vision.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/about/why-choose-us.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/about/testimonials.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/study-abroad/</loc>
+  <lastmod>2026-08-23</lastmod>
   <priority>0.90</priority>
 </url>
 <url>
-  <loc>https://www.lgavisa.com/contact.html</loc>
-  <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+  <loc>https://www.lgavisa.com/study-abroad/australia.html</loc>
+  <lastmod>2026-08-23</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://www.lgavisa.com/study-abroad/canada.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/study-abroad/uk.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/study-abroad/new-zealand.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/study-abroad/usa.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/universities/</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/universities/australia.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/universities/canada.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/universities/uk.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/universities/new-zealand.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/universities/usa.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/services/student-visa.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/services/ielts-pte.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/resources/blog.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.lgavisa.com/resources/faq.html</loc>
+  <lastmod>2026-08-23</lastmod>
+  <priority>0.60</priority>
+</url>
 
 </urlset>

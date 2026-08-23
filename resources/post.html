@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <title>Article | Lanka Global Access Blog</title>
+    <link rel="shortcut icon" href="../images/ico/favicon.ico" />
+
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body class="pt-[88px] bg-gray-50">
+    <div class="loader" id="loader"><div class="spinner"></div></div>
+
+    <div id="site-header"></div>
+
+    <!-- Rendered by assets/js/blog-post.js -->
+    <div id="post-detail"></div>
+
+    <div id="site-footer"></div>
+
+    <script>window.SITE_ROOT = '../';</script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/site.js"></script>
+    <script src="../assets/js/data/blog.js"></script>
+    <script src="../assets/js/blog-post.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', renderBlogPost);</script>
+</body>
+</html>

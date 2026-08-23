@@ -8,7 +8,10 @@
     <title>Lanka Global Access - Professional Visa & Immigration Services</title>
 
     <link rel="shortcut icon" href="images/ico/favicon.ico" />
-    
+
+    <!-- Shared design system -->
+    <link rel="stylesheet" href="assets/css/site.css" />
+
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"></noscript>
@@ -453,59 +456,8 @@
     </div>
 
     <!-- Header -->
-    <header class="header fixed top-0 left-0 w-full z-50" id="header">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="images/logo.png" alt="Lanka Global Access" class="h-12 md:h-14" loading="eager">
-                    <div class="ml-3">
-                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Lanka Global Access</h1>
-                        <p class="text-sm text-gray-600">Visa & Immigration Experts</p>
-                    </div>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Services</a>
-                    <a href="#countries" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Countries</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
-                    <a href="./contact.html" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                        Get Started
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="lg:hidden text-gray-700" id="mobile-menu-btn">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </nav>
-
-        <!-- Mobile Menu -->
-        <div class="lg:hidden fixed top-0 left-0 w-full h-screen bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50" id="mobile-menu" style="background: white !important; height: 100vh !important; min-height: 100vh !important;">
-            <div class="flex justify-between items-center p-6 border-b bg-white">
-                <img src="images/logo.png" alt="Lanka Global Access" class="h-10">
-                <button id="close-menu" class="text-gray-700 hover:text-blue-600 transition-colors">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
-            <div class="p-6 bg-white flex-1 flex flex-col justify-center">
-                <div class="flex flex-col space-y-6">
-                    <a href="#home" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Home</a>
-                    <a href="#about" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">About</a>
-                    <a href="#services" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Services</a>
-                    <a href="#countries" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Countries</a>
-                    <a href="#contact" class="text-gray-800 hover:text-blue-600 font-medium text-lg transition-colors py-3 border-b border-gray-100">Contact</a>
-                    <a href="./contact.html" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105 mt-8">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Header (shared) -->
+    <div id="site-header"></div>
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen overflow-hidden">
@@ -676,16 +628,21 @@
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
                         We are dedicated to simplifying the visa application process and making global opportunities accessible to everyone. Our team of experienced professionals provides personalized guidance and comprehensive support throughout your journey.
                     </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                            <div class="text-gray-600">Happy Clients</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
-                            <div class="text-gray-600">Countries Served</div>
-                        </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <a href="about/index.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
+                            <i class="fas fa-user-group text-blue-600"></i><span class="font-medium text-gray-700 text-sm group-hover:text-blue-700">About Us</span>
+                        </a>
+                        <a href="about/mission-vision.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
+                            <i class="fas fa-bullseye text-blue-600"></i><span class="font-medium text-gray-700 text-sm group-hover:text-blue-700">Mission &amp; Vision</span>
+                        </a>
+                        <a href="about/why-choose-us.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
+                            <i class="fas fa-award text-blue-600"></i><span class="font-medium text-gray-700 text-sm group-hover:text-blue-700">Why Choose Us</span>
+                        </a>
+                        <a href="about/testimonials.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
+                            <i class="fas fa-quote-left text-blue-600"></i><span class="font-medium text-gray-700 text-sm group-hover:text-blue-700">Testimonials</span>
+                        </a>
                     </div>
+                    <a href="about/index.html" class="text-blue-600 font-semibold hover:underline">Learn more about us <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
                 </div>
             </div>
         </div>
@@ -705,7 +662,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style="display: grid !important;">
                 <!-- Service Card 1 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="services/student-visa.html" class="service-card" data-aos="fade-up" data-aos-delay="100" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
                     <div class="service-icon">
                         <i class="fas fa-passport text-white text-2xl"></i>
                     </div>
@@ -713,10 +670,10 @@
                     <p class="text-gray-600 leading-relaxed">
                         Expert guidance on visa applications with personalized advice on documentation and processes.
                     </p>
-                </div>
+                </a>
 
                 <!-- Service Card 2 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="study-abroad/index.html" class="service-card" data-aos="fade-up" data-aos-delay="200" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
                     <div class="service-icon">
                         <i class="fas fa-graduation-cap text-white text-2xl"></i>
                     </div>
@@ -724,10 +681,10 @@
                     <p class="text-gray-600 leading-relaxed">
                         Complete assistance for students seeking education abroad, from university selection to visa processing.
                     </p>
-                </div>
+                </a>
 
                 <!-- Service Card 3 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="contact.html" class="service-card" data-aos="fade-up" data-aos-delay="300" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
                     <div class="service-icon">
                         <i class="fas fa-plane text-white text-2xl"></i>
                     </div>
@@ -735,10 +692,10 @@
                     <p class="text-gray-600 leading-relaxed">
                         Worldwide hotel bookings, air tickets, and comprehensive travel insurance for your peace of mind.
                     </p>
-                </div>
+                </a>
 
                 <!-- Service Card 4 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="services/student-visa.html" class="service-card" data-aos="fade-up" data-aos-delay="400" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
                     <div class="service-icon">
                         <i class="fas fa-handshake text-white text-2xl"></i>
                     </div>
@@ -746,10 +703,10 @@
                     <p class="text-gray-600 leading-relaxed">
                         Specialized services for appealing visa rejections for UK, Canada, Australia, and EU countries.
                     </p>
-                </div>
+                </a>
 
                 <!-- Service Card 5 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="study-abroad/index.html" class="service-card" data-aos="fade-up" data-aos-delay="500" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
                     <div class="service-icon">
                         <i class="fas fa-globe text-white text-2xl"></i>
                     </div>
@@ -757,10 +714,10 @@
                     <p class="text-gray-600 leading-relaxed">
                         Tourist and student visa assistance for any country with expert guidance throughout the process.
                     </p>
-                </div>
+                </a>
 
                 <!-- Service Card 6 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="services/ielts-pte.html" class="service-card" data-aos="fade-up" data-aos-delay="600" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
                     <div class="service-icon">
                         <i class="fas fa-file-alt text-white text-2xl"></i>
                     </div>
@@ -768,7 +725,7 @@
                     <p class="text-gray-600 leading-relaxed">
                         Complete visa form filling, submission handling, and appointment scheduling services.
                     </p>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -797,83 +754,80 @@
         </div>
     </section>
 
-    <!-- Countries Section -->
+    <!-- Study Abroad Section -->
     <section id="countries" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                    Popular Destinations
+                    Study Abroad
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    We specialize in visa services for countries around the world
+                    Five world-class destinations with dedicated guides, universities and full visa support
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Country Cards -->
-                <div class="country-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="country-image" style="background-image: url('./images/portfolio/02.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">United States</h3>
-                        <p class="text-gray-600">Land of opportunities with diverse landscapes and world-class education.</p>
-                    </div>
-                </div>
-
-                <div class="country-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="country-image" style="background-image: url('./images/portfolio/03.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Canada</h3>
-                        <p class="text-gray-600">High quality of life with stunning natural beauty and excellent opportunities.</p>
-                    </div>
-                </div>
-
-                <div class="country-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="country-image" style="background-image: url('./images/portfolio/04.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">United Kingdom</h3>
-                        <p class="text-gray-600">Rich history, culture, and world-renowned educational institutions.</p>
-                    </div>
-                </div>
-
-                <div class="country-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
+                <a href="study-abroad/australia.html" class="country-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="country-image" style="background-image: url('./images/portfolio/05.jpg')"></div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Australia</h3>
-                        <p class="text-gray-600">Relaxed lifestyle with strong economy and world-class universities.</p>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Australia</h3>
+                        <p class="text-sm text-gray-600 mb-3">Up to 4 years post-study work</p>
+                        <span class="text-blue-600 text-sm font-medium">Explore &rarr;</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="country-card" data-aos="fade-up" data-aos-delay="500">
+                <a href="study-abroad/canada.html" class="country-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="country-image" style="background-image: url('./images/portfolio/03.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Canada</h3>
+                        <p class="text-sm text-gray-600 mb-3">Clear pathways to PR</p>
+                        <span class="text-blue-600 text-sm font-medium">Explore &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="study-abroad/uk.html" class="country-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="country-image" style="background-image: url('./images/portfolio/04.jpg')"></div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">United Kingdom</h3>
+                        <p class="text-sm text-gray-600 mb-3">1-year master's degrees</p>
+                        <span class="text-blue-600 text-sm font-medium">Explore &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="study-abroad/new-zealand.html" class="country-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="country-image" style="background-image: url('./images/portfolio/06.jpg')"></div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">New Zealand</h3>
-                        <p class="text-gray-600">Breathtaking landscapes and friendly, welcoming environment.</p>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">New Zealand</h3>
+                        <p class="text-sm text-gray-600 mb-3">Safe &amp; stunning environment</p>
+                        <span class="text-blue-600 text-sm font-medium">Explore &rarr;</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="country-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="country-image" style="background-image: url('./images/portfolio/07.jpg')"></div>
+                <a href="study-abroad/usa.html" class="country-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="country-image" style="background-image: url('./images/portfolio/02.jpg')"></div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">India</h3>
-                        <p class="text-gray-600">Incredible diversity, rich history, and growing business opportunities.</p>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">USA</h3>
+                        <p class="text-sm text-gray-600 mb-3">World's top universities</p>
+                        <span class="text-blue-600 text-sm font-medium">Explore &rarr;</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="country-card" data-aos="fade-up" data-aos-delay="700">
-                    <div class="country-image" style="background-image: url('./images/portfolio/08.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Malaysia</h3>
-                        <p class="text-gray-600">Multicultural country with beautiful beaches and modern cityscapes.</p>
+                <a href="universities/index.html" class="country-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="country-image flex items-center justify-center" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);">
+                        <i class="fas fa-building-columns text-white text-5xl"></i>
                     </div>
-                </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Universities</h3>
+                        <p class="text-sm text-gray-600 mb-3">30+ institutions &amp; their courses</p>
+                        <span class="text-blue-600 text-sm font-medium">Browse &rarr;</span>
+                    </div>
+                </a>
+            </div>
 
-                <div class="country-card" data-aos="fade-up" data-aos-delay="800">
-                    <div class="country-image" style="background-image: url('./images/portfolio/09.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">UAE</h3>
-                        <p class="text-gray-600">Luxurious cities, stunning architecture, and global business hub.</p>
-                    </div>
-                </div>
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="study-abroad/index.html" class="inline-block border-2 border-blue-600 text-blue-700 px-8 py-3 rounded-full font-medium hover:bg-blue-600 hover:text-white transition-all duration-300">
+                    View All Destinations
+                </a>
             </div>
         </div>
     </section>
@@ -943,134 +897,36 @@
                     </div>
                 </div>
             </div>
+
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="contact.html" class="inline-block bg-gradient-to-r from-blue-700 to-blue-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-2xl transform hover:scale-105 transition-all duration-300 mr-2 mb-2">
+                    Send Us a Message
+                </a>
+                <a href="resources/blog.html" class="inline-block border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-bold hover:border-blue-600 hover:text-blue-700 transition-all duration-300 mr-2 mb-2">
+                    Read Our Blog
+                </a>
+                <a href="resources/faq.html" class="inline-block border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-bold hover:border-blue-600 hover:text-blue-700 transition-all duration-300 mb-2">
+                    Browse FAQs
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center mb-4">
-                        <img src="images/logo.png" alt="Lanka Global Access" class="h-10 mr-3" loading="lazy">
-                        <div>
-                            <h3 class="text-xl font-bold">Lanka Global Access</h3>
-                            <p class="text-gray-400">Visa & Immigration Experts</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Your trusted partner in visa and immigration services. We make your global dreams a reality with professional guidance and comprehensive support.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
+    <!-- Footer (shared) -->
+    <div id="site-footer"></div>
 
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#countries" class="text-gray-400 hover:text-white transition-colors">Countries</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
 
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Visa Consultations</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Study Abroad</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Travel Arrangements</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Rejection Appeals</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Worldwide Visas</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400">
-                    © 2025 Lanka Global Access. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/94726338989?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa" 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener" 
-       aria-label="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp text-white text-2xl"></i>
-    </a>
+    <!-- Shared components + behaviors -->
+    <script>window.SITE_ROOT = './';</script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/site.js"></script>
 
     <!-- JavaScript - Optimized -->
     <script defer>
-        // Initialize AOS - Optimized
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50,
-            disable: 'mobile'
-        });
-
         // GSAP Animations - Optimized
         gsap.registerPlugin(ScrollTrigger);
-
-        // Loading Screen - Optimized
-        document.addEventListener('DOMContentLoaded', () => {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 500);
-        });
-
-        // Header Scroll Effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenu = document.getElementById('close-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-full');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
-        });
-
-        // Smooth Scrolling for Navigation Links - Optimized
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
 
         // Hero Section Animations - Optimized
         gsap.from('.hero-title', {

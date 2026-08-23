@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Guides and insights from Lanka Global Access — student visas, IELTS/PTE prep, SOP writing, finances and study destination comparisons." />
+    <title>Blog | Lanka Global Access</title>
+    <link rel="shortcut icon" href="../images/ico/favicon.ico" />
+
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body class="pt-[88px] bg-gray-50">
+    <div class="loader" id="loader"><div class="spinner"></div></div>
+
+    <div id="site-header"></div>
+
+    <!-- Page Hero -->
+    <section class="page-hero text-center">
+        <div class="container mx-auto px-6" data-aos="fade-up">
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Our Blog</h1>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6">Practical guides from counsellors who process applications every single day.</p>
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a> <i class="fas fa-chevron-right text-xs mx-2"></i> Resources <i class="fas fa-chevron-right text-xs mx-2"></i> Blog
+            </nav>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid"></div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="pb-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="rounded-3xl p-10 md:p-14 text-center text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);" data-aos="zoom-in">
+                <h2 class="font-display text-3xl font-bold mb-3">Never Miss an Intake Deadline</h2>
+                <p class="opacity-90 mb-7">Get visa updates, scholarship alerts and application tips in your inbox.</p>
+                <a href="../contact.html" class="inline-block bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">Subscribe via Contact Form</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script>window.SITE_ROOT = '../';</script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/site.js"></script>
+    <script src="../assets/js/data/blog.js"></script>
+    <script src="../assets/js/blog-list.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', renderBlogListing);</script>
+</body>
+</html>
