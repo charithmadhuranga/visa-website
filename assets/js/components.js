@@ -12,7 +12,7 @@
 
     const SITE = {
         name: 'Lanka Global Access',
-        tagline: 'Visa & Immigration Experts',
+        tagline: 'Study Abroad & Student Visa Experts',
         phone: '+94 726338989',
         phoneHref: 'tel:+94726338989',
         whatsapp: 'https://wa.me/94726338989?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa',
@@ -166,7 +166,7 @@
                                 <p class="text-gray-400">${SITE.tagline}</p>
                             </div>
                         </div>
-                        <p class="text-gray-400 mb-4 text-sm">Your trusted partner in visa and immigration services. We make your global dreams a reality.</p>
+                        <p class="text-gray-400 mb-4 text-sm">Your trusted partner for student visas and study abroad. From university admission to visa approval, we make your global education dreams a reality.</p>
                         <div class="flex space-x-3">
                             <a href="#" aria-label="Facebook" class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" aria-label="Twitter" class="w-9 h-9 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fab fa-twitter"></i></a>
