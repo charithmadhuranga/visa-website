@@ -11,7 +11,6 @@
             <td class="py-4 px-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">${c.level}</span></td>
             <td class="py-4 px-4 text-gray-600 text-sm">${c.duration}</td>
             <td class="py-4 px-4 text-gray-600 text-sm">${c.intakes.join(' · ')}</td>
-            <td class="py-4 px-4 text-gray-600 text-sm whitespace-nowrap">${c.fee}</td>
         </tr>`;
     }
 
@@ -44,7 +43,7 @@
 
         document.title = `${uni.name} — Courses & Details | Lanka Global Access`;
         const meta = document.querySelector('meta[name="description"]');
-        if (meta) meta.setAttribute('content', `${uni.name} (${uni.city}) — courses, tuition fees, intakes and admission details for international students.`);
+        if (meta) meta.setAttribute('content', `${uni.name} (${uni.city}) — courses, intakes and admission details for international students.`);
 
         const countryMeta = LGA_COUNTRIES[uni.country] || { name: uni.country };
         const related = lgaUnisByCountry(uni.country).filter(u => u.id !== uni.id).slice(0, 4);
@@ -82,7 +81,6 @@
                                     <th class="py-4 px-4 font-semibold">Level</th>
                                     <th class="py-4 px-4 font-semibold">Duration</th>
                                     <th class="py-4 px-4 font-semibold">Intakes</th>
-                                    <th class="py-4 px-4 font-semibold">Tuition</th>
                                 </tr>
                             </thead>
                             <tbody>${uni.courses.map(courseRow).join('')}</tbody>
@@ -90,7 +88,7 @@
                     </div>
 
                     <div class="mt-8 p-6 bg-blue-50 rounded-2xl flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
-                        <p class="text-gray-700 text-sm"><i class="fas fa-circle-info text-blue-600 mr-2"></i>Fees are indicative. Contact us for a personalised cost estimate and current scholarship offers.</p>
+                        <p class="text-gray-700 text-sm"><i class="fas fa-circle-info text-blue-600 mr-2"></i>Ask us about scholarships and admission requirements for this university.</p>
                         <a href="../contact.html?interest=${encodeURIComponent(uni.name)}" class="btn-primary !py-3 !px-6 text-sm whitespace-nowrap self-start sm:self-auto">Apply via LGA</a>
                     </div>
                 </div>
@@ -104,7 +102,6 @@
                             <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-building-columns text-blue-500 w-5 mt-0.5"></i>${uni.type}</li>
                             <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-calendar-days text-blue-500 w-5 mt-0.5"></i>Established ${uni.founded}</li>
                             <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-user-graduate text-blue-500 w-5 mt-0.5"></i>${uni.students} students</li>
-                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-dollar-sign text-green-600 w-5 mt-0.5"></i>${uni.intlFee}</li>
                             <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-ranking-star text-amber-500 w-5 mt-0.5"></i>${uni.ranking}</li>
                             <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-globe text-blue-500 w-5 mt-0.5"></i><a href="${uni.website}" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">${uni.website.replace('https://', '')}</a></li>
                         </ul>
