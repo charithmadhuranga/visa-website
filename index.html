@@ -184,11 +184,12 @@
             cursor: pointer;
             opacity: 0.7;
             transition: all 0.3s ease;
+            transform: translateY(-50%);
         }
 
         .slide-nav:hover {
             opacity: 1;
-            transform: scale(1.1);
+            transform: translateY(-50%) scale(1.15);
         }
 
         /* Floating Shapes - Optimized */
@@ -585,10 +586,10 @@
         </div>
 
         <!-- Slide Navigation Arrows -->
-        <button class="slide-nav absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-yellow-400 transition-colors duration-300 z-20" id="prev-slide">
+        <button class="slide-nav absolute left-4 top-1/2 text-white text-4xl hover:text-yellow-400 z-20" id="prev-slide">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="slide-nav absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-yellow-400 transition-colors duration-300 z-20" id="next-slide">
+        <button class="slide-nav absolute right-4 top-1/2 text-white text-4xl hover:text-yellow-400 z-20" id="next-slide">
             <i class="fas fa-chevron-right"></i>
         </button>
 
