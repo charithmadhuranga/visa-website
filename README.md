@@ -96,3 +96,7 @@ git push origin main
 
 - **Email**: admin@lgavisa.com
 - **Phone**: +94 726338989
+
+## Image attribution
+
+- Victoria University of Wellington campus image: "Victoria University, Wellington, New Zealand, July 2008" by Phillip Capper, licensed under [CC BY 3.0 NZ](https://creativecommons.org/licenses/by/3.0/nz/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Victoria_University,_Wellington,_New_Zealand,_July_2008.jpg).

@@ -192,6 +192,48 @@
             transform: translateY(-50%) scale(1.15);
         }
 
+        @media (max-width: 767px) {
+            .slide-description {
+                display: none;
+            }
+
+            .slide-nav {
+                display: none;
+            }
+
+            .hero-slide .text-center {
+                width: min(100%, 320px);
+                padding: 0 12px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 28px;
+            }
+
+            .hero-slide .container {
+                align-items: center;
+                padding: 0 16px;
+            }
+
+            .hero-slide .hero-title {
+                width: 100%;
+                font-size: 2.25rem !important;
+                line-height: 1.15;
+                margin-bottom: 0;
+                text-align: center;
+            }
+
+            .hero-slide .flex.flex-col {
+                gap: 14px;
+            }
+
+            .hero-slide .flex.flex-col a {
+                width: 100%;
+                padding: 13px 18px;
+                font-size: 1rem;
+            }
+        }
+
         /* Floating Shapes - Optimized */
         .floating-shape {
             position: absolute;
@@ -476,7 +518,7 @@
                                 Student Visa Consultancy
                             </span>
                         </h1>
-                        <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+                        <p class="slide-description text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
                             Guiding students to Australia, Canada, the UK, New Zealand and the USA.
                             From university admission to visa approval, we handle every step of your journey.
                         </p>
@@ -504,7 +546,7 @@
                                 Made Simple
                             </span>
                         </h1>
-                        <p class="text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
+                        <p class="slide-description text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
                             University selection, applications, IELTS/PTE preparation through our partner institutes, and visa filing — under one roof.
                             Thousands of students trust us to get them into their dream university.
                         </p>
@@ -532,7 +574,7 @@
                                 Destinations
                             </span>
                         </h1>
-                        <p class="text-xl md:text-2xl mb-8 text-green-100 max-w-3xl mx-auto">
+                        <p class="slide-description text-xl md:text-2xl mb-8 text-green-100 max-w-3xl mx-auto">
                             Country guides, post-study work rights and PR pathways explained.
                             Compare Australia, Canada, the UK, New Zealand and the USA in one place.
                         </p>
@@ -560,7 +602,7 @@
                                 Success Rate
                             </span>
                         </h1>
-                        <p class="text-xl md:text-2xl mb-8 text-red-100 max-w-3xl mx-auto">
+                        <p class="slide-description text-xl md:text-2xl mb-8 text-red-100 max-w-3xl mx-auto">
                             99% visa success rate with meticulously prepared applications and genuine-document guidance.
                             Facing a refusal? Our appeal experts can help you reapply with confidence.
                         </p>
@@ -600,12 +642,6 @@
             <div class="floating-shape shape-3"></div>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-            </div>
-        </div>
     </section>
 
     <!-- About Section -->
@@ -921,8 +957,8 @@
 
     <!-- Shared components + behaviors -->
     <script>window.SITE_ROOT = './';</script>
-    <script src="assets/js/components.js"></script>
-    <script src="assets/js/site.js"></script>
+    <script src="assets/js/components.js?v=9"></script>
+    <script src="assets/js/site.js?v=3"></script>
 
     <!-- JavaScript - Optimized -->
     <script defer>

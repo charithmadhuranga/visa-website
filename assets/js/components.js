@@ -118,24 +118,24 @@
 
         mount.innerHTML = `
         <header class="header fixed top-0 left-0 w-full z-50" id="header">
-            <nav class="container mx-auto px-6 py-4">
+            <nav class="w-full max-w-none px-6 py-4">
                 <div class="flex items-center justify-between">
-                    <a href="${navHref('index.html')}" class="flex items-center">
+                    <a href="${navHref('index.html')}" class="flex items-center shrink-0">
                         <img src="${ROOT}images/logo.png" alt="${SITE.name}" class="h-12 md:h-14" loading="eager">
-                        <div class="ml-3">
-                            <h1 class="text-xl md:text-2xl font-bold text-gray-800">${SITE.name}</h1>
-                            <p class="text-sm text-gray-600">${SITE.tagline}</p>
+                        <div class="hidden md:block ml-3">
+                            <h1 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">${SITE.name}</h1>
+                            <p class="text-sm text-gray-600 whitespace-nowrap">${SITE.tagline}</p>
                         </div>
                     </a>
-                    <div class="hidden lg:flex items-center space-x-7">${desktopNav}
+                    <div class="hidden xl:flex items-center ml-6 gap-5 text-sm shrink-0">${desktopNav}
                         <a href="${navHref('contact.html')}" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">Get Started</a>
                     </div>
-                    <button class="lg:hidden text-gray-700" id="mobile-menu-btn" aria-label="Open menu">
+                    <button class="xl:hidden text-gray-700" id="mobile-menu-btn" aria-label="Open menu">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </nav>
-            <div class="lg:hidden fixed top-0 left-0 w-full h-screen bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 overflow-y-auto" id="mobile-menu">
+            <div class="xl:hidden fixed top-0 left-0 w-full h-screen bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 overflow-y-auto" id="mobile-menu">
                 <div class="flex justify-between items-center p-6 border-b bg-white sticky top-0">
                     <img src="${ROOT}images/logo.png" alt="${SITE.name}" class="h-10">
                     <button id="close-menu" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Close menu">

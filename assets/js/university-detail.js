@@ -50,10 +50,10 @@
 
         mount.innerHTML = `
         <!-- Detail Hero -->
-        <section class="page-hero">
+        <section class="page-hero university-detail-hero">
             <div class="container mx-auto px-6" data-aos="fade-up">
-                <figure class="relative max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-8 bg-gradient-to-br from-blue-900 to-blue-700">
-                    <img src="../images/universities/${uni.id}.jpg?v=3" alt="${uni.name} campus" class="block w-full object-cover" style="height:clamp(256px,45vw,384px)" onerror="this.style.display='none'">
+                <figure class="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden shadow-2xl mb-8 bg-gradient-to-br from-blue-900 to-blue-700" style="height:clamp(320px,52vw,520px)">
+                    <img src="../images/universities/${uni.id}.jpg?v=3" alt="${uni.name} campus" class="block w-full h-full object-cover" onerror="this.style.display='none'">
                     <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent p-5 md:p-8">
                         <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full mb-2 border border-white/25"><i class="fas ${countryMeta.icon}"></i>${countryMeta.name}</span>
                         <h1 class="font-display text-2xl md:text-4xl font-bold text-white leading-snug drop-shadow">${uni.name}</h1>

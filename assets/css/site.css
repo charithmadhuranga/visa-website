@@ -95,6 +95,7 @@ body {
 
 .nav-link {
     position: relative;
+    white-space: nowrap;
     transition: all 0.3s ease;
 }
 
@@ -260,6 +261,10 @@ body {
         linear-gradient(135deg, #1e3a8a 0%, #1e40af 55%, #2563eb 100%);
     color: white;
     overflow: hidden;
+}
+
+.university-detail-hero {
+    padding: 0 0 45px;
 }
 
 .breadcrumb {
