@@ -267,6 +267,112 @@ body {
     padding: 0 0 45px;
 }
 
+.university-detail-content table {
+    table-layout: fixed;
+}
+
+.university-detail-content th:nth-child(1),
+.university-detail-content td:nth-child(1) { width: 46%; }
+.university-detail-content th:nth-child(2),
+.university-detail-content td:nth-child(2) { width: 18%; }
+.university-detail-content th:nth-child(3),
+.university-detail-content td:nth-child(3) { width: 16%; }
+.university-detail-content th:nth-child(4),
+.university-detail-content td:nth-child(4) { width: 20%; }
+
+@media (max-width: 767px) {
+    .university-detail-hero .container,
+    .university-detail-content > .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .university-detail-hero figure {
+        margin-bottom: 24px;
+    }
+
+    .university-detail-hero figcaption {
+        padding: 16px;
+    }
+
+    .university-detail-hero figcaption h1 {
+        font-size: 1.5rem;
+    }
+
+    .university-detail-content {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+
+    .university-detail-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .university-detail-content .overflow-x-auto {
+        overflow: visible;
+    }
+
+    .university-detail-content table,
+    .university-detail-content tbody,
+    .university-detail-content td {
+        display: block;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .university-detail-content tr {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 12px 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .university-detail-content thead {
+        display: none;
+    }
+
+    .university-detail-content tr {
+        width: 100%;
+    }
+
+    .university-detail-content tr:last-child {
+        border-bottom: 0;
+    }
+
+    .university-detail-content td {
+        display: block;
+        width: auto;
+        padding: 7px 10px;
+        border: 0;
+    }
+
+    .university-detail-content td:nth-child(n) {
+        width: auto;
+    }
+
+    .university-detail-content td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 3px;
+        color: #6b7280;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .university-detail-content td:first-child {
+        display: block;
+        grid-column: 1 / -1;
+        padding: 10px 16px 8px;
+    }
+
+    .university-detail-content td:first-child::before {
+        margin-bottom: 4px;
+    }
+}
+
 .breadcrumb {
     font-size: 0.9rem;
     opacity: 0.85;

@@ -7,10 +7,10 @@
     function courseRow(c) {
         return `
         <tr class="border-b border-gray-100 hover:bg-blue-50/40 transition-colors">
-            <td class="py-4 px-4 font-medium text-gray-800">${c.name}</td>
-            <td class="py-4 px-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">${c.level}</span></td>
-            <td class="py-4 px-4 text-gray-600 text-sm">${c.duration}</td>
-            <td class="py-4 px-4 text-gray-600 text-sm">${c.intakes.join(' · ')}</td>
+            <td data-label="Course" class="py-4 px-4 font-medium text-gray-800">${c.name}</td>
+            <td data-label="Level" class="py-4 px-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">${c.level}</span></td>
+            <td data-label="Duration" class="py-4 px-4 text-gray-600 text-sm">${c.duration}</td>
+            <td data-label="Intakes" class="py-4 px-4 text-gray-600 text-sm">${c.intakes.join(' · ')}</td>
         </tr>`;
     }
 
@@ -69,7 +69,7 @@
             </div>
         </section>
 
-        <section class="py-16 bg-white">
+        <section class="university-detail-content py-16 bg-white">
             <div class="container mx-auto px-6 grid lg:grid-cols-3 gap-10">
                 <!-- Main column -->
                 <div class="lg:col-span-2">
