@@ -95,7 +95,6 @@ git push origin main
 ## Contact
 
 - **Email**: admin@lgavisa.com
-- **Phone**: +94 726338989
 
 ## Image attribution
 
