@@ -5,7 +5,7 @@
 
 (function () {
     const CAT_STYLES = {
-        'Visas':        ['bg-blue-100', 'text-blue-700'],
+        'Visas':        ['bg-[#F5F6F8]', 'text-[#C9A45C]'],
         'English Tests': ['bg-emerald-100', 'text-emerald-700'],
         'Applications': ['bg-purple-100', 'text-purple-700'],
         'Finances':     ['bg-amber-100', 'text-amber-700'],
@@ -27,7 +27,7 @@
                         <span class="text-gray-400"><i class="far fa-calendar mr-1"></i>${lgaFormatDate(p.date)}</span>
                     </div>
                     <h2 class="text-lg font-bold text-gray-800 leading-snug mb-3">
-                        <a href="post.html?id=${p.id}" class="hover:text-blue-600 transition-colors">${p.title}</a>
+                        <a href="post.html?id=${p.id}" class="hover:text-[#C9A45C] transition-colors">${p.title}</a>
                     </h2>
                     <p class="text-sm text-gray-600 mb-5 flex-1">${p.excerpt}</p>
                     <div class="flex items-center justify-between text-xs text-gray-400 border-t border-gray-100 pt-4">

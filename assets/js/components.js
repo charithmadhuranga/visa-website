@@ -86,14 +86,14 @@
 
         const desktopNav = NAV.map(item => {
             if (!item.children) {
-                return `<a href="${navHref(item.href)}" class="nav-link text-gray-700 hover:text-blue-600 font-medium${item.href === here ? ' active' : ''}">${item.label}</a>`;
+                return `<a href="${navHref(item.href)}" class="nav-link text-[#3B4453] hover:text-[#C9A45C] font-medium${item.href === here ? ' active' : ''}">${item.label}</a>`;
             }
             const items = item.children.map(c =>
                 `<a href="${navHref(c.href)}"><i class="fas ${c.icon}"></i>${c.label}</a>`
             ).join('');
             return `
                 <div class="nav-item">
-                    <a href="${navHref(item.href)}" class="nav-link text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1">
+                    <a href="${navHref(item.href)}" class="nav-link text-[#3B4453] hover:text-[#C9A45C] font-medium flex items-center gap-1">
                         ${item.label}<i class="fas fa-chevron-down text-[10px] opacity-60"></i>
                     </a>
                     <div class="dropdown-menu">${items}</div>
@@ -102,10 +102,10 @@
 
         const mobileNav = NAV.map((item, idx) => {
             if (!item.children) {
-                return `<a href="${navHref(item.href)}" class="block text-gray-800 hover:text-blue-600 font-medium text-lg py-3 border-b border-gray-100">${item.label}</a>`;
+                return `<a href="${navHref(item.href)}" class="block text-[#3B4453] hover:text-[#C9A45C] font-medium text-lg py-3 border-b border-gray-100">${item.label}</a>`;
             }
             const subs = item.children.map(c =>
-                `<a href="${navHref(c.href)}" class="block text-gray-600 hover:text-blue-600 text-base py-2 border-b border-gray-50">${c.label}</a>`
+                `<a href="${navHref(c.href)}" class="block text-gray-600 hover:text-[#C9A45C] text-base py-2 border-b border-gray-50">${c.label}</a>`
             ).join('');
             return `
                 <div class="border-b border-gray-100 py-3">
@@ -121,29 +121,29 @@
             <nav class="w-full max-w-none px-6 py-4">
                 <div class="flex items-center justify-between">
                     <a href="${navHref('index.html')}" class="flex items-center shrink-0">
-                        <img src="${ROOT}images/logo.png" alt="${SITE.name}" class="h-12 md:h-14" loading="eager">
+                        <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-12 md:h-14 logo-navy" loading="eager">
                         <div class="brand-details hidden md:block ml-3">
                             <h1 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">${SITE.name}</h1>
                             <p class="text-sm text-gray-600 whitespace-nowrap">${SITE.tagline}</p>
                         </div>
                     </a>
                     <div class="desktop-navigation hidden lg:flex items-center ml-6 gap-6 text-sm shrink-0">${desktopNav}
-                        <a href="${navHref('contact.html')}" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">Get Started</a>
+                        <a href="${navHref('contact.html')}" class="bg-[#C9A45C] text-[#0B1F3A] px-6 py-3 rounded-full font-bold hover:bg-[#A9813F] hover:shadow-lg transition-all duration-300 transform hover:scale-105">Get Started</a>
                     </div>
-                    <button class="lg:hidden text-gray-700" id="mobile-menu-btn" aria-label="Open menu">
+                    <button class="lg:hidden text-[#3B4453]" id="mobile-menu-btn" aria-label="Open menu">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </nav>
             <div class="lg:hidden fixed top-0 left-0 w-full h-screen bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 overflow-y-auto" id="mobile-menu">
                 <div class="flex justify-between items-center p-6 border-b bg-white sticky top-0">
-                    <img src="${ROOT}images/logo.png" alt="${SITE.name}" class="h-10">
-                    <button id="close-menu" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Close menu">
+                    <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-10 logo-navy">
+                    <button id="close-menu" class="text-[#3B4453] hover:text-[#C9A45C] transition-colors" aria-label="Close menu">
                         <i class="fas fa-times text-2xl"></i>
                     </button>
                 </div>
                 <div class="p-6">${mobileNav}
-                    <a href="${navHref('contact.html')}" class="block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 rounded-full font-medium text-center mt-8">Get Started</a>
+                    <a href="${navHref('contact.html')}" class="block bg-[#C9A45C] text-[#0B1F3A] px-6 py-4 rounded-full font-bold text-center mt-8">Get Started</a>
                 </div>
             </div>
         </header>`;
@@ -155,62 +155,62 @@
         if (!mount) return;
 
         mount.innerHTML = `
-        <footer class="bg-gray-800 text-white pt-12 pb-8">
+        <footer class="bg-[#081527] text-white pt-12 pb-8">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-4 gap-8">
                     <div class="md:col-span-1">
                         <div class="flex items-center mb-4">
-                            <img src="${ROOT}images/logo.png" alt="${SITE.name}" class="h-10 mr-3 bg-white rounded p-1" loading="lazy">
+                            <img src="${ROOT}images/logo-white.png" alt="${SITE.name}" class="h-10 mr-3 logo-white" loading="lazy">
                             <div>
                                 <h3 class="text-xl font-bold">${SITE.name}</h3>
-                                <p class="text-gray-400">${SITE.tagline}</p>
+                                <p class="text-[#C7CEDA]">${SITE.tagline}</p>
                             </div>
                         </div>
-                        <p class="text-gray-400 mb-4 text-sm">Your trusted partner for student visas and study abroad. From university admission to visa approval, we make your global education dreams a reality.</p>
+                        <p class="text-[#C7CEDA] mb-4 text-sm">Your trusted partner for student visas and study abroad. From university admission to visa approval, we make your global education dreams a reality.</p>
                         <div class="flex space-x-3">
-                            <a href="#" aria-label="Facebook" class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Twitter" class="w-9 h-9 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="YouTube" class="w-9 h-9 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors"><i class="fab fa-youtube"></i></a>
-                            <a href="#" aria-label="LinkedIn" class="w-9 h-9 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Facebook" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="YouTube" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
 
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li><a href="${navHref('about/index.html')}" class="hover:text-white transition-colors">About Us</a></li>
-                            <li><a href="${navHref('study-abroad/index.html')}" class="hover:text-white transition-colors">Study Abroad</a></li>
-                            <li><a href="${navHref('universities/index.html')}" class="hover:text-white transition-colors">Universities</a></li>
-                            <li><a href="${navHref('resources/blog.html')}" class="hover:text-white transition-colors">Blog</a></li>
-                            <li><a href="${navHref('resources/faq.html')}" class="hover:text-white transition-colors">FAQ</a></li>
-                            <li><a href="${navHref('contact.html')}" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <h4 class="text-lg font-semibold mb-4 text-[#C9A45C] tracking-wider">Quick Links</h4>
+                        <ul class="space-y-2 text-[#C7CEDA]">
+                            <li><a href="${navHref('about/index.html')}" class="hover:text-[#C9A45C] transition-colors">About Us</a></li>
+                            <li><a href="${navHref('study-abroad/index.html')}" class="hover:text-[#C9A45C] transition-colors">Study Abroad</a></li>
+                            <li><a href="${navHref('universities/index.html')}" class="hover:text-[#C9A45C] transition-colors">Universities</a></li>
+                            <li><a href="${navHref('resources/blog.html')}" class="hover:text-[#C9A45C] transition-colors">Blog</a></li>
+                            <li><a href="${navHref('resources/faq.html')}" class="hover:text-[#C9A45C] transition-colors">FAQ</a></li>
+                            <li><a href="${navHref('contact.html')}" class="hover:text-[#C9A45C] transition-colors">Contact Us</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">Our Services</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li><a href="${navHref('services/student-visa.html')}" class="hover:text-white transition-colors">Student Visa Services</a></li>
-                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-white transition-colors">IELTS / PTE Test Prep</a></li>
-                            <li><a href="${navHref('services/student-visa.html')}" class="hover:text-white transition-colors">Visa Consultations</a></li>
-                            <li><a href="${navHref('services/student-visa.html')}" class="hover:text-white transition-colors">Application Support</a></li>
-                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-white transition-colors">English Test Prep via Partners</a></li>
+                        <h4 class="text-lg font-semibold mb-4 text-[#C9A45C] tracking-wider">Our Services</h4>
+                        <ul class="space-y-2 text-[#C7CEDA]">
+                            <li><a href="${navHref('services/student-visa.html')}" class="hover:text-[#C9A45C] transition-colors">Student Visa Services</a></li>
+                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-[#C9A45C] transition-colors">IELTS / PTE Test Prep</a></li>
+                            <li><a href="${navHref('services/student-visa.html')}" class="hover:text-[#C9A45C] transition-colors">Visa Consultations</a></li>
+                            <li><a href="${navHref('services/student-visa.html')}" class="hover:text-[#C9A45C] transition-colors">Application Support</a></li>
+                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-[#C9A45C] transition-colors">English Test Prep via Partners</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                        <ul class="space-y-3 text-gray-400 text-sm">
-                            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-blue-400"></i><span>${SITE.address}</span></li>
-                            <li class="flex items-center gap-3"><i class="fas fa-phone text-blue-400"></i><a href="${SITE.phoneHref}" class="hover:text-white transition-colors">${SITE.phone}</a></li>
-                            <li class="flex items-center gap-3"><i class="fas fa-envelope text-blue-400"></i><a href="mailto:${SITE.email}" class="hover:text-white transition-colors">${SITE.email}</a></li>
-                            <li class="flex items-center gap-3"><i class="fas fa-clock text-blue-400"></i><span>${SITE.hours}</span></li>
+                        <h4 class="text-lg font-semibold mb-4 text-[#C9A45C] tracking-wider">Contact Info</h4>
+                        <ul class="space-y-3 text-[#C7CEDA] text-sm">
+                            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-[#C9A45C]"></i><span>${SITE.address}</span></li>
+                            <li class="flex items-center gap-3"><i class="fas fa-phone text-[#C9A45C]"></i><a href="${SITE.phoneHref}" class="hover:text-[#C9A45C] transition-colors">${SITE.phone}</a></li>
+                            <li class="flex items-center gap-3"><i class="fas fa-envelope text-[#C9A45C]"></i><a href="mailto:${SITE.email}" class="hover:text-[#C9A45C] transition-colors">${SITE.email}</a></li>
+                            <li class="flex items-center gap-3"><i class="fas fa-clock text-[#C9A45C]"></i><span>${SITE.hours}</span></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                    <p class="text-gray-400">&copy; ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</p>
+                    <p class="text-[#C7CEDA]">&copy; ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</p>
                 </div>
             </div>
         </footer>

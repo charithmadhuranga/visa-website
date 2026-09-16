@@ -62,7 +62,7 @@
                     <div class="rounded-2xl p-7 text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);">
                         <h3 class="font-bold text-lg mb-2">Need Help Applying?</h3>
                         <p class="text-sm opacity-90 mb-4">Free counselling for study abroad and visa services.</p>
-                        <a href="../contact.html" class="block text-center bg-white text-blue-700 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">Book Consultation</a>
+                        <a href="../contact.html" class="block text-center bg-white text-[#C9A45C] py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">Book Consultation</a>
                     </div>
 
                     <div class="bg-gray-50 rounded-2xl shadow-md p-7">
@@ -71,10 +71,10 @@
                             ${recent.map(p => `
                             <a href="post.html?id=${p.id}" class="block group">
                                 <div class="text-xs text-gray-400 mb-0.5"><i class="far fa-calendar mr-1"></i>${lgaFormatDate(p.date)}</div>
-                                <div class="text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors leading-snug">${p.title}</div>
+                                <div class="text-sm font-medium text-gray-700 group-hover:text-[#C9A45C] transition-colors leading-snug">${p.title}</div>
                             </a>`).join('')}
                         </div>
-                        <a href="blog.html" class="block text-center text-blue-600 text-sm font-medium mt-5 hover:underline">← All articles</a>
+                        <a href="blog.html" class="block text-center text-[#C9A45C] text-sm font-medium mt-5 hover:underline">← All articles</a>
                     </div>
                 </aside>
             </div>

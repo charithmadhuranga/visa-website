@@ -19,12 +19,12 @@
             <div class="p-6 flex flex-col flex-1">
                 <h3 class="text-lg font-bold text-gray-800 mb-2 leading-snug">${u.name}</h3>
                 <div class="flex flex-wrap gap-2 text-xs mb-3">
-                    <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full"><i class="fas fa-location-dot mr-1"></i>${u.city}</span>
+                    <span class="bg-blue-50 text-[#C9A45C] px-2.5 py-1 rounded-full"><i class="fas fa-location-dot mr-1"></i>${u.city}</span>
                     <span class="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full"><i class="fas fa-building-columns mr-1"></i>${u.type}</span>
                 </div>
                 <p class="text-sm text-gray-500 mb-3"><i class="fas fa-ranking-star text-amber-500 mr-2"></i>${u.ranking}</p>
                 <div class="text-xs text-gray-600 mt-auto">
-                    <div class="bg-gray-50 rounded-lg p-2.5"><i class="fas fa-user-graduate text-blue-500 mr-1"></i>${u.students}</div>
+                    <div class="bg-gray-50 rounded-lg p-2.5"><i class="fas fa-user-graduate text-[#C9A45C] mr-1"></i>${u.students}</div>
                 </div>
                 <a href="university.html?id=${u.id}" class="mt-5 block text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-300 text-sm">
                     View Details &amp; Courses

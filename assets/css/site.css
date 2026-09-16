@@ -3,12 +3,25 @@
    ============================================ */
 
 :root {
-    --primary-color: #1e40af;
-    --secondary-color: #3b82f6;
-    --accent-color: #f59e0b;
-    --dark-color: #1f2937;
-    --light-color: #f8fafc;
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Primary - Navy */
+    --primary-color: #0B1F3A;
+    --primary-light: #16305A;
+    --primary-deep: #081527;
+    
+    /* Secondary - Gold */
+    --secondary-color: #C9A45C;
+    --gold-light: #E3C88A;
+    --gold-dark: #A9813F;
+    
+    /* Neutrals */
+    --dark-color: #3B4453;
+    --body-grey: #5B6472;
+    --light-color: #F5F6F8;
+    --light-grey-blue: #C7CEDA;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #C9A45C 0%, #E3C88A 100%);
+    --gradient-navy: linear-gradient(135deg, #0B1F3A 0%, #16305A 100%);
 }
 
 * {
@@ -23,14 +36,10 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: var(--dark-color);
     overflow-x: hidden;
-}
-
-.font-display {
-    font-family: 'Playfair Display', serif;
 }
 
 .text-gradient {
@@ -40,11 +49,17 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+/* Logo styling for circular logos */
+.logo-navy, .logo-white {
+    border-radius: 50%;
+    object-fit: contain;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--secondary-color); }
+::-webkit-scrollbar-thumb { background: #0B1F3A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C9A45C; }
 
 /* Loader */
 .loader {
@@ -70,7 +85,7 @@ body {
     width: 40px;
     height: 40px;
     border: 3px solid #f3f3f3;
-    border-top: 3px solid var(--primary-color);
+    border-top: 3px solid #0B1F3A;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
@@ -116,7 +131,7 @@ body {
 }
 
 .nav-link.active {
-    color: var(--primary-color) !important;
+    color: #C9A45C !important;
 }
 
 @media (min-width: 1280px) and (max-width: 1350px) {
@@ -180,15 +195,15 @@ body {
 }
 
 .dropdown-menu a:hover {
-    background: #eff6ff;
-    color: var(--primary-color);
+    background: rgba(201, 164, 92, 0.1);
+    color: #C9A45C;
     transform: translateX(4px);
 }
 
 .dropdown-menu a i {
     width: 18px;
     text-align: center;
-    color: var(--secondary-color);
+    color: #C9A45C;
 }
 
 /* Mobile menu */
@@ -204,7 +219,7 @@ body {
 }
 
 #mobile-menu a:hover {
-    color: #3b82f6 !important;
+    color: #C9A45C !important;
     transform: translateX(10px);
 }
 
@@ -221,16 +236,17 @@ body {
 /* Buttons */
 .btn-primary {
     display: inline-block;
-    background: linear-gradient(to right, #2563eb, #1d4ed8);
-    color: white;
+    background: #C9A45C;
+    color: #0B1F3A;
     padding: 14px 32px;
     border-radius: 9999px;
-    font-weight: 500;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+    background: #A9813F;
+    box-shadow: 0 15px 30px rgba(201, 164, 92, 0.35);
     transform: translateY(-2px) scale(1.02);
 }
 
@@ -246,7 +262,7 @@ body {
 
 .btn-outline:hover {
     background: white;
-    color: var(--primary-color);
+    color: #0B1F3A;
 }
 
 /* Section headers */
@@ -267,11 +283,13 @@ body {
 /* Cards */
 .card-hover {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
 }
 
 .card-hover:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    border-color: #C9A45C;
 }
 
 /* Page hero banner (subpages) */
@@ -280,7 +298,7 @@ body {
     padding: 170px 0 90px;
     background:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cpolygon fill='rgba(255,255,255,0.06)' points='0,1000 1000,0 1000,1000'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #1e3a8a 0%, #1e40af 55%, #2563eb 100%);
+        linear-gradient(135deg, #081527 0%, #0B1F3A 55%, #16305A 100%);
     color: white;
     overflow: hidden;
 }

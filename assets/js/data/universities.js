@@ -4,7 +4,7 @@
  */
 
 const LGA_COUNTRIES = {
-    australia:   { name: 'Australia',   icon: 'fa-earth-oceania', color: 'teal' },
+    australia:   { name: 'Australia',   icon: 'fa-earth-oceania', color: 'navy' },
     canada:      { name: 'Canada',      icon: 'fa-leaf',          color: 'red' },
     uk:          { name: 'United Kingdom', icon: 'fa-crown',      color: 'blue' },
     'new-zealand': { name: 'New Zealand', icon: 'fa-mountain-sun', color: 'green' },

@@ -8,7 +8,7 @@
         return `
         <tr class="border-b border-gray-100 hover:bg-blue-50/40 transition-colors">
             <td data-label="Course" class="py-4 px-4 font-medium text-gray-800">${c.name}</td>
-            <td data-label="Level" class="py-4 px-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">${c.level}</span></td>
+            <td data-label="Level" class="py-4 px-4"><span class="bg-[#F5F6F8] text-[#C9A45C] text-xs font-semibold px-2.5 py-1 rounded-full">${c.level}</span></td>
             <td data-label="Duration" class="py-4 px-4 text-gray-600 text-sm">${c.duration}</td>
             <td data-label="Intakes" class="py-4 px-4 text-gray-600 text-sm">${c.intakes.join(' · ')}</td>
         </tr>`;
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="mt-8 p-6 bg-blue-50 rounded-2xl flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
-                        <p class="text-gray-700 text-sm"><i class="fas fa-circle-info text-blue-600 mr-2"></i>Ask us about scholarships and admission requirements for this university.</p>
+                        <p class="text-gray-700 text-sm"><i class="fas fa-circle-info text-[#C9A45C] mr-2"></i>Ask us about scholarships and admission requirements for this university.</p>
                         <a href="../contact.html?interest=${encodeURIComponent(uni.name)}" class="btn-primary !py-3 !px-6 text-sm whitespace-nowrap self-start sm:self-auto">Apply via LGA</a>
                     </div>
                 </div>
@@ -100,21 +100,21 @@
                 <!-- Sidebar -->
                 <aside class="space-y-6">
                     <div class="bg-gray-50 rounded-2xl shadow-md p-7">
-                        <h3 class="font-bold text-gray-800 mb-5 flex items-center gap-2"><i class="fas fa-circle-info text-blue-600"></i>Quick Facts</h3>
+                        <h3 class="font-bold text-gray-800 mb-5 flex items-center gap-2"><i class="fas fa-circle-info text-[#C9A45C]"></i>Quick Facts</h3>
                         <ul class="space-y-4 text-sm">
-                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-location-dot text-blue-500 w-5 mt-0.5"></i>${uni.city}, ${countryMeta.name}</li>
-                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-building-columns text-blue-500 w-5 mt-0.5"></i>${uni.type}</li>
-                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-calendar-days text-blue-500 w-5 mt-0.5"></i>Established ${uni.founded}</li>
-                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-user-graduate text-blue-500 w-5 mt-0.5"></i>${uni.students} students</li>
+                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-location-dot text-[#C9A45C] w-5 mt-0.5"></i>${uni.city}, ${countryMeta.name}</li>
+                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-building-columns text-[#C9A45C] w-5 mt-0.5"></i>${uni.type}</li>
+                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-calendar-days text-[#C9A45C] w-5 mt-0.5"></i>Established ${uni.founded}</li>
+                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-user-graduate text-[#C9A45C] w-5 mt-0.5"></i>${uni.students} students</li>
                             <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-ranking-star text-amber-500 w-5 mt-0.5"></i>${uni.ranking}</li>
-                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-globe text-blue-500 w-5 mt-0.5"></i><a href="${uni.website}" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">${uni.website.replace('https://', '')}</a></li>
+                            <li class="flex items-start gap-3 text-gray-600"><i class="fas fa-globe text-[#C9A45C] w-5 mt-0.5"></i><a href="${uni.website}" target="_blank" rel="noopener" class="text-[#C9A45C] hover:underline break-all">${uni.website.replace('https://', '')}</a></li>
                         </ul>
                     </div>
 
                     <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-7">
-                        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2"><i class="fas fa-diagram-project text-blue-600"></i>Also in ${countryMeta.name}</h3>
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2"><i class="fas fa-diagram-project text-[#C9A45C]"></i>Also in ${countryMeta.name}</h3>
                         <div class="space-y-3">${related.map(relatedCard).join('')}</div>
-                        <a href="${uni.country}.html" class="block text-center text-blue-600 text-sm font-medium mt-4 hover:underline">View all ${countryMeta.name} universities →</a>
+                        <a href="${uni.country}.html" class="block text-center text-[#C9A45C] text-sm font-medium mt-4 hover:underline">View all ${countryMeta.name} universities →</a>
                     </div>
                 </aside>
             </div>
