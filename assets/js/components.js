@@ -160,7 +160,7 @@
                 <div class="grid md:grid-cols-4 gap-8">
                     <div class="md:col-span-1">
                         <div class="flex items-center mb-4">
-                            <img src="${ROOT}images/logo-white.png" alt="${SITE.name}" class="h-10 mr-3 logo-white" loading="lazy">
+                            <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-10 mr-3 logo-navy" loading="lazy">
                             <div>
                                 <h3 class="text-xl font-bold">${SITE.name}</h3>
                                 <p class="text-[#C7CEDA]">${SITE.tagline}</p>
