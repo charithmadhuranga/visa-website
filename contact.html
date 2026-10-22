@@ -314,12 +314,11 @@
                         <label class="form-label" for="service">Service Required *</label>
                         <select id="service" name="service" class="form-input form-select" required>
                             <option value="">Select a service</option>
+                            <option value="student-visa">Student Visa Application</option>
+                            <option value="ielts-pte">IELTS / PTE Preparation</option>
                             <option value="visa-consultation">Visa Consultation</option>
-                            <option value="study-abroad">Study Abroad Support</option>
-                            <option value="travel-arrangements">Travel Arrangements</option>
-                            <option value="rejection-appeal">Rejection Appeal</option>
-                            <option value="worldwide-visas">Worldwide Visas</option>
-                            <option value="application-support">Application Support</option>
+                            <option value="application-support">University Application Support</option>
+                            <option value="rejection-appeal">Rejection / Refusal Appeal</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -328,22 +327,12 @@
                         <label class="form-label" for="destination">Destination Country</label>
                         <select id="destination" name="destination" class="form-input form-select">
                             <option value="">Select destination</option>
-                            <option value="usa">United States</option>
+                            <option value="australia">Australia</option>
                             <option value="canada">Canada</option>
                             <option value="uk">United Kingdom</option>
-                            <option value="australia">Australia</option>
                             <option value="new-zealand">New Zealand</option>
-                            <option value="india">India</option>
-                            <option value="malaysia">Malaysia</option>
-                            <option value="uae">UAE</option>
-                            <option value="thailand">Thailand</option>
-                            <option value="schengen">Schengen Countries</option>
-                            <option value="russia">Russia</option>
-                            <option value="china">China</option>
-                            <option value="bangladesh">Bangladesh</option>
-                            <option value="south-korea">South Korea</option>
-                            <option value="singapore">Singapore</option>
-                            <option value="qatar">Qatar</option>
+                            <option value="usa">United States</option>
+                            <option value="undecided">Not decided yet</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -595,22 +584,21 @@
             return isValid;
         }
 
-        // Enhanced phone number formatting
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 0) {
-                // Format as +XX XXX XXX XXXX
-                if (value.length <= 3) {
-                    value = '+' + value;
-                } else if (value.length <= 6) {
-                    value = '+' + value.slice(0, 3) + ' ' + value.slice(3);
-                } else if (value.length <= 9) {
-                    value = '+' + value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6);
-                } else {
-                    value = '+' + value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 9) + ' ' + value.slice(9, 13);
-                }
-            }
-            e.target.value = value;
+        // Phone input: normalise Sri Lankan numbers to +94 XX XXX XXXX
+        // (Sri Lankan numbers are 9 digits after the +94 country code.)
+        document.getElementById('phone').addEventListener('input', function (e) {
+            let digits = e.target.value.replace(/\D/g, '');
+
+            // Fold 0094 / 94 / 0 prefixes into the +94 country code.
+            if (digits.startsWith('0094')) digits = digits.slice(4);
+            else if (digits.startsWith('94')) digits = digits.slice(2);
+            else if (digits.startsWith('0')) digits = digits.slice(1);
+
+            digits = digits.slice(0, 9);
+
+            e.target.value = digits
+                ? '+94 ' + digits.replace(/^(\d{2})(\d{0,3})(\d{0,4}).*/, '$1 $2 $3').trim()
+                : '';
         });
 
         // Character counter for message
