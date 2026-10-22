@@ -8,7 +8,7 @@
  * ─────────────────────────────────────────────────────────────
  */
 (function () {
-    var MEASUREMENT_ID = 'G-XXXXXXXXXX'; // <-- PUT YOUR GA4 MEASUREMENT ID HERE
+    var MEASUREMENT_ID = 'G-VXYS903B91'; // <-- PUT YOUR GA4 MEASUREMENT ID HERE
 
     if (!/^G-[A-Z0-9]+$/.test(MEASUREMENT_ID)) {
         // Still the placeholder (or invalid) — skip silently.
