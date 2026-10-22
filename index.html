@@ -1111,9 +1111,16 @@
         // Stats Counter Animation
         const counters = document.querySelectorAll('.stat-card .text-4xl');
         counters.forEach(counter => {
-            const target = parseInt(counter.textContent);
+            const raw = counter.textContent.trim();
+            const target = parseInt(raw.replace(/,/g, ''), 10);
+
+            // Non-numeric card (e.g. "Free") — skip the animation, leave text as-is.
+            if (isNaN(target)) return;
+
+            // Capture the trailing suffix ("+", "%", "/7") once, not per frame.
+            const suffix = raw.replace(/^[\d\s,]+/, '');
             const increment = target / 100;
-            
+
             ScrollTrigger.create({
                 trigger: counter,
                 start: "top 80%",
@@ -1122,10 +1129,10 @@
                     const updateCounter = () => {
                         if (current < target) {
                             current += increment;
-                            counter.textContent = Math.ceil(current) + (counter.textContent.includes('+') ? '+' : '') + (counter.textContent.includes('%') ? '%' : '') + (counter.textContent.includes('/') ? '/7' : '');
+                            counter.textContent = Math.ceil(current) + suffix;
                             requestAnimationFrame(updateCounter);
                         } else {
-                            counter.textContent = target + (counter.textContent.includes('+') ? '+' : '') + (counter.textContent.includes('%') ? '%' : '') + (counter.textContent.includes('/') ? '/7' : '');
+                            counter.textContent = target + suffix;
                         }
                     };
                     updateCounter();

@@ -26,6 +26,7 @@
         // Stat counters (.stat-number[data-target])
         document.querySelectorAll('.stat-number[data-target]').forEach(counter => {
             const target = parseFloat(counter.getAttribute('data-target'));
+            if (isNaN(target)) return; // Defensive: never write NaN into the DOM
             ScrollTrigger.create({
                 trigger: counter,
                 start: 'top 85%',
