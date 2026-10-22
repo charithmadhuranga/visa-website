@@ -1,1 +1,8 @@
 .opencode/
+
+# OS junk
+.DS_Store
+*.Zone.Identifier
+
+# Build artifacts
+scripts/generated-urls.json

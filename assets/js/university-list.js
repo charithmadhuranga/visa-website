@@ -26,7 +26,7 @@
                 <div class="text-xs text-gray-600 mt-auto">
                     <div class="bg-gray-50 rounded-lg p-2.5"><i class="fas fa-user-graduate text-[#C9A45C] mr-1"></i>${u.students}</div>
                 </div>
-                <a href="university.html?id=${u.id}" class="mt-5 block text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-300 text-sm">
+                <a href="${u.country}/${u.id}.html" class="mt-5 block text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-300 text-sm">
                     View Details &amp; Courses
                 </a>
             </div>

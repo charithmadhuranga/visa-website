@@ -1,12 +1,10 @@
 # LGA Visa - Robots.txt
 User-agent: *
-Disallow: 
+
+# Disallow non-content utility paths only
 Disallow: /cgi-bin/
 Disallow: /admin/
 Disallow: /private/
-
-# Allow all pages
-Allow: /
 
 # Sitemap location
 Sitemap: https://www.lgavisa.com/sitemap.xml

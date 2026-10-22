@@ -1,0 +1,18 @@
+{
+  "name": "lgavisa-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lanka Global Access (lgavisa.com) — static student visa & study abroad website",
+  "scripts": {
+    "seo:metadata": "node scripts/apply-seo-metadata.js",
+    "seo:structured-data": "node scripts/apply-structured-data.js",
+    "generate": "node scripts/generate-seo-pages.js",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "validate": "node scripts/seo-validate.js",
+    "build": "npm run generate && npm run sitemap && npm run validate",
+    "predeploy-check": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

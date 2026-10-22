@@ -16,7 +16,7 @@
 
     function relatedCard(u) {
         return `
-        <a href="university.html?id=${u.id}" class="block p-3 rounded-xl border border-gray-100 hover:border-blue-300 hover:bg-blue-50/50 transition-all">
+        <a href="${u.country}/${u.id}.html" class="block p-3 rounded-xl border border-gray-100 hover:border-blue-300 hover:bg-blue-50/50 transition-all">
             <div class="font-semibold text-gray-800 text-sm leading-snug">${u.name}</div>
             <div class="text-xs text-gray-500 mt-1"><i class="fas fa-location-dot mr-1"></i>${u.city} · ${u.courses.length} courses</div>
         </a>`;
@@ -44,6 +44,18 @@
         document.title = `${uni.name} — Courses & Details | Lanka Global Access`;
         const meta = document.querySelector('meta[name="description"]');
         if (meta) meta.setAttribute('content', `${uni.name} (${uni.city}) — courses, intakes and admission details for international students.`);
+
+        /* SEO: consolidate ?id= URLs onto the static crawlable page */
+        try {
+            const canonicalUrl = `${uni.country}/${uni.id}.html`;
+            if (!location.pathname.endsWith(canonicalUrl)) {
+                const link = document.createElement('link');
+                link.rel = 'canonical';
+                link.href = new URL(canonicalUrl, location.origin + location.pathname.replace(/university\.html$/, '')).href;
+                const existing = document.querySelector('link[rel="canonical"]');
+                if (existing) existing.replaceWith(link); else document.head.appendChild(link);
+            }
+        } catch (e) { /* ignore */ }
 
         const countryMeta = LGA_COUNTRIES[uni.country] || { name: uni.country, icon: 'fa-globe' };
         const related = lgaUnisByCountry(uni.country).filter(u => u.id !== uni.id).slice(0, 4);

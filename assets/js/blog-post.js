@@ -27,6 +27,19 @@
         const meta = document.querySelector('meta[name="description"]');
         if (meta) meta.setAttribute('content', post.excerpt);
 
+        /* SEO: consolidate ?id= URLs onto the static crawlable page */
+        try {
+            const canonicalUrl = `blog/${post.id}.html`;
+            if (!location.pathname.endsWith(canonicalUrl)) {
+                const link = document.createElement('link');
+                link.rel = 'canonical';
+                link.href = new URL(canonicalUrl, location.origin + location.pathname.replace(/post\.html$/, '')).href;
+                const existing = document.querySelector('link[rel="canonical"]');
+                if (existing) existing.replaceWith(link); else document.head.appendChild(link);
+                /* Keep the ?id= template functional, but point crawlers at the static page */
+            }
+        } catch (e) { /* ignore */ }
+
         const recent = [...LGA_BLOG_POSTS].filter(p => p.id !== post.id).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
 
         mount.innerHTML = `
@@ -69,7 +82,7 @@
                         <h3 class="font-bold text-gray-800 mb-4">Recent Articles</h3>
                         <div class="space-y-4">
                             ${recent.map(p => `
-                            <a href="post.html?id=${p.id}" class="block group">
+                            <a href="blog/${p.id}.html" class="block group">
                                 <div class="text-xs text-gray-400 mb-0.5"><i class="far fa-calendar mr-1"></i>${lgaFormatDate(p.date)}</div>
                                 <div class="text-sm font-medium text-gray-700 group-hover:text-[#C9A45C] transition-colors leading-snug">${p.title}</div>
                             </a>`).join('')}

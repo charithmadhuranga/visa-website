@@ -123,8 +123,8 @@
                     <a href="${navHref('index.html')}" class="flex items-center shrink-0">
                         <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-12 md:h-14 logo-navy" loading="eager">
                         <div class="brand-details hidden md:block ml-3">
-                            <h1 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">${SITE.name}</h1>
-                            <p class="text-sm text-gray-600 whitespace-nowrap">${SITE.tagline}</p>
+                            <span class="block text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">${SITE.name}</span>
+                            <span class="block text-sm text-gray-600 whitespace-nowrap">${SITE.tagline}</span>
                         </div>
                     </a>
                     <div class="desktop-navigation hidden lg:flex items-center ml-6 gap-6 text-sm shrink-0">${desktopNav}
@@ -209,7 +209,18 @@
                     </div>
                 </div>
 
-                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <div class="border-t border-gray-700 mt-8 pt-6">
+                    <h4 class="text-sm font-semibold mb-3 text-[#C9A45C] tracking-wider text-center">Study Destinations</h4>
+                    <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#C7CEDA]">
+                        <li><a href="${navHref('study-abroad/australia.html')}" class="hover:text-[#C9A45C] transition-colors">Study in Australia</a></li>
+                        <li><a href="${navHref('study-abroad/uk.html')}" class="hover:text-[#C9A45C] transition-colors">Study in the UK</a></li>
+                        <li><a href="${navHref('study-abroad/canada.html')}" class="hover:text-[#C9A45C] transition-colors">Study in Canada</a></li>
+                        <li><a href="${navHref('study-abroad/new-zealand.html')}" class="hover:text-[#C9A45C] transition-colors">Study in New Zealand</a></li>
+                        <li><a href="${navHref('study-abroad/usa.html')}" class="hover:text-[#C9A45C] transition-colors">Study in the USA</a></li>
+                    </ul>
+                </div>
+
+                <div class="border-t border-gray-700 mt-6 pt-8 text-center">
                     <p class="text-[#C7CEDA]">&copy; ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</p>
                 </div>
             </div>

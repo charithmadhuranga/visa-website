@@ -73,7 +73,7 @@ const LGA_BLOG_POSTS = [
         author: 'LGA Counselling Team',
         excerpt: 'Your SOP is the only place admissions officers hear your voice. This structure has produced offers from Toronto to Melbourne for our students.',
         content: `
-            <p>After reviewing thousands of applications, we can predict which SOPs succeed within the first paragraph. They follow a story logic, not a template feel.</p>
+            <p>After reviewing many applications, we can predict which SOPs succeed within the first paragraph. They follow a story logic, not a template feel.</p>
             <h3>The five-part structure</h3>
             <ol>
                 <li><strong>The spark (10%)</strong> — a specific moment that started your interest. One vivid sentence beats three generic ones.</li>
@@ -99,7 +99,7 @@ const LGA_BLOG_POSTS = [
         author: 'LGA Counselling Team',
         excerpt: 'The Guaranteed Investment Certificate confuses more Canadian applicants than any other requirement. Here\'s exactly how it works in 2026.',
         content: `
-            <p>If you're applying under the SDS-style stream for Canada, a <strong>GIC (Guaranteed Investment Certificate)</strong> is usually your cleanest proof of funds.</p>
+            <p>If you're applying for a Canadian study permit, a <strong>GIC (Guaranteed Investment Certificate)</strong> is often your cleanest proof of funds and can speed up assessment. (Note: the Student Direct Stream / SDS that popularised the GIC was discontinued in November 2024, but a GIC remains strong evidence of genuine funds.)</p>
             <h3>What it actually is</h3>
             <p>You deposit roughly CAD 20,635 with a participating bank (Scotiabank, ICICI, SBI Canada, CIBC and others). After landing, the bank releases it back to you in monthly instalments over 12 months — essentially a built-in living-expense budget.</p>
             <h3>Why visa officers like it</h3>
@@ -128,7 +128,7 @@ const LGA_BLOG_POSTS = [
         content: `
             <p>For many families, post-study work rights tip the country decision as much as tuition. Here's the 2026 snapshot.</p>
             <h3>Australia — Temporary Graduate (subclass 485)</h3>
-            <p>Bachelor graduates: ~2 years. Master's: 2–4 years depending on qualification length. Regional study adds extra years. Work limit during study: 48 hrs/fortnight.</p>
+            <p>Bachelor graduates: about 2 years. Master's: usually 2–3 years depending on the qualification. Regional study can add extra time. Work limit during study: 48 hrs/fortnight.</p>
             <h3>Canada — PGWP</h3>
             <p>Up to 3 years for programs of 2+ years at eligible DLIs. Open work permit — any employer. Strong PR bridges via Express Entry CEC and PNPs.</p>
             <h3>United Kingdom — Graduate Route</h3>
