@@ -25,7 +25,7 @@ const ORG = {
       logo: `${SITE}/images/og/lga-og.png`,
       image: `${SITE}/images/og/lga-og.png`,
       email: 'admin@lgavisa.com',
-      telephone: '+94726338989',
+      telephone: '+94712756755',
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',

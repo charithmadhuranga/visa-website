@@ -13,9 +13,9 @@
     const SITE = {
         name: 'Lanka Global Access',
         tagline: 'Study Abroad & Student Visa Experts',
-        phone: '+94 726338989',
-        phoneHref: 'tel:+94726338989',
-        whatsapp: 'https://wa.me/94726338989?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa',
+        phone: '+94 71 275 6755',
+        phoneHref: 'tel:+94712756755',
+        whatsapp: 'https://wa.me/94712756755?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa',
         email: 'admin@lgavisa.com',
         address: '19A Thalapathpitiya Road, Nugegoda, Sri Lanka',
         hours: 'Monday – Sunday: 8:30 AM – 5:30 PM',
