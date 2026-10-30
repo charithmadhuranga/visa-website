@@ -8,8 +8,9 @@
     "seo:structured-data": "node scripts/apply-structured-data.js",
     "generate": "node scripts/generate-seo-pages.js",
     "sitemap": "node scripts/generate-sitemap.js",
+    "sync:contact": "node scripts/sync-contact.js",
     "validate": "node scripts/seo-validate.js",
-    "build": "npm run generate && npm run sitemap && npm run validate",
+    "build": "npm run sync:contact && npm run generate && npm run sitemap && npm run validate",
     "predeploy-check": "npm run build"
   },
   "engines": {

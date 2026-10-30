@@ -12,6 +12,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://www.lgavisa.com';
+const { PHONE_E164 } = require('./site-config.js');
 
 const ORG = {
   '@context': 'https://schema.org',
@@ -25,7 +26,7 @@ const ORG = {
       logo: `${SITE}/images/og/lga-og.png`,
       image: `${SITE}/images/og/lga-og.png`,
       email: 'admin@lgavisa.com',
-      telephone: '+94717225223',
+      telephone: PHONE_E164,
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
