@@ -17,7 +17,7 @@
         phoneHref: 'tel:+94717225223',
         whatsapp: 'https://wa.me/94717225223?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa',
         email: 'admin@lgavisa.com',
-        address: '19A Thalapathpitiya Road, Nugegoda, Sri Lanka',
+        address: '1st Floor, 464 High Level Road, Nugegoda, Sri Lanka',
         hours: 'Monday – Sunday: 8:30 AM – 5:30 PM',
     };
 

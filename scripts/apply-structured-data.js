@@ -30,7 +30,7 @@ const ORG = {
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '19A Thalapathpitiya Road',
+        streetAddress: '1st Floor, 464 High Level Road',
         addressLocality: 'Nugegoda',
         addressRegion: 'Western Province',
         addressCountry: 'LK',
