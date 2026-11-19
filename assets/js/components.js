@@ -193,7 +193,7 @@
                             <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-[#C9A45C] transition-colors">IELTS / PTE Test Prep</a></li>
                             <li><a href="${navHref('services/student-visa.html')}" class="hover:text-[#C9A45C] transition-colors">Visa Consultations</a></li>
                             <li><a href="${navHref('services/student-visa.html')}" class="hover:text-[#C9A45C] transition-colors">Application Support</a></li>
-                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-[#C9A45C] transition-colors">English Test Prep via Partners</a></li>
+                            <li><a href="${navHref('services/ielts-pte.html')}" class="hover:text-[#C9A45C] transition-colors">In-House IELTS / PTE Classes</a></li>
                         </ul>
                     </div>
 

@@ -33,7 +33,7 @@ const PAGES = {
   'services/ielts-pte.html': {
     title: 'IELTS & PTE Preparation Sri Lanka | LGA Visa',
     description:
-      'IELTS and PTE preparation in Nugegoda and online, with coaching aligned to study and university admission goals.',
+      'LGA provides in-house IELTS and PTE preparation classes in Nugegoda and online, with guided practice and mock tests for your target score.',
     keywords:
       'IELTS classes Sri Lanka, PTE preparation Colombo, IELTS coaching Nugegoda, PTE training online Sri Lanka',
     canonical: '/services/ielts-pte.html',

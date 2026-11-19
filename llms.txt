@@ -2,7 +2,7 @@
 
 > Lanka Global Access, also known as LGA Visa, is a student visa and study-abroad consultancy based in Nugegoda, Sri Lanka. The website provides information about university admissions, student visa application support, English-test preparation, study destinations, universities, and practical guides for students.
 
-LGA's primary audience is students in Sri Lanka considering study in Australia, Canada, the United Kingdom, New Zealand, or the United States. The consultancy describes support that can include course and university selection, application preparation, document guidance, visa application support, and interview preparation. IELTS and PTE preparation is also offered.
+LGA's primary audience is students in Sri Lanka considering study in Australia, Canada, the United Kingdom, New Zealand, or the United States. The consultancy describes support that can include course and university selection, application preparation, document guidance, visa application support, and interview preparation. LGA provides in-house IELTS and PTE preparation classes in Nugegoda and online.
 
 University admission and visa approval are separate decisions. Universities decide admissions; government immigration authorities decide visa applications. LGA does not control visa decisions or guarantee visa approval. Visa rules, work rights, fees, processing times, course details, and university requirements can change; confirm current requirements with the relevant university and official government authority before acting.
 
@@ -17,7 +17,7 @@ University admission and visa approval are separate decisions. Universities deci
 ## Services
 
 - [Student visa assistance](https://www.lgavisa.com/services/student-visa.html): Student counselling, course and university selection, application and document preparation, and visa interview support for the destinations listed on the site.
-- [IELTS and PTE preparation](https://www.lgavisa.com/services/ielts-pte.html): Information about English-test preparation and choosing a test for study plans.
+- [IELTS and PTE preparation](https://www.lgavisa.com/services/ielts-pte.html): LGA's in-house English-test preparation classes in Nugegoda and online, including guidance on choosing a test for study plans.
 - [Contact and consultation](https://www.lgavisa.com/contact.html): Contact form and office details for enquiries and consultations.
 
 ## Study destinations
