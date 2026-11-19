@@ -15,19 +15,19 @@ const BRAND = 'LGA Visa';
 /** Absolute canonical URL for each page (relative to repo root). */
 const PAGES = {
   'index.html': {
-    title: 'LGA Visa – Lanka Global Access | Student Visa Sri Lanka',
+    title: 'LGA Visa | Student Visa & Study Abroad Consultants Sri Lanka',
     description:
-      'LGA Visa (Lanka Global Access) supports Sri Lankan students with overseas university admissions and student visa applications.',
+      'LGA Visa (Lanka Global Access) is a student visa and study abroad consultancy in Sri Lanka, helping students with admissions and visa applications.',
     keywords:
-      'student visa consultants Sri Lanka, study abroad consultants Sri Lanka, overseas education Sri Lanka, LGA Visa, Lanka Global Access',
+      'student visa consultants Sri Lanka, study abroad consultants Sri Lanka, student visa consultancy Nugegoda, overseas education Sri Lanka, LGA Visa',
     canonical: '/',
   },
   'services/student-visa.html': {
-    title: 'Student Visa Assistance Sri Lanka | LGA Visa',
+    title: 'Student Visa Consultants in Sri Lanka | LGA Visa',
     description:
-      'Student visa support for Sri Lankan students: university selection, applications, financial documents and interview preparation for five destinations.',
+      'Looking for student visa consultants in Sri Lanka? LGA Visa guides course selection, overseas university applications and visa document preparation.',
     keywords:
-      'student visa assistance Sri Lanka, student visa consultants Colombo, student visa application help, student visa documents Sri Lanka',
+      'student visa consultants Sri Lanka, student visa consultancy Nugegoda, student visa application Sri Lanka, study visa consultants Sri Lanka',
     canonical: '/services/student-visa.html',
   },
   'services/ielts-pte.html': {
@@ -35,63 +35,63 @@ const PAGES = {
     description:
       'LGA provides in-house IELTS and PTE preparation classes in Nugegoda and online, with guided practice and mock tests for your target score.',
     keywords:
-      'IELTS classes Sri Lanka, PTE preparation Colombo, IELTS coaching Nugegoda, PTE training online Sri Lanka',
+      'IELTS classes Sri Lanka, PTE preparation Nugegoda, IELTS coaching Nugegoda, PTE training online Sri Lanka',
     canonical: '/services/ielts-pte.html',
   },
   'study-abroad/index.html': {
-    title: 'Study Abroad from Sri Lanka | LGA Visa',
+    title: 'Study Abroad Consultants in Sri Lanka | LGA Visa',
     description:
-      'Compare destinations, costs, intakes and application guidance for students in Sri Lanka considering Australia, Canada, UK, New Zealand or USA.',
+      'LGA Visa helps Sri Lankan students plan to study abroad. Compare Australia, Canada, UK, New Zealand and USA universities and application steps.',
     keywords:
-      'study abroad Sri Lanka, study abroad consultants, overseas education guidance, best countries to study',
+      'study abroad consultants Sri Lanka, study overseas from Sri Lanka, overseas education consultants Nugegoda, study abroad guidance',
     canonical: '/study-abroad/',
   },
   'study-abroad/australia.html': {
-    title: 'Study in Australia: Student Visa Guide for Sri Lankans | LGA Visa',
+    title: 'Study in Australia from Sri Lanka | Student Visa Guide',
     description:
-      'Study in Australia from Sri Lanka: Subclass 500 visa information, universities, intakes, costs and application guidance from LGA Visa.',
+      'Plan to study in Australia from Sri Lanka? Explore Subclass 500 student visa guidance, universities, course options and application steps with LGA Visa.',
     keywords:
       'study in Australia from Sri Lanka, Australia student visa Sri Lanka, Subclass 500 visa, Australian universities',
     canonical: '/study-abroad/australia.html',
   },
   'study-abroad/canada.html': {
-    title: 'Canada Study Permit & Study Guide for Sri Lankan Students | LGA Visa',
+    title: 'Study in Canada from Sri Lanka | Study Permit Guide',
     description:
-      'Everything Sri Lankan students need to study in Canada — study permit process, PGWP, top universities, costs and step-by-step application guidance from LGA Visa.',
+      'Explore how to study in Canada from Sri Lanka, including study permit guidance, university options, costs and application steps with LGA Visa.',
     keywords:
       'study in Canada from Sri Lanka, Canada study permit Sri Lanka, PGWP Canada, Canadian universities',
     canonical: '/study-abroad/canada.html',
   },
   'study-abroad/uk.html': {
-    title: 'UK Student Visa & Study Guide for Sri Lankan Students | LGA Visa',
+    title: 'Study in the UK from Sri Lanka | Student Visa Guide',
     description:
-      'Study in the UK from Sri Lanka — current Student visa guidance, universities, course options and application support from LGA Visa.',
+      'Plan to study in the UK from Sri Lanka? Explore Student visa guidance, university choices and application steps with LGA Visa.',
     keywords:
       'study in UK from Sri Lanka, UK student visa Sri Lanka, UK universities Sri Lankan students',
     canonical: '/study-abroad/uk.html',
   },
   'study-abroad/new-zealand.html': {
-    title: 'New Zealand Student Visa & Study Guide | LGA Visa',
+    title: 'Study in New Zealand from Sri Lanka | Visa Guide',
     description:
-      'Study in New Zealand from Sri Lanka: student visa guidance, universities, intakes, costs and application information from LGA Visa.',
+      'Plan to study in New Zealand from Sri Lanka? Explore student visa guidance, universities, costs and application steps with LGA Visa.',
     keywords:
       'study in New Zealand from Sri Lanka, New Zealand student visa, NZ universities Sri Lankan students',
     canonical: '/study-abroad/new-zealand.html',
   },
   'study-abroad/usa.html': {
-    title: 'USA Student Visa & Study Guide for Sri Lankan Students | LGA Visa',
+    title: 'Study in the USA from Sri Lanka | F-1 Visa Guide',
     description:
-      'Study in the USA from Sri Lanka: F-1 visa guidance, university options, scholarships and application support from LGA Visa.',
+      'Plan to study in the USA from Sri Lanka? Explore F-1 student visa guidance, university options and application steps with LGA Visa.',
     keywords:
       'study in USA from Sri Lanka, F-1 student visa Sri Lanka, US universities Sri Lankan students, OPT work visa',
     canonical: '/study-abroad/usa.html',
   },
   'universities/index.html': {
-    title: 'Universities Abroad for Sri Lankan Students | LGA Visa',
+    title: 'Overseas Universities for Sri Lankan Students | LGA Visa',
     description:
-      'Browse universities in Australia, Canada, the UK, New Zealand and the USA, with course and admissions information for Sri Lankan students.',
+      'Explore overseas universities for Sri Lankan students, with course and admissions information for Australia, Canada, the UK, New Zealand and USA.',
     keywords:
-      'universities for Sri Lankan students, best universities abroad, partner universities, study abroad institutions',
+      'overseas universities for Sri Lankan students, universities abroad from Sri Lanka, study abroad courses, international university admissions',
     canonical: '/universities/',
   },
   'universities/australia.html': {
@@ -130,9 +130,9 @@ const PAGES = {
     canonical: '/universities/usa.html',
   },
   'resources/blog.html': {
-    title: 'Study Abroad Guides & Visa Tips Sri Lanka | LGA Visa Blog',
+    title: 'Study Abroad & Student Visa Guides Sri Lanka | LGA Visa',
     description:
-      'Study abroad and student visa guides for Sri Lankan students, covering applications, SOP writing, IELTS/PTE, finances and destinations.',
+      'Practical study abroad and student visa guides for Sri Lankan students, covering applications, IELTS/PTE, finances and destination planning.',
     keywords: 'study abroad blog Sri Lanka, student visa guides, visa tips Sri Lanka',
     canonical: '/resources/blog.html',
   },
@@ -182,7 +182,7 @@ const PAGES = {
   'contact.html': {
     title: 'Contact LGA Visa | Student Visa Consultancy Nugegoda, Sri Lanka',
     description:
-      'Contact LGA Visa in Nugegoda, Sri Lanka to discuss student visa and study-abroad plans for Australia, Canada, the UK, New Zealand or USA.',
+      'Contact LGA Visa, a student visa consultancy in Nugegoda, Sri Lanka, for guidance on overseas study and student visa applications.',
     keywords: 'contact student visa consultant Sri Lanka, LGA Visa Nugegoda',
     canonical: '/contact.html',
   },
