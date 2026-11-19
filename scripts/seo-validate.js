@@ -76,7 +76,13 @@ for (const file of files) {
   if (!c) errors.push(`${rel}: missing canonical`);
   else {
     if (c) {
-      if (!c[1].startsWith('https://www.lgavisa.com')) errors.push(`${rel}: non-preferred canonical ${c[1]}`);
+      let canonicalOrigin;
+      try {
+        canonicalOrigin = new URL(c[1]).origin;
+      } catch {
+        canonicalOrigin = '';
+      }
+      if (canonicalOrigin !== SITE) errors.push(`${rel}: non-preferred canonical ${c[1]}`);
       if (canonicals.has(c[1]) && !isNoindex) errors.push(`${rel}: duplicate canonical ${c[1]} (also ${canonicals.get(c[1])})`);
       if (!canonicals.has(c[1])) canonicals.set(c[1], rel);
     }
@@ -114,9 +120,8 @@ for (const file of files) {
     const abs = target.startsWith('/')
       ? path.join(ROOT, target)
       : path.resolve(path.dirname(file), target);
-    const exists =
-      fs.existsSync(abs) ||
-      (fs.existsSync(abs) && fs.statSync(abs).isDirectory() && fs.existsSync(path.join(abs, 'index.html')));
+    const exists = fs.existsSync(abs) &&
+      (!fs.statSync(abs).isDirectory() || fs.existsSync(path.join(abs, 'index.html')));
     if (!exists) warnings.push(`${rel}: link target may be missing: ${href}`);
   }
 
@@ -126,6 +131,46 @@ for (const file of files) {
     const needle = canonicalPath === '/' ? '<loc>https://www.lgavisa.com/</loc>' : `<loc>${SITE}${canonicalPath}</loc>`;
     if (!sitemapXml.includes(needle)) errors.push(`${rel}: canonical not in sitemap.xml`);
   }
+}
+
+const homeHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+const homeTitle = (homeHtml.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '';
+const homeH1 = (homeHtml.match(/<h1[\s\S]*?<\/h1>/) || [])[0] || '';
+const ogSiteName = (homeHtml.match(/<meta\s+property="og:site_name"\s+content="([^"]*)"/) || [])[1];
+if (!decode(homeTitle).startsWith('LGA Visa')) errors.push('index.html: title should lead with the LGA Visa brand');
+if (!/LGA Visa/i.test(decode(homeH1))) errors.push('index.html: visible homepage heading should include LGA Visa');
+if (ogSiteName !== 'LGA Visa') errors.push(`index.html: og:site_name should be "LGA Visa" (got "${ogSiteName || 'missing'}")`);
+
+const homeLdBlocks = homeHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g) || [];
+const homeGraph = [];
+for (const block of homeLdBlocks) {
+  try {
+    const ld = JSON.parse(block.replace(/^[\s\S]*?>/, '').replace(/<\/script>[\s\S]*$/, ''));
+    homeGraph.push(...(Array.isArray(ld['@graph']) ? ld['@graph'] : [ld]));
+  } catch {
+    // The per-page JSON-LD parse check above reports malformed blocks.
+  }
+}
+const website = homeGraph.find((item) => item['@type'] === 'WebSite');
+if (!website || website.name !== 'LGA Visa' || website.url !== `${SITE}/`) {
+  errors.push('index.html: WebSite structured data should identify LGA Visa at the preferred homepage URL');
+} else if (!Array.isArray(website.alternateName) || !website.alternateName.includes('Lanka Global Access')) {
+  errors.push('index.html: WebSite structured data should include Lanka Global Access as an alternate name');
+}
+const organization = homeGraph.find((item) =>
+  Array.isArray(item['@type']) && item['@type'].includes('LocalBusiness')
+);
+const socialProfiles = [
+  'https://www.instagram.com/lga.visa/',
+  'https://www.facebook.com/lgavisa/',
+  'https://www.linkedin.com/company/lanka-global-access/',
+];
+if (
+  !organization ||
+  organization.logo !== `${SITE}/images/logo-navy.png` ||
+  !socialProfiles.every((url) => organization.sameAs?.includes(url))
+) {
+  errors.push('index.html: organization structured data should use the current logo and include all verified social profiles');
 }
 
 console.log(`Validated ${files.length} HTML files.`);

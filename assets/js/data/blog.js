@@ -95,50 +95,52 @@ const LGA_BLOG_POSTS = [
         title: 'Canada GIC Explained: Proof of Funds Without the Stress',
         category: 'Finances',
         date: '2026-05-22',
+        modified: '2026-11-19',
         readTime: '5 min',
         author: 'LGA Counselling Team',
-        excerpt: 'The Guaranteed Investment Certificate confuses more Canadian applicants than any other requirement. Here\'s exactly how it works in 2026.',
+        excerpt: 'Learn what a Canadian Guaranteed Investment Certificate is, how it may support a study permit application, and what to confirm with IRCC and your bank.',
         content: `
-            <p>If you're applying for a Canadian study permit, a <strong>GIC (Guaranteed Investment Certificate)</strong> is often your cleanest proof of funds and can speed up assessment. (Note: the Student Direct Stream / SDS that popularised the GIC was discontinued in November 2024, but a GIC remains strong evidence of genuine funds.)</p>
+            <p>A <strong>GIC (Guaranteed Investment Certificate)</strong> is a bank investment product that may be used as part of the financial evidence for a Canadian study permit application. It does not guarantee approval, and the financial documents required depend on the current rules and your circumstances. The Student Direct Stream (SDS) ended in November 2024; check current application instructions before relying on any older SDS checklist.</p>
             <h3>What it actually is</h3>
-            <p>You deposit roughly CAD 20,635 with a participating bank (Scotiabank, ICICI, SBI Canada, CIBC and others). After landing, the bank releases it back to you in monthly instalments over 12 months — essentially a built-in living-expense budget.</p>
-            <h3>Why visa officers like it</h3>
+            <p>A GIC is an investment held with a financial institution under its product terms. The required amount, eligible issuers, account activation process and payout schedule can vary. Do not rely on a fixed amount or payout description without checking directly with the bank and the current government instructions.</p>
+            <h3>How it may support your application</h3>
             <ul>
-                <li>Funds are verified by the bank itself — no document authenticity questions.</li>
-                <li>It demonstrates planning, not last-minute borrowing.</li>
-                <li>Combined with first-year tuition payment, it often speeds processing.</li>
+                <li>The issuer provides documentation about the investment and funds.</li>
+                <li>It can be considered alongside tuition, living costs, travel and other financial evidence.</li>
+                <li>Immigration officers assess the complete application; a GIC does not ensure a faster decision or visa approval.</li>
             </ul>
-            <h3>How to arrange one from Sri Lanka</h3>
+            <h3>What to check before arranging one</h3>
             <ol>
-                <li>Get your offer letter and apply to the bank online (passport + offer needed).</li>
-                <li>Transfer the amount through a licensed channel — keep every receipt.</li>
-                <li>Receive the Investment Balance Confirmation for your study permit file.</li>
-                <li>Activate the account after arrival; funds begin releasing within weeks.</li>
+                <li>Read the current IRCC proof-of-financial-support requirements and any local visa office instructions.</li>
+                <li>Confirm that the financial institution accepts applicants in your situation and review its current terms.</li>
+                <li>Check the amount, transfer method, documents, account activation steps and payout schedule directly with the issuer.</li>
+                <li>Keep the issuer's confirmation and include it with the other evidence requested for your application.</li>
             </ol>
-            <p>Budget note: the GIC covers living costs — you'll still show tuition payment/ability separately. Our finance team walks every Canada-bound client through the exact current amounts before lodgement.</p>`
+            <p>A GIC is only one possible part of your financial evidence. Requirements and amounts can change, so confirm them on the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html" target="_blank" rel="noopener noreferrer">official IRCC proof of financial support page</a> and with your financial institution before applying.</p>`
     },
     {
         id: 'post-study-work-rights-compared',
-        title: 'Post-Study Work Rights Compared: Australia, Canada, UK, NZ & USA',
+        title: 'Post-Study Work Options: Australia, Canada, UK, NZ & USA',
         category: 'Destinations',
         date: '2026-04-15',
+        modified: '2026-11-19',
         readTime: '8 min',
         author: 'LGA Research Desk',
-        excerpt: 'Where you study decides how long you can stay and work after graduating. We compare the headline rules across all five major destinations.',
+        excerpt: 'Compare post-study work options in Australia, Canada, the UK, New Zealand and the USA, with links to current official eligibility rules.',
         content: `
-            <p>For many families, post-study work rights tip the country decision as much as tuition. Here's the 2026 snapshot.</p>
+            <p>Post-study work options can be one factor when comparing destinations, but eligibility and duration depend on your course, qualification, circumstances and application date. These routes do not guarantee employment, permanent residence or another visa. Rules change, so use the official sources linked below before making plans.</p>
             <h3>Australia — Temporary Graduate (subclass 485)</h3>
-            <p>Bachelor graduates: about 2 years. Master's: usually 2–3 years depending on the qualification. Regional study can add extra time. Work limit during study: 48 hrs/fortnight.</p>
+            <p>The Temporary Graduate visa has different streams. Eligibility and stay period depend on factors including your qualification and the stream you apply under. Check the current <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485" target="_blank" rel="noopener noreferrer">Australian Department of Home Affairs subclass 485 guidance</a>.</p>
             <h3>Canada — PGWP</h3>
-            <p>Up to 3 years for programs of 2+ years at eligible DLIs. Open work permit — any employer. Strong PR bridges via Express Entry CEC and PNPs.</p>
+            <p>A Post-Graduation Work Permit is available only to eligible graduates and programs; a school's DLI status alone does not establish program eligibility. Permit duration depends on the program and other requirements. Review the current <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html" target="_blank" rel="noopener noreferrer">IRCC PGWP guidance</a>.</p>
             <h3>United Kingdom — Graduate Route</h3>
-            <p>Flat 2 years for bachelor's/master's completers, 3 for PhD. No job offer required, no salary threshold during the route — switch to skilled work later.</p>
+            <p>Under current GOV.UK rules, the Graduate visa lasts 2 years for applications made on or before 31 December 2026, and 18 months for applications made on or after 1 January 2027. Doctoral graduates can get 3 years. See the latest <a href="https://www.gov.uk/graduate-visa" target="_blank" rel="noopener noreferrer">UK Graduate visa eligibility and duration rules</a>.</p>
             <h3>New Zealand — Post-Study Work Visa</h3>
-            <p>Level 7 bachelor's+: up to 3 years depending on qualification. Employers can hire graduates in most roles without labour-market tests.</p>
+            <p>Eligible graduates may be able to stay and work for up to 3 years, depending on qualification level and study duration. Conditions differ by qualification and can restrict the work you do. Check Immigration New Zealand's <a href="https://www.immigration.govt.nz/visas/post-study-work-visa/" target="_blank" rel="noopener noreferrer">Post-Study Work Visa guidance</a>.</p>
             <h3>USA — OPT &amp; STEM OPT</h3>
-            <p>12 months of Optional Practical Training for F-1 graduates, extended by 24 more months for STEM-designated degrees. Employer-sponsored H-1B is the usual next step.</p>
+            <p>Eligible F-1 students may apply for up to 12 months of Optional Practical Training related to their major; some qualifying STEM graduates may apply for a 24-month extension subject to additional requirements. See <a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students" target="_blank" rel="noopener noreferrer">USCIS OPT guidance</a>.</p>
             <h3>How to choose</h3>
-            <p>Optimising purely on stay-back duration ignores employability: Canada rewards permanent-settlement intent; Australia favours regional campuses; the US pays highest but is lottery-driven. Book a counselling session — we model total outcomes per country against your profile.</p>`
+            <p>Compare the course and institution, total costs, work-route eligibility and your longer-term plans. Confirm requirements with the relevant government authority and university before committing; only immigration authorities decide visa applications.</p>`
     }
 ];
 

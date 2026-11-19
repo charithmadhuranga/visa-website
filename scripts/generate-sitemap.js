@@ -18,7 +18,7 @@ const SITE = 'https://www.lgavisa.com';
 
 /** Static pages: path → { priority, changefreq, lastmod } */
 const STATIC_PAGES = [
-  ['/', '1.00', 'weekly', '2026-10-22'],
+  ['/', '1.00', 'weekly', '2026-11-19'],
   ['/services/student-visa.html', '0.90', 'weekly', '2026-10-22'],
   ['/services/ielts-pte.html', '0.80', 'monthly', '2026-10-22'],
   ['/study-abroad/', '0.90', 'weekly', '2026-10-22'],
@@ -145,7 +145,7 @@ const html = `<!DOCTYPE html>
     <section class="page-hero text-center">
         <div class="container mx-auto px-6">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Site Map</h1>
-            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6">Every page on www.lgavisa.com — ${urls.length + 1} pages. Last updated 22 October 2026.</p>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6">Every page on www.lgavisa.com — ${urls.length + 1} pages. Last updated 19 November 2026.</p>
             <nav class="breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right text-xs mx-2"></i> Site Map</nav>
         </div>
     </section>

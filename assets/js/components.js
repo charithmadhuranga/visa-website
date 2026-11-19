@@ -168,10 +168,9 @@
                         </div>
                         <p class="text-[#C7CEDA] mb-4 text-sm">Your trusted partner for student visas and study abroad. From university admission to visa approval, we make your global education dreams a reality.</p>
                         <div class="flex space-x-3">
-                            <a href="#" aria-label="Facebook" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Twitter" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="YouTube" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-youtube"></i></a>
-                            <a href="#" aria-label="LinkedIn" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/lga.visa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/lgavisa/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/company/lanka-global-access/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 bg-[#16305A] rounded-full flex items-center justify-center hover:bg-[#C9A45C] transition-colors"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
 

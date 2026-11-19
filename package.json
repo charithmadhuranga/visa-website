@@ -10,7 +10,7 @@
     "sitemap": "node scripts/generate-sitemap.js",
     "sync:contact": "node scripts/sync-contact.js",
     "validate": "node scripts/seo-validate.js",
-    "build": "npm run sync:contact && npm run generate && npm run sitemap && npm run validate",
+    "build": "npm run sync:contact && npm run seo:metadata && npm run generate && npm run sitemap && npm run seo:structured-data && npm run validate",
     "predeploy-check": "npm run build"
   },
   "engines": {

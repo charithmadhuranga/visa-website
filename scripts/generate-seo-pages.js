@@ -21,7 +21,7 @@ const zlib = require('zlib');
 
 const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://www.lgavisa.com';
-const SITE_NAME = 'Lanka Global Access';
+const SITE_NAME = 'LGA Visa';
 const OG_IMAGE = `${SITE}/images/og/lga-og.png`;
 
 /* ---------------------------------------------------------------- load data */
@@ -166,7 +166,7 @@ function generateBlogPages() {
         description,
         image: OG_IMAGE,
         datePublished: post.date,
-        dateModified: post.date,
+        dateModified: post.modified || post.date,
         inLanguage: 'en',
         author: { '@type': 'Person', name: post.author },
         publisher: { '@id': `${SITE}/#organization` },
@@ -200,7 +200,7 @@ function generateBlogPages() {
                 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:text-gray-600 [&_ol]:space-y-2 [&_ol]:mb-4
                 [&_strong]:text-gray-800">
                 ${post.content}
-                <p class="text-xs text-gray-400 mt-10">Last reviewed: ${fmtDate(post.date)}. Rules and requirements change — confirm current details on official government websites.</p>
+                <p class="text-xs text-gray-400 mt-10">Last reviewed: ${fmtDate(post.modified || post.date)}. Rules and requirements change — confirm current details on official government websites.</p>
             </article>
 
             <aside class="space-y-8">
@@ -242,7 +242,7 @@ function generateBlogPages() {
       siteRoot: '../../',
     });
     fs.writeFileSync(path.join(outDir, `${post.id}.html`), html);
-    urls.push({ loc: canonicalPath, lastmod: post.date, priority: '0.70', changefreq: 'monthly' });
+    urls.push({ loc: canonicalPath, lastmod: post.modified || post.date, priority: '0.70', changefreq: 'monthly' });
     console.log(`  ✓ blog: ${canonicalPath}`);
   }
   return urls;
