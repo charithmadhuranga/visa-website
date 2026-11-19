@@ -44,6 +44,7 @@
                 { label: 'Study in USA', href: 'study-abroad/usa.html', icon: 'fa-flag-usa' },
             ],
         },
+        { label: 'Courses', href: 'courses.html' },
         {
             label: 'Universities',
             href: 'universities/index.html',
@@ -179,6 +180,7 @@
                         <ul class="space-y-2 text-[#C7CEDA]">
                             <li><a href="${navHref('about/index.html')}" class="hover:text-[#C9A45C] transition-colors">About Us</a></li>
                             <li><a href="${navHref('study-abroad/index.html')}" class="hover:text-[#C9A45C] transition-colors">Study Abroad</a></li>
+                            <li><a href="${navHref('courses.html')}" class="hover:text-[#C9A45C] transition-colors">Find Courses</a></li>
                             <li><a href="${navHref('universities/index.html')}" class="hover:text-[#C9A45C] transition-colors">Universities</a></li>
                             <li><a href="${navHref('resources/blog.html')}" class="hover:text-[#C9A45C] transition-colors">Blog</a></li>
                             <li><a href="${navHref('resources/faq.html')}" class="hover:text-[#C9A45C] transition-colors">FAQ</a></li>

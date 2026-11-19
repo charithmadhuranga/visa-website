@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore curated courses at overseas universities for Sri Lankan students. Filter by subject, destination, study level and intake, then view university details." />
+    <title>Find Courses Abroad by Subject | LGA Visa</title>
+    <link rel="shortcut icon" href="images/ico/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/ico/favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/ico/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/analytics.js"></script>
+
+    <!-- SEO:BEGIN -->
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="courses abroad for Sri Lankan students, overseas university courses, study abroad course search, international courses" />
+    <link rel="canonical" href="https://www.lgavisa.com/courses.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LGA Visa" />
+    <meta property="og:title" content="Find Courses Abroad by Subject | LGA Visa" />
+    <meta property="og:description" content="Explore curated courses at overseas universities for Sri Lankan students. Filter by subject, destination, study level and intake, then view university details." />
+    <meta property="og:url" content="https://www.lgavisa.com/courses.html" />
+    <meta property="og:image" content="https://www.lgavisa.com/images/og/lga-og.png" />
+    <meta property="og:locale" content="en_LK" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Find Courses Abroad by Subject | LGA Visa" />
+    <meta name="twitter:description" content="Explore curated courses at overseas universities for Sri Lankan students. Filter by subject, destination, study level and intake, then view university details." />
+    <meta name="twitter:image" content="https://www.lgavisa.com/images/og/lga-og.png" />
+    <!-- SEO:END -->
+</head>
+
+<body class="pt-[88px]">
+    <div class="loader" id="loader"><div class="spinner"></div></div>
+    <div id="site-header"></div>
+
+    <main>
+        <section class="relative overflow-hidden bg-gradient-to-br from-[#0B1F3A] via-[#16305A] to-[#0B1F3A] text-white">
+            <div class="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[#C9A45C]/10 blur-3xl" aria-hidden="true"></div>
+            <div class="container relative mx-auto max-w-7xl px-6 py-16 md:py-20" data-aos="fade-up">
+                <nav class="mb-6 text-sm text-blue-100" aria-label="Breadcrumb">
+                    <a href="index.html" class="hover:text-[#E3C88A]">Home</a>
+                    <i class="fas fa-chevron-right mx-2 text-xs" aria-hidden="true"></i>
+                    <span aria-current="page">Courses</span>
+                </nav>
+                <div class="max-w-3xl">
+                    <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-[#E3C88A]">
+                        <i class="fas fa-compass" aria-hidden="true"></i> Find your path
+                    </span>
+                    <h1 class="mb-5 text-4xl font-extrabold leading-tight md:text-6xl">Find a course that fits your future</h1>
+                    <p class="max-w-2xl text-lg leading-relaxed text-blue-100 md:text-xl">
+                        Explore a curated selection of courses from universities across Australia, Canada, the UK, New Zealand and the USA. Filter by subject, destination, study level or intake.
+                    </p>
+                </div>
+                <div class="mt-8 flex flex-wrap gap-3 text-sm text-blue-50">
+                    <span class="rounded-full bg-white/10 px-4 py-2"><i class="fas fa-graduation-cap mr-2 text-[#E3C88A]" aria-hidden="true"></i>Browse by subject</span>
+                    <span class="rounded-full bg-white/10 px-4 py-2"><i class="fas fa-globe mr-2 text-[#E3C88A]" aria-hidden="true"></i>Compare destinations</span>
+                    <span class="rounded-full bg-white/10 px-4 py-2"><i class="fas fa-calendar-days mr-2 text-[#E3C88A]" aria-hidden="true"></i>Check listed intakes</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#F5F6F8] py-10 md:py-14" aria-labelledby="course-results-heading">
+            <div class="container mx-auto max-w-7xl px-6">
+                <div class="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                        <p class="mb-1 text-sm font-bold uppercase tracking-widest text-[#A9813F]">Course finder</p>
+                        <h2 id="course-results-heading" class="text-2xl font-extrabold text-[#0B1F3A] md:text-3xl">Explore courses</h2>
+                    </div>
+                    <p id="course-count" class="text-sm font-semibold text-gray-600" aria-live="polite">Loading course catalogue…</p>
+                </div>
+
+                <div class="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+                    <aside class="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm lg:sticky lg:top-28" aria-label="Filter courses">
+                        <div class="mb-5 flex items-center justify-between">
+                            <h3 class="font-bold text-[#0B1F3A]"><i class="fas fa-sliders mr-2 text-[#C9A45C]" aria-hidden="true"></i>Filter courses</h3>
+                            <button type="button" id="clear-course-filters" class="text-sm font-semibold text-[#8A6A32] underline-offset-4 hover:underline">Clear all</button>
+                        </div>
+
+                        <label for="course-search" class="mb-2 block text-sm font-semibold text-gray-700">Search</label>
+                        <div class="relative mb-5">
+                            <i class="fas fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
+                            <input id="course-search" type="search" autocomplete="off" placeholder="Course or university" class="w-full rounded-xl border border-gray-200 py-3 pl-10 pr-3 text-sm outline-none transition focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label for="course-field" class="mb-2 block text-sm font-semibold text-gray-700">Field of study</label>
+                                <select id="course-field" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                                    <option value="">All fields</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="course-country" class="mb-2 block text-sm font-semibold text-gray-700">Destination</label>
+                                <select id="course-country" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                                    <option value="">All destinations</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="course-level" class="mb-2 block text-sm font-semibold text-gray-700">Study level</label>
+                                <select id="course-level" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                                    <option value="">All levels</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="course-intake" class="mb-2 block text-sm font-semibold text-gray-700">Intake</label>
+                                <select id="course-intake" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                                    <option value="">Any listed intake</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="mt-5 border-t border-gray-100 pt-4 text-xs leading-relaxed text-gray-500">Use one or more filters to narrow the list. Course availability and entry requirements can change; confirm current details with the university.</p>
+                    </aside>
+
+                    <div>
+                        <div id="course-grid" class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                            <p class="col-span-full rounded-2xl bg-white p-8 text-center text-gray-500">Loading courses…</p>
+                        </div>
+                        <div id="course-empty" class="hidden rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center">
+                            <span class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#F5F6F8] text-xl text-[#A9813F]"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></span>
+                            <h3 class="mb-2 text-lg font-bold text-[#0B1F3A]">No courses match those filters</h3>
+                            <p class="mb-5 text-sm text-gray-600">Try a different search or clear some filters to see more options.</p>
+                            <button type="button" id="empty-clear-filters" class="rounded-full bg-[#0B1F3A] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#16305A]">Clear filters</button>
+                        </div>
+                        <p class="mt-6 text-xs leading-relaxed text-gray-500">This finder displays a curated selection from the LGA Visa university directory; it is not a complete list of every course offered by each institution. Availability, entry criteria, fees and intakes may change. Contact LGA Visa in Nugegoda for guidance and confirm course details with the university.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white py-14 md:py-16">
+            <div class="container mx-auto max-w-5xl px-6 text-center">
+                <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A] md:text-3xl">Need help choosing a course?</h2>
+                <p class="mx-auto mb-7 max-w-2xl text-gray-600">Our team in Nugegoda can help you explore course options, compare destinations and understand the next steps for your application.</p>
+                <a href="contact.html" class="inline-flex items-center gap-2 rounded-full bg-[#C9A45C] px-7 py-3.5 font-bold text-[#0B1F3A] transition hover:-translate-y-0.5 hover:bg-[#E3C88A]">Talk to our team <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <p class="mt-5 text-sm text-gray-500"><a href="universities/index.html" class="font-semibold text-[#8A6A32] hover:underline">Browse all listed universities</a></p>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script>window.SITE_ROOT = './';</script>
+    <script src="assets/js/data/universities.js"></script>
+    <script src="assets/js/components.js?v=13"></script>
+    <script src="assets/js/site.js?v=3"></script>
+    <script src="assets/js/course-search.js"></script>
+</body>
+</html>

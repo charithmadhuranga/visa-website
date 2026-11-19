@@ -86,6 +86,14 @@ const PAGES = {
       'study in USA from Sri Lanka, F-1 student visa Sri Lanka, US universities Sri Lankan students, OPT work visa',
     canonical: '/study-abroad/usa.html',
   },
+  'courses.html': {
+    title: 'Find Courses Abroad by Subject | LGA Visa',
+    description:
+      'Explore curated courses at overseas universities for Sri Lankan students. Filter by subject, destination, study level and intake, then view university details.',
+    keywords:
+      'courses abroad for Sri Lankan students, overseas university courses, study abroad course search, international courses',
+    canonical: '/courses.html',
+  },
   'universities/index.html': {
     title: 'Overseas Universities for Sri Lankan Students | LGA Visa',
     description:

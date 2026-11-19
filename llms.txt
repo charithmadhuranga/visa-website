@@ -32,6 +32,7 @@ University admission and visa approval are separate decisions. Universities deci
 ## University directory
 
 - [Universities overview](https://www.lgavisa.com/universities/): Browse university information by destination.
+- [Course finder](https://www.lgavisa.com/courses.html): Search a curated selection of listed university courses by subject, destination, study level, intake, course name, or university. This is not a complete catalogue; confirm current availability and requirements with the university.
 - [Universities in Australia](https://www.lgavisa.com/universities/australia.html)
 - [Universities in Canada](https://www.lgavisa.com/universities/canada.html)
 - [Universities in the United Kingdom](https://www.lgavisa.com/universities/uk.html)
