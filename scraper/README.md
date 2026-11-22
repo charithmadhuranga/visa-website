@@ -14,6 +14,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # first tim
 .venv/bin/python details.py       # 2. school pages and program descriptions -> data/raw/schools/ (~50 min, resumable)
 .venv/bin/python scrape_schools.py  # 2b. MIT / Harvard: public ApplyBoard pages not in the search (no login)
 .venv/bin/python external.py      # 2c. hand-curated universities not on ApplyBoard: open data (see below)
+.venv/bin/python official.py      # 2d. UK / Canada / NZ curated universities: official course pages (~30 min)
 .venv/bin/python organize.py      # 3. clean, select and merge -> data/processed/ and the site data files
 cd .. && npm run build            # 4. university pages, directory, sitemap, SEO checks
 ```
@@ -53,7 +54,9 @@ The 30 universities in `assets/js/data/universities.js` always appear on the sit
 | College Scorecard, the U.S. Department of Education's open API | Fields of study at Stanford, Berkeley and UIUC |
 | Wikipedia and Wikidata (CC BY-SA, credited on each page) | About text, logo, campus image, founding year, coordinates, website and student numbers for every university not on ApplyBoard |
 
-UK, Canadian and New Zealand universities that aren't on ApplyBoard have no open course dataset. Their official course pages block automated access or are rendered with JavaScript, so they get a full profile but keep their hand-written course list.
+| Official university websites (`official.py`) | Courses at UK, Canadian and New Zealand universities that have no open course dataset (Toronto, UBC, McGill, McMaster, Oxford graduate courses, Imperial, Manchester, King's, Glasgow, Auckland, Otago, Canterbury, Massey, AUT) |
+
+`official.py` reads each site's `robots.txt` in the browser and follows it; Oxford's undergraduate listing is disallowed, so only Oxford's graduate courses are used. It uses a plain headless Chromium with no automation-hiding flags, loads one page at a time with a pause between pages, and skips any site that serves a bot challenge (Victoria University of Wellington). For each course it takes the official title, a short summary (meta description and opening paragraphs, with a link to the source), the duration and the level. Doctoral, certificate, diploma and online-only programmes are dropped.
 
 `organize.py` maps ApplyBoard's school names onto the site's names (`CANONICAL_UNIVERSITIES`). For example, "Royal Melbourne Institute of Technology (RMIT)" becomes RMIT University, and Harvard College, Harvard Business School and Harvard GSAS become Harvard University.
 

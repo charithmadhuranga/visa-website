@@ -104,6 +104,7 @@
                 nextDeadline: intakes.map(i => i.deadline).find(d => d && parseDate(d) >= today) || null,
                 months: new Set(intakes.map(i => parseDate(i.start).getMonth())),
                 hasSummary: !!row.x,
+                officialUrl: /^https:\/\//.test(row.o || '') ? row.o : '',
             };
             course.uniHref = `universities/${encodeURIComponent(course.country)}/${encodeURIComponent(course.uniId)}.html`;
             course.search = [course.name, course.subject, course.field, course.level, course.uni, course.city,
@@ -569,6 +570,7 @@
                     </table>
                 </div>
                 ${c.campuses.length > 1 ? `<h3 class="mb-2 font-bold text-[#0B1F3A]"><i class="fas fa-location-dot mr-2 text-[#C9A45C]" aria-hidden="true"></i>Available at ${c.campuses.length} campuses</h3><p class="mb-6 text-sm text-gray-600">${c.campuses.map(esc).join(' · ')}</p>` : ''}
+                ${c.officialUrl ? `<p class="-mt-3 mb-6 text-sm"><a href="${esc(c.officialUrl)}" target="_blank" rel="noopener" class="font-semibold text-[#8A6A32] hover:underline">View the official course page <i class="fas fa-arrow-up-right-from-square ml-1 text-xs" aria-hidden="true"></i></a></p>` : ''}
                 <a href="${c.uniHref}" class="mb-6 flex items-center gap-3 rounded-2xl border border-gray-100 p-4 transition hover:border-[#C9A45C]/60 hover:bg-[#FBF7EE]" data-country="${esc(c.country)}">
                     ${logoBox(c, 'h-10 w-10')}
                     <span class="min-w-0 flex-1"><span class="block truncate text-sm font-bold text-[#0B1F3A]">About ${esc(c.uni)}</span><span class="block text-xs text-gray-500">Campus, institution details and all listed courses</span></span>

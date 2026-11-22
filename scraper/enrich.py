@@ -189,8 +189,10 @@ def load_curated() -> dict[str, dict]:
         return {}
     src = CURATED_JS.read_text()
     out = {}
-    for m in re.finditer(r"id:\s*'([^']+)',\s*name:\s*'((?:[^'\\]|\\.)+)',\s*country:\s*'([^']+)'", src):
-        cid, name, country = m.group(1), m.group(2).replace("\\'", "'"), m.group(3)
+    pattern = (r"id:\s*['\"]([^'\"]+)['\"],\s*name:\s*(?:'((?:[^'\\]|\\.)+)'|\"((?:[^\"\\]|\\.)+)\"),"
+               r"\s*country:\s*['\"]([^'\"]+)['\"]")
+    for m in re.finditer(pattern, src):
+        cid, name, country = m.group(1), (m.group(2) or m.group(3)).replace("\\'", "'"), m.group(4)
         out[norm_name(name)] = {"id": cid, "country": country}
         out.setdefault(cid, {"id": cid, "country": country})
     return out

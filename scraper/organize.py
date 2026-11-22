@@ -36,7 +36,7 @@ SITE_ROOT = HERE.parent
 
 LEVELS = ["Bachelor's", "Master's", "MBA"]
 LEVEL_SHARE = {"Bachelor's": 0.45, "Master's": 0.35, "MBA": 0.20}
-COUNTRY_ORDER = ["australia", "canada", "uk", "usa"]
+COUNTRY_ORDER = ["australia", "canada", "uk", "usa", "new-zealand"]
 
 # Indicative conversion to USD, used only to let visitors compare and filter
 # fees across currencies. Update alongside each scrape.
@@ -253,6 +253,7 @@ def clean_program(p: dict, today: str) -> dict | None:
         "tags": sorted(set(tags)),
         "_rank": {"High": 0, "Medium": 1, "Low": 2}.get(p.get("successScore") or "", 3),
         "_schoolId": p["school"]["schoolId"],
+        "sourceUrl": p.get("sourceRef") if p.get("source") == "official-site" else None,
         "_schoolIds": [p["school"]["schoolId"]],
         "_programIds": [p["programId"]],
     }
@@ -426,6 +427,8 @@ def compact(courses: list[dict], universities: list[dict], generated_at: str) ->
             row["x"] = 1  # a full summary exists in course-summaries.json
         if len(c["campuses"]) > 1:
             row["cp"] = c["campuses"]
+        if c.get("sourceUrl"):
+            row["o"] = c["sourceUrl"]  # official course page
         rows.append(row)
     return {"generatedAt": generated_at, "levels": LEVELS, "universities": unis, "courses": rows}
 

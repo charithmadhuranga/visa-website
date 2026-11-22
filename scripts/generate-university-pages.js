@@ -28,6 +28,7 @@ const LEVELS = ["Bachelor's", "Master's", 'MBA'];
 const COURSE_SOURCES = {
   cricos: 'CRICOS, the Australian Government register of courses for international students',
   'college-scorecard': 'College Scorecard, U.S. Department of Education',
+  'official-site': "the university's official course pages",
 };
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -85,6 +86,7 @@ function buildRecords() {
       duration: durationText(c.durationMonths) || c.duration || '',
       intakes: (c.intakes || []).filter((i) => i.start >= today),
       summaryHtml: c.summaryHtml || '',
+      sourceUrl: c.sourceUrl || '',
       campuses: c.campuses || [],
     });
   }
@@ -198,6 +200,7 @@ function courseItem(c, r) {
                                 ${c.intakes.length ? `<p class="mt-3 text-xs text-gray-500"><strong class="text-gray-700">Upcoming intakes:</strong> ${c.intakes.map((i) => esc(fmtMonth(i.start))).join(' · ')}</p>` : ''}
                                 <div class="mt-4 flex flex-wrap gap-2">
                                     <a href="../../courses.html?course=${encodeURIComponent(c.key)}" class="rounded-xl border border-gray-200 px-4 py-2 text-sm font-bold text-[#0B1F3A] transition hover:border-[#0B1F3A]">Open in course finder</a>
+                                    ${c.sourceUrl ? `<a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener" class="rounded-xl border border-gray-200 px-4 py-2 text-sm font-bold text-[#8A6A32] transition hover:border-[#C9A45C]">Official course page <i class="fas fa-arrow-up-right-from-square ml-1 text-xs" aria-hidden="true"></i></a>` : ''}
                                     <a href="../../contact.html?${esc(new URLSearchParams({ course: c.name, university: r.name, country: r.country, level: c.level }).toString())}" class="rounded-xl bg-[#0B1F3A] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#16305A]">Enquire</a>
                                 </div>
                             </div>
