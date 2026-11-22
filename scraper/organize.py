@@ -136,13 +136,24 @@ def clean_text(value: str) -> str:
     return TRAILING_JUNK_RE.sub("", value).strip()
 
 
+# ApplyBoard school names that belong to a university already profiled on the
+# site under another name: (pattern on the base name, canonical name, keep
+# the school name as the "campus" label).
+CANONICAL_UNIVERSITIES = [
+    (re.compile(r"^Royal Melbourne Institute of Technology \(RMIT\)$"), "RMIT University", False),
+    (re.compile(r"^Harvard (College|Business School|Graduate School of Arts and Sciences)$"), "Harvard University", True),
+]
+
+
 def split_school(name: str) -> tuple[str, str]:
     """'Charles Sturt University -  Sydney' -> ('Charles Sturt University', 'Sydney')."""
     name = re.sub(r"\s+", " ", name or "").strip()
     parts = re.split(r"\s[-–—]\s", name, maxsplit=1)
-    if len(parts) == 2 and parts[1]:
-        return parts[0].strip(), parts[1].strip()
-    return name, ""
+    base, campus = (parts[0].strip(), parts[1].strip()) if len(parts) == 2 and parts[1] else (name, "")
+    for pattern, canonical, school_as_campus in CANONICAL_UNIVERSITIES:
+        if pattern.match(base):
+            return canonical, (base if school_as_campus else campus)
+    return base, campus
 
 
 def institution_type(name: str) -> str:
@@ -283,6 +294,29 @@ def candidate_key(c: dict):
     return (c["_rank"], 0 if c["intakes"] else 1, 0 if c["tuitionPerYear"] else 1, c["name"])
 
 
+def select_curated(courses: list[dict], curated_names: set[str], cap: int) -> list[dict]:
+    """Universities already profiled on the site get up to `cap` courses each,
+    spread across study levels and fields, chosen before the balanced pool."""
+    by_uni: dict[str, list[dict]] = defaultdict(list)
+    for c in courses:
+        if enrich.norm_name(c["university"]) in curated_names:
+            by_uni[c["university"]].append(c)
+    chosen = []
+    for uni, items in by_uni.items():
+        lanes: dict[tuple, list[dict]] = defaultdict(list)
+        for c in sorted(items, key=lambda c: (candidate_key(c), c["name"])):
+            lanes[(c["level"], c["field"])].append(c)
+        order = sorted(lanes, key=lambda k: (LEVELS.index(k[0]), -len(lanes[k]), k[1]))
+        picked, depth = [], 0
+        while len(picked) < min(cap, len(items)):
+            for key in order:
+                if depth < len(lanes[key]) and len(picked) < cap:
+                    picked.append(lanes[key][depth])
+            depth += 1
+        chosen += picked
+    return chosen
+
+
 def select(courses: list[dict], limit: int, per_uni: int) -> list[dict]:
     buckets: dict[tuple, list[dict]] = defaultdict(list)
     for c in courses:
@@ -402,6 +436,9 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=3000, help="courses to publish")
     parser.add_argument("--per-university", type=int, default=20,
                         help="max courses from one university (all campuses)")
+    parser.add_argument("--curated-cap", type=int, default=60,
+                        help="courses per university for universities profiled by hand on the site "
+                             "(added on top of --limit)")
     parser.add_argument("--site-file", default=str(SITE_ROOT / "assets" / "js" / "data" / "courses.js"))
     args = parser.parse_args()
 
@@ -411,7 +448,11 @@ def main() -> None:
 
     cleaned = [c for c in (clean_program(p, today) for p in raw["programs"]) if c]
     merged = merge_campuses(cleaned)
-    chosen = select(merged, args.limit, args.per_university)
+    curated_names = {k for k in enrich.load_curated()}  # normalised names and ids
+    curated_courses = select_curated(merged, curated_names, args.curated_cap)
+    taken = {id(c) for c in curated_courses}
+    rest = [c for c in merged if id(c) not in taken and enrich.norm_name(c["university"]) not in curated_names]
+    chosen = curated_courses + select(rest, args.limit, args.per_university)
     chosen.sort(key=lambda c: (COUNTRY_ORDER.index(c["country"]), LEVELS.index(c["level"]),
                                c["university"], c["name"]))
 

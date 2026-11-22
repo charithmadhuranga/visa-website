@@ -67,12 +67,18 @@
       "name": "University of Manchester",
       "url": "https://www.lgavisa.com/universities/uk/university-of-manchester.html",
       "sameAs": "https://www.manchester.ac.uk",
-      "description": "England's largest single-site university and home of the atom-splitting discovery — a huge international community in Britain's most student-friendly city.",
+      "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Manchester_University_Logo_%282%29.png?width=320",
+      "description": "The University of Manchester is a public research university in Manchester, England, with its main campus south of the city centre on Oxford Road. It is a red brick university, a product of the civic university movement of the late 19th century. The current institution was formed in 2004 through…",
       "foundingDate": "1824",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Manchester",
         "addressCountry": "United Kingdom"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.46611111111111,
+        "longitude": -2.2319444444444443
       }
     }
   ]
@@ -99,7 +105,7 @@
     <!-- generated:university-profile -->
     <main>
         <section class="relative overflow-hidden bg-[#0B1F3A] text-white">
-            
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Whitworth_Hall.jpg?width=1280" alt="University of Manchester campus" class="absolute inset-0 h-full w-full object-cover opacity-30" referrerpolicy="no-referrer" fetchpriority="high" onerror="this.remove()">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0B1F3A] via-[#0B1F3A]/90 to-[#0B1F3A]/60" aria-hidden="true"></div>
             <div class="container relative mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-14">
                 <nav class="mb-6 flex flex-wrap items-center gap-x-2 text-sm text-blue-100" aria-label="Breadcrumb">
@@ -109,7 +115,9 @@
                     <span aria-current="page" class="truncate">University of Manchester</span>
                 </nav>
                 <div class="flex flex-col gap-6 md:flex-row md:items-center">
-                    <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-2xl" style="background:#DBEAFE;color:#1D4ED8">UM</span></span>
+                    <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Manchester_University_Logo_%282%29.png?width=320" alt="University of Manchester logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-2xl',style:'color:#1D4ED8',textContent:'UM'}))">
+                    </span>
                     <div class="min-w-0 flex-1">
                         <p class="mb-2 text-sm font-semibold text-[#E3C88A]"><i class="fas fa-crown mr-1.5" aria-hidden="true"></i>Manchester, United Kingdom · Public (Russell Group) university</p>
                         <h1 class="text-3xl font-extrabold leading-tight md:text-5xl">University of Manchester</h1>
@@ -136,8 +144,9 @@
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>
                     <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A]">About University of Manchester</h2>
                     <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
-                        <div class="up-about" data-collapsed="true"><div class="up-prose"><p>England's largest single-site university and home of the atom-splitting discovery — a huge international community in Britain's most student-friendly city.</p></div></div>
+                        <div class="up-about" data-collapsed="true"><div class="up-prose"><p>The <strong>University of Manchester</strong> is a public research university in Manchester, England, with its main campus south of the city centre on Oxford Road. It is a red brick university, a product of the civic university movement of the late 19th century. The current institution was formed in 2004 through the merger of the University of Manchester Institute of Science and Technology (UMIST) and the Victoria University of Manchester. This merger followed a century of close collaboration between the two institutions.</p><p>UMIST traced its origins to the Manchester Mechanics' Institution, founded in 1824. The present University of Manchester regards this date, alongside that of the foundation of the ancestor of the Royal School of Medicine and Surgery—one of the predecessor institutions of the Victoria University of Manchester—as its official foundation year. The founders of the Mechanics' Institution believed that all professions depended, to some extent, on scientific principles. The institute therefore taught working individuals those branches of science relevant to their existing occupations, in the belief that practical application would encourage innovation and advancement within those fields. The Victoria University of Manchester was founded in 1851 as Owens College. Academic research undertaken by the university has been published via the Manchester University Press since 1904.</p><p>Manchester is the third-largest university in the United Kingdom by total enrolment and receives over 92,000 undergraduate applications per year, making it the most popular university in the UK by volume of applications. The University of Manchester is a member of the Russell Group, the N8 Group, and the US-based Universities Research Association. The university additionally owns and operates major cultural assets such as the Manchester Museum, the Whitworth art gallery, the John Rylands Library, the Tabley House Collection and the Jodrell Bank Observatory, a UNESCO World Heritage Site. The university and its predecessor institutions have had 26 Nobel laureates among their past and present students and staff.</p></div></div>
                         <button type="button" id="up-about-toggle" class="mt-3 hidden text-sm font-bold text-[#8A6A32] hover:underline">Read more</button>
+                        <p class="mt-4 border-t border-gray-100 pt-3 text-xs text-gray-500">Text adapted from <a href="https://en.wikipedia.org/wiki/University_of_Manchester" target="_blank" rel="noopener" class="underline hover:text-[#8A6A32]">Wikipedia</a>, available under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" class="underline hover:text-[#8A6A32]">CC BY-SA 4.0</a>.</p>
                     </div>
                 </section>
 
@@ -172,7 +181,16 @@
 
                 
 
-                
+                <section>
+                    <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A]">Campus location</h2>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-2xl border border-gray-100 bg-white p-5">
+                            <h3 class="font-bold text-[#0B1F3A]"><i class="fas fa-location-dot mr-2 text-[#C9A45C]" aria-hidden="true"></i>Main campus</h3>
+                            <p class="mt-1 text-sm text-gray-600"></p>
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=53.46611111111111,-2.2319444444444443" target="_blank" rel="noopener" class="mt-2 inline-block text-sm font-semibold text-[#8A6A32] hover:underline">View on map <i class="fas fa-arrow-up-right-from-square ml-1 text-xs" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <aside class="space-y-5 lg:sticky lg:top-28 lg:self-start">

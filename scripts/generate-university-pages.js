@@ -25,6 +25,10 @@ const SITE_NAME = 'LGA Visa';
 const OG_IMAGE = `${SITE}/images/og/lga-og.png`;
 const MARKER = '<!-- generated:university-profile -->';
 const LEVELS = ["Bachelor's", "Master's", 'MBA'];
+const COURSE_SOURCES = {
+  cricos: 'CRICOS, the Australian Government register of courses for international students',
+  'college-scorecard': 'College Scorecard, U.S. Department of Education',
+};
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const COUNTRY = {
@@ -107,8 +111,10 @@ function buildRecords() {
       type: u.type || (cur && cur.type) || '',
       founded: u.founded || (cur && cur.founded) || '',
       ranking: cur ? cur.ranking : '',
-      students: cur ? cur.students : '',
-      website: cur ? cur.website : '',
+      students: (cur && cur.students) || (u.students ? `${Number(u.students).toLocaleString('en-US')}+` : ''),
+      website: (cur && cur.website) || u.website || '',
+      aboutSource: u.aboutSource || null,
+      courseSource: u.courseSource || null,
       logoUrl: u.logoUrl || '',
       photos: u.photos || [],
       aboutHtml: u.aboutHtml || (cur ? `<p>${esc(cur.about)}</p>` : ''),
@@ -279,6 +285,7 @@ function page(r, related) {
                     </div>
                     <div id="up-course-list" class="space-y-3">${r.catalogueCourses.map((c) => courseItem(c, r)).join('')}
                     </div>
+                    ${COURSE_SOURCES[r.courseSource] ? `<p class="mt-3 text-xs text-gray-500">Course list: ${COURSE_SOURCES[r.courseSource]}. A selection of programs is shown — ask us about any course not listed.</p>` : ''}
                     <p id="up-course-empty" class="hidden rounded-2xl border border-dashed border-gray-300 bg-white p-6 text-center text-sm text-gray-500">No courses match your search.</p>
                 </section>` : r.curatedCourses.length ? `
                 <section id="courses" class="scroll-mt-28">
@@ -335,6 +342,7 @@ function page(r, related) {
                     <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
                         <div class="up-about" data-collapsed="true"><div class="up-prose">${r.aboutHtml}</div></div>
                         <button type="button" id="up-about-toggle" class="mt-3 hidden text-sm font-bold text-[#8A6A32] hover:underline">Read more</button>
+                        ${r.aboutSource && r.aboutSource.url ? `<p class="mt-4 border-t border-gray-100 pt-3 text-xs text-gray-500">Text adapted from <a href="${esc(r.aboutSource.url)}" target="_blank" rel="noopener" class="underline hover:text-[#8A6A32]">${esc(r.aboutSource.name)}</a>, available under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" class="underline hover:text-[#8A6A32]">${esc(r.aboutSource.license || 'CC BY-SA 4.0')}</a>.</p>` : ''}
                     </div>
                 </section>` : ''}
 

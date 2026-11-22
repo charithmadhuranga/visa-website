@@ -323,6 +323,10 @@ def build_universities(courses: list[dict], cleaned: list[dict], schools: dict[i
             "onCampusHousing": primary.get("onCampusHousing"),
             "accommodationHtml": sanitize(primary.get("accommodationHtml"), max_blocks=12),
             "curated": bool(match),
+            "aboutSource": primary.get("aboutSource"),
+            "website": primary.get("website"),
+            "students": primary.get("students"),
+            "courseSource": primary.get("courseSource") or "applyboard",
             "courseCount": len(items),
             "levels": dict(Counter(c["level"] for c in items)),
             "fields": dict(Counter(c["field"] for c in items).most_common()),
@@ -333,4 +337,34 @@ def build_universities(courses: list[dict], cleaned: list[dict], schools: dict[i
             c["universityCountry"] = site_country
             uni["courseIds"].append(c["key"])
         universities.append(uni)
+
+    # Profiles gathered from open data for curated universities that have no
+    # published courses (e.g. UK / Canada / New Zealand): profile-only records.
+    built = {u["id"] for u in universities}
+    for s in schools.values():
+        if not s.get("external"):
+            continue
+        match = curated.get(norm_name(s["name"])) or curated.get(s.get("curatedId") or "")
+        slug = match["id"] if match else slugify(s["name"])
+        if slug in built:
+            continue
+        loc = s.get("location") or {}
+        about = sanitize(s.get("aboutHtml"))
+        universities.append({
+            "id": slug, "name": s["name"], "country": match["country"] if match else s["country"],
+            "category": "University", "type": s.get("institutionType"), "founded": s.get("founded"),
+            "logoUrl": s.get("logoUrl"), "photos": s.get("photos") or [],
+            "aboutHtml": about, "aboutText": plain(about, 320),
+            "location": {"address": None, "city": loc.get("city"), "province": loc.get("province"),
+                         "latitude": loc.get("latitude"), "longitude": loc.get("longitude")},
+            "campuses": [{"name": "Main campus", "address": None, "city": loc.get("city"), "province": None,
+                          "latitude": loc.get("latitude"), "longitude": loc.get("longitude")}]
+            if loc.get("latitude") else [],
+            "programLevels": [], "topDisciplines": [], "typicalDuration": [],
+            "canWorkAndStudy": None, "coopParticipating": None, "onCampusHousing": None, "accommodationHtml": "",
+            "curated": bool(match), "aboutSource": s.get("aboutSource"), "website": s.get("website"),
+            "students": s.get("students"), "courseSource": None,
+            "courseCount": 0, "levels": {}, "fields": {}, "courseIds": [],
+        })
+        built.add(slug)
     return universities

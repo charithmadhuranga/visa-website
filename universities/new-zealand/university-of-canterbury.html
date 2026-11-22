@@ -67,12 +67,18 @@
       "name": "University of Canterbury",
       "url": "https://www.lgavisa.com/universities/new-zealand/university-of-canterbury.html",
       "sameAs": "https://www.canterbury.ac.nz",
-      "description": "Renowned engineering school in a rebuilding city full of civil-construction opportunity — generous scholarships for international students.",
+      "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_University_of_Canterbury.svg?width=320",
+      "description": "The University of Canterbury (Māori: Te Whare Wānanga o Waitaha) is a public research university based in Christchurch, New Zealand. It was founded in 1873 as Canterbury College, the first constituent college of the University of New Zealand. It is New Zealand's second-oldest university. Its…",
       "foundingDate": "1873",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Christchurch",
         "addressCountry": "New Zealand"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -43.52333333333333,
+        "longitude": 172.58194444444445
       }
     }
   ]
@@ -99,7 +105,7 @@
     <!-- generated:university-profile -->
     <main>
         <section class="relative overflow-hidden bg-[#0B1F3A] text-white">
-            
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/UC_CentralLibrary01_gobeirne.jpg?width=1280" alt="University of Canterbury campus" class="absolute inset-0 h-full w-full object-cover opacity-30" referrerpolicy="no-referrer" fetchpriority="high" onerror="this.remove()">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0B1F3A] via-[#0B1F3A]/90 to-[#0B1F3A]/60" aria-hidden="true"></div>
             <div class="container relative mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-14">
                 <nav class="mb-6 flex flex-wrap items-center gap-x-2 text-sm text-blue-100" aria-label="Breadcrumb">
@@ -109,7 +115,9 @@
                     <span aria-current="page" class="truncate">University of Canterbury</span>
                 </nav>
                 <div class="flex flex-col gap-6 md:flex-row md:items-center">
-                    <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-2xl" style="background:#D1FAE5;color:#047857">UC</span></span>
+                    <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_University_of_Canterbury.svg?width=320" alt="University of Canterbury logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-2xl',style:'color:#047857',textContent:'UC'}))">
+                    </span>
                     <div class="min-w-0 flex-1">
                         <p class="mb-2 text-sm font-semibold text-[#E3C88A]"><i class="fas fa-mountain-sun mr-1.5" aria-hidden="true"></i>Christchurch, New Zealand · Public university</p>
                         <h1 class="text-3xl font-extrabold leading-tight md:text-5xl">University of Canterbury</h1>
@@ -136,8 +144,9 @@
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>
                     <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A]">About University of Canterbury</h2>
                     <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
-                        <div class="up-about" data-collapsed="true"><div class="up-prose"><p>Renowned engineering school in a rebuilding city full of civil-construction opportunity — generous scholarships for international students.</p></div></div>
+                        <div class="up-about" data-collapsed="true"><div class="up-prose"><p>The <strong>University of Canterbury</strong> (Māori: <em>Te Whare Wānanga o Waitaha</em>) is a public research university based in Christchurch, New Zealand. It was founded in 1873 as <strong>Canterbury College</strong>, the first constituent college of the University of New Zealand. It is New Zealand's second-oldest university.</p><p>Its original campus was in the Christchurch Central City, but in 1961 it became an independent university and began moving out of its original neo-Gothic buildings, which were re-purposed as the Christchurch Arts Centre. The move was completed on 1 May 1975 and the university now operates its main campus in the Christchurch suburb of Ilam.</p><p>The university offers bachelors, masters, and doctoral degrees in, among others, Arts, Commerce, Education (physical education), Fine Arts, Forestry, Health Sciences, Law, Criminal Justice, Music, Social Work, Speech and Language Pathology, Sports Coaching and Teaching.</p></div></div>
                         <button type="button" id="up-about-toggle" class="mt-3 hidden text-sm font-bold text-[#8A6A32] hover:underline">Read more</button>
+                        <p class="mt-4 border-t border-gray-100 pt-3 text-xs text-gray-500">Text adapted from <a href="https://en.wikipedia.org/wiki/University_of_Canterbury" target="_blank" rel="noopener" class="underline hover:text-[#8A6A32]">Wikipedia</a>, available under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" class="underline hover:text-[#8A6A32]">CC BY-SA 4.0</a>.</p>
                     </div>
                 </section>
 
@@ -172,7 +181,16 @@
 
                 
 
-                
+                <section>
+                    <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A]">Campus location</h2>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-2xl border border-gray-100 bg-white p-5">
+                            <h3 class="font-bold text-[#0B1F3A]"><i class="fas fa-location-dot mr-2 text-[#C9A45C]" aria-hidden="true"></i>Main campus</h3>
+                            <p class="mt-1 text-sm text-gray-600"></p>
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=-43.52333333333333,172.58194444444445" target="_blank" rel="noopener" class="mt-2 inline-block text-sm font-semibold text-[#8A6A32] hover:underline">View on map <i class="fas fa-arrow-up-right-from-square ml-1 text-xs" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <aside class="space-y-5 lg:sticky lg:top-28 lg:self-start">
@@ -199,19 +217,29 @@
                     <h2 class="mb-3 font-bold text-[#0B1F3A]">Also in New Zealand</h2>
                     <div class="space-y-2">
                         <a href="auckland-university-of-technology.html" class="flex items-center gap-3 rounded-2xl p-2 transition hover:bg-[#F5F6F8]">
-                            <span class="flex h-10 w-10 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-xs" style="background:#D1FAE5;color:#047857">AU</span></span>
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_Auckland_University_of_Technology.svg?width=320" alt="Auckland University of Technology (AUT) logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-xs',style:'color:#047857',textContent:'AU'}))">
+                    </span>
                             <span class="min-w-0"><span class="block truncate text-sm font-bold text-[#0B1F3A]">Auckland University of Technology (AUT)</span><span class="block text-xs text-gray-500">Auckland · 4 courses</span></span>
                         </a><a href="massey-university.html" class="flex items-center gap-3 rounded-2xl p-2 transition hover:bg-[#F5F6F8]">
-                            <span class="flex h-10 w-10 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-xs" style="background:#D1FAE5;color:#047857">MU</span></span>
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Massey_University_Manawat%C5%AB_campus_2010.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=original" alt="Massey University logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-xs',style:'color:#047857',textContent:'MU'}))">
+                    </span>
                             <span class="min-w-0"><span class="block truncate text-sm font-bold text-[#0B1F3A]">Massey University</span><span class="block text-xs text-gray-500">Palmerston North / Auckland · 4 courses</span></span>
                         </a><a href="university-of-auckland.html" class="flex items-center gap-3 rounded-2xl p-2 transition hover:bg-[#F5F6F8]">
-                            <span class="flex h-10 w-10 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-xs" style="background:#D1FAE5;color:#047857">UA</span></span>
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://thumb.wikimedia.org/wikipedia/en/thumb/d/d9/University_of_Auckland_logo.svg/330px-University_of_Auckland_logo.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" alt="University of Auckland logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-xs',style:'color:#047857',textContent:'UA'}))">
+                    </span>
                             <span class="min-w-0"><span class="block truncate text-sm font-bold text-[#0B1F3A]">University of Auckland</span><span class="block text-xs text-gray-500">Auckland · 4 courses</span></span>
                         </a><a href="university-of-otago.html" class="flex items-center gap-3 rounded-2xl p-2 transition hover:bg-[#F5F6F8]">
-                            <span class="flex h-10 w-10 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-xs" style="background:#D1FAE5;color:#047857">UO</span></span>
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/University_of_Otago_Logo.jpg?width=320" alt="University of Otago logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-xs',style:'color:#047857',textContent:'UO'}))">
+                    </span>
                             <span class="min-w-0"><span class="block truncate text-sm font-bold text-[#0B1F3A]">University of Otago</span><span class="block text-xs text-gray-500">Dunedin · 4 courses</span></span>
                         </a><a href="victoria-university-wellington.html" class="flex items-center gap-3 rounded-2xl p-2 transition hover:bg-[#F5F6F8]">
-                            <span class="flex h-10 w-10 shrink-0 overflow-hidden rounded-2xl" aria-hidden="true"><span class="flex h-full w-full items-center justify-center font-extrabold text-xs" style="background:#D1FAE5;color:#047857">VU</span></span>
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+                        <img src="https://thumb.wikimedia.org/wikipedia/en/thumb/4/45/Victoria_University_of_Wellington_logo.svg/330px-Victoria_University_of_Wellington_logo.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" alt="Victoria University of Wellington (Te Herenga Waka) logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-xs',style:'color:#047857',textContent:'VU'}))">
+                    </span>
                             <span class="min-w-0"><span class="block truncate text-sm font-bold text-[#0B1F3A]">Victoria University of Wellington (Te Herenga Waka)</span><span class="block text-xs text-gray-500">Wellington · 4 courses</span></span>
                         </a>
                     </div>

@@ -12,6 +12,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # first tim
 
 .venv/bin/python scrape.py        # 1. search results -> data/raw/programs.json             (~3 min)
 .venv/bin/python details.py       # 2. school pages and program descriptions -> data/raw/schools/ (~50 min, resumable)
+.venv/bin/python scrape_schools.py  # 2b. MIT / Harvard: public ApplyBoard pages not in the search (no login)
+.venv/bin/python external.py      # 2c. hand-curated universities not on ApplyBoard: open data (see below)
 .venv/bin/python organize.py      # 3. clean, select and merge -> data/processed/ and the site data files
 cd .. && npm run build            # 4. university pages, directory, sitemap, SEO checks
 ```
@@ -39,6 +41,21 @@ Fees remain in `data/processed/courses.json` for reference, but they are never p
 - `organize.py`: cleans and selects the courses (removing online-only programs and catalogue codes, merging campuses, sorting into fields, balancing by country, level and university).
 - `enrich.py`: sanitises the HTML (allowing only `p`, `h4`, `ul`/`ol`/`li`, `strong` and `em`, and removing text that promotes the source platform), attaches program summaries, builds university records and matches them to the hand-curated profiles in `assets/js/data/universities.js`.
 - `diagnose*.py`, `probe*.py`: one-off scripts used to explore the API. `session.py` is an older approach that nothing uses.
+
+## Universities profiled by hand on the site
+
+The 30 universities in `assets/js/data/universities.js` always appear on the site, with up to 60 courses each (`organize.py --curated-cap`) added on top of the balanced 3,000-course pool.
+
+| Source | Used for |
+|---|---|
+| ApplyBoard | RMIT, MIT, Harvard, Waterloo, Edinburgh, Arizona State |
+| CRICOS, the Australian Government's register of courses for international students (data.gov.au, open data) | Courses at Melbourne, ANU, Sydney, Monash and UQ |
+| College Scorecard, the U.S. Department of Education's open API | Fields of study at Stanford, Berkeley and UIUC |
+| Wikipedia and Wikidata (CC BY-SA, credited on each page) | About text, logo, campus image, founding year, coordinates, website and student numbers for every university not on ApplyBoard |
+
+UK, Canadian and New Zealand universities that aren't on ApplyBoard have no open course dataset. Their official course pages block automated access or are rendered with JavaScript, so they get a full profile but keep their hand-written course list.
+
+`organize.py` maps ApplyBoard's school names onto the site's names (`CANONICAL_UNIVERSITIES`). For example, "Royal Melbourne Institute of Technology (RMIT)" becomes RMIT University, and Harvard College, Harvard Business School and Harvard GSAS become Harvard University.
 
 ## Notes
 
