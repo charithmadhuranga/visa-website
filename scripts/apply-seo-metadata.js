@@ -89,7 +89,7 @@ const PAGES = {
   'courses.html': {
     title: 'Find Courses Abroad by Subject | LGA Visa',
     description:
-      'Explore curated courses at overseas universities for Sri Lankan students. Filter by subject, destination, study level and intake, then view university details.',
+      "Explore bachelor's, master's and MBA courses at overseas universities for Sri Lankan students. Filter by subject, destination or study level, then view details.",
     keywords:
       'courses abroad for Sri Lankan students, overseas university courses, study abroad course search, international courses',
     canonical: '/courses.html',

@@ -100,7 +100,6 @@ const LGA_UNIVERSITIES = [
             { name: 'Bachelor of Information Technology', level: "Bachelor's", duration: '3 years', intakes: ['Feb', 'Jul'] },
             { name: 'Master of Engineering (Telecommunications)', level: "Master's", duration: '2 years', intakes: ['Feb', 'Jul'] },
             { name: 'Master of Design Innovation & Technology', level: "Master's", duration: '2 years', intakes: ['Feb', 'Jul'] },
-            { name: 'Associate Degree in Aviation (Pilot)', level: 'Associate', duration: '2 years', intakes: ['Feb', 'Jul'] },
         ],
     },
 
@@ -178,21 +177,6 @@ const LGA_UNIVERSITIES = [
             { name: 'MEng in Manufacturing Engineering', level: "Master's", duration: '1–2 years', intakes: ['Sep', 'Jan'] },
             { name: 'Bachelor of Health Sciences', level: "Bachelor's", duration: '4 years', intakes: ['Sep'] },
             { name: 'Master of Business Administration (MBA)', level: "MBA", duration: '12–27 months', intakes: ['Aug'] },
-        ],
-    },
-    {
-        id: 'centennial-college',
-        name: 'Centennial College',
-        country: 'canada', city: 'Toronto', type: 'Public College', founded: 1966,
-        ranking: 'Top public college in Ontario',
-        students: '45,000+',
-        website: 'https://www.centennialcollege.ca',
-        about: 'Career-focused diplomas and postgraduate certificates with co-op options — an affordable gateway to Canadian employment and PR pathways.',
-        courses: [
-            { name: 'Postgraduate Certificate in AI & Product Development', level: 'Certificate', duration: '1 year', intakes: ['Jan', 'May', 'Sep'] },
-            { name: 'Diploma in Business Administration', level: 'Diploma', duration: '2 years', intakes: ['Jan', 'Sep'] },
-            { name: 'Advanced Diploma in Computer Systems Technology', level: 'Advanced Diploma', duration: '3 years', intakes: ['Sep'] },
-            { name: 'Certificate in Hospitality Operations', level: 'Certificate', duration: '1 year', intakes: ['Jan', 'Sep'] },
         ],
     },
 

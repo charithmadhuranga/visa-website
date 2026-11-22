@@ -1,5 +1,10 @@
 /* Course finder for the curated university catalogue. */
 (function () {
+    /* Degree levels offered by the finder — everything else (certificate,
+     * diploma, associate, advanced diploma) is excluded from the results
+     * and from the study-level filter. */
+    const LEVELS = ["Bachelor's", "Master's", "MBA"];
+
     const FIELD_RULES = [
         ['Engineering & Technology', /\b(engineer|engineering|bioengineering)\b/i],
         ['Computing & Data', /\b(computer|computing|information technology|data science|cyber|software|artificial intelligence|machine learning|applied computing)\b/i],
@@ -48,18 +53,19 @@
         }
 
         const courses = LGA_UNIVERSITIES.flatMap(university =>
-            university.courses.map(course => ({
-                ...course,
-                university,
-                field: courseField(course.name),
-            }))
+            university.courses
+                .filter(course => LEVELS.includes(course.level))
+                .map(course => ({
+                    ...course,
+                    university,
+                    field: courseField(course.name),
+                }))
         );
 
         const searchInput = document.getElementById('course-search');
         const fieldFilter = document.getElementById('course-field');
         const countryFilter = document.getElementById('course-country');
         const levelFilter = document.getElementById('course-level');
-        const intakeFilter = document.getElementById('course-intake');
         const count = document.getElementById('course-count');
         const empty = document.getElementById('course-empty');
 
@@ -70,18 +76,13 @@
             countryFilter.add(new Option(country.name, key));
         });
 
-        [...new Set(courses.map(course => course.level))].sort((a, b) => a.localeCompare(b))
-            .forEach(level => levelFilter.add(new Option(level, level)));
-        [...new Set(courses.flatMap(course => course.intakes || []))]
-            .sort((a, b) => a.localeCompare(b))
-            .forEach(intake => intakeFilter.add(new Option(intake, intake)));
+        LEVELS.forEach(level => levelFilter.add(new Option(level, level)));
 
         function render() {
             const query = searchInput.value.trim().toLocaleLowerCase();
             const selectedField = fieldFilter.value;
             const selectedCountry = countryFilter.value;
             const selectedLevel = levelFilter.value;
-            const selectedIntake = intakeFilter.value;
 
             const filtered = courses.filter(course => {
                 const searchable = [
@@ -95,8 +96,7 @@
                 return (!query || searchable.includes(query))
                     && (!selectedField || course.field === selectedField)
                     && (!selectedCountry || course.university.country === selectedCountry)
-                    && (!selectedLevel || course.level === selectedLevel)
-                    && (!selectedIntake || (course.intakes || []).includes(selectedIntake));
+                    && (!selectedLevel || course.level === selectedLevel);
             });
 
             count.textContent = `${filtered.length} ${filtered.length === 1 ? 'course' : 'courses'} found`;
@@ -135,13 +135,12 @@
             fieldFilter.value = '';
             countryFilter.value = '';
             levelFilter.value = '';
-            intakeFilter.value = '';
             render();
             searchInput.focus();
         }
 
         searchInput.addEventListener('input', render);
-        [fieldFilter, countryFilter, levelFilter, intakeFilter].forEach(filter => filter.addEventListener('change', render));
+        [fieldFilter, countryFilter, levelFilter].forEach(filter => filter.addEventListener('change', render));
         document.getElementById('clear-course-filters').addEventListener('click', clearFilters);
         document.getElementById('empty-clear-filters').addEventListener('click', clearFilters);
         render();
