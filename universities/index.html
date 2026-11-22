@@ -72,10 +72,17 @@
     <section class="page-hero text-center">
         <div class="container mx-auto px-6" data-aos="fade-up">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Universities &amp; Colleges</h1>
-            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6">30+ trusted institutions across five countries — find your university and the courses it offers.</p>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6"><span data-uni-count="all">400+</span> universities and colleges across five countries, with <span data-course-count="all">3,000</span> courses — find your institution and see what it offers.</p>
             <nav class="breadcrumb">
                 <a href="../index.html">Home</a> <i class="fas fa-chevron-right text-xs mx-2"></i> Universities
             </nav>
+        </div>
+    </section>
+
+    <!-- Search all institutions -->
+    <section class="bg-white pt-12">
+        <div class="container mx-auto max-w-3xl px-4 sm:px-6">
+            <div data-lga-uni-search></div>
         </div>
     </section>
 
@@ -86,7 +93,7 @@
             <a href="australia.html" class="group block bg-gray-50 rounded-2xl overflow-hidden shadow-md card-hover" data-aos="fade-up">
                 <div class="h-40 flex items-center justify-center gap-4 text-white" style="background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);">
                     <i class="fas fa-earth-oceania text-5xl group-hover:scale-110 transition-transform duration-500"></i>
-                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">6 institutions</span>
+                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full"><span data-uni-count="australia">…</span> institutions</span>
                 </div>
                 <div class="p-7">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Australia</h3>
@@ -98,7 +105,7 @@
             <a href="canada.html" class="group block bg-gray-50 rounded-2xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="50">
                 <div class="h-40 flex items-center justify-center gap-4 text-white" style="background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);">
                     <i class="fas fa-leaf text-5xl group-hover:scale-110 transition-transform duration-500"></i>
-                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">6 institutions</span>
+                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full"><span data-uni-count="canada">…</span> institutions</span>
                 </div>
                 <div class="p-7">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Canada</h3>
@@ -110,7 +117,7 @@
             <a href="uk.html" class="group block bg-gray-50 rounded-2xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="100">
                 <div class="h-40 flex items-center justify-center gap-4 text-white" style="background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);">
                     <i class="fas fa-crown text-5xl group-hover:scale-110 transition-transform duration-500"></i>
-                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">6 institutions</span>
+                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full"><span data-uni-count="uk">…</span> institutions</span>
                 </div>
                 <div class="p-7">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">United Kingdom</h3>
@@ -122,7 +129,7 @@
             <a href="new-zealand.html" class="group block bg-gray-50 rounded-2xl overflow-hidden shadow-md card-hover" data-aos="fade-up">
                 <div class="h-40 flex items-center justify-center gap-4 text-white" style="background: linear-gradient(135deg, #047857 0%, #065f46 100%);">
                     <i class="fas fa-mountain-sun text-5xl group-hover:scale-110 transition-transform duration-500"></i>
-                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">6 institutions</span>
+                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full"><span data-uni-count="new-zealand">…</span> institutions</span>
                 </div>
                 <div class="p-7">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">New Zealand</h3>
@@ -134,7 +141,7 @@
             <a href="usa.html" class="group block bg-gray-50 rounded-2xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="50">
                 <div class="h-40 flex items-center justify-center gap-4 text-white" style="background: linear-gradient(135deg, #b45309 0%, #92400e 100%);">
                     <i class="fas fa-flag-usa text-5xl group-hover:scale-110 transition-transform duration-500"></i>
-                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">6 institutions</span>
+                    <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full"><span data-uni-count="usa">…</span> institutions</span>
                 </div>
                 <div class="p-7">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">USA</h3>
@@ -166,5 +173,7 @@
     <script>window.SITE_ROOT = '../';</script>
     <script src="../assets/js/components.js?v=12"></script>
     <script src="../assets/js/site.js?v=3"></script>
+    <script src="../assets/js/data/university-directory.js"></script>
+    <script src="../assets/js/catalogue-widgets.js?v=1"></script>
 </body>
 </html>

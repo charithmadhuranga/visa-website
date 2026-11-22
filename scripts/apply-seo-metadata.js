@@ -87,11 +87,11 @@ const PAGES = {
     canonical: '/study-abroad/usa.html',
   },
   'courses.html': {
-    title: 'Find Courses Abroad by Subject | LGA Visa',
+    title: 'Course Finder: Study Abroad Courses & Fees | LGA Visa',
     description:
-      "Explore bachelor's, master's and MBA courses at overseas universities for Sri Lankan students. Filter by subject, destination or study level, then view details.",
+      "Search 3,000 bachelor's, master's and MBA courses in Australia, Canada, the UK and USA. Compare programs, duration and intakes for Sri Lankan students.",
     keywords:
-      'courses abroad for Sri Lankan students, overseas university courses, study abroad course search, international courses',
+      'courses abroad for Sri Lankan students, study abroad course finder, overseas university programs, bachelor master MBA abroad, university intakes 2027',
     canonical: '/courses.html',
   },
   'universities/index.html': {

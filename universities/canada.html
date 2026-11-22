@@ -76,7 +76,7 @@
         <div class="container mx-auto px-6" data-aos="fade-up">
             <i class="fas fa-leaf text-5xl mb-4 opacity-80"></i>
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Universities in Canada</h1>
-            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6"><span id="uni-count">…</span> trusted institutions — click any university to see its profile and courses.</p>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-6"><span id="uni-count">…</span> institutions — search, compare and open any profile to see its courses.</p>
             <nav class="breadcrumb">
                 <a href="../index.html">Home</a> <i class="fas fa-chevron-right text-xs mx-2"></i>
                 <a href="index.html">Universities</a> <i class="fas fa-chevron-right text-xs mx-2"></i> Canada
@@ -85,9 +85,22 @@
     </section>
 
     <!-- University Grid -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div id="university-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="mb-6 flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-3 shadow-sm sm:p-4 md:flex-row md:items-center">
+                <label class="relative flex-1"><span class="sr-only">Search institutions</span>
+                    <i class="fas fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
+                    <input id="uni-search" type="search" autocomplete="off" placeholder="Search by name, city or subject" class="w-full rounded-xl border border-gray-200 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                </label>
+                <div class="flex gap-2">
+                    <label class="flex-1"><span class="sr-only">Institution type</span><select id="uni-type" class="w-full rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm"><option value="">All institution types</option></select></label>
+                    <label class="flex-1"><span class="sr-only">Sort institutions</span><select id="uni-sort" class="w-full rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm"><option value="courses">Most courses</option><option value="name">Name A–Z</option><option value="founded">Oldest first</option></select></label>
+                </div>
+            </div>
+            <p id="uni-shown" class="mb-4 text-sm font-semibold text-gray-600" aria-live="polite"></p>
+            <div id="university-grid" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3"></div>
+            <div class="mt-8 text-center"><button type="button" id="uni-more" class="hidden rounded-full bg-[#0B1F3A] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#16305A]">Show more institutions</button></div>
+            <div class="mt-10 text-center"><a href="../courses.html?country=canada" class="inline-flex items-center gap-2 font-bold text-[#8A6A32] hover:underline">Browse all courses in Canada <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
 
             <div class="text-center mt-14" data-aos="fade-up">
                 <p class="text-gray-600 mb-5">Planning to apply to Canada? We handle everything from application to visa.</p>
@@ -104,8 +117,8 @@
     <script>window.SITE_ROOT = '../';</script>
     <script src="../assets/js/components.js?v=12"></script>
     <script src="../assets/js/site.js?v=3"></script>
-    <script src="../assets/js/data/universities.js"></script>
-    <script src="../assets/js/university-list.js"></script>
+    <script src="../assets/js/data/university-directory.js"></script>
+    <script src="../assets/js/university-list.js?v=2"></script>
     <script>window.addEventListener('DOMContentLoaded', () => renderUniversityCountryPage('canada'));</script>
 </body>
 </html>

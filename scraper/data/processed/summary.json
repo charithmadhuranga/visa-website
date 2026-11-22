@@ -1,0 +1,54 @@
+{
+ "generatedAt": "2026-11-22T15:11:57.347019+00:00",
+ "rawPrograms": 14037,
+ "afterCleaning": 14028,
+ "afterCampusMerge": 12475,
+ "published": 3000,
+ "universities": 415,
+ "byCountry": {
+  "australia": 508,
+  "canada": 757,
+  "uk": 869,
+  "usa": 866
+ },
+ "byLevel": {
+  "Bachelor's": 1524,
+  "Master's": 1054,
+  "MBA": 422
+ },
+ "byCountryLevel": {
+  "australia/Bachelor's": 296,
+  "australia/MBA": 21,
+  "australia/Master's": 191,
+  "canada/Bachelor's": 413,
+  "canada/MBA": 56,
+  "canada/Master's": 288,
+  "uk/Bachelor's": 398,
+  "uk/MBA": 176,
+  "uk/Master's": 295,
+  "usa/Bachelor's": 417,
+  "usa/MBA": 169,
+  "usa/Master's": 280
+ },
+ "byField": {
+  "Business & Management": 996,
+  "Computing & IT": 506,
+  "Arts, Media & Design": 252,
+  "Health & Nursing": 250,
+  "Social Sciences & Psychology": 239,
+  "Engineering & Construction": 233,
+  "Science & Environment": 140,
+  "Law & Criminology": 127,
+  "Education & Teaching": 105,
+  "Data & Analytics": 89,
+  "Hospitality & Tourism": 44,
+  "Other": 19
+ },
+ "withUpcomingIntake": 3000,
+ "withSummary": 2979,
+ "schoolsWithDetails": 581,
+ "universitiesWithAbout": 415,
+ "universitiesWithLogo": 413,
+ "universitiesMatchedToCurated": 3,
+ "maxPerUniversity": 20
+}

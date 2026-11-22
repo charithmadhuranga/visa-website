@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Explore bachelor's, master's and MBA courses at overseas universities for Sri Lankan students. Filter by subject, destination or study level, then view details." />
-    <title>Find Courses Abroad by Subject | LGA Visa</title>
+    <meta name="description" content="Search 3,000 bachelor's, master's and MBA courses in Australia, Canada, the UK and USA. Compare programs, duration and intakes for Sri Lankan students." />
+    <title>Course Finder: Study Abroad Courses & Fees | LGA Visa</title>
     <link rel="shortcut icon" href="images/ico/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="images/ico/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="images/ico/favicon-48x48.png">
@@ -13,140 +13,269 @@
     <link rel="stylesheet" href="assets/css/site.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/analytics.js"></script>
 
+    <style>
+        .cf-scroll { scrollbar-width: thin; scrollbar-color: #D6D9E0 transparent; }
+        .cf-check { accent-color: #C9A45C; width: 1rem; height: 1rem; }
+        .cf-chip[aria-pressed="true"] { background: #0B1F3A; color: #fff; border-color: #0B1F3A; }
+        .cf-range { accent-color: #C9A45C; }
+        .cf-card-list { display: grid; grid-template-columns: minmax(0, 1fr); }
+        @media (min-width: 768px) {
+            .cf-card-list .cf-card { flex-direction: row; align-items: stretch; }
+            .cf-card-list .cf-card-main { flex: 1 1 auto; }
+            .cf-card-list .cf-card-side { width: 260px; border-top: 0; border-left: 1px solid #F1F2F4; }
+        }
+        .cf-skeleton { background: linear-gradient(90deg, #EEF0F3 25%, #F7F8FA 37%, #EEF0F3 63%); background-size: 400% 100%; animation: cf-shimmer 1.4s ease infinite; }
+        @keyframes cf-shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+        #cf-filters-panel.cf-open { transform: translateX(0); }
+        /* Course detail dialog. Tailwind's preflight sets margin:0 on every
+         * element, which strips the browser's centring of <dialog>, so the
+         * position and size are set explicitly here. */
+        dialog#cf-modal {
+            position: fixed; inset: 0; margin: auto; padding: 0; border: 0;
+            width: min(48rem, calc(100vw - 2rem)); max-width: none;
+            height: fit-content;
+            max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem);
+            overflow: hidden; border-radius: 1.5rem; background: #fff; color: inherit;
+            box-shadow: 0 25px 60px -12px rgba(11, 31, 58, .45);
+        }
+        dialog#cf-modal[open] { display: flex; flex-direction: column; animation: cf-pop .22s ease-out; }
+        dialog#cf-modal::backdrop { background: rgba(11, 31, 58, .55); backdrop-filter: blur(2px); }
+        #cf-modal-body { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+        #cf-modal-body > header, #cf-modal-body > footer { flex-shrink: 0; }
+        .cf-modal-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+        @keyframes cf-pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+        @keyframes cf-sheet { from { transform: translateY(100%); } to { transform: none; } }
+        /* Phones: full-width bottom sheet */
+        @media (max-width: 639px) {
+            dialog#cf-modal {
+                width: 100%; margin: auto 0 0;
+                max-height: 92vh; max-height: 92dvh;
+                border-radius: 1.25rem 1.25rem 0 0;
+            }
+            dialog#cf-modal[open] { animation: cf-sheet .25s ease-out; }
+            #cf-modal-body > footer { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+        }
+        /* Short landscape screens: use nearly the whole height */
+        @media (max-height: 520px) and (min-width: 640px) {
+            dialog#cf-modal { max-height: calc(100vh - 1rem); max-height: calc(100dvh - 1rem); }
+        }
+        /* Short screens (small phones, landscape): the header scrolls away with
+         * the content so the details get the room; the actions stay pinned. */
+        @media (max-height: 700px) {
+            #cf-modal-body { overflow-y: auto; overscroll-behavior: contain; }
+            #cf-modal-body > header { flex-shrink: 0; }
+            .cf-modal-scroll { flex: none; overflow: visible; }
+            #cf-modal-body > footer { position: sticky; bottom: 0; z-index: 1; box-shadow: 0 -8px 16px -12px rgba(11, 31, 58, .25); }
+        }
+        @media (prefers-reduced-motion: reduce) { dialog#cf-modal[open] { animation: none; } }
+        @media (prefers-reduced-motion: reduce) { .cf-skeleton { animation: none; } }
+        /* Program overview (sanitised HTML from the catalogue) */
+        .cf-summary { position: relative; }
+        .cf-summary[data-collapsed="true"] .cf-summary-body { max-height: 220px; overflow: hidden; }
+        .cf-summary[data-collapsed="true"]::after { content: ""; position: absolute; inset: auto 0 0 0; height: 64px; background: linear-gradient(rgba(255,255,255,0), #fff); pointer-events: none; }
+        .cf-summary-body { font-size: .875rem; line-height: 1.65; color: #4B5563; }
+        .cf-summary-body p { margin: 0 0 .75rem; }
+        .cf-summary-body h4 { margin: 1rem 0 .4rem; font-weight: 700; color: #0B1F3A; }
+        .cf-summary-body ul, .cf-summary-body ol { margin: 0 0 .75rem 1.1rem; }
+        .cf-summary-body ul { list-style: disc; } .cf-summary-body ol { list-style: decimal; }
+        .cf-summary-body li { margin: .2rem 0; }
+        .cf-summary-body strong { color: #1F2937; }
+    </style>
+
     <!-- SEO:BEGIN -->
     <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="courses abroad for Sri Lankan students, overseas university courses, study abroad course search, international courses" />
+    <meta name="keywords" content="courses abroad for Sri Lankan students, study abroad course finder, overseas university programs, bachelor master MBA abroad, university intakes 2027" />
     <link rel="canonical" href="https://www.lgavisa.com/courses.html" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="LGA Visa" />
-    <meta property="og:title" content="Find Courses Abroad by Subject | LGA Visa" />
-    <meta property="og:description" content="Explore bachelor's, master's and MBA courses at overseas universities for Sri Lankan students. Filter by subject, destination or study level, then view details." />
+    <meta property="og:title" content="Course Finder: Study Abroad Courses &amp; Fees | LGA Visa" />
+    <meta property="og:description" content="Search 3,000 bachelor's, master's and MBA courses in Australia, Canada, the UK and USA. Compare programs, duration and intakes for Sri Lankan students." />
     <meta property="og:url" content="https://www.lgavisa.com/courses.html" />
     <meta property="og:image" content="https://www.lgavisa.com/images/og/lga-og.png" />
     <meta property="og:locale" content="en_LK" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Find Courses Abroad by Subject | LGA Visa" />
-    <meta name="twitter:description" content="Explore bachelor's, master's and MBA courses at overseas universities for Sri Lankan students. Filter by subject, destination or study level, then view details." />
+    <meta name="twitter:title" content="Course Finder: Study Abroad Courses &amp; Fees | LGA Visa" />
+    <meta name="twitter:description" content="Search 3,000 bachelor's, master's and MBA courses in Australia, Canada, the UK and USA. Compare programs, duration and intakes for Sri Lankan students." />
     <meta name="twitter:image" content="https://www.lgavisa.com/images/og/lga-og.png" />
     <!-- SEO:END -->
 </head>
 
-<body class="pt-[88px]">
+<body class="bg-[#F5F6F8] pt-[88px]">
     <div class="loader" id="loader"><div class="spinner"></div></div>
     <div id="site-header"></div>
 
     <main>
+        <!-- ============ HERO ============ -->
         <section class="relative overflow-hidden bg-gradient-to-br from-[#0B1F3A] via-[#16305A] to-[#0B1F3A] text-white">
-            <div class="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[#C9A45C]/10 blur-3xl" aria-hidden="true"></div>
-            <div class="container relative mx-auto max-w-7xl px-6 py-16 md:py-20" data-aos="fade-up">
+            <div class="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#C9A45C]/10 blur-3xl" aria-hidden="true"></div>
+            <div class="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-blue-400/10 blur-3xl" aria-hidden="true"></div>
+            <div class="container relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 md:pb-14 md:pt-16">
                 <nav class="mb-6 text-sm text-blue-100" aria-label="Breadcrumb">
                     <a href="index.html" class="hover:text-[#E3C88A]">Home</a>
                     <i class="fas fa-chevron-right mx-2 text-xs" aria-hidden="true"></i>
-                    <span aria-current="page">Courses</span>
+                    <span aria-current="page">Course Finder</span>
                 </nav>
-                <div class="max-w-3xl">
-                    <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-[#E3C88A]">
-                        <i class="fas fa-compass" aria-hidden="true"></i> Find your path
-                    </span>
-                    <h1 class="mb-5 text-4xl font-extrabold leading-tight md:text-6xl">Find a course that fits your future</h1>
-                    <p class="max-w-2xl text-lg leading-relaxed text-blue-100 md:text-xl">
-                        Explore a curated selection of bachelor's, master's and MBA courses from universities across Australia, Canada, the UK, New Zealand and the USA. Filter by subject, destination or study level.
-                    </p>
-                </div>
-                <div class="mt-8 flex flex-wrap gap-3 text-sm text-blue-50">
-                    <span class="rounded-full bg-white/10 px-4 py-2"><i class="fas fa-graduation-cap mr-2 text-[#E3C88A]" aria-hidden="true"></i>Browse by subject</span>
-                    <span class="rounded-full bg-white/10 px-4 py-2"><i class="fas fa-globe mr-2 text-[#E3C88A]" aria-hidden="true"></i>Compare destinations</span>
-                    <span class="rounded-full bg-white/10 px-4 py-2"><i class="fas fa-user-graduate mr-2 text-[#E3C88A]" aria-hidden="true"></i>Bachelor's, Master's &amp; MBA</span>
+                <div class="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
+                    <div>
+                        <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-[#E3C88A]">
+                            <i class="fas fa-database" aria-hidden="true"></i> <span id="cf-updated">Live course catalogue</span>
+                        </span>
+                        <h1 class="mb-4 text-4xl font-extrabold leading-tight md:text-5xl">Find the right course abroad, <span class="text-[#E3C88A]">and the right university</span></h1>
+                        <p class="max-w-2xl text-lg leading-relaxed text-blue-100">
+                            Explore program overviews, course length, upcoming intakes and university profiles for bachelor's, master's and MBA programs in Australia, Canada, the United Kingdom and the USA.
+                        </p>
+                        <form id="cf-hero-form" class="mt-7 flex max-w-2xl flex-col gap-2 rounded-2xl bg-white p-2 shadow-2xl shadow-black/20 sm:flex-row" role="search">
+                            <label for="cf-hero-search" class="sr-only">Search courses</label>
+                            <div class="relative flex-1">
+                                <i class="fas fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
+                                <input id="cf-hero-search" type="search" autocomplete="off" placeholder="Try “data science”, “nursing” or “Toronto”" class="w-full rounded-xl py-3.5 pl-11 pr-3 text-[15px] text-[#0B1F3A] outline-none placeholder:text-gray-400">
+                            </div>
+                            <button type="submit" class="rounded-xl bg-[#C9A45C] px-6 py-3.5 font-bold text-[#0B1F3A] transition hover:bg-[#E3C88A]">Search courses</button>
+                        </form>
+                        <div id="cf-quick" class="mt-4 flex flex-wrap gap-2 text-sm" aria-label="Popular searches"></div>
+                    </div>
+                    <dl id="cf-stats" class="grid grid-cols-2 gap-3" aria-label="Catalogue statistics">
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><dt class="text-xs uppercase tracking-wider text-blue-200">Courses</dt><dd class="mt-1 text-3xl font-extrabold" data-stat="courses">—</dd></div>
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><dt class="text-xs uppercase tracking-wider text-blue-200">Institutions</dt><dd class="mt-1 text-3xl font-extrabold" data-stat="universities">—</dd></div>
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><dt class="text-xs uppercase tracking-wider text-blue-200">Fields of study</dt><dd class="mt-1 text-3xl font-extrabold" data-stat="fields">—</dd></div>
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><dt class="text-xs uppercase tracking-wider text-blue-200">Destinations</dt><dd class="mt-1 text-3xl font-extrabold" data-stat="countries">—</dd></div>
+                    </dl>
                 </div>
             </div>
         </section>
 
-        <section class="bg-[#F5F6F8] py-10 md:py-14" aria-labelledby="course-results-heading">
-            <div class="container mx-auto max-w-7xl px-6">
-                <div class="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <!-- ============ DESTINATIONS ============ -->
+        <section class="border-b border-gray-200 bg-white" aria-labelledby="cf-dest-heading">
+            <div class="container mx-auto max-w-7xl px-4 py-10 sm:px-6">
+                <div class="mb-5 flex flex-wrap items-end justify-between gap-2">
                     <div>
-                        <p class="mb-1 text-sm font-bold uppercase tracking-widest text-[#A9813F]">Course finder</p>
-                        <h2 id="course-results-heading" class="text-2xl font-extrabold text-[#0B1F3A] md:text-3xl">Explore courses</h2>
+                        <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Compare destinations</p>
+                        <h2 id="cf-dest-heading" class="text-2xl font-extrabold text-[#0B1F3A]">Courses by destination</h2>
                     </div>
-                    <p id="course-count" class="text-sm font-semibold text-gray-600" aria-live="polite">Loading course catalogue…</p>
+                    <p class="text-xs text-gray-500">Listed courses by study level. Select a country to filter.</p>
                 </div>
+                <div id="cf-destinations" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="cf-skeleton h-44 rounded-2xl"></div><div class="cf-skeleton h-44 rounded-2xl"></div><div class="cf-skeleton h-44 rounded-2xl"></div><div class="cf-skeleton h-44 rounded-2xl"></div>
+                </div>
+            </div>
+        </section>
 
-                <div class="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-                    <aside class="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm lg:sticky lg:top-28" aria-label="Filter courses">
-                        <div class="mb-5 flex items-center justify-between">
-                            <h3 class="font-bold text-[#0B1F3A]"><i class="fas fa-sliders mr-2 text-[#C9A45C]" aria-hidden="true"></i>Filter courses</h3>
-                            <button type="button" id="clear-course-filters" class="text-sm font-semibold text-[#8A6A32] underline-offset-4 hover:underline">Clear all</button>
-                        </div>
+        <!-- ============ FINDER ============ -->
+        <section id="finder" class="scroll-mt-24 py-8 md:py-10" aria-labelledby="course-results-heading">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="grid items-start gap-6 lg:grid-cols-[290px_minmax(0,1fr)]">
 
-                        <label for="course-search" class="mb-2 block text-sm font-semibold text-gray-700">Search</label>
-                        <div class="relative mb-5">
-                            <i class="fas fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
-                            <input id="course-search" type="search" autocomplete="off" placeholder="Course or university" class="w-full rounded-xl border border-gray-200 py-3 pl-10 pr-3 text-sm outline-none transition focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
-                        </div>
-
-                        <div class="space-y-4">
-                            <div>
-                                <label for="course-field" class="mb-2 block text-sm font-semibold text-gray-700">Field of study</label>
-                                <select id="course-field" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
-                                    <option value="">All fields</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="course-country" class="mb-2 block text-sm font-semibold text-gray-700">Destination</label>
-                                <select id="course-country" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
-                                    <option value="">All destinations</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="course-level" class="mb-2 block text-sm font-semibold text-gray-700">Study level</label>
-                                <select id="course-level" class="course-filter w-full rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm outline-none focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
-                                    <option value="">All levels</option>
-                                </select>
+                    <!-- Filters (sidebar on desktop, drawer on mobile) -->
+                    <div id="cf-filters-backdrop" class="fixed inset-0 z-[60] hidden bg-[#0B1F3A]/50 lg:hidden" aria-hidden="true"></div>
+                    <aside id="cf-filters-panel" class="fixed inset-y-0 left-0 z-[70] w-[88%] max-w-sm -translate-x-full overflow-y-auto bg-white p-5 shadow-2xl transition-transform duration-300 lg:static lg:z-auto lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:rounded-2xl lg:border lg:border-gray-100 lg:shadow-sm lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto cf-scroll" aria-label="Filter courses">
+                        <div class="mb-4 flex items-center justify-between">
+                            <h2 class="font-bold text-[#0B1F3A]"><i class="fas fa-sliders mr-2 text-[#C9A45C]" aria-hidden="true"></i>Filters</h2>
+                            <div class="flex items-center gap-3">
+                                <button type="button" data-action="clear" class="text-sm font-semibold text-[#8A6A32] underline-offset-4 hover:underline">Clear all</button>
+                                <button type="button" id="cf-filters-close" class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600 lg:hidden" aria-label="Close filters"><i class="fas fa-xmark" aria-hidden="true"></i></button>
                             </div>
                         </div>
-                        <p class="mt-5 border-t border-gray-100 pt-4 text-xs leading-relaxed text-gray-500">Use one or more filters to narrow the list. Course availability and entry requirements can change; confirm current details with the university.</p>
+                        <div id="cf-facets" class="divide-y divide-gray-100"></div>
                     </aside>
 
-                    <div>
-                        <div id="course-grid" class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                            <p class="col-span-full rounded-2xl bg-white p-8 text-center text-gray-500">Loading courses…</p>
+                    <!-- Results -->
+                    <div class="min-w-0">
+                        <div class="mb-4 rounded-2xl border border-gray-100 bg-white p-3 shadow-sm sm:p-4">
+                            <div class="flex flex-col gap-3 md:flex-row md:items-center">
+                                <div class="relative flex-1">
+                                    <label for="course-search" class="sr-only">Search courses</label>
+                                    <i class="fas fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
+                                    <input id="course-search" type="search" autocomplete="off" placeholder="Search course, subject, university or city" class="w-full rounded-xl border border-gray-200 py-2.5 pl-10 pr-3 text-sm outline-none transition focus:border-[#C9A45C] focus:ring-2 focus:ring-[#C9A45C]/20">
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" id="cf-filters-open" class="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm font-semibold text-[#0B1F3A] lg:hidden"><i class="fas fa-sliders" aria-hidden="true"></i>Filters <span id="cf-filter-badge" class="hidden rounded-full bg-[#C9A45C] px-1.5 text-xs text-[#0B1F3A]"></span></button>
+                                    <label for="cf-sort" class="sr-only">Sort courses</label>
+                                    <select id="cf-sort" class="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm font-medium text-[#0B1F3A] outline-none focus:border-[#C9A45C] md:flex-none">
+                                        <option value="recommended">Sort: Recommended</option>
+                                        <option value="intake">Next intake: soonest</option>
+                                        <option value="deadline">Apply by: soonest</option>
+                                        <option value="duration">Duration: shortest</option>
+                                        <option value="name">Course name: A–Z</option>
+                                        <option value="university">University: A–Z</option>
+                                    </select>
+                                    <div class="hidden overflow-hidden rounded-xl border border-gray-200 md:flex" role="group" aria-label="Layout">
+                                        <button type="button" data-view="grid" class="px-3 py-2.5 text-gray-500" aria-label="Grid view" aria-pressed="true"><i class="fas fa-table-cells-large" aria-hidden="true"></i></button>
+                                        <button type="button" data-view="list" class="border-l border-gray-200 px-3 py-2.5 text-gray-500" aria-label="List view" aria-pressed="false"><i class="fas fa-list" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-gray-100 pt-3">
+                                <h2 id="course-results-heading" class="text-sm font-semibold text-gray-700" aria-live="polite"><span id="course-count">Loading course catalogue…</span></h2>
+                                <button type="button" id="cf-saved-toggle" class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs font-semibold text-gray-600 transition hover:border-[#C9A45C]" aria-pressed="false"><i class="fas fa-heart text-rose-500" aria-hidden="true"></i>Saved <span id="cf-saved-count">0</span></button>
+                            </div>
+                            <div id="cf-active" class="mt-2 flex flex-wrap gap-2 empty:hidden"></div>
                         </div>
+
+                        <div id="course-grid" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                            <div class="cf-skeleton h-72 rounded-2xl"></div><div class="cf-skeleton h-72 rounded-2xl"></div><div class="cf-skeleton h-72 rounded-2xl"></div>
+                        </div>
+
                         <div id="course-empty" class="hidden rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center">
                             <span class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#F5F6F8] text-xl text-[#A9813F]"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></span>
                             <h3 class="mb-2 text-lg font-bold text-[#0B1F3A]">No courses match those filters</h3>
-                            <p class="mb-5 text-sm text-gray-600">Try a different search or clear some filters to see more options.</p>
-                            <button type="button" id="empty-clear-filters" class="rounded-full bg-[#0B1F3A] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#16305A]">Clear filters</button>
+                            <p class="mb-5 text-sm text-gray-600">Try a broader search, raise your budget or remove a filter. Our counsellors can also search beyond this list for you.</p>
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <button type="button" data-action="clear" class="rounded-full bg-[#0B1F3A] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#16305A]">Clear filters</button>
+                                <a href="contact.html" class="rounded-full border border-[#0B1F3A] px-5 py-2.5 text-sm font-bold text-[#0B1F3A] transition hover:bg-[#0B1F3A] hover:text-white">Ask a counsellor</a>
+                            </div>
                         </div>
-                        <p class="mt-6 text-xs leading-relaxed text-gray-500">This finder displays a curated selection from the LGA Visa university directory; it is not a complete list of every course offered by each institution. Availability, entry criteria, fees and intakes may change. Contact LGA Visa in Nugegoda for guidance and confirm course details with the university.</p>
+
+                        <div id="cf-pager" class="mt-8 hidden flex-col items-center gap-3">
+                            <p id="cf-pager-text" class="text-sm text-gray-500"></p>
+                            <div class="h-1.5 w-56 overflow-hidden rounded-full bg-gray-200"><div id="cf-pager-bar" class="h-full rounded-full bg-[#C9A45C] transition-all"></div></div>
+                            <button type="button" id="cf-more" class="mt-1 rounded-full bg-[#0B1F3A] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#16305A]">Show more courses</button>
+                        </div>
+
+                        <p class="mt-8 text-xs leading-relaxed text-gray-500">
+                            Course details are compiled from institution listings and refreshed periodically (<span id="cf-updated-note">date pending</span>). Entry requirements, intakes and deadlines can change — confirm with LGA Visa before applying.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ============ CTA ============ -->
         <section class="bg-white py-14 md:py-16">
-            <div class="container mx-auto max-w-5xl px-6 text-center">
-                <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A] md:text-3xl">Need help choosing a course?</h2>
-                <p class="mx-auto mb-7 max-w-2xl text-gray-600">Our team in Nugegoda can help you explore course options, compare destinations and understand the next steps for your application.</p>
-                <a href="contact.html" class="inline-flex items-center gap-2 rounded-full bg-[#C9A45C] px-7 py-3.5 font-bold text-[#0B1F3A] transition hover:-translate-y-0.5 hover:bg-[#E3C88A]">Talk to our team <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                <p class="mt-5 text-sm text-gray-500"><a href="universities/index.html" class="font-semibold text-[#8A6A32] hover:underline">Browse all listed universities</a></p>
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6">
+                <div class="grid items-center gap-8 overflow-hidden rounded-3xl bg-[#0B1F3A] p-8 text-white md:grid-cols-[1fr_auto] md:p-12">
+                    <div>
+                        <h2 class="mb-3 text-2xl font-extrabold md:text-3xl">Shortlisted a few courses?</h2>
+                        <p class="max-w-2xl text-blue-100">Our counsellors in Nugegoda check entry requirements against your results, compare total costs and handle the application and student visa with you, free of charge for the first consultation.</p>
+                    </div>
+                    <div class="flex flex-col gap-3 sm:flex-row md:flex-col">
+                        <a href="contact.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9A45C] px-7 py-3.5 font-bold text-[#0B1F3A] transition hover:bg-[#E3C88A]">Book a free consultation <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="universities/index.html" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-3.5 font-bold text-white transition hover:bg-white/10">Browse universities</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Course detail dialog -->
+    <dialog id="cf-modal" aria-labelledby="cf-modal-title">
+        <div id="cf-modal-body"></div>
+    </dialog>
+
     <div id="site-footer"></div>
     <script>window.SITE_ROOT = './';</script>
     <script src="assets/js/data/universities.js"></script>
+    <script src="assets/js/data/courses.js"></script>
     <script src="assets/js/components.js?v=13"></script>
     <script src="assets/js/site.js?v=3"></script>
-    <script src="assets/js/course-search.js"></script>
+    <script src="assets/js/course-search.js?v=3"></script>
 </body>
 </html>

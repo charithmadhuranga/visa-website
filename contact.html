@@ -457,6 +457,26 @@
     <script src="assets/js/site.js?v=3"></script>
 
     <script>
+        // Prefill from the course finder: contact.html?course=…&university=…&country=…&level=…
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const course = params.get('course');
+            if (!course) return;
+            const university = params.get('university') || '';
+            const country = params.get('country') || '';
+            const level = params.get('level') || '';
+            const service = document.getElementById('service');
+            const destination = document.getElementById('destination');
+            const message = document.getElementById('message');
+            if (service) service.value = 'application-support';
+            if (destination && [...destination.options].some(o => o.value === country)) destination.value = country;
+            if (message && !message.value) {
+                message.value = `Hi LGA team, I'm interested in the ${level ? level + ' course ' : ''}"${course}"`
+                    + (university ? ` at ${university}` : '')
+                    + '. Please advise me on entry requirements, fees, intakes and the application process.';
+            }
+        })();
+
         // Form handling with Formspree
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();

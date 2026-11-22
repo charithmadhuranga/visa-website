@@ -1,0 +1,15 @@
+{
+    // Live Server reloads the browser on every file change in the workspace.
+    // The scraper writes data files continuously while it runs, which would
+    // otherwise reload the page every few seconds.
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.ts",
+        "scraper/**",
+        "scripts/*.json",
+        "sitemap.xml",
+        "sitemap.xml.gz"
+    ]
+}

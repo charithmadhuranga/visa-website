@@ -27,7 +27,7 @@ const STATIC_PAGES = [
   ['/study-abroad/uk.html', '0.85', 'monthly', '2026-10-22'],
   ['/study-abroad/new-zealand.html', '0.85', 'monthly', '2026-10-22'],
   ['/study-abroad/usa.html', '0.85', 'monthly', '2026-10-22'],
-  ['/courses.html', '0.85', 'weekly', '2026-11-19'],
+  ['/courses.html', '0.85', 'weekly', '2026-11-22'],
   ['/universities/', '0.85', 'weekly', '2026-10-22'],
   ['/universities/australia.html', '0.70', 'monthly', '2026-10-22'],
   ['/universities/canada.html', '0.70', 'monthly', '2026-10-22'],
@@ -49,15 +49,17 @@ function loadData(rel, exportsList) {
   return new Function(`${src}\nreturn { ${exportsList.join(', ')} };`)();
 }
 const { LGA_BLOG_POSTS } = loadData('assets/js/data/blog.js', ['LGA_BLOG_POSTS']);
-const { LGA_UNIVERSITIES } = loadData('assets/js/data/universities.js', ['LGA_UNIVERSITIES']);
+const LGA_UNI_DIRECTORY = new Function(
+  `const window = {};\n${fs.readFileSync(path.join(ROOT, 'assets/js/data/university-directory.js'), 'utf8')}\nreturn window.LGA_UNI_DIRECTORY;`,
+)();
 
 const urls = [...STATIC_PAGES.map(([loc, priority, changefreq, lastmod]) => ({ loc, priority, changefreq, lastmod }))];
 
 for (const p of LGA_BLOG_POSTS) {
   urls.push({ loc: `/resources/blog/${p.id}.html`, priority: '0.70', changefreq: 'monthly', lastmod: p.date });
 }
-for (const u of LGA_UNIVERSITIES) {
-  urls.push({ loc: `/universities/${u.country}/${u.id}.html`, priority: '0.60', changefreq: 'monthly', lastmod: '2026-10-22' });
+for (const u of LGA_UNI_DIRECTORY) {
+  urls.push({ loc: `/universities/${u.c}/${u.id}.html`, priority: u.cc ? '0.60' : '0.50', changefreq: 'monthly', lastmod: '2026-11-22' });
 }
 
 /* Guard: every generated file must exist on disk */
