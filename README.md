@@ -6,7 +6,8 @@ A professional website for Lanka Global Access Consultancy, providing visa and i
 
 - **Multipage Website** - About, Study Abroad, Universities, Services, Resources and Contact sections
 - **Modern Landing Page** - Hero slideshow, services, study destinations, and contact info
-- **University Directory** - 30+ universities across 5 countries with courses (data-driven)
+- **University Directory** - 440+ university and college profiles across 5 countries, generated from the course catalogue
+- **Course Finder** - 3,000 bachelor's, master's and MBA courses with program overviews (see `scraper/README.md`)
 - **Blog & FAQ** - Data-driven blog with detail pages and categorized FAQs
 - **Contact Form** - Formspree integration for client inquiries
 - **Responsive Design** - Works on all devices
