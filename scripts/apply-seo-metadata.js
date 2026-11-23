@@ -89,7 +89,7 @@ const PAGES = {
   'courses.html': {
     title: 'Course Finder: Study Abroad Courses & Fees | LGA Visa',
     description:
-      "Search 3,000 bachelor's, master's and MBA courses in Australia, Canada, the UK and USA. Compare programs, duration and intakes for Sri Lankan students.",
+      "Search 4,000+ bachelor's, master's and MBA courses in Australia, Canada, the UK and USA. Compare programs, duration and intakes for Sri Lankan students.",
     keywords:
       'courses abroad for Sri Lankan students, study abroad course finder, overseas university programs, bachelor master MBA abroad, university intakes 2027',
     canonical: '/courses.html',

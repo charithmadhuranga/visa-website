@@ -183,7 +183,7 @@ function courseItem(c, r) {
   const deadline = c.intakes.map((i) => i.deadline).find(Boolean);
   return `
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="${esc(c.level)}" data-search="${esc(`${c.name} ${c.field} ${c.level}`.toLowerCase())}">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)} <span class="text-gray-300">·</span> <span class="text-gray-500">${esc(c.field)}</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">${esc(c.name)}</h3>
@@ -315,11 +315,11 @@ function page(r, related) {
                     <a href="../${r.country}.html" class="hover:text-[#E3C88A]">${esc(meta.name)}</a><i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
                     <span aria-current="page" class="truncate">${esc(r.name)}</span>
                 </nav>
-                <div class="flex flex-col gap-6 md:flex-row md:items-center">
+                <div class="flex min-w-0 flex-col gap-5 md:flex-row md:items-center md:gap-6">
                     ${logoHtml(r, 'h-20 w-20 md:h-24 md:w-24', 'text-2xl')}
                     <div class="min-w-0 flex-1">
                         <p class="mb-2 text-sm font-semibold text-[#E3C88A]"><i class="fas ${meta.icon} mr-1.5" aria-hidden="true"></i>${esc(place)}${r.type ? ` · ${esc(r.type)} ${esc(r.category.toLowerCase())}` : ''}</p>
-                        <h1 class="text-3xl font-extrabold leading-tight md:text-5xl">${esc(r.name)}</h1>
+                        <h1 class="break-words text-[1.65rem] font-extrabold leading-tight sm:text-3xl md:text-5xl">${esc(r.name)}</h1>
                         ${r.ranking ? `<p class="mt-2 text-blue-100">${esc(r.ranking)}</p>` : ''}
                     </div>
                     <div class="flex flex-col gap-2 sm:flex-row md:flex-col">
@@ -331,13 +331,13 @@ function page(r, related) {
         </section>
 
         <section class="border-b border-gray-200 bg-white">
-            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-${Math.min(6, facts.length)}">
+            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-${Math.min(6, facts.length)} [&>div]:min-w-0 [&_dd]:break-words">
                 ${facts.map(([icon, label, value]) => `<div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas ${icon} mr-1 text-[#A9813F]" aria-hidden="true"></i>${esc(label)}</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">${esc(value)}</dd></div>`).join('')}
             </dl>
         </section>
 
         <div class="bg-[#F5F6F8] py-10 md:py-14">
-            <div class="container mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div class="container mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div class="min-w-0 space-y-10">
                 ${r.aboutHtml ? `<section>
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>
@@ -457,7 +457,10 @@ function shell({ title, description, canonicalPath, graph, body, name, country }
 ${ld}
     </script>
     <style>
-        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; }
+        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; overflow-wrap: anywhere; }
+        @media (max-width: 480px) { .up-prose { font-size: .9rem; line-height: 1.65; } }
+        main h2, main h3, .up-course summary h3 { overflow-wrap: anywhere; }
+        img { max-width: 100%; }
         .up-prose p { margin: 0 0 .85rem; }
         .up-prose h4 { margin: 1.1rem 0 .4rem; font-weight: 700; color: #0B1F3A; }
         .up-prose ul, .up-prose ol { margin: 0 0 .85rem 1.15rem; }

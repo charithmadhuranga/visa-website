@@ -86,7 +86,10 @@
 }
     </script>
     <style>
-        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; }
+        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; overflow-wrap: anywhere; }
+        @media (max-width: 480px) { .up-prose { font-size: .9rem; line-height: 1.65; } }
+        main h2, main h3, .up-course summary h3 { overflow-wrap: anywhere; }
+        img { max-width: 100%; }
         .up-prose p { margin: 0 0 .85rem; }
         .up-prose h4 { margin: 1.1rem 0 .4rem; font-weight: 700; color: #0B1F3A; }
         .up-prose ul, .up-prose ol { margin: 0 0 .85rem 1.15rem; }
@@ -115,13 +118,13 @@
                     <a href="../usa.html" class="hover:text-[#E3C88A]">USA</a><i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
                     <span aria-current="page" class="truncate">William Paterson University</span>
                 </nav>
-                <div class="flex flex-col gap-6 md:flex-row md:items-center">
+                <div class="flex min-w-0 flex-col gap-5 md:flex-row md:items-center md:gap-6">
                     <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
                         <img src="https://photos.applyboard.com/schools/000/002/516/logos/small/WP_Stacked_Transparent_3.png?1709926912" alt="William Paterson University logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-2xl',style:'color:#0B1F3A',textContent:'WP'}))">
                     </span>
                     <div class="min-w-0 flex-1">
                         <p class="mb-2 text-sm font-semibold text-[#E3C88A]"><i class="fas fa-flag-usa mr-1.5" aria-hidden="true"></i>Wayne, USA · Public university</p>
-                        <h1 class="text-3xl font-extrabold leading-tight md:text-5xl">William Paterson University</h1>
+                        <h1 class="break-words text-[1.65rem] font-extrabold leading-tight sm:text-3xl md:text-5xl">William Paterson University</h1>
                         
                     </div>
                     <div class="flex flex-col gap-2 sm:flex-row md:flex-col">
@@ -133,13 +136,13 @@
         </section>
 
         <section class="border-b border-gray-200 bg-white">
-            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-4">
+            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-4 [&>div]:min-w-0 [&_dd]:break-words">
                 <div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-location-dot mr-1 text-[#A9813F]" aria-hidden="true"></i>Location</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">Wayne, New Jersey</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-building-columns mr-1 text-[#A9813F]" aria-hidden="true"></i>Institution</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">Public University</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-calendar-days mr-1 text-[#A9813F]" aria-hidden="true"></i>Founded</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">1855</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-graduation-cap mr-1 text-[#A9813F]" aria-hidden="true"></i>Courses listed</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">1</dd></div>
             </dl>
         </section>
 
         <div class="bg-[#F5F6F8] py-10 md:py-14">
-            <div class="container mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div class="container mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div class="min-w-0 space-y-10">
                 <section>
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>
@@ -176,7 +179,7 @@
                     </div>
                     <div id="up-course-list" class="space-y-3">
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="MBA" data-search="master of business administration (mba) – applied business analytics business &amp; management mba">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">MBA <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Business Administration (MBA) – Applied Business Analytics</h3>

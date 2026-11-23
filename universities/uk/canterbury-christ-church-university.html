@@ -86,7 +86,10 @@
 }
     </script>
     <style>
-        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; }
+        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; overflow-wrap: anywhere; }
+        @media (max-width: 480px) { .up-prose { font-size: .9rem; line-height: 1.65; } }
+        main h2, main h3, .up-course summary h3 { overflow-wrap: anywhere; }
+        img { max-width: 100%; }
         .up-prose p { margin: 0 0 .85rem; }
         .up-prose h4 { margin: 1.1rem 0 .4rem; font-weight: 700; color: #0B1F3A; }
         .up-prose ul, .up-prose ol { margin: 0 0 .85rem 1.15rem; }
@@ -115,13 +118,13 @@
                     <a href="../uk.html" class="hover:text-[#E3C88A]">United Kingdom</a><i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
                     <span aria-current="page" class="truncate">Canterbury Christ Church University</span>
                 </nav>
-                <div class="flex flex-col gap-6 md:flex-row md:items-center">
+                <div class="flex min-w-0 flex-col gap-5 md:flex-row md:items-center md:gap-6">
                     <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
                         <img src="https://photos.applyboard.com/schools/000/002/471/logos/small/CCCU-GUSInUni-Logo-Nov2023.png?1699273441" alt="Canterbury Christ Church University logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-2xl',style:'color:#1D4ED8',textContent:'CC'}))">
                     </span>
                     <div class="min-w-0 flex-1">
                         <p class="mb-2 text-sm font-semibold text-[#E3C88A]"><i class="fas fa-crown mr-1.5" aria-hidden="true"></i>Canterbury, Kent, United Kingdom · Public university</p>
-                        <h1 class="text-3xl font-extrabold leading-tight md:text-5xl">Canterbury Christ Church University</h1>
+                        <h1 class="break-words text-[1.65rem] font-extrabold leading-tight sm:text-3xl md:text-5xl">Canterbury Christ Church University</h1>
                         
                     </div>
                     <div class="flex flex-col gap-2 sm:flex-row md:flex-col">
@@ -133,13 +136,13 @@
         </section>
 
         <section class="border-b border-gray-200 bg-white">
-            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-4">
+            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-4 [&>div]:min-w-0 [&_dd]:break-words">
                 <div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-location-dot mr-1 text-[#A9813F]" aria-hidden="true"></i>Location</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">Canterbury, Kent, South East</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-building-columns mr-1 text-[#A9813F]" aria-hidden="true"></i>Institution</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">Public University</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-calendar-days mr-1 text-[#A9813F]" aria-hidden="true"></i>Founded</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">1962</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-graduation-cap mr-1 text-[#A9813F]" aria-hidden="true"></i>Courses listed</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">14</dd></div>
             </dl>
         </section>
 
         <div class="bg-[#F5F6F8] py-10 md:py-14">
-            <div class="container mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div class="container mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div class="min-w-0 space-y-10">
                 <section>
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>
@@ -179,7 +182,7 @@
                     </div>
                     <div id="up-course-list" class="space-y-3">
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of laws – law law &amp; criminology bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Law &amp; Criminology</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Laws – Law</h3>
@@ -202,7 +205,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of laws – law – criminology law &amp; criminology bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Law &amp; Criminology</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Laws – Law – Criminology</h3>
@@ -225,7 +228,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of laws – law – politics law &amp; criminology bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Law &amp; Criminology</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Laws – Law – Politics</h3>
@@ -248,7 +251,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of laws – law with foundation year law &amp; criminology bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Law &amp; Criminology</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Laws – Law with foundation year</h3>
@@ -271,7 +274,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science (honours) – accounting and finance business &amp; management bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science (Honours) – Accounting and Finance</h3>
@@ -294,7 +297,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science (honours) – accounting and finance with foundation year business &amp; management bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science (Honours) – Accounting and Finance with foundation year</h3>
@@ -317,7 +320,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science (honours) – business management business &amp; management bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science (Honours) – Business Management</h3>
@@ -340,7 +343,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science (honours) – business management with foundation year business &amp; management bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science (Honours) – Business Management with foundation year</h3>
@@ -363,7 +366,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of arts – early years education education &amp; teaching master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Education &amp; Teaching</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Arts – Early Years Education</h3>
@@ -386,7 +389,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of arts – education education &amp; teaching master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Education &amp; Teaching</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Arts – Education</h3>
@@ -409,7 +412,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of arts – filmmaking arts, media &amp; design master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Arts, Media &amp; Design</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Arts – Filmmaking</h3>
@@ -432,7 +435,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of arts – media and communications arts, media &amp; design master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Arts, Media &amp; Design</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Arts – Media and Communications</h3>
@@ -455,7 +458,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of arts – social work social sciences &amp; psychology master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Social Sciences &amp; Psychology</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Arts – Social Work</h3>
@@ -478,7 +481,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="MBA" data-search="master of business administration (mba) – international business &amp; management mba">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">MBA <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Business Administration (MBA) – International</h3>

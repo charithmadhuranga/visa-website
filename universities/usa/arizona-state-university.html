@@ -87,7 +87,10 @@
 }
     </script>
     <style>
-        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; }
+        .up-prose { font-size: .925rem; line-height: 1.7; color: #4B5563; overflow-wrap: anywhere; }
+        @media (max-width: 480px) { .up-prose { font-size: .9rem; line-height: 1.65; } }
+        main h2, main h3, .up-course summary h3 { overflow-wrap: anywhere; }
+        img { max-width: 100%; }
         .up-prose p { margin: 0 0 .85rem; }
         .up-prose h4 { margin: 1.1rem 0 .4rem; font-weight: 700; color: #0B1F3A; }
         .up-prose ul, .up-prose ol { margin: 0 0 .85rem 1.15rem; }
@@ -116,13 +119,13 @@
                     <a href="../usa.html" class="hover:text-[#E3C88A]">USA</a><i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
                     <span aria-current="page" class="truncate">Arizona State University (ASU)</span>
                 </nav>
-                <div class="flex flex-col gap-6 md:flex-row md:items-center">
+                <div class="flex min-w-0 flex-col gap-5 md:flex-row md:items-center md:gap-6">
                     <span class="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
                         <img src="https://photos.applyboard.com/schools/000/000/894/logos/small/logo_template_%2825%29.png?1540414922" alt="Arizona State University (ASU) logo" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'font-extrabold text-2xl',style:'color:#0B1F3A',textContent:'AS'}))">
                     </span>
                     <div class="min-w-0 flex-1">
                         <p class="mb-2 text-sm font-semibold text-[#E3C88A]"><i class="fas fa-flag-usa mr-1.5" aria-hidden="true"></i>Tempe, USA · Public university</p>
-                        <h1 class="text-3xl font-extrabold leading-tight md:text-5xl">Arizona State University (ASU)</h1>
+                        <h1 class="break-words text-[1.65rem] font-extrabold leading-tight sm:text-3xl md:text-5xl">Arizona State University (ASU)</h1>
                         <p class="mt-2 text-blue-100">#1 US University for Innovation</p>
                     </div>
                     <div class="flex flex-col gap-2 sm:flex-row md:flex-col">
@@ -134,13 +137,13 @@
         </section>
 
         <section class="border-b border-gray-200 bg-white">
-            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-6">
+            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-6 [&>div]:min-w-0 [&_dd]:break-words">
                 <div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-location-dot mr-1 text-[#A9813F]" aria-hidden="true"></i>Location</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">Tempe, Arizona</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-building-columns mr-1 text-[#A9813F]" aria-hidden="true"></i>Institution</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">Public University</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-calendar-days mr-1 text-[#A9813F]" aria-hidden="true"></i>Founded</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">1885</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-map-location-dot mr-1 text-[#A9813F]" aria-hidden="true"></i>Campuses</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">2</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-graduation-cap mr-1 text-[#A9813F]" aria-hidden="true"></i>Courses listed</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">19</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-ranking-star mr-1 text-[#A9813F]" aria-hidden="true"></i>Ranking</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">#1 US University for Innovation</dd></div><div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas fa-user-graduate mr-1 text-[#A9813F]" aria-hidden="true"></i>Students</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">145,000+</dd></div>
             </dl>
         </section>
 
         <div class="bg-[#F5F6F8] py-10 md:py-14">
-            <div class="container mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div class="container mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div class="min-w-0 space-y-10">
                 <section>
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>
@@ -180,7 +183,7 @@
                     </div>
                     <div id="up-course-list" class="space-y-3">
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of arts – global health health &amp; nursing bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Health &amp; Nursing</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Arts – Global Health</h3>
@@ -203,7 +206,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – actuarial science data &amp; analytics bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Data &amp; Analytics</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Actuarial Science</h3>
@@ -226,7 +229,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – biological sciences – biomedical sciences health &amp; nursing bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Health &amp; Nursing</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Biological Sciences – Biomedical Sciences</h3>
@@ -249,7 +252,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – business data analytics data &amp; analytics bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Data &amp; Analytics</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Business Data Analytics</h3>
@@ -272,7 +275,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – computer information systems computing &amp; it bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Computer Information Systems</h3>
@@ -295,7 +298,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – computer science computing &amp; it bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Computer Science</h3>
@@ -318,7 +321,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – computer science – cybersecurity computing &amp; it bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Computer Science – Cybersecurity</h3>
@@ -341,7 +344,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – computer science – software engineering computing &amp; it bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Computer Science – Software Engineering</h3>
@@ -364,7 +367,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science – data science computing &amp; it bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science – Data Science</h3>
@@ -387,7 +390,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Bachelor's" data-search="bachelor of science in engineering – computer systems engineering computing &amp; it bachelor's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Bachelor's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Bachelor of Science in Engineering – Computer Systems Engineering</h3>
@@ -410,7 +413,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – computer science computing &amp; it master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Computer Science</h3>
@@ -433,7 +436,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – human systems engineering – aviation human factors engineering &amp; construction master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Engineering &amp; Construction</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Human Systems Engineering – Aviation Human Factors</h3>
@@ -456,7 +459,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – human systems engineering – user experience research engineering &amp; construction master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Engineering &amp; Construction</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Human Systems Engineering – User Experience Research</h3>
@@ -479,7 +482,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – information technology – information systems management computing &amp; it master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Information Technology – Information Systems Management</h3>
@@ -502,7 +505,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – information technology – information technology security computing &amp; it master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Information Technology – Information Technology Security</h3>
@@ -525,7 +528,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – robotics and autonomous systems – systems engineering computing &amp; it master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Robotics and Autonomous Systems – Systems Engineering</h3>
@@ -548,7 +551,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="Master's" data-search="master of science – software engineering computing &amp; it master's">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">Master's <span class="text-gray-300">·</span> <span class="text-gray-500">Computing &amp; IT</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Science – Software Engineering</h3>
@@ -571,7 +574,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="MBA" data-search="master of business administration – executive business administration business &amp; management mba">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">MBA <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Business Administration – Executive Business Administration</h3>
@@ -594,7 +597,7 @@
                             </div>
                         </details>
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="MBA" data-search="master of business administration (mba) business &amp; management mba">
-                            <summary class="flex cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
+                            <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
                                     <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">MBA <span class="text-gray-300">·</span> <span class="text-gray-500">Business &amp; Management</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">Master of Business Administration (MBA)</h3>
