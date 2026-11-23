@@ -84,12 +84,23 @@ git commit -m "Update site"
 git push origin main
 ```
 
+## Building
+
+```bash
+npm install        # first time only (installs the Tailwind CSS CLI)
+npm run build      # contact sync, SEO metadata, page generation, CSS, sitemap, structured data, validation
+npm run css        # just rebuild assets/css/tailwind.css after editing classes
+```
+
+Styles are compiled with Tailwind (`tailwind.config.js`, scanning every page and script) into
+`assets/css/tailwind.css`. Commit the compiled file — the site is served as static files.
+Brand colours are available as utilities: `navy`, `gold`, `gold-light`, `gold-dark`, `gold-deep`, `mist`.
+
 ## Tech Stack
 
 - HTML5, CSS3, JavaScript
-- Tailwind CSS (CDN)
-- GSAP + ScrollTrigger (animations)
-- AOS (Animate On Scroll)
+- Tailwind CSS 3 (compiled with the Tailwind CLI; no runtime CDN)
+- GSAP + ScrollTrigger and AOS on inner pages (the homepage uses a small built-in reveal instead)
 - Font Awesome (icons)
 - Formspree (contact form)
 

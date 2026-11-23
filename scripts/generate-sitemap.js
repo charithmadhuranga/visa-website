@@ -138,10 +138,10 @@ const html = `<!DOCTYPE html>
     <link rel="canonical" href="https://www.lgavisa.com/sitemap.html" />
     <link rel="shortcut icon" href="images/ico/favicon.ico" />
     <link rel="stylesheet" href="assets/css/site.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script src="assets/js/analytics.js"></script>
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
 </head>
 <body class="pt-[88px]">
     <div id="site-header"></div>

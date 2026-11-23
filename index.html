@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="LGA Visa (Lanka Global Access) is a student visa and study abroad consultancy in Sri Lanka, helping students with admissions and visa applications." />
     <meta name="author" content="Lanka Global Access" />
+    <meta name="theme-color" content="#0B1F3A" />
     <title>LGA Visa | Student Visa & Study Abroad Consultants Sri Lanka</title>
 
     <link rel="shortcut icon" href="images/ico/favicon.ico" />
@@ -12,512 +13,33 @@
     <link rel="icon" type="image/png" sizes="48x48" href="images/ico/favicon-48x48.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/ico/apple-touch-icon.png">
 
-    <!-- Shared design system -->
-    <link rel="stylesheet" href="assets/css/site.css" />
+    <!-- Hero image: preload the size the browser will pick -->
+    <link rel="preload" as="image" href="images/hero/graduates-1280.webp"
+          imagesrcset="images/hero/graduates-768.webp 768w, images/hero/graduates-1280.webp 1280w, images/hero/graduates-1920.webp 1920w"
+          imagesizes="100vw" fetchpriority="high">
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"></noscript>
-    
-    <!-- Modern CSS Framework -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons - Load only essential icons -->
+    <!-- Styles: compiled Tailwind (npm run css) + shared site styles -->
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
-    
-    <!-- GSAP Animation Library - Load only essential plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <!-- AOS Animation Library -->
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        :root {
-            /* Primary - Navy */
-            --primary-color: #0B1F3A;
-            --primary-light: #16305A;
-            --primary-deep: #081527;
-            
-            /* Secondary - Gold */
-            --secondary-color: #C9A45C;
-            --gold-light: #E3C88A;
-            --gold-dark: #A9813F;
-            
-            /* Neutrals */
-            --dark-color: #3B4453;
-            --body-grey: #5B6472;
-            --light-color: #F5F6F8;
-            --light-grey-blue: #C7CEDA;
-            
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, #C9A45C 0%, #E3C88A 100%);
-            --gradient-navy: linear-gradient(135deg, #0B1F3A 0%, #16305A 100%);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
-        }
-
-        /* Header Styles */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Slideshow Styles */
-        .hero-slideshow {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        /* Background image zoom effect on slide change */
-        .hero-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            background-size: cover;
-            background-position: center;
-            transition: transform 8s ease-in-out;
-            z-index: -1;
-        }
-
-        .hero-slide.active::before {
-            transform: scale(1.1);
-        }
-
-        /* Overlay for better text readability */
-        .hero-slide .bg-black {
-            z-index: 1;
-        }
-
-        /* Slide Navigation */
-        .slide-dot {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slide-dot.active {
-            background: white !important;
-            transform: scale(1.2);
-        }
-
-        .slide-nav {
-            cursor: pointer;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            transform: translateY(-50%);
-        }
-
-        .slide-nav:hover {
-            opacity: 1;
-            transform: translateY(-50%) scale(1.15);
-        }
-
-        @media (max-width: 767px) {
-            .slide-description {
-                display: none;
-            }
-
-            .slide-nav {
-                display: none;
-            }
-
-            .hero-slide .text-center {
-                width: min(100%, 320px);
-                padding: 0 12px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 28px;
-            }
-
-            .hero-slide .container {
-                align-items: center;
-                padding: 0 16px;
-            }
-
-            .hero-slide .hero-title {
-                width: 100%;
-                font-size: 2.25rem !important;
-                line-height: 1.15;
-                margin-bottom: 0;
-                text-align: center;
-            }
-
-            .hero-slide .flex.flex-col {
-                gap: 14px;
-            }
-
-            .hero-slide .flex.flex-col a {
-                width: 100%;
-                padding: 13px 18px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Floating Shapes - Optimized */
-        .floating-shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .shape-1 { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
-        .shape-2 { width: 120px; height: 120px; top: 60%; right: 10%; animation-delay: 2s; }
-        .shape-3 { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: 4s; }
-        .shape-4 { width: 100px; height: 100px; top: 40%; right: 20%; animation-delay: 1s; }
-        .shape-5 { width: 40px; height: 40px; bottom: 40%; right: 30%; animation-delay: 3s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        /* Service Cards */
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-navy);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .service-icon i {
-            color: #C9A45C;
-            font-size: 1.5rem;
-        }
-
-        @media (max-width: 767px) {
-            .service-card {
-                text-align: center;
-            }
-            
-            .service-icon {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .service-card:hover .service-icon {
-            transform: rotate(360deg) scale(1.1);
-        }
-
-        /* Country Cards */
-        .country-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .country-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .country-image {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .country-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,0,0,0.3), transparent);
-            transition: all 0.3s ease;
-        }
-
-        .country-card:hover .country-image::before {
-            background: linear-gradient(45deg, rgba(0,0,0,0.1), transparent);
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: var(--gradient-navy);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Contact Section */
-        .contact-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        /* WhatsApp Float */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
-            50% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6); }
-            100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
-        }
-
-        /* Loading Animation - Optimized */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Mobile Menu Styles */
-        #mobile-menu {
-            background: white !important;
-            backdrop-filter: none !important;
-            height: 100vh !important;
-            min-height: 100vh !important;
-            max-height: 100vh !important;
-            overflow-y: auto;
-        }
-
-        #mobile-menu .bg-white {
-            background: white !important;
-        }
-
-        #mobile-menu a {
-            color: #1f2937 !important;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 12px 0;
-        }
-
-        #mobile-menu a:hover {
-            color: #C9A45C !important;
-            transform: translateX(10px);
-        }
-
-        #mobile-menu .border-b {
-            border-bottom: 1px solid #f3f4f6;
-        }
-
-        /* Ensure mobile menu covers full screen on all devices */
-        @media (max-width: 1024px) {
-            #mobile-menu {
-                height: 100vh !important;
-                min-height: 100vh !important;
-                max-height: 100vh !important;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem !important;
-            }
-            
-            .service-card {
-                padding: 1.5rem;
-            }
-            
-            .country-image {
-                height: 200px;
-            }
-        }
+        /* Homepage-only touches; everything else is Tailwind utilities. */
+        .hp-reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+        .hp-reveal.is-visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+        .hp-snap { scrollbar-width: none; } .hp-snap::-webkit-scrollbar { display: none; }
+        .hp-faq summary::-webkit-details-marker { display: none; }
+        
     </style>
 
+    <noscript><style>.hp-reveal { opacity: 1; transform: none; }</style></noscript>
     <script src="assets/js/analytics.js"></script>
+
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
 
     <!-- SEO:BEGIN -->
     <meta name="robots" content="index, follow" />
@@ -617,675 +139,340 @@
     <!-- LD:END -->
 </head>
 
-<body>
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- Header -->
-    <!-- Header (shared) -->
+<body class="bg-white pt-[88px] font-sans text-slate-700 antialiased">
     <div id="site-header"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen overflow-hidden">
-        <!-- Hero Slideshow -->
-        <div class="hero-slideshow relative w-full h-screen">
-            <!-- Slide 1 -->
-            <div class="hero-slide active absolute inset-0" style="background-image: url('./images/banner/1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.6) 0%, rgba(79, 70, 229, 0.6) 100%);"></div>
-                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
-                    <div class="text-center text-white">
-                        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6">
-                            LGA Visa: Student Visa &amp; Study Abroad Consultants in Sri Lanka
-                        </h1>
-                        <p class="slide-description text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-                            Lanka Global Access (LGA Visa) is based in Nugegoda and supports students across Sri Lanka
-                            with overseas university admissions and student visa applications for Australia, Canada,
-                            the UK, New Zealand and the USA.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="services/student-visa.html" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                                Student Visa Assistance
-                            </a>
-                            <a href="#countries" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
-                                Explore Destinations
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <main>
+        <!-- ================= HERO ================= -->
+        <section id="home" class="relative isolate overflow-hidden bg-navy text-white">
+            <img src="images/hero/graduates-1280.webp"
+                 srcset="images/hero/graduates-768.webp 768w, images/hero/graduates-1280.webp 1280w, images/hero/graduates-1920.webp 1920w"
+                 sizes="100vw" width="1920" height="1280" fetchpriority="high" decoding="async"
+                 alt="Graduates celebrating outside a university building"
+                 class="absolute inset-0 -z-10 h-full w-full object-cover object-[70%_center]">
+            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/90 to-navy/40 md:via-navy/80 md:to-navy/20" aria-hidden="true"></div>
+            <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-navy to-transparent" aria-hidden="true"></div>
 
-            <!-- Slide 2 -->
-            <div class="hero-slide absolute inset-0" style="background-image: url('./images/banner/2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.6) 0%, rgba(219, 39, 119, 0.6) 100%);"></div>
-                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
-                    <div class="text-center text-white">
-                        <h2 class="hero-title text-5xl md:text-7xl font-bold mb-6">
-                            Student Visas
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-                                Made Simple
-                            </span>
-                        </h2>
-                        <p class="slide-description text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
-                            University selection, applications, IELTS/PTE preparation and visa filing — everything under one roof.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="universities/index.html" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                                Browse Universities
-                            </a>
-                            <a href="./contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
-                                Free Assessment
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="hero-slide absolute inset-0" style="background-image: url('./images/banner/3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(20, 83, 45, 0.6) 0%, rgba(15, 118, 110, 0.6) 100%);"></div>
-                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
-                    <div class="text-center text-white">
-                        <h2 class="hero-title text-5xl md:text-7xl font-bold mb-6">
-                            Study in the World's Best
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-[#C9A45C]">
-                                Destinations
-                            </span>
-                        </h2>
-                        <p class="slide-description text-xl md:text-2xl mb-8 text-green-100 max-w-3xl mx-auto">
-                            Country guides, post-study work rights and PR pathways — compared across all five destinations.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="#countries" class="bg-gradient-to-r from-green-500 to-teal-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                                Compare Countries
-                            </a>
-                            <a href="resources/faq.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
-                                Read FAQs
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="hero-slide absolute inset-0" style="background-image: url('./images/banner/4.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(127, 29, 29, 0.6) 0%, rgba(194, 65, 12, 0.6) 100%);"></div>
-                <div class="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
-                    <div class="text-center text-white">
-                        <h2 class="hero-title text-5xl md:text-7xl font-bold mb-6">
-                            Meticulous
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-                                Visa Preparation
-                            </span>
-                        </h2>
-                        <p class="slide-description text-xl md:text-2xl mb-8 text-red-100 max-w-3xl mx-auto">
-                            Genuine documents checked against current immigration rules — with expert support if you've already had a refusal.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="about/testimonials.html" class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                                Success Stories
-                            </a>
-                            <a href="./contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
-                                Get Expert Help
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide Navigation Dots -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300 active" data-slide="0"></button>
-            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="1"></button>
-            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="2"></button>
-            <button class="slide-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="3"></button>
-        </div>
-
-        <!-- Slide Navigation Arrows -->
-        <button class="slide-nav absolute left-4 top-1/2 text-white text-4xl hover:text-yellow-400 z-20" id="prev-slide">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="slide-nav absolute right-4 top-1/2 text-white text-4xl hover:text-yellow-400 z-20" id="next-slide">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-
-        <!-- Floating Shapes - Optimized -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-        </div>
-
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-6">
-                    Who We Are
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    LGA Visa (Lanka Global Access) is a student visa and study-abroad consultancy in Sri Lanka, supporting students from course selection through university applications and visa preparation.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <picture>
-                        <source srcset="images/about.webp" type="image/webp">
-                        <img src="images/about.png" alt="Counsellor advising a Sri Lankan student on overseas university options at Lanka Global Access" class="rounded-2xl shadow-2xl" loading="lazy" width="600" height="400">
-                    </picture>
-                </div>
-                <div data-aos="fade-left">
-                    <h3 class="font-display text-3xl font-bold text-gray-800 mb-6">Our Mission</h3>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        We are dedicated to simplifying the visa application process and making global opportunities accessible to everyone. Our team of experienced professionals provides personalized guidance and comprehensive support throughout your journey.
+            <div class="mx-auto max-w-7xl px-4 pb-10 pt-14 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px] md:pb-14 md:pt-20 lg:pt-24 2xl:pb-16 2xl:pt-32">
+                <div class="max-w-2xl 2xl:max-w-3xl min-[2200px]:max-w-4xl">
+                    <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-gold-light backdrop-blur sm:text-sm">
+                        <i class="fas fa-location-dot" aria-hidden="true"></i> Student visa &amp; study abroad consultants · Nugegoda
                     </p>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <a href="about/index.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
-                            <i class="fas fa-user-group text-[#C9A45C]"></i><span class="font-medium text-gray-700 text-sm group-hover:text-[#C9A45C]">About Us</span>
+                    <h1 class="text-[2.1rem] font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl min-[2200px]:text-8xl">
+                        <span class="block text-lg font-bold tracking-normal text-gold sm:text-xl">LGA Visa — Lanka Global Access</span>
+                        Study abroad with Sri Lanka's student visa specialists
+                    </h1>
+                    <p class="mt-5 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg 2xl:max-w-2xl 2xl:text-xl">
+                        From choosing the right course to your visa approval — we guide Sri Lankan students into universities in Australia, Canada, the UK, New Zealand and the USA.
+                    </p>
+
+                    <form action="courses.html" method="get" role="search" class="mt-7 flex max-w-xl flex-col gap-2 rounded-2xl bg-white p-2 2xl:max-w-2xl shadow-2xl shadow-black/30 sm:flex-row">
+                        <label for="hp-search" class="sr-only">Search courses and universities</label>
+                        <div class="relative flex-1">
+                            <i class="fas fa-magnifying-glass pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                            <input id="hp-search" name="q" type="search" autocomplete="off" placeholder="Course, subject or university"
+                                   class="w-full rounded-xl py-3.5 pl-11 pr-3 text-[15px] text-navy outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-gold/40">
+                        </div>
+                        <button type="submit" class="rounded-xl bg-gold px-6 py-3.5 text-[15px] font-bold text-navy transition hover:bg-gold-light focus:outline-none focus-visible:ring-2 focus-visible:ring-white">Find courses</button>
+                    </form>
+
+                    <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                        <a href="contact.html" class="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-bold transition hover:border-gold hover:text-gold-light">
+                            Book a free consultation <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
                         </a>
-                        <a href="about/mission-vision.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
-                            <i class="fas fa-bullseye text-[#C9A45C]"></i><span class="font-medium text-gray-700 text-sm group-hover:text-[#C9A45C]">Mission &amp; Vision</span>
-                        </a>
-                        <a href="about/why-choose-us.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
-                            <i class="fas fa-award text-[#C9A45C]"></i><span class="font-medium text-gray-700 text-sm group-hover:text-[#C9A45C]">Why Choose Us</span>
-                        </a>
-                        <a href="about/testimonials.html" class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all group">
-                            <i class="fas fa-quote-left text-[#C9A45C]"></i><span class="font-medium text-gray-700 text-sm group-hover:text-[#C9A45C]">Testimonials</span>
+                        <a href="https://wa.me/94717225223?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa" target="_blank" rel="noopener"
+                           class="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-slate-200 transition hover:text-white">
+                            <i class="fab fa-whatsapp text-lg text-[#25D366]" aria-hidden="true"></i> Chat on WhatsApp
                         </a>
                     </div>
-                    <a href="about/index.html" class="text-[#C9A45C] font-semibold hover:underline">Learn more about us <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
+                </div>
+
+                <!-- Trust strip -->
+                <dl class="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 backdrop-blur md:mt-16 md:grid-cols-4">
+                    <div class="bg-navy/60 px-4 py-4 sm:px-6"><dt class="text-xs font-medium text-slate-300">Universities &amp; colleges</dt><dd class="mt-0.5 text-2xl font-extrabold text-white sm:text-3xl 2xl:text-4xl">400+</dd></div>
+                    <div class="bg-navy/60 px-4 py-4 sm:px-6"><dt class="text-xs font-medium text-slate-300">Courses to compare</dt><dd class="mt-0.5 text-2xl font-extrabold text-white sm:text-3xl 2xl:text-4xl">4,000+</dd></div>
+                    <div class="bg-navy/60 px-4 py-4 sm:px-6"><dt class="text-xs font-medium text-slate-300">Study destinations</dt><dd class="mt-0.5 text-2xl font-extrabold text-white sm:text-3xl 2xl:text-4xl">5</dd></div>
+                    <div class="bg-navy/60 px-4 py-4 sm:px-6"><dt class="text-xs font-medium text-slate-300">First consultation</dt><dd class="mt-0.5 text-2xl font-extrabold text-gold-light sm:text-3xl 2xl:text-4xl">Free</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ================= UNIVERSITY LOGOS ================= -->
+        <section class="border-b border-slate-100 bg-white py-10 md:py-12" aria-labelledby="hp-logos-title">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <p id="hp-logos-title" class="text-center text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Explore universities students apply to through LGA</p>
+                <ul class="hp-snap -mx-4 mt-7 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4 2xl:grid-cols-6">
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/australia/university-of-melbourne.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://thumb.wikimedia.org/wikipedia/en/thumb/5/50/The_University_of_Melbourne_Logo.svg/330px-The_University_of_Melbourne_Logo.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" alt="University of Melbourne logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of Melbourne</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/australia/monash-university.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Arms_of_Monash_University.svg?width=320" alt="Monash University logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">Monash University</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/australia/university-of-sydney.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://thumb.wikimedia.org/wikipedia/en/thumb/3/37/The_University_of_Sydney_Logo.svg/330px-The_University_of_Sydney_Logo.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" alt="University of Sydney logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of Sydney</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/canada/university-of-toronto.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://thumb.wikimedia.org/wikipedia/en/thumb/b/b5/UofT_logo.svg/330px-UofT_logo.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" alt="University of Toronto logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of Toronto</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/canada/university-of-british-columbia.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/British_columbia_ca_univ_logo.svg?width=320" alt="University of British Columbia (UBC) logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of British Columbia (UBC)</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/uk/university-of-manchester.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Manchester_University_Logo_%282%29.png?width=320" alt="University of Manchester logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of Manchester</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/uk/kings-college-london.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kcl-logo.svg?width=320" alt="King's College London logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">King's College London</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/uk/university-of-glasgow.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Arms_of_the_University_of_Glasgow.svg?width=320" alt="University of Glasgow logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of Glasgow</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/new-zealand/university-of-auckland.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://thumb.wikimedia.org/wikipedia/en/thumb/d/d9/University_of_Auckland_logo.svg/330px-University_of_Auckland_logo.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" alt="University of Auckland logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">University of Auckland</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/usa/massachusetts-institute-of-technology.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://photos.applyboard.com/schools/000/002/921/logos/small/Massachusetts-Institute-of-Technology-Logo.png?1778175901" alt="Massachusetts Institute of Technology (MIT) logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">Massachusetts Institute of Technology (MIT)</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/usa/harvard-university.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://photos.applyboard.com/schools/000/002/995/logos/small/Harvard-College-Logo-August2026.png?1786458240" alt="Harvard University logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">Harvard University</span></a></li>
+                    <li class="w-[70%] shrink-0 snap-start sm:w-auto"><a href="universities/usa/stanford-university.html" class="hp-logo flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 transition hover:border-gold/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><span class="flex h-11 w-11 shrink-0 items-center justify-center"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stanford_wordmark_%282012%29.svg?width=320" alt="Stanford University logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="max-h-11 max-w-[2.75rem] object-contain"></span><span class="text-sm font-semibold leading-snug text-navy">Stanford University</span></a></li>
+                </ul>
+                <p class="mt-7 text-center"><a href="universities/index.html" class="text-sm font-bold text-gold-deep hover:underline">Browse all 400+ universities and colleges <i class="fas fa-arrow-right ml-1 text-xs" aria-hidden="true"></i></a></p>
+            </div>
+        </section>
+
+        <!-- ================= WHY LGA ================= -->
+        <section id="about" class="bg-mist py-16 md:py-24 2xl:py-28" aria-labelledby="hp-why-title">
+            <div class="mx-auto grid max-w-7xl 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px] gap-10 px-4 sm:px-6 lg:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+                <div class="hp-reveal">
+                    <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-dark">Why LGA</p>
+                    <h2 class="mt-2 text-3xl font-extrabold leading-tight text-navy sm:text-4xl">Your student visa, handled by specialists</h2>
+                    <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">LGA Visa (Lanka Global Access) is a student visa and study abroad consultancy in Nugegoda. We work with you from the first shortlist to the day you fly — honestly, and in writing.</p>
+                    <a href="about/why-choose-us.html" class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-deep hover:underline">More about how we work <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i></a>
+                </div>
+                <ul class="grid gap-4 sm:grid-cols-2">
+                    <li class="hp-reveal rounded-2xl border border-slate-200/70 bg-white p-6">
+                        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
+                        <h3 class="mt-4 text-lg font-bold text-navy">Visa refusal specialists</h3>
+                        <p class="mt-1.5 text-sm leading-relaxed text-slate-600">Refused before? We review the refusal letter line by line and rebuild a stronger application.</p>
+                    </li>
+                    <li class="hp-reveal rounded-2xl border border-slate-200/70 bg-white p-6">
+                        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold"><i class="fas fa-book-open-reader" aria-hidden="true"></i></span>
+                        <h3 class="mt-4 text-lg font-bold text-navy">In-house IELTS &amp; PTE</h3>
+                        <p class="mt-1.5 text-sm leading-relaxed text-slate-600">Our own classes in Nugegoda and online, with exam-style practice and mock tests.</p>
+                    </li>
+                    <li class="hp-reveal rounded-2xl border border-slate-200/70 bg-white p-6">
+                        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold"><i class="fas fa-building-columns" aria-hidden="true"></i></span>
+                        <h3 class="mt-4 text-lg font-bold text-navy">400+ institutions</h3>
+                        <p class="mt-1.5 text-sm leading-relaxed text-slate-600">Compare 4,000+ bachelor's, master's and MBA courses across five destinations.</p>
+                    </li>
+                    <li class="hp-reveal rounded-2xl border border-slate-200/70 bg-white p-6">
+                        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold"><i class="fas fa-handshake" aria-hidden="true"></i></span>
+                        <h3 class="mt-4 text-lg font-bold text-navy">Transparent from day one</h3>
+                        <p class="mt-1.5 text-sm leading-relaxed text-slate-600">A free first consultation, and every charge quoted in writing before you commit.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section id="services" class="bg-white py-16 md:py-24 2xl:py-28" aria-labelledby="hp-services-title">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <div class="hp-reveal mx-auto max-w-2xl text-center 2xl:max-w-4xl">
+                    <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-dark">Our services</p>
+                    <h2 id="hp-services-title" class="mt-2 text-3xl font-extrabold leading-tight text-navy sm:text-4xl">Everything you need to study abroad</h2>
+                    <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">Three teams, one plan — admissions, visas and English tests working together on your application.</p>
+                </div>
+                <div class="mt-12 grid gap-5 md:grid-cols-3">
+                    <article class="hp-reveal flex flex-col rounded-3xl border border-slate-200/70 bg-white p-7 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/15 text-xl text-gold-dark"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span>
+                        <h3 class="mt-5 text-xl font-bold text-navy">University admissions</h3>
+                        <ul class="mt-4 space-y-2.5 text-sm text-slate-600">
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold-dark" aria-hidden="true"></i>Course and university shortlisting</li>
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold-dark" aria-hidden="true"></i>Applications and offer-letter follow-up</li>
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold-dark" aria-hidden="true"></i>Statements of purpose &amp; Genuine Student guidance</li>
+                        </ul>
+                        <a href="courses.html" class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-gold-deep hover:underline">Find a course <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="hp-reveal flex flex-col rounded-3xl bg-navy p-7 text-white shadow-lg transition hover:-translate-y-0.5">
+                        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-xl text-gold"><i class="fas fa-passport" aria-hidden="true"></i></span>
+                        <h3 class="mt-5 text-xl font-bold">Student visas</h3>
+                        <ul class="mt-4 space-y-2.5 text-sm text-slate-200">
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold" aria-hidden="true"></i>One-on-one visa consultations</li>
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold" aria-hidden="true"></i>Financial documents and interview preparation</li>
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold" aria-hidden="true"></i>Refusal reviews, appeals and pre-departure support</li>
+                        </ul>
+                        <a href="services/student-visa.html" class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-gold-light hover:underline">Student visa services <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="hp-reveal flex flex-col rounded-3xl border border-slate-200/70 bg-white p-7 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/15 text-xl text-gold-dark"><i class="fas fa-language" aria-hidden="true"></i></span>
+                        <h3 class="mt-5 text-xl font-bold text-navy">IELTS &amp; PTE classes</h3>
+                        <ul class="mt-4 space-y-2.5 text-sm text-slate-600">
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold-dark" aria-hidden="true"></i>In-house classes in Nugegoda and online</li>
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold-dark" aria-hidden="true"></i>Exam-style practice with feedback</li>
+                            <li class="flex gap-2.5"><i class="fas fa-check mt-1 text-xs text-gold-dark" aria-hidden="true"></i>Mock tests to reach your target score</li>
+                        </ul>
+                        <a href="services/ielts-pte.html" class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-gold-deep hover:underline">IELTS &amp; PTE classes <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i></a>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-6">
-                    Our Services
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Complete student visa and study abroad support tailored to your goals
-                </p>
+        <!-- ================= DESTINATIONS ================= -->
+        <section id="countries" class="bg-mist py-16 md:py-24 2xl:py-28" aria-labelledby="hp-dest-title">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <div class="hp-reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                    <div class="max-w-2xl">
+                        <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-dark">Study destinations</p>
+                        <h2 id="hp-dest-title" class="mt-2 text-3xl font-extrabold leading-tight text-navy sm:text-4xl">Where do you want to study?</h2>
+                        <p class="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">Country guides, universities and courses for five destinations.</p>
+                    </div>
+                    <a href="study-abroad/index.html" class="inline-flex items-center gap-2 text-sm font-bold text-gold-deep hover:underline">Compare destinations <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i></a>
+                </div>
+                <ul class="hp-snap -mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
+                    <li class="w-[78%] shrink-0 snap-start sm:w-auto"><a href="study-abroad/australia.html" class="group hp-reveal flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="relative block aspect-[4/3] overflow-hidden bg-slate-200"><img src="images/hero/dest-05.webp" alt="Study in Australia" width="720" height="480" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></span>
+                        <span class="flex flex-1 flex-col p-5"><span class="text-lg font-bold text-navy">Australia</span><span class="mt-1 text-sm text-slate-600">Up to 3 years post-study work</span><span class="mt-3 text-xs font-semibold text-slate-500"><span data-course-count="australia">…</span> courses · <span data-uni-count="australia">…</span> institutions</span><span class="mt-auto pt-4 text-sm font-bold text-gold-deep">Explore <i class="fas fa-arrow-right ml-1 text-xs transition group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+                    </a></li>
+                    <li class="w-[78%] shrink-0 snap-start sm:w-auto"><a href="study-abroad/canada.html" class="group hp-reveal flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="relative block aspect-[4/3] overflow-hidden bg-slate-200"><img src="images/hero/dest-03.webp" alt="Study in Canada" width="720" height="480" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></span>
+                        <span class="flex flex-1 flex-col p-5"><span class="text-lg font-bold text-navy">Canada</span><span class="mt-1 text-sm text-slate-600">Co-op study and clear pathways</span><span class="mt-3 text-xs font-semibold text-slate-500"><span data-course-count="canada">…</span> courses · <span data-uni-count="canada">…</span> institutions</span><span class="mt-auto pt-4 text-sm font-bold text-gold-deep">Explore <i class="fas fa-arrow-right ml-1 text-xs transition group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+                    </a></li>
+                    <li class="w-[78%] shrink-0 snap-start sm:w-auto"><a href="study-abroad/uk.html" class="group hp-reveal flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="relative block aspect-[4/3] overflow-hidden bg-slate-200"><img src="images/hero/dest-04.webp" alt="Study in United Kingdom" width="720" height="480" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></span>
+                        <span class="flex flex-1 flex-col p-5"><span class="text-lg font-bold text-navy">United Kingdom</span><span class="mt-1 text-sm text-slate-600">1-year master's degrees</span><span class="mt-3 text-xs font-semibold text-slate-500"><span data-course-count="uk">…</span> courses · <span data-uni-count="uk">…</span> institutions</span><span class="mt-auto pt-4 text-sm font-bold text-gold-deep">Explore <i class="fas fa-arrow-right ml-1 text-xs transition group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+                    </a></li>
+                    <li class="w-[78%] shrink-0 snap-start sm:w-auto"><a href="study-abroad/new-zealand.html" class="group hp-reveal flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="relative block aspect-[4/3] overflow-hidden bg-slate-200"><img src="images/hero/dest-06.webp" alt="Study in New Zealand" width="720" height="480" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></span>
+                        <span class="flex flex-1 flex-col p-5"><span class="text-lg font-bold text-navy">New Zealand</span><span class="mt-1 text-sm text-slate-600">Safe, welcoming and stunning</span><span class="mt-3 text-xs font-semibold text-slate-500"><span data-course-count="new-zealand">…</span> courses · <span data-uni-count="new-zealand">…</span> institutions</span><span class="mt-auto pt-4 text-sm font-bold text-gold-deep">Explore <i class="fas fa-arrow-right ml-1 text-xs transition group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+                    </a></li>
+                    <li class="w-[78%] shrink-0 snap-start sm:w-auto"><a href="study-abroad/usa.html" class="group hp-reveal flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <span class="relative block aspect-[4/3] overflow-hidden bg-slate-200"><img src="images/hero/dest-02.webp" alt="Study in USA" width="720" height="480" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></span>
+                        <span class="flex flex-1 flex-col p-5"><span class="text-lg font-bold text-navy">USA</span><span class="mt-1 text-sm text-slate-600">World-leading universities</span><span class="mt-3 text-xs font-semibold text-slate-500"><span data-course-count="usa">…</span> courses · <span data-uni-count="usa">…</span> institutions</span><span class="mt-auto pt-4 text-sm font-bold text-gold-deep">Explore <i class="fas fa-arrow-right ml-1 text-xs transition group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+                    </a></li>
+                </ul>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style="display: grid !important;">
-                <!-- Service Card 1 -->
-                <a href="services/student-visa.html" class="service-card" data-aos="fade-up" data-aos-delay="100" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                    <div class="service-icon">
-                        <i class="fas fa-passport text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Student Visa Consultations</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        One-on-one guidance on study visa requirements, documentation and financial proof for your destination country.
-                    </p>
-                </a>
-
-                <!-- Service Card 2 -->
-                <a href="universities/index.html" class="service-card" data-aos="fade-up" data-aos-delay="200" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                    <div class="service-icon">
-                        <i class="fas fa-building-columns text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">University Admissions</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Course and university shortlisting, application filing and offer-letter support across 400+ partner institutions.
-                    </p>
-                </a>
-
-                <!-- Service Card 3 -->
-                <a href="study-abroad/index.html" class="service-card" data-aos="fade-up" data-aos-delay="300" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                    <div class="service-icon">
-                        <i class="fas fa-plane text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Pre-Departure Support</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Air tickets, accommodation, insurance and pre-departure briefings so you land prepared for campus life.
-                    </p>
-                </a>
-
-                <!-- Service Card 4 -->
-                <a href="services/student-visa.html" class="service-card" data-aos="fade-up" data-aos-delay="400" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Student Visa Refusal Appeals</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Expert handling of refused study visa cases for the UK, Canada and Australia — stronger reapplication built on solid grounds.
-                    </p>
-                </a>
-
-                <!-- Service Card 5 -->
-                <a href="services/student-visa.html" class="service-card" data-aos="fade-up" data-aos-delay="500" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                    <div class="service-icon">
-                        <i class="fas fa-file-signature text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Genuine Student (GS) &amp; SOP Guidance</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Compelling statements of purpose and Genuine Student requirements drafted by advisors who know what visa officers look for.
-                    </p>
-                </a>
-
-                <!-- Service Card 6 -->
-                <a href="services/ielts-pte.html" class="service-card" data-aos="fade-up" data-aos-delay="600" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                    <div class="service-icon">
-                        <i class="fas fa-book-open-reader text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">IELTS &amp; PTE Test Prep</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Build your English skills with LGA's in-house IELTS and PTE classes, including focused practice and mock tests to help you work toward your target score.
-                    </p>
-                </a>
+        <!-- ================= HOW IT WORKS ================= -->
+        <section class="bg-white py-16 md:py-24 2xl:py-28" aria-labelledby="hp-steps-title">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <div class="hp-reveal mx-auto max-w-2xl text-center 2xl:max-w-4xl">
+                    <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-dark">How it works</p>
+                    <h2 id="hp-steps-title" class="mt-2 text-3xl font-extrabold leading-tight text-navy sm:text-4xl">From first chat to departure</h2>
+                </div>
+                <ol class="relative mt-12 grid gap-8 md:grid-cols-4 md:gap-6">
+                    <li class="hp-reveal relative flex gap-4 md:flex-col md:gap-0">
+                        <span class="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy text-lg font-extrabold text-gold ring-8 ring-white">1</span>
+                        <span class="absolute left-6 top-12 h-[calc(100%+2rem)] w-px bg-slate-200 md:left-12 md:top-6 md:h-px md:w-[calc(100%-1.5rem)]" aria-hidden="true"></span>
+                        <div class="md:mt-5"><h3 class="text-lg font-bold text-navy">Free assessment</h3><p class="mt-1.5 text-sm leading-relaxed text-slate-600">We review your results, budget and goals and suggest the right destinations.</p></div>
+                    </li>
+                    <li class="hp-reveal relative flex gap-4 md:flex-col md:gap-0">
+                        <span class="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy text-lg font-extrabold text-gold ring-8 ring-white">2</span>
+                        <span class="absolute left-6 top-12 h-[calc(100%+2rem)] w-px bg-slate-200 md:left-12 md:top-6 md:h-px md:w-[calc(100%-1.5rem)]" aria-hidden="true"></span>
+                        <div class="md:mt-5"><h3 class="text-lg font-bold text-navy">Course shortlist</h3><p class="mt-1.5 text-sm leading-relaxed text-slate-600">A shortlist of courses and universities you qualify for, with intakes and entry requirements.</p></div>
+                    </li>
+                    <li class="hp-reveal relative flex gap-4 md:flex-col md:gap-0">
+                        <span class="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy text-lg font-extrabold text-gold ring-8 ring-white">3</span>
+                        <span class="absolute left-6 top-12 h-[calc(100%+2rem)] w-px bg-slate-200 md:left-12 md:top-6 md:h-px md:w-[calc(100%-1.5rem)]" aria-hidden="true"></span>
+                        <div class="md:mt-5"><h3 class="text-lg font-bold text-navy">Applications &amp; offers</h3><p class="mt-1.5 text-sm leading-relaxed text-slate-600">We prepare and submit your applications and follow up until you hold an offer letter.</p></div>
+                    </li>
+                    <li class="hp-reveal relative flex gap-4 md:flex-col md:gap-0">
+                        <span class="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold text-lg font-extrabold text-navy ring-8 ring-white">4</span>
+                        <div class="md:mt-5"><h3 class="text-lg font-bold text-navy">Visa &amp; departure</h3><p class="mt-1.5 text-sm leading-relaxed text-slate-600">Visa file, interview preparation and pre-departure briefing — so you land ready.</p></div>
+                    </li>
+                </ol>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section py-20 mt-16">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-4xl font-bold text-[#C9A45C] mb-2">400+</div>
-                    <div class="text-[#C7CEDA] opacity-90">Partner Universities</div>
+        <!-- ================= TESTIMONIALS ================= -->
+        <section class="bg-mist py-16 md:py-24 2xl:py-28" aria-labelledby="hp-stories-title">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <div class="hp-reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                    <div class="max-w-2xl">
+                        <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-dark">Student stories</p>
+                        <h2 id="hp-stories-title" class="mt-2 text-3xl font-extrabold leading-tight text-navy sm:text-4xl">Approved, and on their way</h2>
+                    </div>
+                    <a href="about/testimonials.html" class="inline-flex items-center gap-2 text-sm font-bold text-gold-deep hover:underline">Read all stories <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i></a>
                 </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-4xl font-bold text-[#C9A45C] mb-2">5</div>
-                    <div class="text-[#C7CEDA] opacity-90">Study Destinations</div>
-                </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-4xl font-bold text-[#C9A45C] mb-2">7</div>
-                    <div class="text-[#C7CEDA] opacity-90">Days Open Weekly</div>
-                </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-4xl font-bold text-[#C9A45C] mb-2">Free</div>
-                    <div class="text-[#C7CEDA] opacity-90">Initial Consultation</div>
+                <div class="hp-snap -mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0">
+                    <figure class="hp-reveal flex w-[85%] shrink-0 snap-start flex-col rounded-3xl bg-white p-6 shadow-sm sm:p-7 md:w-auto">
+                        <i class="fas fa-quote-left text-2xl text-gold" aria-hidden="true"></i>
+                        <blockquote class="mt-4 flex-1 text-[15px] leading-relaxed text-slate-700">LGA handled everything — university application, my Genuine Student (GS) statement, financial documents, even mock interviews. My Australian student visa was approved in three weeks.</blockquote>
+                        <figcaption class="mt-6 border-t border-slate-100 pt-4"><span class="block font-bold text-navy">Sachini Dilhani</span><span class="text-sm text-slate-500">Student Visa (Subclass 500) · Australia</span></figcaption>
+                    </figure>
+                    <figure class="hp-reveal flex w-[85%] shrink-0 snap-start flex-col rounded-3xl bg-white p-6 shadow-sm sm:p-7 md:w-auto">
+                        <i class="fas fa-quote-left text-2xl text-gold" aria-hidden="true"></i>
+                        <blockquote class="mt-4 flex-1 text-[15px] leading-relaxed text-slate-700">After my study permit was refused, LGA reviewed the officer's refusal reasons, rebuilt my file with stronger ties and funds evidence, and guided my reapplication. Approved!</blockquote>
+                        <figcaption class="mt-6 border-t border-slate-100 pt-4"><span class="block font-bold text-navy">Kasun Maduranga</span><span class="text-sm text-slate-500">Study Permit Refusal · Canada</span></figcaption>
+                    </figure>
+                    <figure class="hp-reveal flex w-[85%] shrink-0 snap-start flex-col rounded-3xl bg-white p-6 shadow-sm sm:p-7 md:w-auto">
+                        <i class="fas fa-quote-left text-2xl text-gold" aria-hidden="true"></i>
+                        <blockquote class="mt-4 flex-1 text-[15px] leading-relaxed text-slate-700">Two agencies turned me away because of my study gaps. LGA built my case around my work experience, secured an offer from a London university, and my Student Route visa was granted in 15 days.</blockquote>
+                        <figcaption class="mt-6 border-t border-slate-100 pt-4"><span class="block font-bold text-navy">Ayesha Hameed</span><span class="text-sm text-slate-500">Student Route · United Kingdom</span></figcaption>
+                    </figure>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Study Abroad Section -->
-    <section id="countries" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-6">
-                    Study Abroad
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Five world-class destinations with dedicated guides, universities and full visa support
-                </p>
+        <!-- ================= FAQ ================= -->
+        <section class="bg-white py-16 md:py-24 2xl:py-28" aria-labelledby="hp-faq-title">
+            <div class="mx-auto grid max-w-7xl 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px] gap-10 px-4 sm:px-6 lg:px-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+                <div class="hp-reveal">
+                    <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-dark">FAQ</p>
+                    <h2 id="hp-faq-title" class="mt-2 text-3xl font-extrabold leading-tight text-navy sm:text-4xl">Questions students ask us</h2>
+                    <p class="mt-4 text-slate-600">Can't find your answer? <a href="resources/faq.html" class="font-bold text-gold-deep hover:underline">See all FAQs</a> or <a href="contact.html" class="font-bold text-gold-deep hover:underline">ask a counsellor</a>.</p>
+                </div>
+                <div class="hp-faq divide-y divide-slate-200 border-y border-slate-200">
+                    <details class="group py-5" open>
+                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-bold text-navy sm:text-lg">Is the first consultation really free?<span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mist text-xs text-gold-dark transition group-open:rotate-45" aria-hidden="true"><i class="fas fa-plus"></i></span></summary>
+                        <p class="mt-3 pr-10 leading-relaxed text-slate-600">Yes — your first counselling session is completely free with no obligation. We only charge when you decide to proceed with a service package.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-bold text-navy sm:text-lg">How early should I start preparing?<span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mist text-xs text-gold-dark transition group-open:rotate-45" aria-hidden="true"><i class="fas fa-plus"></i></span></summary>
+                        <p class="mt-3 pr-10 leading-relaxed text-slate-600">Ideally 8–12 months before your target intake: 1–2 months for tests, 2–3 months for applications and offers, then 2–3 months for visa processing and financials.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-bold text-navy sm:text-lg">My visa was rejected before. Can LGA help?<span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mist text-xs text-gold-dark transition group-open:rotate-45" aria-hidden="true"><i class="fas fa-plus"></i></span></summary>
+                        <p class="mt-3 pr-10 leading-relaxed text-slate-600">Yes — rejections usually stem from fixable documentation or credibility issues. We review the refusal letter line-by-line, rebuild the file and manage appeals or fresh applications.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-bold text-navy sm:text-lg">Can I study abroad after O/Ls?<span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mist text-xs text-gold-dark transition group-open:rotate-45" aria-hidden="true"><i class="fas fa-plus"></i></span></summary>
+                        <p class="mt-3 pr-10 leading-relaxed text-slate-600">Yes — foundation programs in the UK, Australia and NZ accept post-O/L students, creating a bridge into bachelor's degrees. A/L students can enter diplomas or direct year-one entry.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-bold text-navy sm:text-lg">When do I pay university tuition — to LGA or the university?<span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mist text-xs text-gold-dark transition group-open:rotate-45" aria-hidden="true"><i class="fas fa-plus"></i></span></summary>
+                        <p class="mt-3 pr-10 leading-relaxed text-slate-600">Always directly to the university through official channels — we never hold your tuition money. We guide the transfer and provide receipt documentation for your visa file.</p>
+                    </details>
+                </div>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <a href="study-abroad/australia.html" class="country-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="country-image" style="background-image: url('./images/portfolio/05.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">Australia</h3>
-                        <p class="text-sm text-gray-600 mb-3">Up to 3 years post-study work</p>
-                        <span class="text-[#C9A45C] text-sm font-medium">Explore &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="study-abroad/canada.html" class="country-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="country-image" style="background-image: url('./images/portfolio/03.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">Canada</h3>
-                        <p class="text-sm text-gray-600 mb-3">Clear pathways to PR</p>
-                        <span class="text-[#C9A45C] text-sm font-medium">Explore &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="study-abroad/uk.html" class="country-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="country-image" style="background-image: url('./images/portfolio/04.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">United Kingdom</h3>
-                        <p class="text-sm text-gray-600 mb-3">1-year master's degrees</p>
-                        <span class="text-[#C9A45C] text-sm font-medium">Explore &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="study-abroad/new-zealand.html" class="country-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="country-image" style="background-image: url('./images/portfolio/06.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">New Zealand</h3>
-                        <p class="text-sm text-gray-600 mb-3">Safe &amp; stunning environment</p>
-                        <span class="text-[#C9A45C] text-sm font-medium">Explore &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="study-abroad/usa.html" class="country-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="country-image" style="background-image: url('./images/portfolio/02.jpg')"></div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">USA</h3>
-                        <p class="text-sm text-gray-600 mb-3">World's top universities</p>
-                        <span class="text-[#C9A45C] text-sm font-medium">Explore &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="universities/index.html" class="country-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="country-image flex items-center justify-center" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);">
-                        <i class="fas fa-building-columns text-white text-5xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">Universities</h3>
-                        <p class="text-sm text-gray-600 mb-3">400+ institutions &amp; 4,000+ courses</p>
-                        <span class="text-[#C9A45C] text-sm font-medium">Browse &rarr;</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="study-abroad/index.html" class="inline-block border-2 border-[#C9A45C] text-[#C9A45C] px-8 py-3 rounded-full font-medium hover:bg-[#A9813F] hover:text-white transition-all duration-300">
-                    View All Destinations
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-6">
-                    Get In Touch
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Ready to start your journey? Contact us today for expert guidance
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <div class="contact-card">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-800">Address</div>
-                                    <div class="text-gray-600">1st Floor, 464 High Level Road, Nugegoda, Sri Lanka</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-800">Phone</div>
-                                    <div class="text-gray-600">+94 71 722 5223</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-800">Email</div>
-                                    <div class="text-gray-600">admin@lgavisa.com</div>
-                                </div>
-                            </div>
+        <!-- ================= CLOSING CTA ================= -->
+        <section id="contact" class="bg-white pb-16 md:pb-24" aria-labelledby="hp-cta-title">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <div class="hp-reveal relative overflow-hidden rounded-3xl bg-navy px-6 py-12 text-white sm:px-12 md:py-16">
+                    <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
+                    <div class="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+                        <div>
+                            <h2 id="hp-cta-title" class="text-3xl font-extrabold leading-tight sm:text-4xl">Book your free consultation</h2>
+                            <p class="mt-3 max-w-2xl text-slate-200">Talk to a counsellor about your results, budget and target intake. No obligation — you only pay when you decide to go ahead.</p>
+                        </div>
+                        <div class="flex flex-col gap-3 sm:flex-row">
+                            <a href="contact.html" class="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gold px-7 py-3 font-bold text-navy transition hover:bg-gold-light">Book a consultation <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i></a>
+                            <a href="https://wa.me/94717225223?text=Hi%20LankaGlobalAccess%2C%20I%20have%20a%20question%20about%20your%20Visa" target="_blank" rel="noopener" class="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-3 font-bold transition hover:bg-white/10"><i class="fab fa-whatsapp text-lg" aria-hidden="true"></i> WhatsApp us</a>
                         </div>
                     </div>
                 </div>
 
-                <div data-aos="fade-left">
-                    <div class="contact-card">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Visit Our Office</h3>
-                        <div class="rounded-lg overflow-hidden shadow-lg">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!4v1794906669297!6m8!1m7!1saZqlg_5-ZG_ltE3a_rk3fQ!2m2!1d6.862624848214534!2d79.90212883575856!3f227.42!4f0!5f0.7820865974627469" 
-                                width="100%" 
-                                height="300" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
+                <dl class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="flex gap-3 rounded-2xl border border-slate-200/70 p-5"><i class="fas fa-location-dot mt-1 text-gold-dark" aria-hidden="true"></i><div><dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">Visit us</dt><dd class="mt-1 text-sm font-semibold text-navy">1st Floor, 464 High Level Road, Nugegoda</dd><dd class="mt-1"><a href="https://www.google.com/maps/search/?api=1&amp;query=464+High+Level+Road+Nugegoda" target="_blank" rel="noopener" class="text-sm font-bold text-gold-deep hover:underline">Get directions</a></dd></div></div>
+                    <div class="flex gap-3 rounded-2xl border border-slate-200/70 p-5"><i class="fas fa-phone mt-1 text-gold-dark" aria-hidden="true"></i><div><dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">Call</dt><dd class="mt-1 text-sm font-semibold text-navy"><a href="tel:+94717225223" class="hover:underline">+94 71 722 5223</a></dd></div></div>
+                    <div class="flex gap-3 rounded-2xl border border-slate-200/70 p-5"><i class="fas fa-envelope mt-1 text-gold-dark" aria-hidden="true"></i><div><dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">Email</dt><dd class="mt-1 text-sm font-semibold text-navy"><a href="mailto:admin@lgavisa.com" class="break-all hover:underline">admin@lgavisa.com</a></dd></div></div>
+                    <div class="flex gap-3 rounded-2xl border border-slate-200/70 p-5"><i class="fas fa-clock mt-1 text-gold-dark" aria-hidden="true"></i><div><dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">Opening hours</dt><dd class="mt-1 text-sm font-semibold text-navy">Monday – Sunday<br>8:30 AM – 5:30 PM</dd></div></div>
+                </dl>
             </div>
+        </section>
+    </main>
 
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="contact.html" class="inline-block bg-[#C9A45C] text-[#0B1F3A] px-8 py-4 rounded-full font-bold hover:shadow-2xl transform hover:scale-105 transition-all duration-300 mr-2 mb-2">
-                    Send Us a Message
-                </a>
-                <a href="resources/blog.html" class="inline-block border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-bold hover:border-[#C9A45C] hover:text-[#C9A45C] transition-all duration-300 mr-2 mb-2">
-                    Read Our Blog
-                </a>
-                <a href="resources/faq.html" class="inline-block border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-bold hover:border-[#C9A45C] hover:text-[#C9A45C] transition-all duration-300 mb-2">
-                    Browse FAQs
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!-- Footer (shared) -->
     <div id="site-footer"></div>
 
-
-
-    <!-- Shared components + behaviors -->
     <script>window.SITE_ROOT = './';</script>
-    <script src="assets/js/components.js?v=12"></script>
-    <script src="assets/js/site.js?v=3"></script>
-
-    <!-- JavaScript - Optimized -->
-    <script defer>
-        // GSAP Animations - Optimized
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Section Animations - Optimized
-        gsap.from('.hero-title', {
-            duration: 1,
-            y: 50,
-            opacity: 0,
-            ease: "power2.out"
-        });
-
-        gsap.from('.floating-shape', {
-            duration: 1.2,
-            scale: 0,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "back.out(1.4)"
-        });
-
-        // Service Cards Animation - Optimized
-        gsap.from('.service-card', {
-            duration: 0.8,
-            y: 30,
-            opacity: 0,
-            stagger: 0.05,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: '#services',
-                start: "top 85%"
+    <script src="assets/js/components.js?v=13"></script>
+    <script src="assets/js/site.js?v=4"></script>
+    <script src="assets/js/data/university-directory.js" defer></script>
+    <script src="assets/js/catalogue-widgets.js?v=2" defer></script>
+    <script>
+        /* Gentle reveal on scroll; content is fully visible without JS or with reduced motion. */
+        (function () {
+            var items = document.querySelectorAll('.hp-reveal');
+            if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                items.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
             }
-        });
-
-        // Stats Counter Animation
-        const counters = document.querySelectorAll('.stat-card .text-4xl');
-        counters.forEach(counter => {
-            const raw = counter.textContent.trim();
-            const target = parseInt(raw.replace(/,/g, ''), 10);
-
-            // Non-numeric card (e.g. "Free") — skip the animation, leave text as-is.
-            if (isNaN(target)) return;
-
-            // Capture the trailing suffix ("+", "%", "/7") once, not per frame.
-            const suffix = raw.replace(/^[\d\s,]+/, '');
-            const increment = target / 100;
-
-            ScrollTrigger.create({
-                trigger: counter,
-                start: "top 80%",
-                onEnter: () => {
-                    let current = 0;
-                    const updateCounter = () => {
-                        if (current < target) {
-                            current += increment;
-                            counter.textContent = Math.ceil(current) + suffix;
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target + suffix;
-                        }
-                    };
-                    updateCounter();
-                }
-            });
-        });
-
-        // Parallax Effect - Optimized (disabled for better performance)
-        // gsap.to('.floating-shapes', {
-        //     yPercent: -50,
-        //     ease: "none",
-        //     scrollTrigger: {
-        //         trigger: '.hero-section',
-        //         start: "top bottom",
-        //         end: "bottom top",
-        //         scrub: true
-        //     }
-        // });
-
-        // Hero Slideshow Functionality
-        class HeroSlideshow {
-            constructor() {
-                this.currentSlide = 0;
-                this.slides = document.querySelectorAll('.hero-slide');
-                this.dots = document.querySelectorAll('.slide-dot');
-                this.prevBtn = document.getElementById('prev-slide');
-                this.nextBtn = document.getElementById('next-slide');
-                this.totalSlides = this.slides.length;
-                this.autoPlayInterval = null;
-                this.autoPlayDelay = 4000; // 4 seconds
-
-                this.init();
-            }
-
-            init() {
-                this.bindEvents();
-                this.startAutoPlay();
-                this.updateSlide();
-            }
-
-            bindEvents() {
-                // Dot navigation
-                this.dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        this.goToSlide(index);
-                    });
-                });
-
-                // Arrow navigation
-                this.prevBtn.addEventListener('click', () => {
-                    this.prevSlide();
-                });
-
-                this.nextBtn.addEventListener('click', () => {
-                    this.nextSlide();
-                });
-
-                // Pause autoplay on hover
-                const slideshow = document.querySelector('.hero-slideshow');
-                slideshow.addEventListener('mouseenter', () => {
-                    this.stopAutoPlay();
-                });
-
-                slideshow.addEventListener('mouseleave', () => {
-                    this.startAutoPlay();
-                });
-
-                // Keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        this.prevSlide();
-                    } else if (e.key === 'ArrowRight') {
-                        this.nextSlide();
-                    }
-                });
-            }
-
-            goToSlide(index) {
-                // Remove active class from current slide and dot
-                this.slides[this.currentSlide].classList.remove('active');
-                this.dots[this.currentSlide].classList.remove('active');
-
-                // Update current slide
-                this.currentSlide = index;
-
-                // Add active class to new slide and dot
-                this.slides[this.currentSlide].classList.add('active');
-                this.dots[this.currentSlide].classList.add('active');
-
-                // Reset autoplay timer
-                this.resetAutoPlay();
-            }
-
-            nextSlide() {
-                const nextIndex = (this.currentSlide + 1) % this.totalSlides;
-                this.goToSlide(nextIndex);
-            }
-
-            prevSlide() {
-                const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-                this.goToSlide(prevIndex);
-            }
-
-            updateSlide() {
-                this.slides.forEach((slide, index) => {
-                    if (index === this.currentSlide) {
-                        slide.classList.add('active');
-                    } else {
-                        slide.classList.remove('active');
-                    }
-                });
-
-                this.dots.forEach((dot, index) => {
-                    if (index === this.currentSlide) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-
-            startAutoPlay() {
-                this.autoPlayInterval = setInterval(() => {
-                    this.nextSlide();
-                }, this.autoPlayDelay);
-            }
-
-            stopAutoPlay() {
-                if (this.autoPlayInterval) {
-                    clearInterval(this.autoPlayInterval);
-                    this.autoPlayInterval = null;
-                }
-            }
-
-            resetAutoPlay() {
-                this.stopAutoPlay();
-                this.startAutoPlay();
-            }
-        }
-
-        // Initialize slideshow when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new HeroSlideshow();
-        });
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+            }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+            items.forEach(function (el) { io.observe(el); });
+        })();
     </script>
 </body>
 </html>

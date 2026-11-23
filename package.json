@@ -10,10 +10,14 @@
     "sitemap": "node scripts/generate-sitemap.js",
     "sync:contact": "node scripts/sync-contact.js",
     "validate": "node scripts/seo-validate.js",
-    "build": "npm run sync:contact && npm run seo:metadata && npm run generate && npm run sitemap && npm run seo:structured-data && npm run validate",
-    "predeploy-check": "npm run build"
+    "build": "npm run sync:contact && npm run seo:metadata && npm run generate && npm run css && npm run sitemap && npm run seo:structured-data && npm run validate",
+    "predeploy-check": "npm run build",
+    "css": "tailwindcss -c tailwind.config.js -i assets/css/src/tailwind.css -o assets/css/tailwind.css --minify"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.18"
   }
 }

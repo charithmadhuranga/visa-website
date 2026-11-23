@@ -449,7 +449,6 @@ function shell({ title, description, canonicalPath, graph, body, name, country }
     <link rel="icon" type="image/png" sizes="48x48" href="../../images/ico/favicon-48x48.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../images/ico/apple-touch-icon.png">
     <link rel="stylesheet" href="../../assets/css/site.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="../../assets/js/analytics.js"></script>
@@ -473,6 +472,7 @@ ${ld}
         .up-level[aria-pressed="true"] { background: #0B1F3A; border-color: #0B1F3A; color: #fff; }
         .up-course summary::-webkit-details-marker { display: none; }
     </style>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
 </head>
 <body class="bg-[#F5F6F8] pt-[88px]">
     <div id="site-header"></div>

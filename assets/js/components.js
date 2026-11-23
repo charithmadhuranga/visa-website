@@ -123,13 +123,13 @@
                 <div class="flex items-center justify-between">
                     <a href="${navHref('index.html')}" class="flex items-center shrink-0">
                         <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-12 md:h-14 logo-navy" loading="eager">
-                        <div class="brand-details hidden md:block ml-3">
+                        <div class="brand-details hidden md:block lg:hidden min-[1400px]:block ml-3">
                             <span class="block text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">${SITE.name}</span>
                             <span class="block text-sm text-gray-600 whitespace-nowrap">${SITE.tagline}</span>
                         </div>
                     </a>
-                    <div class="desktop-navigation hidden lg:flex items-center ml-6 gap-6 text-sm shrink-0">${desktopNav}
-                        <a href="${navHref('contact.html')}" class="bg-[#C9A45C] text-[#0B1F3A] px-6 py-3 rounded-full font-bold hover:bg-[#A9813F] hover:shadow-lg transition-all duration-300 transform hover:scale-105">Get Started</a>
+                    <div class="desktop-navigation hidden lg:flex items-center ml-6 gap-5 xl:gap-6 text-sm shrink-0">${desktopNav}
+                        <a href="${navHref('contact.html')}" class="bg-[#C9A45C] text-[#0B1F3A] px-5 py-2.5 xl:px-6 xl:py-3 rounded-full font-bold whitespace-nowrap hover:bg-[#E3C88A] hover:shadow-lg transition-colors duration-300">Get Started</a>
                     </div>
                     <button class="lg:hidden text-[#3B4453]" id="mobile-menu-btn" aria-label="Open menu">
                         <i class="fas fa-bars text-2xl"></i>
@@ -158,13 +158,13 @@
         mount.innerHTML = `
         <footer class="bg-[#081527] text-white pt-12 pb-8">
             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-4 gap-8">
+                <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
                     <div class="md:col-span-1">
-                        <div class="flex items-center mb-4">
-                            <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-10 mr-3 logo-navy" loading="lazy">
-                            <div>
-                                <h3 class="text-xl font-bold">${SITE.name}</h3>
-                                <p class="text-[#C7CEDA]">${SITE.tagline}</p>
+                        <div class="flex items-center gap-3 mb-4">
+                            <img src="${ROOT}images/logo-navy.png" alt="${SITE.name}" class="h-11 w-11 shrink-0 logo-navy" loading="lazy">
+                            <div class="min-w-0">
+                                <h3 class="text-lg font-bold leading-tight">${SITE.name}</h3>
+                                <p class="text-xs text-[#C7CEDA] leading-snug">${SITE.tagline}</p>
                             </div>
                         </div>
                         <p class="text-[#C7CEDA] mb-4 text-sm">Your trusted partner for student visas and study abroad. From university admission to visa approval, we make your global education dreams a reality.</p>

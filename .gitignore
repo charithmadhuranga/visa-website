@@ -7,3 +7,6 @@
 # Build artifacts
 scripts/generated-urls.json
 scripts/university-urls.json
+
+# Node
+node_modules/
