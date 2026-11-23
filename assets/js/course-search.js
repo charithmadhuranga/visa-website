@@ -335,7 +335,7 @@
         const isSaved = saved.has(c.key);
         const location = [c.city, meta.name].filter(Boolean).join(', ');
         return `
-        <article class="cf-card group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[#C9A45C]/50 hover:shadow-lg" data-country="${esc(c.country)}">
+        <article class="cf-card group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[#C9A45C]/50 hover:shadow-lg" data-country="${esc(c.country)}">
             <div class="cf-card-main flex flex-1 flex-col p-5">
                 <div class="mb-4 flex items-start gap-3">
                     ${logoBox(c)}
@@ -383,7 +383,7 @@
             : 'No matching courses';
 
         const grid = $('course-grid');
-        grid.className = state.view === 'list' ? 'cf-card-list gap-4' : 'grid gap-4 md:grid-cols-2 xl:grid-cols-3';
+        grid.className = state.view === 'list' ? 'cf-card-list gap-5' : 'grid gap-5 sm:gap-6 [grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr))]';
         grid.innerHTML = filtered.slice(0, state.shown).map(card).join('');
         grid.classList.toggle('hidden', total === 0);
         $('course-empty').classList.toggle('hidden', total > 0);
@@ -419,14 +419,20 @@
     function renderDestinations() {
         const countries = Object.keys(COUNTRY_META).filter(k => courses.some(c => c.country === k));
         const maxCourses = Math.max(...countries.map(k => courses.filter(c => c.country === k).length));
-        $('cf-destinations').innerHTML = countries.map(k => {
+        // Balanced rows for 5 destinations: tablet 2+2+1 (last spans the row),
+        // laptop 3+2 on a 6-column grid (bottom two wider), wide screens 5 in a row.
+        const SPAN_TOP = 'lg:col-span-2 2xl:col-span-1';
+        const SPAN_BOTTOM = 'lg:col-span-3 2xl:col-span-1';
+        const SPAN_LAST_ODD = 'sm:col-span-2 lg:col-span-3 2xl:col-span-1';
+        const spanFor = (i, n) => (n === 5 ? (i < 3 ? SPAN_TOP : i === 4 ? SPAN_LAST_ODD : SPAN_BOTTOM) : '');
+        $('cf-destinations').innerHTML = countries.map((k, i) => {
             const meta = COUNTRY_META[k];
             const list = courses.filter(c => c.country === k);
             const unis = new Set(list.map(c => c.uni)).size;
             const fields = [...list.reduce((m, c) => m.set(c.field, (m.get(c.field) || 0) + 1), new Map())]
                 .filter(([f]) => f !== 'Other').sort((a, b) => b[1] - a[1]).slice(0, 2).map(([f]) => f);
             return `
-            <button type="button" data-country-card="${k}" class="group rounded-2xl border border-gray-100 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#C9A45C]/60 hover:shadow-lg">
+            <button type="button" data-country-card="${k}" class="group ${spanFor(i, countries.length)} min-w-0 rounded-2xl border border-slate-200/80 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#C9A45C]/60 hover:shadow-lg">
                 <div class="mb-4 flex items-center gap-3">
                     <span class="flex h-10 w-10 items-center justify-center rounded-xl" style="background:${meta.tint};color:${meta.color}"><i class="fas ${meta.icon}" aria-hidden="true"></i></span>
                     <div class="flex-1">

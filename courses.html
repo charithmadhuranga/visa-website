@@ -119,7 +119,7 @@
         <section class="relative overflow-hidden bg-gradient-to-br from-[#0B1F3A] via-[#16305A] to-[#0B1F3A] text-white">
             <div class="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#C9A45C]/10 blur-3xl" aria-hidden="true"></div>
             <div class="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-blue-400/10 blur-3xl" aria-hidden="true"></div>
-            <div class="container relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 md:pb-14 md:pt-16">
+            <div class="container relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 md:pb-14 md:pt-16 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
                 <nav class="mb-6 text-sm text-blue-100" aria-label="Breadcrumb">
                     <a href="index.html" class="hover:text-[#E3C88A]">Home</a>
                     <i class="fas fa-chevron-right mx-2 text-xs" aria-hidden="true"></i>
@@ -130,7 +130,7 @@
                         <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-[#E3C88A]">
                             <i class="fas fa-database" aria-hidden="true"></i> <span id="cf-updated">Live course catalogue</span>
                         </span>
-                        <h1 class="mb-4 text-4xl font-extrabold leading-tight md:text-5xl">Find the right course abroad, <span class="text-[#E3C88A]">and the right university</span></h1>
+                        <h1 class="mb-4 max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Find the right course abroad, <span class="text-[#E3C88A]">and the right university</span></h1>
                         <p class="max-w-2xl text-lg leading-relaxed text-blue-100">
                             Explore program overviews, course length, upcoming intakes and university profiles for bachelor's, master's and MBA programs in Australia, Canada, the United Kingdom and the USA.
                         </p>
@@ -156,7 +156,7 @@
 
         <!-- ============ DESTINATIONS ============ -->
         <section class="border-b border-gray-200 bg-white" aria-labelledby="cf-dest-heading">
-            <div class="container mx-auto max-w-7xl px-4 py-10 sm:px-6">
+            <div class="container mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-14 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
                 <div class="mb-5 flex flex-wrap items-end justify-between gap-2">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Compare destinations</p>
@@ -164,7 +164,7 @@
                     </div>
                     <p class="text-xs text-gray-500">Listed courses by study level. Select a country to filter.</p>
                 </div>
-                <div id="cf-destinations" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div id="cf-destinations" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-6 lg:gap-6 2xl:grid-cols-5">
                     <div class="cf-skeleton h-44 rounded-2xl"></div><div class="cf-skeleton h-44 rounded-2xl"></div><div class="cf-skeleton h-44 rounded-2xl"></div><div class="cf-skeleton h-44 rounded-2xl"></div>
                 </div>
             </div>
@@ -172,8 +172,8 @@
 
         <!-- ============ FINDER ============ -->
         <section id="finder" class="scroll-mt-24 py-8 md:py-10" aria-labelledby="course-results-heading">
-            <div class="container mx-auto max-w-7xl px-4 sm:px-6">
-                <div class="grid items-start gap-6 lg:grid-cols-[290px_minmax(0,1fr)]">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px]">
+                <div class="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8 2xl:grid-cols-[300px_minmax(0,1fr)] 2xl:gap-10">
 
                     <!-- Filters (sidebar on desktop, drawer on mobile) -->
                     <div id="cf-filters-backdrop" class="fixed inset-0 z-[60] hidden bg-[#0B1F3A]/50 lg:hidden" aria-hidden="true"></div>
@@ -190,7 +190,7 @@
 
                     <!-- Results -->
                     <div class="min-w-0">
-                        <div class="mb-4 rounded-2xl border border-gray-100 bg-white p-3 shadow-sm sm:p-4">
+                        <div class="mb-6 rounded-2xl border border-gray-100 bg-white p-3 shadow-sm sm:p-4">
                             <div class="flex flex-col gap-3 md:flex-row md:items-center">
                                 <div class="relative flex-1">
                                     <label for="course-search" class="sr-only">Search courses</label>
@@ -221,7 +221,7 @@
                             <div id="cf-active" class="mt-2 flex flex-wrap gap-2 empty:hidden"></div>
                         </div>
 
-                        <div id="course-grid" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                        <div id="course-grid" class="grid gap-5 sm:gap-6 [grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr))]">
                             <div class="cf-skeleton h-72 rounded-2xl"></div><div class="cf-skeleton h-72 rounded-2xl"></div><div class="cf-skeleton h-72 rounded-2xl"></div>
                         </div>
 
@@ -277,6 +277,6 @@
     <script src="assets/js/data/courses.js"></script>
     <script src="assets/js/components.js?v=13"></script>
     <script src="assets/js/site.js?v=3"></script>
-    <script src="assets/js/course-search.js?v=4"></script>
+    <script src="assets/js/course-search.js?v=5"></script>
 </body>
 </html>
