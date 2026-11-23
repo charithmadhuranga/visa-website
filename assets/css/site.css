@@ -445,3 +445,9 @@ body {
     70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
+
+/* Default grid track: a single column that is allowed to shrink. Without it, a
+ * `.grid` with only responsive columns (e.g. md:grid-cols-2) falls back to an
+ * auto-sized column on phones that grows to fit its widest child and pushes
+ * content off-screen. Any grid-cols-* utility (loaded later) overrides this. */
+.grid { grid-template-columns: minmax(0, 1fr); }

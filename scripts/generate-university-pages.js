@@ -185,7 +185,7 @@ function courseItem(c, r) {
                         <details class="up-course group rounded-2xl border border-gray-100 bg-white transition open:border-[#C9A45C]/50 open:shadow-md" data-level="${esc(c.level)}" data-search="${esc(`${c.name} ${c.field} ${c.level}`.toLowerCase())}">
                             <summary class="flex min-w-0 cursor-pointer list-none items-start gap-3 p-4 sm:p-5">
                                 <div class="min-w-0 flex-1">
-                                    <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)} <span class="text-gray-300">·</span> <span class="text-gray-500">${esc(c.field)}</span></p>
+                                    <p class="mb-1 text-xs font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)} <span class="text-gray-300">·</span> <span class="text-gray-500">${esc(c.field)}</span></p>
                                     <h3 class="font-bold leading-snug text-[#0B1F3A]">${esc(c.name)}</h3>
                                     <p class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500">
                                         ${c.duration ? `<span><i class="fas fa-hourglass-half mr-1 text-[#A9813F]" aria-hidden="true"></i>${esc(c.duration)}</span>` : ''}
@@ -295,7 +295,7 @@ function page(r, related) {
                     <h2 class="mb-4 text-2xl font-extrabold text-[#0B1F3A]">Popular courses</h2>
                     <div class="space-y-3">${r.curatedCourses.map((c) => `
                         <div class="rounded-2xl border border-gray-100 bg-white p-4 sm:p-5">
-                            <p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)}</p>
+                            <p class="mb-1 text-xs font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)}</p>
                             <h3 class="font-bold text-[#0B1F3A]">${esc(c.name)}</h3>
                             <p class="mt-1 text-xs text-gray-500">${esc(c.duration)}${c.intakes && c.intakes.length ? ` · Intakes: ${c.intakes.map(esc).join(', ')}` : ''}</p>
                         </div>`).join('')}
@@ -308,7 +308,7 @@ function page(r, related) {
         <section class="relative overflow-hidden bg-[#0B1F3A] text-white">
             ${cover ? `<img src="${esc(cover)}" alt="${esc(r.name)} campus" class="absolute inset-0 h-full w-full object-cover opacity-30" referrerpolicy="no-referrer" fetchpriority="high" onerror="this.remove()">` : ''}
             <div class="absolute inset-0 bg-gradient-to-r from-[#0B1F3A] via-[#0B1F3A]/90 to-[#0B1F3A]/60" aria-hidden="true"></div>
-            <div class="container relative mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-14">
+            <div class="container relative mx-auto max-w-7xl 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px] px-4 py-10 sm:px-6 md:py-14">
                 <nav class="mb-6 flex flex-wrap items-center gap-x-2 text-sm text-blue-100" aria-label="Breadcrumb">
                     <a href="../../index.html" class="hover:text-[#E3C88A]">Home</a><i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
                     <a href="../index.html" class="hover:text-[#E3C88A]">Universities</a><i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
@@ -331,13 +331,13 @@ function page(r, related) {
         </section>
 
         <section class="border-b border-gray-200 bg-white">
-            <dl class="container mx-auto grid max-w-7xl grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-${Math.min(6, facts.length)} [&>div]:min-w-0 [&_dd]:break-words">
-                ${facts.map(([icon, label, value]) => `<div class="bg-white px-4 py-4 sm:px-6"><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400"><i class="fas ${icon} mr-1 text-[#A9813F]" aria-hidden="true"></i>${esc(label)}</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">${esc(value)}</dd></div>`).join('')}
+            <dl class="container mx-auto grid max-w-7xl 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px] grid-cols-2 gap-px bg-gray-100 px-0 sm:grid-cols-3 lg:grid-cols-${Math.min(6, facts.length)} [&>div]:min-w-0 [&_dd]:break-words">
+                ${facts.map(([icon, label, value]) => `<div class="bg-white px-4 py-4 sm:px-6"><dt class="text-xs font-semibold uppercase tracking-wider text-gray-400"><i class="fas ${icon} mr-1 text-[#A9813F]" aria-hidden="true"></i>${esc(label)}</dt><dd class="mt-1 text-sm font-bold text-[#0B1F3A]">${esc(value)}</dd></div>`).join('')}
             </dl>
         </section>
 
         <div class="bg-[#F5F6F8] py-10 md:py-14">
-            <div class="container mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div class="container mx-auto grid max-w-7xl 2xl:max-w-[1440px] min-[1800px]:max-w-[1760px] min-[2200px]:max-w-[2000px] grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:px-8 2xl:grid-cols-[minmax(0,1fr)_380px] 2xl:gap-10">
             <div class="min-w-0 space-y-10">
                 ${r.aboutHtml ? `<section>
                     <p class="text-xs font-bold uppercase tracking-widest text-[#A9813F]">Overview</p>

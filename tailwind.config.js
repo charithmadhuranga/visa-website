@@ -11,6 +11,10 @@ module.exports = {
     './scripts/generate-*.js',
   ],
   theme: {
+    // `container` keeps growing on large screens instead of stopping at 1536px.
+    container: {
+      screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1280px', '2xl': '1536px', '3xl': '1760px', '4xl': '2000px' },
+    },
     extend: {
       colors: {
         navy: { DEFAULT: '#0B1F3A', 700: '#16305A', 900: '#081527' },

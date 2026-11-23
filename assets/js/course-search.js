@@ -345,17 +345,17 @@
                     </div>
                     <button type="button" class="-mr-1 -mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition hover:bg-rose-50 ${isSaved ? 'text-rose-500' : 'text-gray-300 hover:text-rose-400'}" data-save="${c.key}" aria-pressed="${isSaved}" aria-label="${isSaved ? 'Remove from saved' : 'Save course'}: ${esc(c.name)}"><i class="fa${isSaved ? 's' : 'r'} fa-heart" aria-hidden="true"></i></button>
                 </div>
-                <p class="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)} <span class="text-gray-300">·</span> <span class="text-gray-500">${esc(c.field)}</span></p>
+                <p class="mb-1.5 text-xs font-bold uppercase tracking-wider text-[#A9813F]">${esc(c.level)} <span class="text-gray-300">·</span> <span class="text-gray-500">${esc(c.field)}</span></p>
                 <h3 class="text-[15px] font-bold leading-snug text-[#0B1F3A]">
                     <button type="button" class="text-left hover:text-[#8A6A32] hover:underline decoration-[#C9A45C]/50 underline-offset-4" data-open="${c.key}">${esc(c.name)}</button>
                 </h3>
             </div>
             <div class="cf-card-side flex flex-col border-t border-gray-100 bg-[#FAFAFB] p-5">
                 <dl class="grid grid-cols-2 gap-x-3 gap-y-3 text-sm">
-                    <div><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Duration</dt><dd class="font-bold text-[#0B1F3A]">${esc(durationText(c.dMin, c.dMax))}</dd></div>
-                    <div><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Study level</dt><dd class="font-bold text-[#0B1F3A]">${esc(c.level)}</dd></div>
-                    <div><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Next intake</dt><dd class="font-bold text-[#0B1F3A]">${c.nextIntake ? esc(fmtMonth(c.nextIntake.start)) : '<span class="text-gray-400">TBC</span>'}</dd></div>
-                    <div><dt class="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Apply by</dt><dd class="font-bold ${c.nextDeadline && daysUntil(c.nextDeadline) <= 30 ? 'text-rose-600' : 'text-[#0B1F3A]'}">${c.nextDeadline ? esc(fmtDay(c.nextDeadline)) : '<span class="text-gray-400">Rolling</span>'}</dd></div>
+                    <div><dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Duration</dt><dd class="font-bold text-[#0B1F3A]">${esc(durationText(c.dMin, c.dMax))}</dd></div>
+                    <div><dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Study level</dt><dd class="font-bold text-[#0B1F3A]">${esc(c.level)}</dd></div>
+                    <div><dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Next intake</dt><dd class="font-bold text-[#0B1F3A]">${c.nextIntake ? esc(fmtMonth(c.nextIntake.start)) : '<span class="text-gray-400">TBC</span>'}</dd></div>
+                    <div><dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Apply by</dt><dd class="font-bold ${c.nextDeadline && daysUntil(c.nextDeadline) <= 30 ? 'text-rose-600' : 'text-[#0B1F3A]'}">${c.nextDeadline ? esc(fmtDay(c.nextDeadline)) : '<span class="text-gray-400">Rolling</span>'}</dd></div>
                 </dl>
                 <div class="mt-4 flex gap-2">
                     <button type="button" data-open="${c.key}" class="flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-bold text-[#0B1F3A] transition hover:border-[#0B1F3A]">Details</button>
@@ -542,7 +542,7 @@
             </tr>`;
         }).join('') : '<tr><td colspan="3" class="py-3 text-gray-500">Upcoming intake dates to be confirmed — ask our team for the latest schedule.</td></tr>';
 
-        const fact = (label, value, icon) => `<div class="min-w-0 rounded-2xl bg-[#F5F6F8] p-3 sm:p-4"><dt class="mb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500"><i class="fas ${icon} mr-1.5 text-[#A9813F]" aria-hidden="true"></i>${label}</dt><dd class="text-sm font-bold text-[#0B1F3A]">${value}</dd></div>`;
+        const fact = (label, value, icon) => `<div class="min-w-0 rounded-2xl bg-[#F5F6F8] p-3 sm:p-4"><dt class="mb-1 text-xs font-semibold uppercase tracking-wider text-gray-500"><i class="fas ${icon} mr-1.5 text-[#A9813F]" aria-hidden="true"></i>${label}</dt><dd class="text-sm font-bold text-[#0B1F3A]">${value}</dd></div>`;
         const waText = encodeURIComponent(`Hi LGA Visa, I'm interested in ${c.name} (${c.level}) at ${c.uni}, ${meta.name}. Can you help me apply?`);
 
         $('cf-modal-body').innerHTML = `
@@ -571,7 +571,7 @@
                 <h3 class="mb-2 font-bold text-[#0B1F3A]"><i class="fas fa-calendar-days mr-2 text-[#C9A45C]" aria-hidden="true"></i>Upcoming intakes</h3>
                 <div class="mb-6 overflow-x-auto">
                     <table class="w-full text-sm">
-                        <thead><tr class="text-left text-[11px] uppercase tracking-wider text-gray-400"><th class="pb-2 font-semibold">Starts</th><th class="pb-2 font-semibold">Apply by</th><th class="pb-2 text-right font-semibold">Status</th></tr></thead>
+                        <thead><tr class="text-left text-xs uppercase tracking-wider text-gray-400"><th class="pb-2 font-semibold">Starts</th><th class="pb-2 font-semibold">Apply by</th><th class="pb-2 text-right font-semibold">Status</th></tr></thead>
                         <tbody>${intakeRows}</tbody>
                     </table>
                 </div>

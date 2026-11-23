@@ -89,13 +89,13 @@
                     </div>
                 </div>
 
-                ${hasCourses ? `<div class="mb-8 grid gap-4 md:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.4fr)]">
+                ${hasCourses ? `<div class="mb-8 grid gap-4 sm:grid-cols-3 xl:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.4fr)]">
                     ${LEVELS.map(l => `<a href="${ROOT}courses.html?country=${encodeURIComponent(key)}&amp;level=${encodeURIComponent(l)}" class="group rounded-2xl border border-gray-100 bg-white p-5 transition hover:border-[#C9A45C]/60 hover:shadow-md">
                         <p class="text-xs font-semibold uppercase tracking-wider text-gray-500">${esc(l)}</p>
                         <p class="mt-1 text-3xl font-extrabold text-[#0B1F3A]">${fmt(s.levels[l] || 0)}</p>
                         <p class="mt-1 text-xs font-semibold text-[#8A6A32] group-hover:underline">Browse courses →</p>
                     </a>`).join('')}
-                    <div class="rounded-2xl border border-gray-100 bg-white p-5">
+                    <div class="rounded-2xl border border-gray-100 bg-white p-5 sm:col-span-3 xl:col-span-1">
                         <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Popular fields</p>
                         <ul class="flex flex-wrap gap-x-3 gap-y-1.5 text-sm">
                             ${s.fields.slice(0, 6).map(f => `<li><a href="${ROOT}courses.html?country=${encodeURIComponent(key)}&amp;field=${encodeURIComponent(f)}" class="font-semibold text-[#0B1F3A] underline decoration-[#C9A45C]/40 underline-offset-4 hover:text-[#8A6A32]">${esc(f)}</a></li>`).join('')}
@@ -104,7 +104,7 @@
                 </div>` : ''}
 
                 <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    ${featured.map(u => `<a href="${profile(u)}" class="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#C9A45C]/60 hover:shadow-md">
+                    ${featured.map(u => `<a href="${profile(u)}" class="flex min-w-0 items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#C9A45C]/60 hover:shadow-md">
                         ${logo(u)}
                         <span class="min-w-0"><span class="block truncate text-sm font-bold text-[#0B1F3A]">${esc(u.n)}</span><span class="block truncate text-xs text-gray-500">${esc(u.ci || '')}${u.cc ? ` · ${u.cc} courses` : ''}</span></span>
                     </a>`).join('')}
